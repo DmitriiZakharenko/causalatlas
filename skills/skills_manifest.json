@@ -5,31 +5,40 @@
       "name": "pubmed-literature-search",
       "path": "skills/pubmed-literature-search/SKILL.md",
       "trigger_description": "Use whenever an agent needs to search or retrieve biomedical literature -- PubMed corpus construction, or independent novelty cross-checks against PubMed/Semantic Scholar/OpenAlex.",
-      "used_by_agents": ["agent01_literature_retrieval", "agent09_novelty_verification", "agent11_peer_review"]
+      "used_by_agents": ["agent02_literature_retrieval", "agent10_novelty_verification", "agent12_peer_review"]
     },
     {
       "name": "novelty-verification-protocol",
       "path": "skills/novelty-verification-protocol/SKILL.md",
       "trigger_description": "Use whenever classifying whether a candidate mechanism/hypothesis is novel (A-E classification) -- the single most safety-critical skill in the system.",
-      "used_by_agents": ["agent09_novelty_verification", "agent11_peer_review"]
+      "used_by_agents": ["agent10_novelty_verification", "agent12_peer_review"]
     },
     {
       "name": "contradiction-detection",
       "path": "skills/contradiction-detection/SKILL.md",
       "trigger_description": "Use when scanning a knowledge graph for direction-conflicting edges on the same node pair, or logging a new contradiction.",
-      "used_by_agents": ["agent08_contradiction_gap_detection", "agent09_novelty_verification"]
+      "used_by_agents": ["agent09_contradiction_gap_detection", "agent10_novelty_verification"]
     },
     {
       "name": "graph-export-visualization",
       "path": "skills/graph-export-visualization/SKILL.md",
       "trigger_description": "Use when producing any graph export or visualization (GraphML/GEXF/SVG/PNG, or a filtered subgraph).",
-      "used_by_agents": ["agent05_graph_builder", "agent07_topology_analysis"]
+      "used_by_agents": ["agent06_graph_builder", "agent08_topology_analysis"]
     },
     {
       "name": "cross-disease-motif-analysis",
       "path": "skills/cross-disease-motif-analysis/SKILL.md",
       "trigger_description": "Use when comparing two or more disease knowledge graphs to identify shared vs. disease-specific fully-evidenced motifs, generalized to N diseases.",
-      "used_by_agents": ["agent07_topology_analysis"]
+      "used_by_agents": ["agent08_topology_analysis"]
+    }
+  ],
+  "_pending": [
+    {
+      "name": "canonical-baseline-lookup",
+      "path": "skills/canonical-baseline-lookup/SKILL.md",
+      "trigger_description": "Use when fetching already-established, curated mechanistic facts from structured canonical databases (Reactome/KEGG/UniProt/MyDisease.info) before any literature search, to auto-classify known-consensus mechanisms without re-searching the literature every run.",
+      "used_by_agents": ["agent01_baseline_canonical_knowledge"],
+      "status": "NOT YET WRITTEN -- waiting on exact Reactome/KEGG/UniProt/MyDisease.info endpoint spec from the user (same free-only-audit format already provided for pubmed-literature-search) before adding to the main `skills` list above, to avoid inventing endpoint details."
     }
   ]
 }

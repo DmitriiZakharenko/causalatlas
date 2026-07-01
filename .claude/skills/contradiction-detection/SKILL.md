@@ -1,12 +1,12 @@
 ---
 name: contradiction-detection
-description: Use this skill when scanning a knowledge graph for direction-conflicting edges on the same node pair, or logging a new contradiction -- Agent 8's core procedure.
+description: Use this skill when scanning a knowledge graph for direction-conflicting edges on the same node pair, or logging a new contradiction -- Agent 9's core procedure.
 ---
 
 # Skill: Contradiction Detection
 
 ## When to use this skill
-Agent 8, during its full-graph contradiction scan. Also consulted by Agent 9 when a
+Agent 9, during its full-graph contradiction scan. Also consulted by Agent 10 when a
 candidate's classification is C (conflicting literature) and needs to be routed here instead
 of to hypothesis generation.
 

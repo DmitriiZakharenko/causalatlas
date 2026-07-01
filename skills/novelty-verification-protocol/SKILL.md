@@ -1,18 +1,18 @@
 ---
 name: novelty-verification-protocol
-description: Use this skill whenever classifying whether a candidate mechanism/hypothesis is novel (A-E classification) -- Agent 9's core procedure, and every Agent 11 reviewer's independent re-check. The single most safety-critical skill in the system.
+description: Use this skill whenever classifying whether a candidate mechanism/hypothesis is novel (A-E classification) -- Agent 10's core procedure, and every Agent 12 reviewer's independent re-check. The single most safety-critical skill in the system.
 ---
 
 # Skill: Novelty Verification Protocol
 
-This is the step-by-step procedure behind Agent 9's classification and every Agent 11
-reviewer's independent falsification attempt. Agent 9 and every Peer Review reviewer load
-this same skill so the standard cannot drift between the two -- if Agent 9 and a reviewer
+This is the step-by-step procedure behind Agent 10's classification and every Agent 12
+reviewer's independent falsification attempt. Agent 10 and every Peer Review reviewer load
+this same skill so the standard cannot drift between the two -- if Agent 10 and a reviewer
 apply different originality thresholds, the whole gate is unreliable.
 
 ## When to use this skill
-- Agent 9, on every candidate mechanism before it can be called a hypothesis.
-- Every Agent 11 reviewer (A_immunologist, B_systems_biologist, C_editor), independently,
+- Agent 10, on every candidate mechanism before it can be called a hypothesis.
+- Every Agent 12 reviewer (A_immunologist, B_systems_biologist, C_editor), independently,
   before voting.
 
 ## Step 1 — Structural originality test (before any search)
@@ -25,14 +25,14 @@ abstract/conclusion of any **single** source paper already in the corpus?
   asserts is already the stated conclusion of one paper, it is not a hypothesis -- it is a
   **restated finding**.
 - If yes: classify `RESTATED`, route to the graph as an established edge with that PMID as
-  sole provenance, STOP -- do not proceed to Step 2, do not send to Agent 10.
+  sole provenance, STOP -- do not proceed to Step 2, do not send to Agent 11.
 - If no (the candidate recombines edges from **at least two independent papers** that do not,
   between them, already state this combined path): proceed to Step 2.
 
 **The H1 test (mandatory fixture):** "cDC1 (Batf3-dependent) required for lung TRM sustaining
 chronic asthma" is a near-verbatim restatement of PMID 40184040's own abstract conclusion.
 Any classification of this statement as anything other than `RESTATED` is a protocol
-violation. See Agent 9's AGENTS.md for the full verbatim fixture.
+violation. See Agent 10's AGENTS.md for the full verbatim fixture.
 
 ## Step 2 — External literature classification (live search, mandatory)
 
@@ -73,14 +73,14 @@ on a single source's zero hits is not yet compliant.
 
 ## Gating rule
 
-**Only D or E may proceed to Agent 10.** A and B are relabeled `ESTABLISHED MECHANISM` and
+**Only D or E may proceed to Agent 11.** A and B are relabeled `ESTABLISHED MECHANISM` and
 folded into the graph, not the hypothesis list. C is routed to the contradiction log, not
 treated as a hypothesis opportunity (except the D-class "which condition dominates"
 exception above).
 
-## For Agent 11 reviewers specifically
+## For Agent 12 reviewers specifically
 
-Each reviewer must run their OWN search, phrased differently from Agent 9's queries AND from
+Each reviewer must run their OWN search, phrased differently from Agent 10's queries AND from
 the other two reviewers' queries -- three reviewers running the same query is not three
 independent checks. A reviewer who does not run a logged search may not vote ACCEPT,
 regardless of how plausible the hypothesis sounds. "Plausible" is never a valid substitute

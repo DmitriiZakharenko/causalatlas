@@ -7,7 +7,7 @@ description: Use this skill when comparing two or more disease knowledge graphs 
 
 ## When to use this skill
 Whenever more than one disease graph exists under `data/graphs/` and a comparison is
-requested (Agent 7 as part of architecture ranking, or directly by the Phase 5 frontend's
+requested (Agent 8 as part of architecture ranking, or directly by the Phase 5 frontend's
 cross-disease motif view). Must work for N diseases, not be hardcoded to a pair.
 
 ## Procedure

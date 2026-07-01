@@ -99,7 +99,7 @@ def test_novelty_protocol_references_two_source_rule():
 
 @pytest.mark.parametrize(
     "agent_name",
-    ["agent01_literature_retrieval", "agent09_novelty_verification", "agent11_peer_review"],
+    ["agent02_literature_retrieval", "agent10_novelty_verification", "agent12_peer_review"],
 )
 def test_agents_md_no_longer_reference_google_scholar_as_a_source(agent_name: str):
     content = (REPO_ROOT / "agents" / agent_name / "AGENTS.md").read_text()

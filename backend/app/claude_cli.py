@@ -10,7 +10,7 @@ Verified empirically (see Phase 1/1B chat history) before this was written:
 - `claude -p --agent <name> ...` runs a named subagent directly, non-interactively.
 - Headless tool calls (WebSearch/WebFetch/Task/Skill/...) are silently DENIED
   unless `--permission-mode bypassPermissions` and an explicit `--allowedTools`
-  list are both passed -- this is not optional, it is required for Agent 9/11's
+  list are both passed -- this is not optional, it is required for Agent 10/12's
   live-search hard constraints to actually execute rather than fail closed.
 - Auth is via the developer's existing Claude subscription (OAuth), not
   ANTHROPIC_API_KEY -- `--bare` mode is therefore never used here, since `--bare`
@@ -87,7 +87,7 @@ async def run_agent(
 ) -> AgentResult:
     """Run a single named subagent to completion and return its parsed result.
 
-    Used for isolated agent invocations (e.g. the Phase 1 Agent 9 fixture test).
+    Used for isolated agent invocations (e.g. the Phase 1 Agent 10 fixture test).
     For the full 12-agent pipeline run, see `run_orchestrator_stream` instead,
     which uses Agent 0's Task-tool delegation and streams progress.
     """

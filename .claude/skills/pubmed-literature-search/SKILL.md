@@ -1,6 +1,6 @@
 ---
 name: pubmed-literature-search
-description: Use this skill whenever an agent needs to search or retrieve biomedical literature -- PubMed corpus construction (Agent 1), or independent novelty cross-checks against PubMed/Semantic Scholar/OpenAlex (Agent 9, Agent 11 reviewers).
+description: Use this skill whenever an agent needs to search or retrieve biomedical literature -- PubMed corpus construction (Agent 2), or independent novelty cross-checks against PubMed/Semantic Scholar/OpenAlex (Agent 10, Agent 12 reviewers).
 ---
 
 # Skill: PubMed Literature Search
@@ -9,12 +9,12 @@ Free-only, no paid API or tier anywhere in this skill. All three sources below a
 fully free and keyless, or free with registration.
 
 ## When to use this skill
-- Agent 1 (Literature Retrieval): primary corpus construction for a `{disease, gene?}`
+- Agent 2 (Literature Retrieval): primary corpus construction for a `{disease, gene?}`
   target.
-- Agent 9 (Novelty Verification): independent external search per candidate hypothesis --
-  MUST be a fresh query, not a re-read of Agent 1's corpus.
-- Agent 11 (Peer Review): each reviewer's own independent search, phrased differently from
-  Agent 9's and from the other reviewers'.
+- Agent 10 (Novelty Verification): independent external search per candidate hypothesis --
+  MUST be a fresh query, not a re-read of Agent 2's corpus.
+- Agent 12 (Peer Review): each reviewer's own independent search, phrased differently from
+  Agent 10's and from the other reviewers'.
 
 ## Source 1: PubMed E-utilities (primary corpus retrieval)
 
@@ -34,7 +34,7 @@ fully free and keyless, or free with registration.
 - Search: `paper/search?query={query}&fields=title,year,abstract,citationCount,externalIds`
 - Free; keyless works at low volume. A free API key (higher rate limit, still $0) is
   available at https://www.semanticscholar.org/product/api.
-- Use for: independent literature search during Agent 9 novelty checks and Agent 11
+- Use for: independent literature search during Agent 10 novelty checks and Agent 12
   reviewer independent searches. Provides `citationCount`, which E-utilities does not --
   useful as a rough "how established is this" signal (a chain with a 500-citation review
   stating it directly is a strong signal toward A/B classification, not D/E).
@@ -47,7 +47,7 @@ fully free and keyless, or free with registration.
   (higher rate limit, still free) -- use a real contact email, never a placeholder.
 - Use for: the same purpose as Semantic Scholar. Run both and compare.
 
-## Mandatory rule for novelty-classification use (Agent 9 / Agent 11)
+## Mandatory rule for novelty-classification use (Agent 10 / Agent 12)
 
 **Never trust a single source's zero-hit result as proof of novelty.** Query at least two of
 the three sources above per candidate before classifying based on absence of prior art. This
@@ -67,7 +67,7 @@ stable per-result PMID/DOI/citation-count fields, so they cannot be logged the w
 protocol's audit trail requires (a real query string + real structured results, not a vague
 "I checked Google Scholar and found nothing").
 
-## Query construction guidance (Agent 1 specifically)
+## Query construction guidance (Agent 2 specifically)
 
 - Use MeSH terms + keyword expansion, run multiple complementary query strategies per target
   (mechanism-specific: e.g. "IL-33 asthma", "ILC2 airway", not just "asthma"). At least 3
@@ -92,7 +92,7 @@ across individual agent prompts:
 - Real historical failure this rule fixes: Session 001's initial asthma retrieval was 96%
   one year (430/448 papers from 2026), because PubMed's default sort is most-recent-first
   and the retrieval did not paginate (`retstart`) or stratify by year band. A corpus this
-  skewed cannot support downstream "established vs. new" novelty judgments (see Agent 9's H2
+  skewed cannot support downstream "established vs. new" novelty judgments (see Agent 10's H2
   fixture, which depends on 2016-2018 papers being present in the corpus).
 - Fix: paginate deeper per query strategy (use `retstart` across multiple `esearch.fcgi`
   calls) rather than accepting only the first `retmax` most-recent results.

@@ -1,12 +1,12 @@
 ---
 name: graph-export-visualization
-description: Use this skill when producing any graph export or visualization (GraphML/GEXF/SVG/PNG, or a filtered subgraph) -- Agent 5/7 outputs, and the Phase 5 frontend export/filter logic.
+description: Use this skill when producing any graph export or visualization (GraphML/GEXF/SVG/PNG, or a filtered subgraph) -- Agent 6/8 outputs, and the Phase 5 frontend export/filter logic.
 ---
 
 # Skill: Graph Export & Visualization Conventions
 
 ## When to use this skill
-Agent 5 (Graph Builder) when writing any filtered/exported view of the graph. Agent 7
+Agent 6 (Graph Builder) when writing any filtered/exported view of the graph. Agent 8
 (Topology Analysis) when producing ranked-architecture visual output. The Phase 5 frontend,
 directly, when constructing a Cytoscape.js view with a client-side filter.
 

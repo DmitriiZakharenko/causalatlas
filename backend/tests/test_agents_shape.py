@@ -8,7 +8,7 @@ This intentionally does NOT make a live model call for every agent (that would
 be slow, costly, and is explicitly out of scope per the build prompt: "not full
 correctness -- that's Phase 2/3's job"). The one place full behavioral
 correctness IS asserted against real historical data is
-test_agent09_novelty.py's live_llm-marked test.
+test_agent10_novelty.py's live_llm-marked test.
 """
 from __future__ import annotations
 
@@ -73,6 +73,7 @@ def test_native_subagent_generated_with_correct_tools(agent_name: str):
 
 
 def test_agent_order_matches_pipeline_spec():
-    assert len(AGENT_ORDER) == 12, "pipeline must have exactly 12 agents (1-12)"
-    assert AGENT_ORDER[0] == "agent01_literature_retrieval"
-    assert AGENT_ORDER[-1] == "agent12_experiment_design"
+    assert len(AGENT_ORDER) == 13, "pipeline must have exactly 13 agents (1-13)"
+    assert AGENT_ORDER[0] == "agent01_baseline_canonical_knowledge"
+    assert AGENT_ORDER[1] == "agent02_literature_retrieval"
+    assert AGENT_ORDER[-1] == "agent13_experiment_design"
