@@ -59,6 +59,30 @@ npm install
 npm run dev
 ```
 
+## Architecture note: no LLM API key, ever
+
+Every model call in this system runs through the developer's existing Claude subscription
+via headless Claude Code CLI (`claude -p`) subprocess invocations from the backend -- there
+is no `ANTHROPIC_API_KEY` anywhere in this codebase and the backend never calls an LLM API
+directly. See `docs/architecture.md` (Phase 6) for the full rationale and verified
+constraints (subscription auth, required `--permission-mode`/`--allowedTools` flags,
+five-hour rate-limit window).
+
+Each pipeline agent (`/agents/agentNN_<name>/AGENTS.md`) and Skill (`/skills/<name>/SKILL.md`)
+is the canonical, human-edited source of truth. Running
+
+```bash
+python3 backend/generate_native_agents.py
+```
+
+regenerates the native Claude Code registrations (`.claude/agents/*.md`,
+`.claude/skills/*/SKILL.md`) from them -- run this after editing any AGENTS.md or SKILL.md
+file.
+
 ## Status
 
-Phase 0 (project scaffold) complete. See TODOs / commit history for phase progress.
+Phase 0 (project scaffold): complete.
+Phase 1 (context engineering layer): complete -- 12 agent AGENTS.md files + orchestrator
+(Agent 0), native subagent generation, and a live test proving Agent 9 alone reproduces the
+real Session 002 H1 (RESTATED)/H2 (Established) classifications.
+See TODOs / commit history for phase progress.

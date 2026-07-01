@@ -2,10 +2,14 @@ fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pydantic==2.10.4
 python-dotenv==1.0.1
-httpx==0.28.1
-anthropic==0.42.0
 aiosqlite==0.20.0
 sqlalchemy==2.0.36
 sse-starlette==2.2.1
 pytest==8.3.4
 pytest-asyncio==0.25.0
+pyyaml==6.0.2
+
+# NOTE: no `anthropic` package here -- this backend never calls an LLM API
+# directly. All model calls happen via subprocess invocations of the `claude`
+# CLI (see app/claude_cli.py), authenticated through the developer's existing
+# Claude subscription, not a billed API key. See docs/architecture.md.
