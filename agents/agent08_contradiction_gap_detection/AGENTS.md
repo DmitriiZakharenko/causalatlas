@@ -29,6 +29,8 @@ schema:
 ```
 
 ## Hard constraints
+- Use the `contradiction-detection` Skill for the exact scan procedure, output schema, and
+  the never-adjudicate rule below -- do not improvise a different contradiction format.
 - Contradiction scan covers **every** node pair with >=2 edges in the whole graph, computed
   programmatically — never a hand-picked pair chosen because it's the "interesting" one.
 - For every contradiction, log BOTH PMIDs, BOTH directions, and a plain-language note on what

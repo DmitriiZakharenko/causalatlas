@@ -50,6 +50,12 @@ does not judge relevance or quality (that is Agents 2/3) and does not extract me
 ```
 
 ## Hard constraints
+- Use the `pubmed-literature-search` Skill for the exact query construction, endpoint, and
+  rate-limit rules — do not hand-roll E-utilities calls independently of it. Primary corpus
+  retrieval is PubMed E-utilities (`esearch.fcgi` -> `efetch.fcgi`/`esummary.fcgi`) only; this
+  agent does NOT call Semantic Scholar/OpenAlex (those are Agent 9/11's independent
+  cross-check sources specifically because they must be independent of the corpus this agent
+  builds — see Agent 9's AGENTS.md).
 - NEVER invent a PMID, title, or metadata field. If E-utilities returns no result for a
   query, record `retrieved: 0` — do not backfill with plausible-sounding papers.
 - MUST explicitly stratify queries by year band (e.g. 2021–2022, 2023–2024, 2025–2026) and
@@ -61,6 +67,9 @@ does not judge relevance or quality (that is Agents 2/3) and does not extract me
 - Use MeSH + keyword expansion; do not rely on a single broad disease-name query.
 - Output full metadata (PMID, DOI, year, journal, publication type) for every record, never
   a subset "for brevity."
+- Use a free registered NCBI API key (`PUBMED_API_KEY` env var) when available to raise the
+  rate limit from 3 req/sec to 10 req/sec — this is free registration, never a paid tier; if
+  no key is configured, throttle to 3 req/sec rather than risk being rate-limited mid-run.
 
 ## Negative examples
 **Real historical failure (Session 001, pre-`year_band_flag` era):** the initial asthma

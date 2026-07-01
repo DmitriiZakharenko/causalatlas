@@ -18,6 +18,14 @@ Verified passing manually during Phase 1 development (2026-07-01):
   H1_session001 entry exactly.
 - H2 candidate -> classification "A", eligible_for_hypothesis_generation False
   -- matches graph/novelty_audit.json's real H2_session001 entry exactly.
+
+Phase 1B addition, also verified passing manually (2026-07-01): a stream-json
+run of the same H1 case shows Agent 9 spontaneously emitting a `Skill` tool_use
+event for `novelty-verification-protocol` -- with NO explicit instruction in
+the prompt to load any skill -- purely because its own AGENTS.md now
+references the skill. This is the proof that Phase 1B's skill-loading
+mechanism is real, observed runtime behavior, not just documentation that
+sits unused.
 """
 from __future__ import annotations
 
@@ -25,7 +33,7 @@ import asyncio
 
 import pytest
 
-from app.claude_cli import run_agent
+from app.claude_cli import run_agent, run_agent_stream
 
 NOVELTY_SCHEMA = {
     "type": "object",
@@ -80,3 +88,54 @@ def test_agent09_classifies_h2_as_established_a():
     assert output is not None, f"no structured_output in: {result.raw}"
     assert output["classification"].strip().upper().startswith("A")
     assert output["eligible_for_hypothesis_generation"] is False
+
+
+@pytest.mark.live_llm
+def test_agent09_spontaneously_loads_novelty_protocol_skill():
+    """Phase 1B DoD: skill loading must be real runtime behavior. This prompt
+    gives NO instruction to use any skill -- if Agent 9 loads
+    `novelty-verification-protocol` anyway, that proves the AGENTS.md ->
+    Skill-tool link works on its own, not just when hand-held."""
+
+    async def _collect():
+        events = []
+        async for event in run_agent_stream("agent09_novelty_verification", H1_PROMPT):
+            events.append(event)
+        return events
+
+    events = asyncio.run(_collect())
+
+    skill_loads = [
+        item
+        for event in events
+        for item in _tool_uses(event)
+        if item.get("name") == "Skill"
+    ]
+    assert skill_loads, "Agent 9 never invoked the Skill tool"
+    loaded_names = {su["input"].get("skill") for su in skill_loads}
+    assert "novelty-verification-protocol" in loaded_names, (
+        f"Agent 9 loaded skills {loaded_names}, expected novelty-verification-protocol among them"
+    )
+
+    result_events = [e for e in events if e.get("type") == "result"]
+    assert result_events, f"no result event in stream: {events}"
+    assert "RESTATED" in result_events[-1].get("result", "")
+
+
+def _tool_uses(event: dict) -> list[dict]:
+    """Recursively find every {"type": "tool_use", ...} dict nested in a
+    stream-json event (Claude Code nests these inside message.content)."""
+    found = []
+
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("type") == "tool_use":
+                found.append(node)
+            for v in node.values():
+                walk(v)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v)
+
+    walk(event)
+    return found

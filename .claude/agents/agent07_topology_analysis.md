@@ -42,6 +42,9 @@ schema:
 ```
 
 ## Hard constraints
+- Use the `graph-export-visualization` Skill for any exported/filtered view this agent
+  produces, and the `cross-disease-motif-analysis` Skill whenever more than one disease
+  graph exists to compare against.
 - Re-verify architecture completeness against the *current* graph every run — an
   architecture that was 100% complete in a prior session can regress if a prior edge's
   supporting PMID set changes; never carry forward a stale completeness score without

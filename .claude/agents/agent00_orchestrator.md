@@ -42,11 +42,22 @@ files: `knowledge_graph.json` (merged into `data/graphs/<disease>/`), `loops.jso
 - Dispatch Agents 1 through 12 via the Task tool, in order, one at a time — never run two
   pipeline agents concurrently (subscription rate limits + sequential dependency chain both
   require this).
-- Before dispatching Agent 9, load the `novelty-verification-protocol` Skill explicitly (via
-  the Skill tool) so its procedure is fresh in context immediately before the safety-critical
-  step — do this even though Agent 9's own subagent will also have access to it, because the
-  orchestrator's own dispatch prompt to Agent 9 should reference the skill's checklist when
-  deciding whether Agent 9's output is complete enough to accept.
+- **Before dispatching each agent, consult `skills/skills_manifest.json`** and load (via the
+  Skill tool) every skill whose `used_by_agents` list includes that agent, *immediately*
+  before the Task dispatch — this makes skill selection a visible, explainable runtime
+  decision (observable in the SSE stream as a `skill_loaded`-equivalent event), not a
+  hardcoded association buried in this file. Concretely: load
+  `pubmed-literature-search` before Agent 1; load `pubmed-literature-search` +
+  `novelty-verification-protocol` + `contradiction-detection` before Agent 9; load
+  `contradiction-detection` before Agent 8; load `graph-export-visualization` before Agent 5
+  and Agent 7; load `cross-disease-motif-analysis` before Agent 7 whenever more than one
+  disease graph exists; load `pubmed-literature-search` + `novelty-verification-protocol`
+  before Agent 11.
+- Do this even though each subagent also has its own relevant skills referenced in its own
+  AGENTS.md — the orchestrator's own dispatch-time load is what makes the loading event
+  visible in the top-level stream the backend tails for the UI's live progress view, and lets
+  the orchestrator's own judgment of "is this output complete" reference the same skill
+  checklist the subagent used.
 - Enforce autonomy pauses exactly as specified (see `/skills/` are not used for this — this
   is orchestrator-only logic):
   - `autocomplete`: after EVERY agent (1-12), stop and report the agent's raw output; wait for

@@ -129,6 +129,49 @@ async def run_agent(
     )
 
 
+async def run_agent_stream(
+    agent_name: str,
+    prompt: str,
+    *,
+    cwd: Path | None = None,
+) -> AsyncIterator[dict]:
+    """Run any named subagent and yield each parsed stream-json line as it
+    arrives. Unlike `run_agent` (output-format json), this exposes every
+    intermediate tool_use event -- including `Skill` tool loads -- which is
+    what proves skill-loading is real runtime behavior, not just a claim in
+    AGENTS.md (see test_agent09_novelty.py's skill-loading regression test).
+    """
+    cmd = _build_command(
+        agent_name,
+        prompt,
+        output_format="stream-json",
+        extra_flags=["--verbose", "--include-partial-messages"],
+    )
+    proc = await asyncio.create_subprocess_exec(
+        *cmd,
+        cwd=str(cwd or REPO_ROOT),
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    assert proc.stdout is not None
+    async for line in proc.stdout:
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            yield json.loads(line)
+        except json.JSONDecodeError:
+            yield {"type": "unparsed_line", "raw": line.decode(errors="replace")}
+    await proc.wait()
+    if proc.returncode != 0:
+        stderr = await proc.stderr.read() if proc.stderr else b""
+        yield {
+            "type": "agent_failed",
+            "returncode": proc.returncode,
+            "stderr": stderr.decode(errors="replace"),
+        }
+
+
 async def run_orchestrator_stream(
     prompt: str,
     *,

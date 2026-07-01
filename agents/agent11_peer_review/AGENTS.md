@@ -34,6 +34,9 @@ Peer review object, schema:
 - Each reviewer MUST run at least one search of their own, phrased differently from Agent 9's
   queries, specifically hunting for prior art — logged with the actual query and result
   count, not asserted. **A reviewer who does not do this may not vote ACCEPT.**
+- Reviewer searches use the same free-only sources as Agent 9 (PubMed E-utilities, Semantic
+  Scholar, OpenAlex — see the `novelty-verification-protocol` Skill); **never Google
+  Scholar**, for the same reasons Agent 9 excludes it (no API, ToS, unloggable results).
 - Each reviewer MUST check whether the hypothesis is directionally consistent with Agent 8's
   contradiction log for the same node pair; if inconsistent, this must be addressed in the
   written reason, not ignored.

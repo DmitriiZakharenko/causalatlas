@@ -37,7 +37,8 @@ data-lineage discrepancy found during migration.
 ### Docker (recommended)
 
 ```bash
-cp .env.example .env   # fill in PUBMED_API_KEY / ANTHROPIC_API_KEY
+cp .env.example .env   # optional: PUBMED_API_KEY / SEMANTIC_SCHOLAR_API_KEY / OPENALEX_MAILTO
+                        # (no LLM API key needed -- see below)
 docker compose up --build
 ```
 
@@ -79,10 +80,27 @@ regenerates the native Claude Code registrations (`.claude/agents/*.md`,
 `.claude/skills/*/SKILL.md`) from them -- run this after editing any AGENTS.md or SKILL.md
 file.
 
+## Literature & novelty data sources: free-only
+
+`pubmed-literature-search` (used by Agent 1, and independently by Agent 9/Agent 11) is the
+canonical source of every external-search endpoint used in this system: PubMed E-utilities
+(primary corpus), Semantic Scholar Graph API and OpenAlex API (independent structured
+cross-checks for novelty verification). All three are free with no paid tier, ever.
+**Google Scholar is never used** in any form (no official API, ToS prohibits scraping,
+results aren't structured enough to log) -- see the skill file for the full rationale and a
+documented real gap this fixes (Session 003's single-source zero-hit novelty calls).
+
 ## Status
 
 Phase 0 (project scaffold): complete.
 Phase 1 (context engineering layer): complete -- 12 agent AGENTS.md files + orchestrator
 (Agent 0), native subagent generation, and a live test proving Agent 9 alone reproduces the
 real Session 002 H1 (RESTATED)/H2 (Established) classifications.
+Phase 1B (custom Skills layer): complete -- 5 SKILL.md files
+(`pubmed-literature-search`, `novelty-verification-protocol`, `contradiction-detection`,
+`graph-export-visualization`, `cross-disease-motif-analysis`) + `skills_manifest.json`, the
+orchestrator's AGENTS.md wired to consult the manifest and load skills before each relevant
+pipeline step, and a live test proving Agent 9 spontaneously invokes the `Skill` tool for
+`novelty-verification-protocol` with no explicit instruction to do so -- real runtime
+behavior, not unused documentation.
 See TODOs / commit history for phase progress.
