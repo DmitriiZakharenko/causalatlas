@@ -1,5 +1,5 @@
 """
-Phase 1B shape tests: verify the 5 canonical Skill files, skills_manifest.json,
+Phase 1B shape tests: verify the 6 canonical Skill files, skills_manifest.json,
 and their generated native (.claude/skills/*) counterparts are structurally
 sound and internally consistent with each other and with the agent registry.
 
@@ -30,14 +30,15 @@ with open(MANIFEST_PATH) as f:
 MANIFEST_SKILL_NAMES = [s["name"] for s in MANIFEST["skills"]]
 
 
-def test_manifest_lists_exactly_five_skills():
-    assert len(MANIFEST["skills"]) == 5
+def test_manifest_lists_exactly_six_skills():
+    assert len(MANIFEST["skills"]) == 6
     assert set(MANIFEST_SKILL_NAMES) == {
         "pubmed-literature-search",
         "novelty-verification-protocol",
         "contradiction-detection",
         "graph-export-visualization",
         "cross-disease-motif-analysis",
+        "canonical-baseline-lookup",
     }
 
 
@@ -95,6 +96,34 @@ def test_novelty_protocol_references_two_source_rule():
     content = (REPO_ROOT / "skills" / "novelty-verification-protocol" / "SKILL.md").read_text()
     assert "pubmed-literature-search" in content
     assert "second source" in content.lower()
+
+
+@pytest.mark.parametrize("skill_name", ["pubmed-literature-search", "novelty-verification-protocol"])
+def test_literature_and_novelty_skills_do_not_use_canonical_db_sources(skill_name: str):
+    """Skills 1-2 use only sources 1-3 (PubMed/Semantic Scholar/OpenAlex) -- Reactome/
+    KEGG/UniProt/MyDisease.info belong exclusively to canonical-baseline-lookup (skill 6),
+    per explicit clarification that these must not be folded together."""
+    content = (REPO_ROOT / "skills" / skill_name / "SKILL.md").read_text()
+    for forbidden in ["reactome", "kegg", "uniprot", "mydisease"]:
+        assert forbidden not in content.lower(), (
+            f"{skill_name} must not reference canonical-db source '{forbidden}' -- "
+            "that belongs exclusively to canonical-baseline-lookup"
+        )
+
+
+def test_canonical_baseline_lookup_cites_all_four_sources_and_only_agent01():
+    entry = next(s for s in MANIFEST["skills"] if s["name"] == "canonical-baseline-lookup")
+    assert entry["used_by_agents"] == ["agent01_baseline_canonical_knowledge"], (
+        "canonical-baseline-lookup must be used ONLY by Agent 1"
+    )
+    content = (REPO_ROOT / "skills" / "canonical-baseline-lookup" / "SKILL.md").read_text()
+    for must_have in [
+        "reactome.org/ContentService",
+        "rest.kegg.jp",
+        "rest.uniprot.org",
+        "mydisease.info/v1",
+    ]:
+        assert must_have in content, f"canonical-baseline-lookup missing required endpoint: {must_have}"
 
 
 @pytest.mark.parametrize(

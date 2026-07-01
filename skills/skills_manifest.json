@@ -30,15 +30,12 @@
       "path": "skills/cross-disease-motif-analysis/SKILL.md",
       "trigger_description": "Use when comparing two or more disease knowledge graphs to identify shared vs. disease-specific fully-evidenced motifs, generalized to N diseases.",
       "used_by_agents": ["agent08_topology_analysis"]
-    }
-  ],
-  "_pending": [
+    },
     {
       "name": "canonical-baseline-lookup",
       "path": "skills/canonical-baseline-lookup/SKILL.md",
       "trigger_description": "Use when fetching already-established, curated mechanistic facts from structured canonical databases (Reactome/KEGG/UniProt/MyDisease.info) before any literature search, to auto-classify known-consensus mechanisms without re-searching the literature every run.",
-      "used_by_agents": ["agent01_baseline_canonical_knowledge"],
-      "status": "NOT YET WRITTEN -- waiting on exact Reactome/KEGG/UniProt/MyDisease.info endpoint spec from the user (same free-only-audit format already provided for pubmed-literature-search) before adding to the main `skills` list above, to avoid inventing endpoint details."
+      "used_by_agents": ["agent01_baseline_canonical_knowledge"]
     }
   ]
 }

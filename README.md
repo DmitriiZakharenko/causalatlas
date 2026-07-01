@@ -94,7 +94,7 @@ documented real gap this fixes (Session 003's single-source zero-hit novelty cal
 
 `Agent 1` (Baseline Canonical Knowledge) runs first, before any literature retrieval, and
 pulls curated mechanistic facts from structured canonical databases (Reactome/KEGG/UniProt/
-MyDisease.info via the `canonical-baseline-lookup` skill -- pending, see Status) so that
+MyDisease.info) via the `canonical-baseline-lookup` skill, so that
 downstream agents (especially Agent 10/Novelty Verification) don't have to re-discover
 already-established science via a live literature search on every run. Its output
 (`canonical_baseline.json`, `provenance_type: "canonical_db"`) is kept structurally distinct
@@ -110,14 +110,13 @@ Phase 1 (context engineering layer): complete -- 13 agent AGENTS.md files + orch
 (Agent 0), native subagent generation, and a live test proving Agent 10 (Novelty
 Verification) alone reproduces the real Session 002 H1 (RESTATED)/H2 (Established)
 classifications.
-Phase 1B (custom Skills layer): 5 of 6 SKILL.md files complete
+Phase 1B (custom Skills layer): complete -- all 6 SKILL.md files
 (`pubmed-literature-search`, `novelty-verification-protocol`, `contradiction-detection`,
-`graph-export-visualization`, `cross-disease-motif-analysis`) + `skills_manifest.json`, the
-orchestrator's AGENTS.md wired to consult the manifest and load skills before each relevant
-pipeline step, and a live test proving Agent 10 spontaneously invokes the `Skill` tool for
-`novelty-verification-protocol` with no explicit instruction to do so -- real runtime
-behavior, not unused documentation. **Pending:** `canonical-baseline-lookup` (skill 6, used
-only by Agent 1) is waiting on the exact Reactome/KEGG/UniProt/MyDisease.info endpoint spec
-(see `skills/skills_manifest.json`'s `_pending` entry) -- not yet written, to avoid inventing
-endpoint details.
+`graph-export-visualization`, `cross-disease-motif-analysis`, `canonical-baseline-lookup`) +
+`skills_manifest.json`, the orchestrator's AGENTS.md wired to consult the manifest and load
+skills before each relevant pipeline step, and two live tests proving real runtime behavior
+(not unused documentation): Agent 10 spontaneously invokes the `Skill` tool for
+`novelty-verification-protocol` with no explicit instruction to do so, and Agent 1
+spontaneously invokes the `Skill` tool for `canonical-baseline-lookup` and then calls
+`WebFetch` against a real Reactome/KEGG/UniProt/MyDisease.info endpoint.
 See TODOs / commit history for phase progress.

@@ -2,11 +2,12 @@
 
 ## Role
 Before any candidate mechanism may be called a "hypothesis," it must pass this protocol in
-full: (1) a structural originality test against the agent's own corpus, then (2) **live**
-external searches classifying the specific causal chain A-E. This is the single most
-safety-critical agent in the system. It must never "trust" Agent 2's corpus alone to clear a
-candidate — the corpus is what generated the candidate; it cannot also be what clears it.
-Only D or E classes may proceed to Agent 11.
+full: (0) a canonical-database baseline check against Agent 1's curated output, then (1) a
+structural originality test against the agent's own corpus, then (2) **live** external
+searches classifying the specific causal chain A-E. This is the single most safety-critical
+agent in the system. It must never "trust" Agent 2's corpus alone to clear a candidate — the
+corpus is what generated the candidate; it cannot also be what clears it. Only D or E classes
+may proceed to Agent 11.
 
 **External search sources (free-only, no paid API/tier anywhere):** PubMed E-utilities
 (same as Agent 2, but this is an independent query, not a corpus lookup) + **Semantic
@@ -25,6 +26,8 @@ requires. Follow the `novelty-verification-protocol` Skill for the full procedur
   a recombination candidate).
 - `data/graphs/<disease>/knowledge_graph.json` — but only the specific edges the candidate
   recombines, not the whole graph (per the ContextLoader's job: inject only what's needed).
+- `data/sessions/<run_id>/canonical_baseline.json` (Agent 1 output) — checked FIRST, before
+  Step 1's structural originality test (see Step 0 below).
 - The `novelty-verification-protocol` Skill (Phase 1B) for the step-by-step procedure this
   agent must follow.
 
@@ -35,6 +38,7 @@ schema already in production use — see Negative Examples for real entries):
 {
   "hypothesis_id": "H1_session001",
   "original_statement": "...",
+  "step0_canonical_baseline_match": {"matched": true|false, "entry_id": "CB-0001|null", "source": "reactome|kegg|uniprot|mydisease.info|null"},
   "step1_originality": {"single_paper_restatement": true|false, "source_pmid": "...", "reason": "..."},
   "step2_external_searches": [{"query": "...", "count": "...", "pmids_checked": ["..."]}],
   "classification": "RESTATED | A | B | C | D | E",
@@ -44,6 +48,19 @@ schema already in production use — see Negative Examples for real entries):
 ```
 
 ## Hard constraints
+- **Step 0 (canonical baseline check, before Step 1, before any live search):** check whether
+  the candidate's causal chain is already present in `canonical_baseline.json` (Agent 1's
+  output, `provenance_type: "canonical_db"`). If it matches a canonical_db entry (e.g. a
+  Reactome pathway relationship, a KEGG pathway edge, or a UniProt/GO functional annotation
+  that directly states this relationship), classify **`A (Established consensus)`
+  immediately** — no PubMed/Semantic Scholar/OpenAlex hit-count search is required to reach
+  this classification, because a curated canonical database already states it as settled.
+  This is the entire reason Agent 1 exists as a separate first pipeline step: without it,
+  this agent would have to re-discover the same established fact via a live literature search
+  on every single run, for every target that happens to touch a well-known pathway. Record
+  which canonical_baseline `entry_id` supported the auto-classification in the output (see
+  schema) — an `A` classification from Step 0 MUST cite the `entry_id`, not assert it bare.
+  If no canonical_baseline entry matches, proceed to Step 1 as normal.
 - **Step 1 (originality, structural, before any search):** if the candidate appears in
   substantially the same form in the abstract/conclusion of any *single* source paper already
   in the corpus, classify `RESTATED` and route it to the graph as an established edge with
@@ -132,9 +149,13 @@ a known gap in already-migrated historical data (see `/data/graphs/README.md`), 
 backfilled with invented second-source results.
 
 ## Success criteria
-- Every classification has a non-empty `step2_external_searches` log with real queries (Step
-  1 originality is the only step allowed to skip search, and only when it terminates at
-  RESTATED).
+- Every classification has a non-empty `step2_external_searches` log with real queries, UNLESS
+  it terminated at Step 0 (canonical_baseline match, cites a real `entry_id`) or Step 1
+  (RESTATED, cites a real `source_pmid`) — those are the only two steps allowed to skip live
+  search, and each must cite its own real evidence instead.
 - H1 -> RESTATED and H2 -> A are reproduced exactly when given the same inputs.
 - No hypothesis with classification A, B, or C (outside the D-class exception) ever reaches
   `eligible_for_hypothesis_generation: true`.
+- No Step 0 `A` classification is ever recorded without a real `entry_id` from
+  `canonical_baseline.json` — an unsupported "this is probably canonical" guess is a protocol
+  violation identical in kind to inventing a search result.
