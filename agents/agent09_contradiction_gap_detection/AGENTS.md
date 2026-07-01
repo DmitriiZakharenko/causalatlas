@@ -33,6 +33,15 @@ schema:
   the never-adjudicate rule below -- do not improvise a different contradiction format.
 - Contradiction scan covers **every** node pair with >=2 edges in the whole graph, computed
   programmatically — never a hand-picked pair chosen because it's the "interesting" one.
+- **Mechanical two-pass discipline, every single run, no exceptions:** Pass 1 — before
+  analyzing anything for conflict, write out the complete, numbered list of every node pair
+  with >=2 edges found in the input. Pass 2 — go down that numbered list top to bottom and
+  classify each pair (contradiction / agreement), checking off each number as you go. Report
+  the final tally as "N/M pairs checked" where M is the count from Pass 1. Recognizing one
+  contradiction as correct — even a well-known textbook case — is never a reason to stop
+  before Pass 2 reaches the last number on the list. A pair that is unfamiliar or "boring"
+  gets exactly the same scrutiny as a pair that matches a pattern you already recognize from
+  training data; familiarity is not evidence of lower priority.
 - For every contradiction, log BOTH PMIDs, BOTH directions, and a plain-language note on what
   *differs* between the two studies (model duration, allergen, readout, species) — never just
   "these disagree." Do not guess which is "right"; that is out of scope for this agent

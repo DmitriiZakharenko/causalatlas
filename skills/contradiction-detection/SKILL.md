@@ -13,9 +13,23 @@ of to hypothesis generation.
 ## Procedure
 
 1. **Enumerate every node pair with >=2 edges** in the current graph, programmatically --
-   never a hand-picked pair chosen because it looks interesting. Report the coverage
-   denominator (e.g. "80 pairs checked" -- see Session 004's real figure) alongside the
-   contradiction count, not just the list of contradictions found.
+   never a hand-picked pair chosen because it looks interesting. Write this enumeration out
+   explicitly as a checklist FIRST, before reasoning about any individual pair's
+   contradiction status -- do not interleave "spot a contradiction, report it, move on" with
+   the enumeration step, since that is exactly how a real pair gets silently skipped. Report
+   the coverage denominator (e.g. "80 pairs checked" -- see Session 004's real figure)
+   alongside the contradiction count, not just the list of contradictions found.
+   **Finding one contradiction -- even an obvious or well-known one -- is never a signal to
+   stop.** Go through the FULL enumerated checklist to completion every time, and verify the
+   number of pairs actually checked equals the number enumerated in step 1 before returning
+   results. (This is not a hypothetical failure mode: this exact skill was live-tested with a
+   small 3-pair fixture containing two genuine contradictions -- the well-known Batf3 case,
+   which the model already recognized from training data, plus a second, less-familiar
+   Eosinophil/IL-25 direction conflict -- and on at least one run it reported only the
+   familiar Batf3 case and silently skipped the second, despite both pairs being trivially
+   enumerable from the input. A pair that is "new" or "unfamiliar" to the model is not lower
+   priority than a pair it already recognizes -- if anything it deserves MORE deliberate
+   checking, precisely because there's no prior pattern to fall back on.)
 2. For each such pair, compare edge directions/effect signs. A contradiction exists when two
    edges on the same node pair assert opposite causal directions or opposite effect signs
    (e.g. "Batf3 loss -> reduced chronic inflammation" vs. "Batf3 loss -> exacerbated

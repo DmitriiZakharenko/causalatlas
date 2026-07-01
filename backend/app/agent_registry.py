@@ -35,7 +35,13 @@ ORCHESTRATOR = "agent00_orchestrator"
 # constraint requiring *live* external lookups/search (see their AGENTS.md
 # files) -- every other agent operates only on upstream JSON already on disk.
 AGENT_TOOLS: dict[str, list[str]] = {
-    ORCHESTRATOR: ["Task", "Skill", "Read", "Write", "Glob"],
+    # "Agent" (not "Task") is what this Claude Code CLI version actually
+    # invokes for subagent dispatch, verified empirically via a live
+    # stream-json dump (Phase 2 orchestrator smoke test, 2026-07-01) --
+    # "Task" is still listed as a distinct capability in the CLI's own init
+    # event, so both are granted rather than assuming either one is a stable
+    # alias of the other across CLI versions.
+    ORCHESTRATOR: ["Task", "Agent", "Skill", "Read", "Write", "Glob"],
     "agent01_baseline_canonical_knowledge": ["WebFetch", "Read", "Write", "Skill"],
     "agent02_literature_retrieval": ["WebSearch", "WebFetch", "Write", "Skill"],
     "agent03_publication_verification": ["WebFetch", "Read", "Write"],

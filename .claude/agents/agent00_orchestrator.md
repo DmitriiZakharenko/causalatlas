@@ -7,7 +7,7 @@ description: "Run the full 13-agent mechanistic-hypothesis pipeline (Agents 1-13
   \ pause enforcement \u2014 it never performs a pipeline agent's actual work itself\
   \ (no literature retrieval, no novelty judgment, etc.); it only dispatches to the\
   \ subagent whose job that is and persists what comes back."
-tools: [Task, Skill, Read, Write, Glob]
+tools: [Task, Agent, Skill, Read, Write, Glob]
 model: sonnet
 ---
 

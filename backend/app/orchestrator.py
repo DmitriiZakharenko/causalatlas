@@ -1,0 +1,405 @@
+"""
+Phase 2: pipeline orchestration.
+
+The actual 13-agent sequencing/dispatch logic lives in the `agent00_orchestrator`
+native Claude Code subagent (see agents/agent00_orchestrator/AGENTS.md) -- it uses
+its own Task tool to dispatch each pipeline agent and its own Skill tool to load
+skills before each dispatch, per the "lean on Claude Code's native subagent/skill
+system, minimize custom orchestration" decision (see chat history).
+
+This module's job is everything AROUND that single CLI invocation:
+- build the top-level prompt handed to the orchestrator agent
+- create/locate the session folder and detect non-destructive-merge situations
+- run the orchestrator via `claude_cli.run_orchestrator_stream` and translate its
+  raw stream-json lines into the small set of UI-facing progress events the
+  frontend's live progress view (Phase 5) subscribes to
+- persist every event to SQLite (durable audit trail + eval flywheel input) and
+  fan it out to any live SSE subscribers
+
+Never fabricates progress: every `agent_started`/`agent_completed`/`skill_loaded`
+event corresponds to a real `Task`/`Skill` tool_use (and matching tool_result)
+that actually appeared in the orchestrator's real stream-json output.
+"""
+from __future__ import annotations
+
+import asyncio
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+from app import claude_cli, db
+from app.agent_registry import AGENT_ORDER
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+SESSIONS_DIR = REPO_ROOT / "data" / "sessions"
+GRAPHS_DIR = REPO_ROOT / "data" / "graphs"
+
+
+def slugify(text: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "_", text.lower()).strip("_")
+    return slug or "target"
+
+
+def make_run_id(disease: str) -> str:
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    return f"{slugify(disease)}_{ts}"
+
+
+def session_dir_for(run_id: str) -> Path:
+    d = SESSIONS_DIR / run_id
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def existing_graph_path(disease: str) -> Path | None:
+    path = GRAPHS_DIR / slugify(disease) / "knowledge_graph.json"
+    return path if path.exists() else None
+
+
+def build_orchestrator_prompt(
+    *,
+    run_id: str,
+    disease: str,
+    gene: str | None,
+    autonomy_level: str,
+    session_dir: Path,
+    pubmed_retmax_override: int | None = None,
+) -> str:
+    merge_note = ""
+    prior_graph = existing_graph_path(disease)
+    if prior_graph is not None:
+        try:
+            prior_graph_display = prior_graph.relative_to(REPO_ROOT)
+        except ValueError:
+            prior_graph_display = prior_graph
+        merge_note = (
+            f"\nA knowledge graph for this disease ALREADY EXISTS at "
+            f"{prior_graph_display}. Per your hard constraints, Agent 6's "
+            f"dispatch for this run MUST be told to non-destructively MERGE new nodes/edges "
+            f"into it -- never overwrite or delete existing provenance."
+        )
+    else:
+        merge_note = (
+            f"\nNo prior knowledge graph exists yet for this disease -- Agent 6 will create "
+            f"one fresh at data/graphs/{slugify(disease)}/knowledge_graph.json."
+        )
+    gene_line = f"gene: {gene}" if gene else "gene: (none specified -- disease-wide target)"
+    retmax_note = ""
+    if pubmed_retmax_override is not None:
+        retmax_note = (
+            f"\nCOST-SCOPED DEV-LOOP RUN: for this run only, tell Agent 2 to use "
+            f"retmax={pubmed_retmax_override} per year-band for its PubMed E-utilities "
+            f"esearch calls (per pubmed-literature-search), instead of the skill's normal "
+            f"default of 200 -- this run is for validating the full orchestration chain "
+            f"end-to-end cheaply, not for demo-quality corpus size. Do not change the "
+            f"skill file itself; this override applies to this run's Agent 2 dispatch only."
+        )
+    return f"""Run the full 13-agent pipeline for this target:
+
+run_id: {run_id}
+disease: {disease}
+{gene_line}
+autonomy_level: {autonomy_level}
+session output directory (absolute): {session_dir}
+{merge_note}
+{retmax_note}
+
+Follow your AGENTS.md exactly: dispatch Agents 1 through 13 in order via the Task tool,
+load each dispatch's relevant skill(s) via the Skill tool immediately before dispatching
+per skills/skills_manifest.json, persist every agent's raw output to
+{session_dir}/agent<NN>_output.json immediately after it completes, and assemble the
+mandatory session files. Do not fabricate any agent's output if its Task dispatch fails --
+report the failure explicitly and stop.
+"""
+
+
+def _extract_agent_name(tool_input: dict) -> str:
+    candidate = tool_input.get("subagent_type")
+    if isinstance(candidate, str) and candidate in AGENT_ORDER:
+        return candidate
+    haystack = f"{tool_input.get('description', '')} {tool_input.get('prompt', '')}"
+    for name in AGENT_ORDER:
+        if name in haystack:
+            return name
+    return candidate or "unknown_agent"
+
+
+def _walk_blocks(node, tool_uses: list[dict], tool_results: list[dict]) -> None:
+    """Recursively find every `tool_use`/`tool_result` block nested anywhere in
+    a raw claude stream-json event. Deliberately NOT a shallow
+    `event["message"]["content"]` lookup: empirically (Phase 2 live smoke
+    test), the orchestrator's own Task-dispatch tool_result did not always
+    show up at that fixed shape/depth -- the same recursive-walk approach
+    already proven in test_agent10_novelty.py's `_tool_uses` helper is used
+    here for both block types, since it is robust to exactly this kind of
+    stream-json shape variation.
+    """
+    if isinstance(node, dict):
+        btype = node.get("type")
+        if btype == "tool_use":
+            tool_uses.append(node)
+        elif btype == "tool_result":
+            tool_results.append(node)
+        for value in node.values():
+            _walk_blocks(value, tool_uses, tool_results)
+    elif isinstance(node, list):
+        for value in node:
+            _walk_blocks(value, tool_uses, tool_results)
+
+
+def _summarize_tool_result(content) -> str:
+    if isinstance(content, str):
+        text = content
+    elif isinstance(content, list):
+        parts = [b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text"]
+        text = " ".join(parts) if parts else str(content)
+    else:
+        text = str(content)
+    text = text.strip()
+    return text[:800] + ("..." if len(text) > 800 else "")
+
+
+class StreamTranslator:
+    """Stateful translator: raw claude stream-json line -> 0+ UI progress events.
+
+    Statefulness is required to pair a `Task`/`Skill` tool_use with its later
+    `tool_result` (matched by `tool_use_id`), which is how `agent_completed` is
+    derived from real data rather than assumed.
+    """
+
+    def __init__(self) -> None:
+        self._pending: dict[str, dict] = {}
+
+    def feed(self, raw: dict) -> list[dict]:
+        rtype = raw.get("type")
+
+        if rtype in ("agent_failed", "orchestrator_failed"):
+            return [
+                {
+                    "type": "run_failed",
+                    "reason": raw.get("stderr", "")[-2000:],
+                    "returncode": raw.get("returncode"),
+                }
+            ]
+
+        if rtype == "result":
+            if raw.get("is_error"):
+                return [{"type": "run_failed", "reason": raw.get("result", "unknown error")}]
+            return [
+                {
+                    "type": "run_completed",
+                    "cost_usd": raw.get("total_cost_usd"),
+                    "duration_ms": raw.get("duration_ms"),
+                    "result_text": raw.get("result", ""),
+                }
+            ]
+
+        tool_uses: list[dict] = []
+        tool_results: list[dict] = []
+        _walk_blocks(raw, tool_uses, tool_results)
+        if not tool_uses and not tool_results:
+            return []
+
+        events: list[dict] = []
+
+        for block in tool_uses:
+            name = block.get("name")
+            tool_input = block.get("input") or {}
+            tool_id = block.get("id")
+            if not tool_input:
+                # With `--include-partial-messages`, each tool_use fires twice:
+                # once as `content_block_start` with a placeholder empty
+                # `input: {}` (before its arguments have streamed in), and once
+                # fully populated in the final complete assistant message.
+                # Empirically (Phase 2 live smoke test), skipping the empty
+                # one is what prevents duplicate/junk "unknown_skill" and
+                # "unknown_agent" events from reaching the UI.
+                continue
+            if name == "Skill":
+                skill_name = tool_input.get("skill") or tool_input.get("name") or "unknown_skill"
+                events.append({"type": "skill_loaded", "skill": skill_name})
+            elif name in ("Task", "Agent"):
+                # Empirically (Phase 2 live smoke test, 2026-07-01): this Claude
+                # Code CLI version dispatches subagents via a tool literally
+                # named "Agent" (with `subagent_type`/`description`/`prompt`
+                # input fields), not "Task" -- despite "Task" being the name
+                # used throughout this project's AGENTS.md docs and being one
+                # of the tools listed in the CLI's own init event capability
+                # list. Handling both names is deliberate, not a guess: only
+                # "Agent" was ever observed actually being invoked in practice.
+                agent_name = _extract_agent_name(tool_input)
+                if tool_id:
+                    self._pending[tool_id] = {"agent": agent_name}
+                events.append(
+                    {
+                        "type": "agent_started",
+                        "agent": agent_name,
+                        "description": tool_input.get("description", ""),
+                    }
+                )
+
+        for block in tool_results:
+            tool_use_id = block.get("tool_use_id")
+            pending = self._pending.pop(tool_use_id, None) if tool_use_id else None
+            if pending:
+                events.append(
+                    {
+                        "type": "agent_completed",
+                        "agent": pending["agent"],
+                        "is_error": bool(block.get("is_error", False)),
+                        "summary": _summarize_tool_result(block.get("content")),
+                    }
+                )
+
+        return events
+
+
+class RunManager:
+    """In-process registry of live runs: one background asyncio task + a set of
+    SSE subscriber queues per run_id. SQLite (see app/db.py) is the durable
+    record; the queues only exist to push new events to connected clients
+    without polling.
+    """
+
+    def __init__(self) -> None:
+        self._subscribers: dict[str, list[asyncio.Queue]] = {}
+        self._tasks: dict[str, asyncio.Task] = {}
+
+    def _subs(self, run_id: str) -> list[asyncio.Queue]:
+        return self._subscribers.setdefault(run_id, [])
+
+    async def _publish(self, run_id: str, seq: int, event: dict) -> None:
+        payload = {"seq": seq, **event}
+        for q in list(self._subs(run_id)):
+            await q.put(payload)
+
+    async def _finish(self, run_id: str) -> None:
+        for q in list(self._subs(run_id)):
+            await q.put(None)
+
+    async def start_run(
+        self,
+        disease: str,
+        gene: str | None,
+        autonomy_level: str,
+        *,
+        pubmed_retmax_override: int | None = None,
+    ) -> str:
+        run_id = make_run_id(disease)
+        session_dir = session_dir_for(run_id)
+        await db.create_run(run_id, disease, gene, autonomy_level)
+        task = asyncio.create_task(
+            self._run(run_id, disease, gene, autonomy_level, session_dir, pubmed_retmax_override)
+        )
+        self._tasks[run_id] = task
+        return run_id
+
+    async def _run(
+        self,
+        run_id: str,
+        disease: str,
+        gene: str | None,
+        autonomy_level: str,
+        session_dir: Path,
+        pubmed_retmax_override: int | None = None,
+    ) -> None:
+        await db.update_run_status(run_id, "running")
+        translator = StreamTranslator()
+        prompt = build_orchestrator_prompt(
+            run_id=run_id,
+            disease=disease,
+            gene=gene,
+            autonomy_level=autonomy_level,
+            session_dir=session_dir,
+            pubmed_retmax_override=pubmed_retmax_override,
+        )
+        terminal_types = ("run_completed", "run_failed")
+        terminal_emitted = False
+        try:
+            async for raw_event in claude_cli.run_orchestrator_stream(prompt):
+                for ui_event in translator.feed(raw_event):
+                    etype = ui_event["type"]
+                    if etype in terminal_types:
+                        if terminal_emitted:
+                            # claude_cli can legitimately emit a second terminal
+                            # event for the same run (e.g. a "result" event
+                            # reporting the real failure reason, immediately
+                            # followed by a synthetic `orchestrator_failed`
+                            # wrapper once the process actually exits non-zero,
+                            # usually with an empty/redundant stderr). Only the
+                            # FIRST terminal event is real signal; discovered
+                            # live via a real subscription rate-limit hit
+                            # during Phase 2 dev-loop testing, where the second,
+                            # empty-reason event was clobbering the first,
+                            # informative one both in the DB and the SSE feed.
+                            continue
+                        terminal_emitted = True
+                    # Status is always updated BEFORE the corresponding event is
+                    # appended/published -- any subscriber that observes the
+                    # event (via DB replay or the live queue) is therefore
+                    # guaranteed to see the up-to-date `runs.status` if it
+                    # queries it right after, with no race window.
+                    if etype == "agent_started":
+                        await db.update_run_status(run_id, "running", current_agent=ui_event["agent"])
+                    elif etype == "run_completed":
+                        await db.update_run_status(run_id, "completed")
+                    elif etype == "run_failed":
+                        await db.update_run_status(
+                            run_id, "failed", error=str(ui_event.get("reason", ""))[:2000]
+                        )
+                    seq = await db.append_event(run_id, etype, ui_event)
+                    await self._publish(run_id, seq, ui_event)
+        except Exception as exc:  # noqa: BLE001 -- must surface, never swallow
+            if not terminal_emitted:
+                await db.update_run_status(run_id, "failed", error=str(exc)[:2000])
+                err_event = {"type": "run_failed", "reason": str(exc)}
+                seq = await db.append_event(run_id, "run_failed", err_event)
+                await self._publish(run_id, seq, err_event)
+        finally:
+            await self._finish(run_id)
+
+    async def subscribe(self, run_id: str, after_seq: int = -1):
+        """Async generator: replays persisted history from `after_seq`, then
+        yields live events as they're published, until the run finishes."""
+        q: asyncio.Queue = asyncio.Queue()
+        self._subs(run_id).append(q)
+        seen: set[int] = set()
+        terminal_types = ("run_completed", "run_failed")
+        try:
+            history = await db.get_events_since(run_id, after_seq)
+            already_finished = False
+            for ev in history:
+                seen.add(ev["seq"])
+                if ev["event_type"] in terminal_types:
+                    already_finished = True
+                yield {"seq": ev["seq"], "type": ev["event_type"], **ev["payload"]}
+            # If the terminal event is already in the replayed history, the run
+            # is fully done and no more events will EVER be appended (`_run`
+            # appends exactly one terminal event, always last) -- safe to stop
+            # without touching the queue. If it's NOT in history yet, the queue
+            # (registered above, before this read) is guaranteed to eventually
+            # receive it, even if the run finished in the gap between the read
+            # and here -- so falling through to the wait loop below is always
+            # correct and never hangs. (A separate `db.get_run(...)` status
+            # check here would race: the terminal event could already be
+            # sitting in the queue while `status` briefly reads as terminal,
+            # and returning early would silently drop it.)
+            if already_finished:
+                return
+            while True:
+                item = await q.get()
+                if item is None:
+                    break
+                if item["seq"] in seen:
+                    continue
+                seen.add(item["seq"])
+                yield item
+                if item["type"] in terminal_types:
+                    break
+        finally:
+            subs = self._subs(run_id)
+            if q in subs:
+                subs.remove(q)
+
+
+run_manager = RunManager()

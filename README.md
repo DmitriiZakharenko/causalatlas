@@ -101,7 +101,10 @@ already-established science via a live literature search on every run. Its outpu
 from PMID-sourced content everywhere downstream (graph, UI, Agent 10's classification).
 Agents 2-13 are the original literature -> graph -> hypothesis -> peer-review -> experiment
 pipeline. `agent00_orchestrator` (unnumbered in the pipeline sequence) dispatches all 13 via
-the Task tool and is not itself one of the numbered pipeline steps.
+the CLI's subagent-dispatch tool and is not itself one of the numbered pipeline steps. (This
+project's docs originally assumed that tool is named "Task" -- a live stream-json capture in
+Phase 2 showed the currently-installed Claude Code CLI actually names it "Agent"; the backend
+recognizes both names since "Task" is still a separately-listed CLI capability.)
 
 ## Status
 
@@ -119,4 +122,36 @@ skills before each relevant pipeline step, and two live tests proving real runti
 `novelty-verification-protocol` with no explicit instruction to do so, and Agent 1
 spontaneously invokes the `Skill` tool for `canonical-baseline-lookup` and then calls
 `WebFetch` against a real Reactome/KEGG/UniProt/MyDisease.info endpoint.
+
+Phase 2 (pipeline orchestration): complete -- `backend/app/db.py` (SQLite run/event
+persistence), `backend/app/orchestrator.py` (`StreamTranslator`: raw claude stream-json ->
+UI progress events; `RunManager`: background run lifecycle + SSE fan-out), and
+`backend/app/main.py` endpoints (`POST /api/pipeline/run`, `GET .../status`, `GET .../runs`,
+`GET .../stream`). Per an explicit scope-trim request, the mocked-CLI test surface is one
+orchestrator integration suite (`test_orchestrator.py`, 20 tests, zero live cost) rather than
+one file per agent; live-model coverage is deliberately narrow and targeted at the two
+safety-critical agents:
+- Agent 10 (Novelty Verification) -- `test_agent10_novelty.py` (Phase 1): reproduces real
+  historical H1 (RESTATED) / H2 (Established) classifications.
+- Agent 9 (Contradiction & Gap Detection) -- `test_agent09_contradiction.py`: a genuine,
+  reproducible (3/3 live runs) finding, kept as a documented `xfail` rather than hidden or
+  loosened -- the agent reliably finds the well-known historical Batf3 contradiction but
+  misses a second, less-familiar one in the same small fixture, even after two independent
+  prompt-strengthening passes. This is the strongest concrete argument in this codebase for
+  Phase 3's human sign-off and Phase 4's independent LLM-judge re-scoring as real safety nets,
+  not formalities.
+- One live orchestrator smoke test (`test_orchestrator_live_smoke.py`) exercising a real
+  (cheap) `Skill` load + subagent dispatch end-to-end -- this is what caught the "Agent" vs
+  "Task" tool-name bug above, plus two more real bugs fixed in the same pass: duplicate
+  "unknown_skill"/"unknown_agent" junk events from `--include-partial-messages`' two-phase
+  tool_use streaming, and a duplicate-terminal-event race where a second, empty-reason
+  `orchestrator_failed` wrapper could clobber a real error message in both the DB and the SSE
+  feed (caught for real during the dev-loop full-pipeline run below, which hit an actual
+  Claude subscription rate limit mid-run).
+- A real (not mocked) full 13-agent pipeline run was launched against a narrow, cheap
+  dev-loop target (psoriasis + IL23A, Agent 2's PubMed retmax overridden to 25/year-band for
+  this run only via `dev_pubmed_retmax`) to validate the orchestration chain end-to-end before
+  any demo-quality run. Agent 1 completed a real 28-tool-call canonical-baseline lookup before
+  the run hit the subscription's five-hour rate limit; to be retried once quota resets.
+
 See TODOs / commit history for phase progress.
