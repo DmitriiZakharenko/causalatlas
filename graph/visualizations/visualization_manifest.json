@@ -1,0 +1,109 @@
+{
+  "source": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/knowledge_graph.json",
+  "views": [
+    {
+      "view": "master_graph",
+      "nodes": 283,
+      "edges": 367,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/master_graph/master_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/master_graph/master_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/master_graph/master_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/master_graph/master_graph.svg"
+    },
+    {
+      "view": "loop_graph",
+      "nodes": 17,
+      "edges": 38,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/loop_graph/loop_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/loop_graph/loop_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/loop_graph/loop_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/loop_graph/loop_graph.svg"
+    },
+    {
+      "view": "community_graph",
+      "nodes": 36,
+      "edges": 79,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/community_graph/community_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/community_graph/community_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/community_graph/community_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/community_graph/community_graph.svg"
+    },
+    {
+      "view": "bone_marrow_axis_graph",
+      "nodes": 119,
+      "edges": 174,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/bone_marrow_axis_graph/bone_marrow_axis_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/bone_marrow_axis_graph/bone_marrow_axis_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/bone_marrow_axis_graph/bone_marrow_axis_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/bone_marrow_axis_graph/bone_marrow_axis_graph.svg"
+    },
+    {
+      "view": "epithelial_interaction_graph",
+      "nodes": 149,
+      "edges": 223,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/epithelial_interaction_graph/epithelial_interaction_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/epithelial_interaction_graph/epithelial_interaction_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/epithelial_interaction_graph/epithelial_interaction_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/epithelial_interaction_graph/epithelial_interaction_graph.svg"
+    },
+    {
+      "view": "cytokine_network",
+      "nodes": 62,
+      "edges": 101,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/cytokine_network/cytokine_network.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/cytokine_network/cytokine_network.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/cytokine_network/cytokine_network.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/cytokine_network/cytokine_network.svg"
+    },
+    {
+      "view": "therapeutic_target_overlay",
+      "nodes": 122,
+      "edges": 194,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/therapeutic_target_overlay/therapeutic_target_overlay.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/therapeutic_target_overlay/therapeutic_target_overlay.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/therapeutic_target_overlay/therapeutic_target_overlay.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/therapeutic_target_overlay/therapeutic_target_overlay.svg"
+    }
+  ],
+  "session_003_additions": [
+    {
+      "view": "full_graph",
+      "nodes": 63,
+      "edges": 48,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/full_graph/full_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/full_graph/full_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/full_graph/full_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/full_graph/full_graph.svg"
+    },
+    {
+      "view": "ibd_master_graph",
+      "nodes": 10,
+      "edges": 12,
+      "graphml": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/ibd_master_graph/ibd_master_graph.graphml",
+      "gexf": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/ibd_master_graph/ibd_master_graph.gexf",
+      "png": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/ibd_master_graph/ibd_master_graph.png",
+      "svg": "/Users/zahalae/Desktop/projects_ai/immuno_project/graph/visualizations/ibd_master_graph/ibd_master_graph.svg"
+    }
+  ],
+  "session_004": {
+    "true_full_graph": {
+      "view": "true_full_graph",
+      "nodes": 838,
+      "edges": 1045,
+      "graphml": "graph/visualizations/true_full_graph/true_full_graph.graphml",
+      "gexf": "graph/visualizations/true_full_graph/true_full_graph.gexf",
+      "png": "graph/visualizations/true_full_graph/true_full_graph.png",
+      "svg": "graph/visualizations/true_full_graph/true_full_graph.svg"
+    },
+    "evidence_filtered_graph": {
+      "view": "evidence_filtered_graph",
+      "nodes": 122,
+      "edges": 92,
+      "graphml": "graph/visualizations/evidence_filtered_graph/evidence_filtered_graph.graphml",
+      "gexf": "graph/visualizations/evidence_filtered_graph/evidence_filtered_graph.gexf",
+      "png": "graph/visualizations/evidence_filtered_graph/evidence_filtered_graph.png",
+      "svg": "graph/visualizations/evidence_filtered_graph/evidence_filtered_graph.svg"
+    },
+    "note": "Prior 'full_graph' (63 nodes) was mislabeled pmid\u22652 subset; use true_full_graph for complete export."
+  }
+}

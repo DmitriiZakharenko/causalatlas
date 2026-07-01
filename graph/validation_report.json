@@ -1,0 +1,5516 @@
+{
+  "contradictions": [],
+  "isolated_nodes": [
+    {
+      "id": "They Have Strongly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Transcription Factor",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Chemokine Receptor-Encoding Gene",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammation And Tissue Damage",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mainly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type-2 Endotype",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "T Cell Migratory And Differentiation Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Can Also",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mastocytosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Describe The Main Mechanisms",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mc Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type-2 Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type-2 Inflammation Is Driven By The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Experimental Asthma Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mscs Were Isolated And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Immunosuppressive Activities",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Number Of Lrmscs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Growth Factor-Induced Adipogenesis And Osteogenesis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Our Findings Indicate That Asthmatic Inflammation Not Only",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Number Of Lrmscs But Also Impairs Their Function",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Further Observed An Early Increase In Dual",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Alveolar Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Il-18R Was Highly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Only 17\u0392-Estradiol",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Aad We Now Show That Germinal Centres",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And While They Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Formation Of These Gcs Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tfh",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Long-Term High-Fat Diet Feeding Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Emerging Mechanisms Include The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Lipid-Associated Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "It Is Well Known That High-Fat Diet Feeding",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Innate Immune Cells And Alters The Gut Microbiome",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Innate-Adaptive Crosstalk",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "T Cell Exhaustion And Granzyme K Production",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From Normal And Asthmatic Mice Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Lps To Assess Pro-Inflammatory Functions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Th1/Treg Polarization",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Autophagy Inhibition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dc Over-Maturation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Autophagy In Bmdcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Established A Murine Am Model By First",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cytokine Analysis Revealed Synergistic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nlrp3 In Bmdcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Nlrp3 Inflammasome In Dcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Was Sufficient To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Failed To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-1\u0392/Il-18 And Exhibited Attenuated Inflammation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mst1 Deficiency Notably",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammatory Cytokine Production",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Understanding And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Misdiagnosis And Missed Diagnosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Reprogrammed Trams Through",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Transcription Factor Interferon Regulatory Factor 4",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Initiating A Transcriptional Program",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chemokine Production And Cell Fusion",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Compared With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Alveolar Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Resulted In The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Granulocytes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Recruitment Of Granulocytes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "S1 Demonstrated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cd11C+Cd69+ Apcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ova",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Histone Acetyltransferase Inhibitor",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Development Of Cd11C+Cd69+ Trained Apcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "H3K27Ac",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tnf-\u0391 Production In The Trained Apcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "IL-4R",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Allergic Asthma And Treated Orally With Bn Fractions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Suggesting",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ea-Bn Also",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ea-Bn Treatment Markedly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Expression Of Extracellular Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ea-Bn",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gata-3 Expression In Cd3+Cd4+ T Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Along With A Concurrent",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ea-Bn Treatment Markedly Suppressed The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Extracellular Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Asthma Model Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Using Ovalbumin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And The Mrna And Protein",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Qxd-Containing Serum Enhanced Bmsc Proliferation And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cxcl12-Induced Bmsc Migration In Vitro",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Is Not",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Human Monocytes/Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ectopic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Human Cxcl4L1 Using Adeno-Associated Virus",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Effectively",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cd4+ T-Cell Proliferation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "As Well As Wild-Type Mice Treated With Anti-Il-10R",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Antibody",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cells Specialize In The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Immune Homeostasis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Highly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Molecules Associated With Immunoregulatory Functions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Qtl",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Their Survival",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Is Characterized By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Anti-Inflammatory State Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-2 Signaling",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In A Murine Asthma Model",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Co-Exposure To Dermatophagoides Pteronyssinus",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Rg1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cars On T Cells Facilitates Precise",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Attempts To Reduce Sedation Repeatedly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Severe Bronchospasm",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma Exacerbations In Severe Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "S Ability To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Attempts To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sedation Repeatedly Induced Severe Bronchospasm",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Forced Oscillation Techniques Revealed",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Reactance And Increased Resistance At 5 Hz",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Attenuating Severe Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transcellular Ltc4 Synthesis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Although Platelet Ltc4S Was Not Needed To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Platelets",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Platelet-Specific Ltc4S Deletion",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Platelet-Mac Axis May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Platelet-Adherent Macs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Adherent Platelets Rapidly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Optimal Diagnosis And Management Of Uad",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Integrated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Animal Model Of Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Ova Was Employed To Evaluate The Effect Of Propofol",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Production Of Inflammatory Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Propofol",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Expression Of Hif-1\u0391 And Nlrp3 In Asthma Models",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Propofol Markedly Improved Ova-Induced Asthma And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Propofol Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammatory Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inhibited Bmmcs Degranulation And The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammatory Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Propofol Inhibited The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hif-1\u0391 And Nlrp3 In Asthma Models",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Its Anti-Asthmatic Effect Is Not Primarily",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Pathway",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Our Previous Study Demonstrated That Laundry Detergents",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Laundry Detergents",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Self-Perpetuating",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Results In Increased Disease Severity Through",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Innate And Adaptive Immunity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Upregulated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial Alarmins Such As Interleukin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Factors Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Axis Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Secretion Of Epithelial Alarmins Such As Interleukin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Production To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Erythropoiesis And Compensate For Oxygen Deficits",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "It Is However",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Inhaled Corticosteroid Therapy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Number Of Injections And Improving Safety",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Pat Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Mean Number Of Asthma Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pat Conducted On Dog Days Could",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma Exacerbations In Patients With Bronchial Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "1 To Depemokimab 100 Mg Subcutaneously Every 26 Weeks Or",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "On Their Prior Biologic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Both Groups",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Saline-Treated Horses Showed Significantly Larger",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Elf Tissue Necrosis Factor Alpha",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Children Raised On Traditional Farms Show",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Allergies And Asthma Prevalence",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fd Exposure",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Responses Were Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Promoted Dc",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Granulocyte-Macrophage Colony-Stimulating Factor",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Bet V 7 Has The Functional Capacity To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Functional Activity After Exposure To Mild Heat And Saliva",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Asthmatic Mouse Model Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Sensitization And Challenge With Ovalbumin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Th17/Treg Balance And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Secretion Of Il-6",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ga Decreased The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-6",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Total Of 1358 Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ga Treatment Downregulated The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Decreased The Protein",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Conditioned Media From M2-Polarized Wt Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significantly Higher Expression Of Profibrotic Genes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Myeloid-Specific Par2 Deletion Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Present Study Revealed That Cimifugin Effectively",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Jak1 Inhibitor With High Potency To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Multiple Jak1-Dependent Signalling Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pathology",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Neonatal Hmpv Infection",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Results Provide Proof Of Concept That",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A More Pronounced",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Tnf-\u0391",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Our Preliminary Research Revealed That Exosomes From Bmscs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Rsv",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "S-Phase Cell Proportions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Rt-Qpcr And Western Blotting Was Used To Evaluate The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Enhanced",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Et-1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Could In The Future",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Different Effectiveness And Safety Profile With Biologics",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Diagnosing Akc",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A High Level Of Suspicion",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "It Is Still In Early Development And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Further Exploration To Enhance Its Practical Applications",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Number Of Total Asthma Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 39",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Copd Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 45",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Achieving Dual Remission",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Biomarker-Guided Hierarchy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mean R5-R20",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 0",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Release Of Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Degranulation Potentially By Targeting Rela And Akt1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significantly Inhibited The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Questions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Recommendations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hypoxia",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hif-1\u0391 Upregulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Tal",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Responses",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tal",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hif-1\u0391 Protein Expression",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tal Alleviates Allergic Asthma By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Intervention",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Greater Improvement In Asthma Control",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Key Immune Effector Cells Capable Of Rapid Mediator",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Through Degranulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Is A Polymodal Cation Channel That Is Widely",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Sensory Neurons",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Versus Placebo With Sustained",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Depemokimab Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Annualized Exacerbation Rate By 54",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Simultaneously",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Overlapping Type 2 And Non-Type 2 Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Through",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Alarmin Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Act Scores Showed An Average",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of 1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "35 Points And A Statistically Significant",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chronic Exposure To These Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Epithelial-Derived Cytokines Such As Interleukin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tim-3 Expression Is Upregulated In",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Allergic Asthma Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Engagement With Tim-3 Agonists",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Signaling Pathway And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mitochondrial Metabolism",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tim-3 Expression Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Switch",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Significant Reduction In Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Treatment That",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Corticosteroid",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Related Adverse Effects But",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Disease Control Is Of Broad Public Health Importance",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Present Findings Indicate That Ozone Exposure",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Osteopontin Production Primarily From Monocyte-Derived Dcs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Osteopontin In Vitro Was Conducted",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Neutralization Of Osteopontin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Clodronate Liposome Treatment",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Hypothesized That Osteopontin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ndufa1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Steroid Effects",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Redox Dysregulation Also",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Post-Covid Sequelae",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Advancing Precision Redox Medicine",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Biomarker-Guided Patient Stratification",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "M2 Macrophage Polarization In Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "M2 Macrophage Polarization",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Signal Transducer And Activator Of Transcription 3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pharmacological Inhibition Of Kat8",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Kat8 Expression Was Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas The Cg",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 13",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Both Groups",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Usual Care",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "But Also Completely",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Monomeric \u0392-Tryptase Activity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Alternatively",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ccl8- Ccr8 To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ccl24-Ccr3 To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Findings Identify Luminal",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Enhanced Type 2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Our Data Suggests That Pollutant Particles Such As Dep May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Demonstrated Enhanced",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Vitamin D Supplementation Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Vitamin D Supplementation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Greater Reduction From Baseline In Crp Over Time",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Further Analysis Revealed That La",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Gart/Heat Shock Proteins 90",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "As A Key Candidate Gene",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Asthmatic T Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Corticosteroids Annually",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Primarily By Infiltrating Inflammatory Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Likely",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Suggest That Gdnf-Ret Signaling",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Application Of A Ret-Specific Inhibitor",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pnecs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gdnf Receptors",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tl1A",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "C-C Motif Chemokine Ligand 8",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Expression Via The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Death Receptor 3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Anti-Tl1A Antibody Interventions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Excessive Activation May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sustained Inflammation And Tissue Damage",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Air Purification Is Widely",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Elarekibep Is An Inhaled Anticalin Protein Developed To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Tcm Syndrome Scores In Both Groups Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Acq5 Scores And Tcm Symptom Scores Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Aerobic Glycolysis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Lactate Accumulation And Histone Lactylation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Suppressed The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Glycolysis-Associated Proteins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Annualized Asthma Exacerbation Rate",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Corticosteroid Use",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 48",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Annual Exacerbation Rate Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "To 0",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Maintenance Ocs Use",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Them",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Clinical",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Allergic Diseases",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Bronchial Inflammation In Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Not Only As A Necessary Step For",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-9",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By The Tissue Alarmins Interleukin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Including",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Interferon-\u0393 And Tumor Necrosis Factor",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Likely Via",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transcription Factor 4",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Interleukin-13",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "S100P Expression In Aecs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Such As The Synergistic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Positively-Selected Alleles Are Associated With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Susceptibility To Infectious Diseases Like Tuberculosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Histamine And Other Inflammatory Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Mean Acq-6 Score Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 82",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And The Mean Daily Dose Of Ocs Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By 90",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Healthcare Utilization",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Biologics Have Been Shown To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nasal Polyp Size",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Locally",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Favorable Disease Control After Discontinuation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Although Most Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Including Increases In Several Aldehydes And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Selected Sulfur-Containing Compounds",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Volatile Organic Compounds",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Previous Studies Have Shown Exhaustion Of T Cells And The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "T Cells Expressing Il-17 And Foxp3 Early In Ait",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Were Found To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Homeostasis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Immune Disease And Maintain Homeostasis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cn And Luteolin Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cn Markedly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cytokine",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cn And Luteolin Significantly Inhibited Cytokine",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Single-Cell Rna Sequencing Showed That Fkbp5 Knockout",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Genetic Knockout Of Fkbp5",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Enhanced The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Was Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Exposure To High Concentrations Of Ozone Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Onset And Progression Of Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hur Inhibition With Kh-3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chronic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Initiate Early Type-2 Immune Responses By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Human Translational Data Link",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nur77 Expression To Asthma Severity And Steroid Resistance",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chronic Activation Of These Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Despite Surface",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ly6G",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma-Related Inflammatory Mediators In Asthmatic Mice",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Their Proliferation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Timeless Expression Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Correlating With Accelerated Clinical Improvement And A",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Duration Of Hospitalization",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Often",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Acute Exacerbations Marked By Dyspnea",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Has Demonstrated Efficacy In",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Annualized Asthma Exacerbations By 61",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significant Clinical Lessening Of The Condition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Dysregulated Crosstalk",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Granule Proteins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dysregulation Of These Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chronic Inflammatory Diseases Such As Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Short-Term Consumption Of A Sugar-Rich Diet",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Glucose Intolerance And Expansion Of Adipose Tissue",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Adiponectin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Any Type Ia Mechanism For",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Coincident With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tissue Inflammation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Effect Reproduced By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Treatment",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Maoa Expression And Activity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cur",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Colony",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Factor 3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Autophagy Was Required To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "For",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Codes For A Protein",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Cellular Recycling Process Of Macroautophagy/Autophagy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-1\u0392",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Particularly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Consequently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial Damage And Type 2 Immune Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Elevating The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Tight Junction Proteins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Repeated Episodes Of Chest Constriction And Coughing",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significantly Increasing The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Were Associated With A",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Risk Of Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Runx3 Were Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Across Multiple Immune Cell Types",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mitochondrial Ca2+ Overload",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Restores Er And Mitochondrial Homeostasis And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Apoptosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Five",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Common Genes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Qrt-Pcr Analysis Confirmed That The Five Genes Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Both T2 And Non-T2 Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Investigated Whether Glucocorticoids Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Stress-Related Apoptosis To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Their Efficacy In Treating Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dexamethasone",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Er Stress Inhibitors 4\u039c8C And Melatonin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Negative Effects Of Dexamethasone On 16Hbe Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Er Stress Inhibition May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Atf6",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mouse",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Further Found That Gclc",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial-Mesenchymal Transition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gclc",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Found That Gsh/Gssg Ratio",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Asthma Patients And Mice",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Decreasing The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Chronic Metabolic Stress",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dioscin Administration Was Associated With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Potential To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Predominantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Epithelial Tuft Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Vitamin D Levels",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Development Of Targeted Therapies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tissue Damage",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Yet Dynamic Fluxes In Cellular Metabolic Profiles",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Time-Of-Day Variation Remain Poorly Defined",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Melatonin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type 2 Cytokine Production In Response To Melatonin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Characterized By Coordinated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dna Damage/Repair",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Corticosteroids",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Rapid Symptom Improvement",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Il-18 Paradoxically",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tgfb1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Their Clinical Use",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Repeated Administration And Remains Costly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Altered",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammation-Related Genes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Offering Targeted Control With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Risks",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Proteomic Profiles That",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma Phenotypes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Glucocorticoid-Resistant Phenotype",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Both Of Which Are Accelerated By The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Tgf-\u0392 Receptor Activity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Form A Stable Tissue",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Distinct Cytokine-Targeted Strategies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of 111 Assessed Exacerbations And Was Associated With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Odds Of Bacterial Detection",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Low-Dose Intranasal Lps Alone",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fibrinogen Cleavage Products",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Tlr4 Ligands Cryptokines And Lps",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "But Required",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Toll-Like Receptor 4",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Morbidity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Randomized Trials Of Monoclonal Antibodies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Bispecific Therapies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Multiple Inflammatory Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Implementation May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inter-Centre Variability",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Valid",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum Samples Were Obtained In 16 Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nasal Cytology Predominantly Showed Limited Agreement With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum Inflammatory Phenotypes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nasal Cytology Alone Cannot Replace",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum For Inflammatory Phenotyping In Sa",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "It Exacerbates Brain Injury And Neuroinflammation By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Ripk3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Ova Or Ova/Lps And Then Manipulated By Gngt2 Knockdown",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gngt2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "As Indicated By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Atg5 Abundance",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Bronchoalveolar Lavage Fluid",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gngt2 Promotes Nf-\u039ab Activation And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gngt2 Expression Was Selectively",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Blockade Of Lymphocyte Egress During The Primary Phase",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Exercise Capacity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Addition Of 8 Weeks Of Emt",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Greater Improvements In Pulmonary Function",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Expression Of Ecp",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Ast",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Function",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ast Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Downregulated The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ecp",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ast Downregulated The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "P-Jak2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Late-Onset Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cd4+ T Cell Apoptosis In Kr-Treated Mice",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gene And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "T-Cell Activation Markers",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Kr Decreased The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Transcriptomic Analysis Revealed That Kr Influenced The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Immune-Related Genes That Regulate Cell Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Diagnosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The History And Eye Examination Of A Patient",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Its Single-Device Formulation May Enhance Adherence And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inappropriate Polypharmacy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Macrophages Play Central Role In",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Show That Papain Exposure Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Acute E-Cig Exposure",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Only Modest Additional Changes In Relative Abundance",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Evaluation Of The Metabolic Status Of Asthma Patients May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "More Precise Phenotyping",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Interactions With Cdsb",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Risk",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Wheeze Burden In Genetically Susceptible Children",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Concerns About Drug Safety Often",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Therapeutic Hesitation And Undertreatment",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Lack Of Standardized Cfaos Diagnostic Criteria Has",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Heterogenous Use Of Asthma-Directed Therapies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Can Alter The Natural Course Of Allergic Diseases And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial Thickening And Mucus Accumulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Scit-Igg1 Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Demonstrated That Scit Increased The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Alarmins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "They",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epithelial Repair",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Co-Incubation With Mirna-146B-5P Mimics",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nf-\u039ab Pathway Expression",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Targeting The Traf6/Nf-\u039ab Signaling Pathway",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Intersecting The Top 50 Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mirnas With Those Targeting Candidate Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Traf-6 Gene Expression And Nf-\u039ab Pathway Activity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Need For Systemic Steroids",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Marked Improvement In Ear Symptoms",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "But Current Strategies Incompletely",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Durable Regulatory Immunity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Followed By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Preclinical Model Of Allergic Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Vaccine With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Mechanistic Target Of Rapamycin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Long-Term Biologic Therapy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gl Dose-Dependently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Convergent Fc\u03b5ri/Tlr-Mapk/Nf-\u039ab Signaling",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Na Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Rats By Lipopolysaccharide",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nr1D1 Abolished Sp",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transcriptomic Analysis Identified Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transcriptomic Analysis Revealed Marked",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nr1D1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Aim To Uncover Key Mechanisms",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma By Age 5 Years",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mr Analysis Determined That Lower",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fbp1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Two Synergistically Affect The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Experiments In Vitro Have Shown That Nf-\u0138b May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Expression Of Arg2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Inhibiting The Expression Of Arg2 Can Partially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Activation Of The Nf-\u0138b Pathway",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Combined Inhibition Can",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Combined Inhibition Can Reduce The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Arg2 Expression Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And The Nf-\u0138b Pathway Was Activated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Experiments In Vitro Have Shown That Nf-\u0138b May Promote The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Arg2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nf-\u0138b May Regulate The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significantly Increased Total",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Glutathione",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Was Corroborated By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ova-Induced Sensitization",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Significant Physiological Alterations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Levels Of Ifn-\u0393 And Tgf-\u0392",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Rab44-Knockout",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Ko Mice Compared With Wt Mice",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cell Adhesion And Chemotaxis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Mechanisms By Which Membrane Trafficking Molecules",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Development Of Asthma Remain Unclear",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Adhesion And Chemokine Receptors",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pbmcs And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum From Acute Asthma Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Smurf2 Was Markedly Upregulated In Patient Samples And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Smurf2 Interacted With Nedd4L And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Its K27-Linked Ubiquitination And Proteasomal Degradation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Pathogenesis Of Allergic Disorders",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Smurf2 Was Markedly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Core Clock Components Are Rhythmically",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Macrophages",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Available Evidence Suggests That",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ampk",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Jak2/Stat3 Axis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pro-Inflammatory Type 2 And Type 17 Immune Responses",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cytokine Release",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Although Genetic Predisposition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma Susceptibility",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Essential Trace-Element Status May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Asthma Risk Through Biologically Plausible Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Animal Models Have Been Central To Uncovering How Fungi",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Known For Their Potent",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type I Interferons",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Barrier Integrity Via The Ifn-\u0391/Ifnar1 Pathway",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Enhanced The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Epidermal Barrier Proteins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "It Remains Unclear Whether Oit",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Or Rather",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Renewed Strict Cm Elimination",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Rapid Clinical Improvement",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Convolvuli",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Robust Production Of All Studied Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Convolvuli Induced Robust",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "All Studied Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "But Their Clinical Significance",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Confirmation In Larger Studies",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mean Snot-22",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 76",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Oxpc",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mediated Relaxation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Forskolin",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Oxpapc Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Oxpapc Dose-Dependently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Iso-",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "3-Fold And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Maximum Relaxation By 12",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Alterations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Systemic Low-Grade Inflammation And Immune Dysregulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Mouse Model Was Employed In Which Sjp",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Typical Allergic Symptoms",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ifn-\u0393 Levels",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Recombinant Sop J 1 Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Structurally Validated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hospitalizations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "57-85",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Emergency Department Visits",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "52-72",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Oral Corticosteroid-Dependent Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "53-67",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pharmacologic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fucosylation Preserved Epithelial Barrier Integrity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Preserved Epithelial Junctional Architecture And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Alarmin Release",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Maintained Junctional Organization And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Sought To Investigate Whether Epithelial Fucosylation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transcriptomic Profiling Identified Fucosylation As A Major",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pathway",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Increased",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fut1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Glucocorticoids Were Discontinued In Two Patients And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "To A Low Maintenance Dose In One",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Rapid",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While G6Pd",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Cell Redox By Generating Nadph",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Phenotype",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Common \u0393-Chain Cytokines Il-2/Il-7",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Molecular Mechanisms",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Common \u0393-Chain Cytokines Il-2/Il-7 Induced And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Kit",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Experimental Validation Confirmed That At Downregulated The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "These Key Targets",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Enhancing Bone Resorption And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Formation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Deficiency Further Impair Bone Health By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mechanical Loading And Altering Endocrine Regulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "As A Model To Investigate Whether Hyperoxia",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Establishment Of A Ferroptotic Phenotype",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mrna And Protein Expression",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Further Confirming",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Proteomic Analysis Revealed 179 Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Proteins",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Th17/Il-17-Mediated Inflammation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Which Often",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Diagnostic Delays And Management Uncertainty",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Adhesion Molecules",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Effector T-Cell",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Icam-1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Identified",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cellular Metabolism",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Many T2 Cytokines And Alarmins Act To Recruit And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Innate And Adaptive Immune Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Many T2 Cytokines And Alarmins Act To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Activate Innate And Adaptive Immune Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And They Also",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mucous Production",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inducing Pqbp1-K223 Lactylation That Inhibits Prmt5 And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammatory Genes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pck2-K100 Succinylation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Lactate Accumulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inducing Pqbp1-K223 Lactylation That",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Prmt5 And Activates Inflammatory Genes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Macrophages Exhibited The Highest",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Response Involved The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Jak/Stat1 And P38-Mapk Signaling Pathways",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Characterized By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Follicular B Cell Populations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Increased The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Type 2 Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Both Patients With Allergic Asthma And Murine Model",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Validation Of The Combined Model",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Auc Of 0",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Results Showed That A Total Of 124 Patients With Ar",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "By Dm Were Included",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Is More Likely To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Remission Has Been",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ongoing Disease Activity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Prolonged Immunosuppressive Therapy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Th9 Cells Differentiate Under The Synergistic",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Transforming Growth Factor-\u0392",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Racial Disparities",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Allergic Disease Development",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Quality Of Life While",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Considerable Socioeconomic Burden Of Allergic Diseases",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Pm1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Accumulation Of Reactive Oxygen Species",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Neonatal Inos Methylation Was Associated With A",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Risk Of Childhood Asthma/Wheezing",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inos Methylation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Both Active Groups Showed Marked",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Art V 1-Specific Igg4 And Igg1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Increased Il-10 And Il-2 At 22 \u039cg And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ifn-\u0393-Associated Responses At 44 \u039cg",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Without",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Spt Reactivity Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Both Active Groups",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Cell Type",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Accelerated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "At Abs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Lactate Supplementation Exacerbated Inflammation By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Histone Lactylation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Yet The Mechanisms By Which Altered Metabolism",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammation Remain Largely Unknown",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Interleukin-4 And Interleukin-13 Signalling",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Reduction Was Observed After 1 Week And Cough Counts",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Progressively From Week 1 To Week 4",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Field Urgently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Globally Standardized",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mgtx",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mgtx And Cla Outperformed Dex In",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sustained Inflammation In Ssra",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "3 Inhibition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "M2 Markers",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Peimisine Restored Redox Balance And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Concomitant With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ros Production And Diminished Monocyte Adhesion",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Peimisine Alleviated Allergic Asthma By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Enhancing Public Awareness May Also Help",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Stigma And Social Isolation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Maintenance Ocs Use",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 22",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Treated Models And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Microplastic Fibers And/Or Pm2",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Yet",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cell Viability After 48 H In Lps-Treated Asthma Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Or When Severe Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Phenotype Driven Therapy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Their Degranulation Leads To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Their Degranulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Release Of Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Remodelling Of The Rbm In Asthma May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Cell Culture Supernatants Were Analyzed For",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Epithelial Cytokines",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mean Annualized Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "From 4",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "At Selected Time Points",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Air Is Designed To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Suggesting That Il1R1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Multistage Sampling Technique Was Used To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "635 Adult Asthmatic Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Severity Of Respiratory Diseases",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Respiratory Health Primarily By Regulating Mucosal Immunity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Influencing Intestinal Immune Responses And Potentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "An Imbalance Of Gut Microorganisms Or Dysbiosis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Means That Respiratory Diseases May",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Rab44 Were Differentially",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Across All Patients",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Nf-\u039ab",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Excessive",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Reactive Oxygen And Nitrogen Species",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Exposure To Common Risk Factors",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mv130",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mid- And Late Puberty Were Independently Associated With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Fev1",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Minimal Relaxation In High-K+-Induced Contractions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And That Repeated Exposures",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Acclimation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Adjunctive Obls Therapy Significantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Wheezing/Exacerbation Frequency",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "As Adjuvant Immunomodulatory Therapy In Pediatric Asthma",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Clarification",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Gal-3 Interactions Help",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Disease Processes Including Wound Healing",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ec-Gal-3 Mediated Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Reciprocal",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Previous Studies Have Revealed That This Interaction Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Galectin-3 Expression On The Surface Of A549 Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "We Further Define The Biological Parameters",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "This Mode Of Activation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A Range Of Potent Proinflammatory Mediators",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Context And History Rather Than Signal Presence Alone",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Or Does It Reflect",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Inducible Nos Being Predominantly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Inflammatory Conditions",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Excess Iron Accumulation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Iron-Dependent Lipid Peroxidation And Cell Death",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inhalation Of Pda-Peg-Lip-1 Nps Effectively",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Lipopolysaccharide",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Is A Constitutively Active Enzyme That Primarily",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Hydrogen Peroxide",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Antibody-Dependent Cellular Cytotoxicity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And It",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mir-146B-5P Expression",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Ieos-Like Cells But Increased In Reos-Like Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Whereas Mir-320B And Mir-21-5P",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "To Levels Not Significantly Different From Hs",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Its Underlying Inflammatory Processes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Mir-185-5P",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Inflammatory Signaling And",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dependent Pathways May Represent A Novel Strategy To",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Susceptibility To Pollution",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Elevated",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Quantified Itgb5 Protein Levels In",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum Supernatant Using Elisa",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Did Not Differ In Terms Of The",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In The Number Of Nocturnal Awakenings",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Ef Alleviates Allergic Asthma By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Harnessing This Potential Will",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Rigorous External Validation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Conferring",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Risk Of Diabetes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Bsmcs Were",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Concurrently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sting/Hif-1\u0391 And Glycolysis-Associated Factors",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Qfxbf Dose-Dependently",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Proliferation And Migration",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Qfxbf Can Alleviate Allergic Remodeling By",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Sting/Hif-1\u0391-Mediated Glycolytic Program",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Qfxbf Markedly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sting Expression",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Directly",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Structural Damage And Exacerbations",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Innate Immunity",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Antagonists",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Its Inhibition",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Dedicated Clinical Validation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Use In Pregnancy Has Shown Associations With",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Offspring Asthma In Childhood",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "While Ics Use Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Over The Course Of Pregnancy",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Sputum Analysis",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Pathogens",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "More Epidemiological Evidence Is",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "A1Ad",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "And Diffusion Capacity For Carbon Monoxide Was",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "To 51",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Release Of Autophagosomes By 16Hbe Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "The Formation Of Nets",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Net Formation",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Of Autophagosomes By 16Hbe Cells",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Autophagosomes",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "Lc3",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "With Effects",
+      "type": "Molecule",
+      "pmid_count": 1
+    },
+    {
+      "id": "In Excursion",
+      "type": "Molecule",
+      "pmid_count": 1
+    }
+  ],
+  "weak_edges_count": 700,
+  "single_paper_edges_count": 700,
+  "weak_edges": [
+    {
+      "source": "Batf3",
+      "target": "Dendritic cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.75,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "Tissue-resident memory T cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.75,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "Allergen",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "They Have Strongly",
+      "target": "Airway inflammation",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "A Transcription Factor",
+      "target": "Dendritic cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "The Chemokine Receptor-Encoding Gene",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "TSLP",
+      "target": "Inflammation And Tissue Damage",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40292285"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Mainly",
+      "target": "Type-2 Endotype",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40292285"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Airway",
+      "target": "T Cell Migratory And Differentiation Pathways",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40337866"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Can Also",
+      "target": "Mastocytosis",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40451557"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "We Describe The Main Mechanisms",
+      "target": "Mc Activation",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40451557"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Type-2 Cytokines",
+      "target": "Mucus hypersecretion",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40454563"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "Type-2 Inflammation Is Driven By The",
+      "target": "IL-4",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40454563"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "Experimental Asthma Was",
+      "target": "House dust mite",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Mscs Were Isolated And",
+      "target": "House dust mite",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "House dust mite",
+      "target": "Immunosuppressive Activities",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Lung",
+      "target": "The Number Of Lrmscs",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Significantly",
+      "target": "Growth Factor-Induced Adipogenesis And Osteogenesis",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Our Findings Indicate That Asthmatic Inflammation Not Only",
+      "target": "The Number Of Lrmscs But Also Impairs Their Function",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "We Further Observed An Early Increase In Dual",
+      "target": "IL-5",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40777291"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "unknown"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    }
+  ],
+  "single_paper_edges": [
+    {
+      "source": "Batf3",
+      "target": "Dendritic cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.75,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "Tissue-resident memory T cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.75,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "Allergen",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "They Have Strongly",
+      "target": "Airway inflammation",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "A Transcription Factor",
+      "target": "Dendritic cell",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Batf3",
+      "target": "The Chemokine Receptor-Encoding Gene",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40184040"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "TSLP",
+      "target": "Inflammation And Tissue Damage",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40292285"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Mainly",
+      "target": "Type-2 Endotype",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40292285"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Airway",
+      "target": "T Cell Migratory And Differentiation Pathways",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40337866"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Can Also",
+      "target": "Mastocytosis",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40451557"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "We Describe The Main Mechanisms",
+      "target": "Mc Activation",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40451557"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Type-2 Cytokines",
+      "target": "Mucus hypersecretion",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40454563"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "Type-2 Inflammation Is Driven By The",
+      "target": "IL-4",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40454563"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "Experimental Asthma Was",
+      "target": "House dust mite",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Mscs Were Isolated And",
+      "target": "House dust mite",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "House dust mite",
+      "target": "Immunosuppressive Activities",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Lung",
+      "target": "The Number Of Lrmscs",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Significantly",
+      "target": "Growth Factor-Induced Adipogenesis And Osteogenesis",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Our Findings Indicate That Asthmatic Inflammation Not Only",
+      "target": "The Number Of Lrmscs But Also Impairs Their Function",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40696474"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "We Further Observed An Early Increase In Dual",
+      "target": "IL-5",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40777291"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "unknown"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "Lung",
+      "target": "By Alveolar Macrophages",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40777291"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "unknown"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "While Il-18R Was Highly",
+      "target": "IL-13",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40777291"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "unknown"
+      ],
+      "confidence": 0.6,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "Airway epithelium",
+      "target": "ST2",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40866145"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Tissue",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Only 17\u0392-Estradiol",
+      "target": "ST2",
+      "relations": [
+        "maintains"
+      ],
+      "primary_relation": "maintains",
+      "pmids": [
+        "40866145"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-33",
+      "target": "ST2",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40866145"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Allergen",
+      "target": "Aad We Now Show That Germinal Centres",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41106482"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "And While They Can",
+      "target": "IgE",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "41106482"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "The Formation Of These Gcs Is",
+      "target": "Tfh",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "41106482"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.35,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "Long-Term High-Fat Diet Feeding Can",
+      "target": "Chronic Inflammation",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41212444"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "These Emerging Mechanisms Include The",
+      "target": "Lipid-Associated Macrophages",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41212444"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    }
+  ]
+}

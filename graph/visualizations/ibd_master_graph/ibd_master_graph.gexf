@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-07-01">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="1" title="relation" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="node_type" type="string" />
+    </attributes>
+    <nodes>
+      <node id="Intestinal epithelium" label="Intestinal epithelium">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+        </attvalues>
+      </node>
+      <node id="NOD2" label="NOD2">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+        </attvalues>
+      </node>
+      <node id="Intestinal inflammation" label="Intestinal inflammation">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+        </attvalues>
+      </node>
+      <node id="TNF" label="TNF">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+        </attvalues>
+      </node>
+      <node id="Epithelial barrier" label="Epithelial barrier">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+        </attvalues>
+      </node>
+      <node id="IL-22" label="IL-22">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+        </attvalues>
+      </node>
+      <node id="ILC3" label="ILC3">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+        </attvalues>
+      </node>
+      <node id="Th17 cell" label="Th17 cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+        </attvalues>
+      </node>
+      <node id="IL-23" label="IL-23">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+        </attvalues>
+      </node>
+      <node id="Eosinophil" label="Eosinophil">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="Intestinal epithelium" target="NOD2" id="0">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="Intestinal epithelium" target="Epithelial barrier" id="1">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="NOD2" target="Intestinal inflammation" id="2">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="NOD2" target="Epithelial barrier" id="3">
+        <attvalues>
+          <attvalue for="1" value="activates" />
+        </attvalues>
+      </edge>
+      <edge source="TNF" target="Intestinal inflammation" id="4">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="TNF" target="Epithelial barrier" id="5">
+        <attvalues>
+          <attvalue for="1" value="suppresses" />
+        </attvalues>
+      </edge>
+      <edge source="IL-22" target="Intestinal epithelium" id="6">
+        <attvalues>
+          <attvalue for="1" value="activates" />
+        </attvalues>
+      </edge>
+      <edge source="IL-22" target="Epithelial barrier" id="7">
+        <attvalues>
+          <attvalue for="1" value="activates" />
+        </attvalues>
+      </edge>
+      <edge source="ILC3" target="IL-22" id="8">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="Th17 cell" target="Intestinal inflammation" id="9">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+      <edge source="IL-23" target="Th17 cell" id="10">
+        <attvalues>
+          <attvalue for="1" value="activates" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Intestinal inflammation" id="11">
+        <attvalues>
+          <attvalue for="1" value="induces" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

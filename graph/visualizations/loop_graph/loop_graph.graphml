@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d4" for="edge" attr.name="pmids" attr.type="string" />
+  <key id="d3" for="edge" attr.name="pmid_count" attr.type="long" />
+  <key id="d2" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d1" for="node" attr.name="pmid_count" attr.type="long" />
+  <key id="d0" for="node" attr.name="node_type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Dendritic cell">
+      <data key="d0">Cell</data>
+      <data key="d1">13</data>
+    </node>
+    <node id="IL-5">
+      <data key="d0">Cytokine</data>
+      <data key="d1">159</data>
+    </node>
+    <node id="Airway inflammation">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">402</data>
+    </node>
+    <node id="Bone marrow">
+      <data key="d0">Tissue</data>
+      <data key="d1">43</data>
+    </node>
+    <node id="ILC2">
+      <data key="d0">Cell</data>
+      <data key="d1">95</data>
+    </node>
+    <node id="Batf3">
+      <data key="d0">Molecule</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="Eosinophil">
+      <data key="d0">Cell</data>
+      <data key="d1">471</data>
+    </node>
+    <node id="IgE">
+      <data key="d0">Molecule</data>
+      <data key="d1">70</data>
+    </node>
+    <node id="Th2 cell">
+      <data key="d0">Cell</data>
+      <data key="d1">183</data>
+    </node>
+    <node id="TSLP">
+      <data key="d0">Cytokine</data>
+      <data key="d1">94</data>
+    </node>
+    <node id="IL-4">
+      <data key="d0">Cytokine</data>
+      <data key="d1">55</data>
+    </node>
+    <node id="Tissue-resident memory T cell">
+      <data key="d0">Cell</data>
+      <data key="d1">19</data>
+    </node>
+    <node id="Mast cell">
+      <data key="d0">Cell</data>
+      <data key="d1">130</data>
+    </node>
+    <node id="Allergen">
+      <data key="d0">Molecule</data>
+      <data key="d1">128</data>
+    </node>
+    <node id="IL-33">
+      <data key="d0">Cytokine</data>
+      <data key="d1">70</data>
+    </node>
+    <node id="Airway epithelium">
+      <data key="d0">Tissue</data>
+      <data key="d1">109</data>
+    </node>
+    <node id="Type 2 inflammation">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">272</data>
+    </node>
+    <edge source="Dendritic cell" target="Th2 cell">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41391519</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-33">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="Dendritic cell" target="ILC2">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42287819</data>
+    </edge>
+    <edge source="Dendritic cell" target="Tissue-resident memory T cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">33952647</data>
+    </edge>
+    <edge source="IL-5" target="Eosinophil">
+      <data key="d2">recruits</data>
+      <data key="d3">90</data>
+      <data key="d4">34970267,34971621,35126350,35251534,35356877</data>
+    </edge>
+    <edge source="IL-5" target="Bone marrow">
+      <data key="d2">activates</data>
+      <data key="d3">9</data>
+      <data key="d4">41391519,41418640,42235311,34974065,35522053</data>
+    </edge>
+    <edge source="Bone marrow" target="Eosinophil">
+      <data key="d2">recruits</data>
+      <data key="d3">39</data>
+      <data key="d4">41624843,41418640,41879294,41357187,42371045</data>
+    </edge>
+    <edge source="ILC2" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">49</data>
+      <data key="d4">42061467,41904701,42201298,40777291,42226044</data>
+    </edge>
+    <edge source="ILC2" target="IL-33">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">41640356,42256021</data>
+    </edge>
+    <edge source="ILC2" target="Th2 cell">
+      <data key="d2">recruits</data>
+      <data key="d3">2</data>
+      <data key="d4">41780570,42094570</data>
+    </edge>
+    <edge source="ILC2" target="Allergen">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41780570</data>
+    </edge>
+    <edge source="ILC2" target="Type 2 inflammation">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42256021</data>
+    </edge>
+    <edge source="Batf3" target="Dendritic cell">
+      <data key="d2">activates</data>
+      <data key="d3">4</data>
+      <data key="d4">40184040,33952647,41025995,28515363</data>
+    </edge>
+    <edge source="Batf3" target="Tissue-resident memory T cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">40184040</data>
+    </edge>
+    <edge source="Batf3" target="Allergen">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">40184040</data>
+    </edge>
+    <edge source="Batf3" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">28515363</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">251</data>
+      <data key="d4">34851736,34932383,34971621,34983110,35091338</data>
+    </edge>
+    <edge source="IgE" target="Mast cell">
+      <data key="d2">activates</data>
+      <data key="d3">34</data>
+      <data key="d4">41606715,41652394,41781362,41875747,42134608</data>
+    </edge>
+    <edge source="IgE" target="Th2 cell">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">30</data>
+      <data key="d4">42201298,41550587,42235311,42318010,42202393</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">30</data>
+      <data key="d4">42201298,42292369,41965727,42235311,42202393</data>
+    </edge>
+    <edge source="TSLP" target="Dendritic cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42189350</data>
+    </edge>
+    <edge source="TSLP" target="Type 2 inflammation">
+      <data key="d2">activates</data>
+      <data key="d3">34</data>
+      <data key="d4">35333296,35754131,35795686,35908044,35911708</data>
+    </edge>
+    <edge source="IL-4" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">23</data>
+      <data key="d4">41391519,42201298,41788470,42292369,41965727</data>
+    </edge>
+    <edge source="IL-4" target="Eosinophil">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">41640356,42236192</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">16</data>
+      <data key="d4">40184040,40866145,41817596,42228188,41780570</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41805545</data>
+    </edge>
+    <edge source="Mast cell" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">118</data>
+      <data key="d4">40451557,41898724,41898664,42285366,42335985</data>
+    </edge>
+    <edge source="Allergen" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">127</data>
+      <data key="d4">41904701,41781362,41988246,42199635,41780570</data>
+    </edge>
+    <edge source="Allergen" target="IgE">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41781362</data>
+    </edge>
+    <edge source="Allergen" target="Tissue-resident memory T cell">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42134609</data>
+    </edge>
+    <edge source="IL-33" target="ILC2">
+      <data key="d2">activates</data>
+      <data key="d3">36</data>
+      <data key="d4">42061467,41904701,41418640,40866145,42189350</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">45</data>
+      <data key="d4">41904701,42189350,41550587,42256021,42253476</data>
+    </edge>
+    <edge source="Airway epithelium" target="Mast cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41896876</data>
+    </edge>
+    <edge source="Airway epithelium" target="Eosinophil">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42025815</data>
+    </edge>
+    <edge source="Airway epithelium" target="TSLP">
+      <data key="d2">induces</data>
+      <data key="d3">38</data>
+      <data key="d4">42193381,42253476,42189350,42345643,35098856</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway inflammation">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42327952</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Eosinophil">
+      <data key="d2">induces</data>
+      <data key="d3">211</data>
+      <data key="d4">41904701,42250977,42178280,42296041,41916430</data>
+    </edge>
+  </graph>
+</graphml>

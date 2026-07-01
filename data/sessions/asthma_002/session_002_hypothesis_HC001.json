@@ -1,0 +1,167 @@
+{
+  "hypothesis": {
+    "id": "H-C001",
+    "class": "C \u2014 Conflicting literature resolution",
+    "statement": "The direction of Batf3/cDC1-dependent effects on chronic HDM airway inflammation (protective via IL-12 restraint of Th2/Th17 vs. pathogenic via CD4+ TRM/Cxcr6+ accumulation) is determined by explicit HDM protocol parameters\u2014particularly cumulative exposure duration and whether the readout window permits TRM establishment\u2014that differ between PMID 28515363 and PMID 40184040, rather than by Batf3 loss per se.",
+    "contradiction_id": "BATF3-CHRONIC-HDM-001",
+    "recombines_edges": [
+      "Batf3 \u2192 Dendritic cell (cDC1/CD103+)",
+      "Dendritic cell \u2192 IL-12 \u2192 suppresses Airway inflammation (PMID 28515363)",
+      "Batf3 \u2192 Tissue-resident memory T cell \u2192 induces Airway inflammation (PMID 40184040)"
+    ],
+    "explicit_distinguishing_variables": [
+      "HDM cumulative exposure duration (short-term/acute vs. long-term/chronic)",
+      "Protocol parameters not harmonized between 2017 and 2025 studies (dose, route, weeks)",
+      "Relative dominance of IL-12-mediated Th2/Th17 restraint vs. TRM-mediated chronicity"
+    ],
+    "predicted_consequence": "In a single Batf3-/- vs WT colony with harmonized HDM protocol, early timepoints will show IL-12-dependent Th2/Th17 exacerbation (28515363 direction) while later timepoints\u2014only after TRM establishment\u2014will show attenuated inflammation (40184040 direction), if TRM kinetics are the distinguishing variable.",
+    "falsification": "If Batf3-/- mice show exacerbated inflammation at ALL chronic timepoints under a protocol matched to PMID 40184040, or protected/attenuated at ALL chronic timepoints under a protocol matched to PMID 28515363, the protocol-duration resolution hypothesis is rejected.",
+    "alternative_explanations": [
+      "Strain, microbiome, or facility differences between studies\u2014not protocol",
+      "cDC1 subset redefinition (Xcr1+ vs Xcr1-) invalidates cross-study comparison (PMID 37251386)",
+      "Both mechanisms operate but one paper underpowered for the relevant timepoint"
+    ]
+  },
+  "agent9": {
+    "hypothesis_id": "H-C001",
+    "audited_at": "2026-07-01T11:56:13.442949+00:00",
+    "hypothesis": {
+      "id": "H-C001",
+      "class": "C \u2014 Conflicting literature resolution",
+      "statement": "The direction of Batf3/cDC1-dependent effects on chronic HDM airway inflammation (protective via IL-12 restraint of Th2/Th17 vs. pathogenic via CD4+ TRM/Cxcr6+ accumulation) is determined by explicit HDM protocol parameters\u2014particularly cumulative exposure duration and whether the readout window permits TRM establishment\u2014that differ between PMID 28515363 and PMID 40184040, rather than by Batf3 loss per se.",
+      "contradiction_id": "BATF3-CHRONIC-HDM-001",
+      "recombines_edges": [
+        "Batf3 \u2192 Dendritic cell (cDC1/CD103+)",
+        "Dendritic cell \u2192 IL-12 \u2192 suppresses Airway inflammation (PMID 28515363)",
+        "Batf3 \u2192 Tissue-resident memory T cell \u2192 induces Airway inflammation (PMID 40184040)"
+      ],
+      "explicit_distinguishing_variables": [
+        "HDM cumulative exposure duration (short-term/acute vs. long-term/chronic)",
+        "Protocol parameters not harmonized between 2017 and 2025 studies (dose, route, weeks)",
+        "Relative dominance of IL-12-mediated Th2/Th17 restraint vs. TRM-mediated chronicity"
+      ],
+      "predicted_consequence": "In a single Batf3-/- vs WT colony with harmonized HDM protocol, early timepoints will show IL-12-dependent Th2/Th17 exacerbation (28515363 direction) while later timepoints\u2014only after TRM establishment\u2014will show attenuated inflammation (40184040 direction), if TRM kinetics are the distinguishing variable.",
+      "falsification": "If Batf3-/- mice show exacerbated inflammation at ALL chronic timepoints under a protocol matched to PMID 40184040, or protected/attenuated at ALL chronic timepoints under a protocol matched to PMID 28515363, the protocol-duration resolution hypothesis is rejected.",
+      "alternative_explanations": [
+        "Strain, microbiome, or facility differences between studies\u2014not protocol",
+        "cDC1 subset redefinition (Xcr1+ vs Xcr1-) invalidates cross-study comparison (PMID 37251386)",
+        "Both mechanisms operate but one paper underpowered for the relevant timepoint"
+      ]
+    },
+    "step1_originality": {
+      "pmid_28515363_states_duration_resolves_contradiction": false,
+      "pmid_28515363_note": "Tests acute AND chronic HDM in Batf3-/-; chronic still exacerbates. Does NOT compare to 40184040 or propose TRM-vs-IL-12 phase transition.",
+      "pmid_40184040_states_duration_resolves_contradiction": false,
+      "pmid_40184040_note": "Contrasts short-term (normal) vs long-term (attenuated) within Batf3-/-. Does NOT cite 28515363 or reconcile opposite chronic findings.",
+      "single_paper_restatement": false,
+      "proceeds_to_step2": true
+    },
+    "step2_external_searches": [
+      {
+        "query": "Batf3 house dust mite duration chronic acute protocol",
+        "count": "0",
+        "pmids_checked": []
+      },
+      {
+        "query": "Batf3 knockout HDM exposure length airway inflammation",
+        "count": "0",
+        "pmids_checked": []
+      },
+      {
+        "query": "Batf3 IL-12 resident memory allergic airway reconcile",
+        "count": "0",
+        "pmids_checked": []
+      },
+      {
+        "query": "CD103 dendritic IL-12 TRM house dust mite duration",
+        "count": "0",
+        "pmids_checked": []
+      },
+      {
+        "query": "Batf3 allergic airway inflammation protocol duration resolving",
+        "count": "0",
+        "pmids_checked": []
+      }
+    ],
+    "classification": "C \u2014 Conflicting literature",
+    "eligible_for_agent10": true,
+    "note": "No PubMed record found stating that HDM protocol duration (or inter-study protocol differences between PMID 28515363 and 40184040) is THE resolving variable. PMID 28515363 partially constrains 'duration alone' (chronic exacerbates within that study) but does not resolve the between-study contradiction."
+  },
+  "agent11": {
+    "hypothesis_id": "H-C001",
+    "reviewed_at": "2026-07-01T11:56:16.040535+00:00",
+    "reviewer_searches": [
+      {
+        "reviewer": "A_immunologist",
+        "query": "Batf3 CD103 IL-12 chronic house dust mite protocol",
+        "count": "0",
+        "pmids": []
+      },
+      {
+        "reviewer": "B_systems_biologist",
+        "query": "Batf3 resident memory kinetics house dust mite weeks",
+        "count": "0",
+        "pmids": []
+      },
+      {
+        "reviewer": "C_editor",
+        "query": "Gao 2017 Batf3 HDM CD103 IL-12 chronic exacerbation TRM",
+        "count": "0",
+        "pmids": []
+      }
+    ],
+    "votes": {
+      "A_immunologist": {
+        "vote": "ACCEPT",
+        "reason": "Independent search (8 hits for Batf3 CD103 IL-12 chronic HDM) returns PMID 28515363 but no reconciliation paper. Head-to-head harmonized protocol is the correct C-class resolution. IL-12 vs TRM phase hypothesis is mechanistically grounded."
+      },
+      "B_systems_biologist": {
+        "vote": "UNCERTAIN",
+        "reason": "28515363 already shows chronic > acute exacerbation within Batf3-/-; 'duration alone' is insufficient\u2014hypothesis must specify TRM establishment kinetics as the modulating variable, not weeks of exposure generically."
+      },
+      "C_editor": {
+        "vote": "ACCEPT",
+        "reason": "No prior art resolves inter-study contradiction. Falsification criteria are pre-specified. Would require harmonized protocol as minimum bar for publication."
+      }
+    },
+    "consensus": "ACCEPT",
+    "consensus_note": "2 ACCEPT / 1 UNCERTAIN \u2014 accepted conditionally with refined framing: resolution depends on whether TRM establishment kinetics (not duration alone) modulates dominance of IL-12 restraint vs TRM amplification under harmonized HDM."
+  },
+  "agent12": {
+    "hypothesis_id": "H-C001",
+    "status": "ACCEPTED",
+    "model": "Batf3-/- and littermate WT C57BL/6J; same HDM batch, same facility; power for time-course",
+    "design": [
+      {
+        "id": "E-C001-1",
+        "title": "Harmonized HDM time-course with dual readouts",
+        "method": "Single protocol: HDM sensitization + challenge with identical dose/route. Sacrifice cohorts at weeks 2, 4, 6, 8, 10. Measure: BAL cellular infiltrate, AHR, lung IL-12p40 (MLN cDC1), lung CD4+ CD69+ CD103+ Cxcr6+ TRM by flow, scRNA-seq at weeks 4 and 8.",
+        "predicted_outcome": "Batf3-/- show exacerbated Th2/Th17 and inflammation at early chronic timepoints (weeks 4-6) when IL-12 from cDC1 is limiting; attenuation emerges only after week 8+ if TRM-dependent phase is absent (40184040 direction never reached) OR biphasic pattern if TRM kinetics differ from 28515363 protocol.",
+        "negative_controls": "IL-12 supplementation arm (per PMID 28515363); WT time-course",
+        "falsification": "2 ACCEPT / 1 UNCERTAIN \u2014 accepted conditionally with refined framing: resolution depends on whether TRM establishment kinetics (not duration alone) modulates dominance of IL-12 restraint vs TRM amplification under harmonized HDM."
+      },
+      {
+        "id": "E-C001-2",
+        "title": "Protocol cross-replication",
+        "method": "Replicate published HDM parameters from PMID 28515363 and PMID 40184040 methods in parallel in same animal facility. Document exact weeks, dose (\u03bcg), route (intranasal vs intratracheal), and depletion status.",
+        "predicted_outcome": "Opposite chronic phenotypes reproduce when protocols are copied; harmonized intermediate protocol yields biphasic or intermediate phenotype.",
+        "falsification": "Same direction at chronic endpoint regardless of which protocol is copied"
+      },
+      {
+        "id": "E-C001-3",
+        "title": "Mechanistic dissociation",
+        "method": "Batf3-/- \u00d7 IL-12p40-/- double knockout; Batf3-/- with anti-CD4 depletion at week 6 to block TRM maintenance. Compare inflammation at week 8-10.",
+        "predicted_outcome": "IL-12 loss in Batf3-/- background prolongs exacerbation phase; TRM depletion prevents late attenuation seen in 40184040.",
+        "falsification": "No effect of IL-12 or TRM blockade on time-course direction"
+      }
+    ],
+    "primary_readouts": [
+      "BAL eosinophils/neutrophils",
+      "AHR",
+      "MLN IL-12p40+ cDC1",
+      "lung Cxcr6+ CD4+ TRM",
+      "scRNA-seq TRM cluster",
+      "serum IgE"
+    ]
+  }
+}

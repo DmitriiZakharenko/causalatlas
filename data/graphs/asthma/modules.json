@@ -1,0 +1,48 @@
+{
+  "Molecule": [
+    "Allergen",
+    "Batf3",
+    "House dust mite",
+    "ST2",
+    "IgE",
+    "GATA3",
+    "STAT6",
+    "Benralizumab",
+    "Dupilumab",
+    "Mepolizumab",
+    "Tezepelumab",
+    "Omalizumab"
+  ],
+  "Cell": [
+    "Th2 cell",
+    "Dendritic cell",
+    "Tissue-resident memory T cell",
+    "Eosinophil",
+    "Mast cell",
+    "ILC2",
+    "Neutrophil",
+    "Goblet cell",
+    "Fibroblast",
+    "Basophil",
+    "cDC1"
+  ],
+  "Clinical_phenotype": [
+    "Airway inflammation",
+    "Airway hyperresponsiveness",
+    "Type 2 inflammation",
+    "Airway remodeling",
+    "Mucus hypersecretion"
+  ],
+  "Cytokine": [
+    "TSLP",
+    "IL-5",
+    "IL-13",
+    "IL-4",
+    "IL-33",
+    "IL-25"
+  ],
+  "Tissue": [
+    "Airway epithelium",
+    "Bone marrow"
+  ]
+}

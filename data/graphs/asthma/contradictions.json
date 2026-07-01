@@ -1,0 +1,2766 @@
+{
+  "session": "004",
+  "scan_type": "full_graph_all_pairs",
+  "pairs_with_multiple_edges": 80,
+  "contradiction_count": 70,
+  "contradictions": [
+    {
+      "id": "Airway epithelium->Eosinophil:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42025815"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "36560975"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium->IL-33:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "IL-33"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "35098856",
+            "35640416",
+            "35693823",
+            "35754131",
+            "35795686",
+            "35801505",
+            "35911708",
+            "36032072",
+            "36297517",
+            "36306937",
+            "36311787",
+            "36366528",
+            "36463491",
+            "36481301",
+            "36481410",
+            "37779537",
+            "38844678",
+            "39134801",
+            "39176391",
+            "39179401",
+            "39301028",
+            "39537181",
+            "39552062",
+            "39633345",
+            "39644790",
+            "39685875",
+            "39707175",
+            "39719880",
+            "39732106",
+            "40955005",
+            "41042267",
+            "41090740",
+            "41478153",
+            "41550587",
+            "41633491",
+            "41640356",
+            "41761590",
+            "41904701",
+            "41939213",
+            "42069290",
+            "42121933",
+            "42189350",
+            "42193381",
+            "42253476",
+            "42256021",
+            "42324975"
+          ],
+          "pmid_count": 46
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35801505"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium->ILC2:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "ILC2"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "36439133"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41172625"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium->Lung:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "36685493",
+            "39414067",
+            "39805760"
+          ],
+          "pmid_count": 3
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42324507"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium->Neutrophil:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "Neutrophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42248217"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39732106",
+            "42248217"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "36569909"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium->Th2 cell:conflict",
+      "node_pair": [
+        "Airway epithelium",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "36343939",
+            "36452937",
+            "38578780",
+            "39704779",
+            "39737471",
+            "39803487"
+          ],
+          "pmid_count": 6
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39176391"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway epithelium<->IL-33:reverse",
+      "node_pair": [
+        "Airway epithelium",
+        "IL-33"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Airway epithelium",
+        "target": "IL-33",
+        "relation": "suppresses",
+        "pmids": [
+          "35801505"
+        ]
+      },
+      "edge_b": {
+        "source": "IL-33",
+        "target": "Airway epithelium",
+        "relation": "induces",
+        "pmids": [
+          "36297517"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway hyperresponsiveness<->Airway inflammation:reverse",
+      "node_pair": [
+        "Airway hyperresponsiveness",
+        "Airway inflammation"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Airway hyperresponsiveness",
+        "target": "Airway inflammation",
+        "relation": "suppresses",
+        "pmids": [
+          "39644790",
+          "42370274"
+        ]
+      },
+      "edge_b": {
+        "source": "Airway inflammation",
+        "target": "Airway hyperresponsiveness",
+        "relation": "activates",
+        "pmids": [
+          "34983110"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway inflammation->ILC2:conflict",
+      "node_pair": [
+        "Airway inflammation",
+        "ILC2"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "34757553"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41457750"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway inflammation->Lung:conflict",
+      "node_pair": [
+        "Airway inflammation",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "34983110",
+            "42125803"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "maintains",
+          "pmids": [
+            "41621690"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway inflammation->Th2 cell:conflict",
+      "node_pair": [
+        "Airway inflammation",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36458017",
+            "36468814"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "36468814"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway inflammation<->ILC2:reverse",
+      "node_pair": [
+        "Airway inflammation",
+        "ILC2"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Airway inflammation",
+        "target": "ILC2",
+        "relation": "suppresses",
+        "pmids": [
+          "41457750"
+        ]
+      },
+      "edge_b": {
+        "source": "ILC2",
+        "target": "Airway inflammation",
+        "relation": "activates",
+        "pmids": [
+          "34757553"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Airway->Th2 cell:conflict",
+      "node_pair": [
+        "Airway",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "42192147"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39466149"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Allergen->Lung:conflict",
+      "node_pair": [
+        "Allergen",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41733137",
+            "42134609"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "35936001",
+            "41733137",
+            "42134609",
+            "42199635",
+            "42228188"
+          ],
+          "pmid_count": 5
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Allergen<->Tissue-resident memory T cell:reverse",
+      "node_pair": [
+        "Allergen",
+        "Tissue-resident memory T cell"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Allergen",
+        "target": "Tissue-resident memory T cell",
+        "relation": "induces",
+        "pmids": [
+          "42134609"
+        ]
+      },
+      "edge_b": {
+        "source": "Tissue-resident memory T cell",
+        "target": "Allergen",
+        "relation": "suppresses",
+        "pmids": [
+          "35936001"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Batf3->Airway inflammation:conflict",
+      "node_pair": [
+        "Batf3",
+        "Airway inflammation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "28515363",
+            "40184040",
+            "41025995"
+          ],
+          "pmid_count": 3
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "28515363"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Benralizumab->Eosinophil:conflict",
+      "node_pair": [
+        "Benralizumab",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35251534",
+            "35496822",
+            "35522053",
+            "36301080",
+            "36314316",
+            "36322679",
+            "36335418",
+            "36335460",
+            "36357156",
+            "36400178",
+            "36413432",
+            "36470233",
+            "36498632",
+            "36524437",
+            "36538979",
+            "36579077",
+            "36601503",
+            "39060015",
+            "39396109",
+            "39521285",
+            "39524483",
+            "39615502",
+            "39632158",
+            "39686520",
+            "39697127",
+            "39708290",
+            "39718916",
+            "39734474",
+            "39742914",
+            "39797273",
+            "39866927",
+            "41672447",
+            "41672576",
+            "41859014",
+            "41873839",
+            "41904357",
+            "41913399",
+            "41928209",
+            "41934326",
+            "42032643",
+            "42039166",
+            "42044815",
+            "42115803",
+            "42144374",
+            "42150795",
+            "42193381",
+            "42201298",
+            "42214402",
+            "42223828",
+            "42301331",
+            "42307829",
+            "42324975",
+            "42351060",
+            "42355732",
+            "42367766"
+          ],
+          "pmid_count": 55
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39060015",
+            "41859014",
+            "41873839",
+            "41904357",
+            "41913399",
+            "41928209",
+            "41934326",
+            "42039166",
+            "42044815",
+            "42115803",
+            "42144374",
+            "42150795",
+            "42193381",
+            "42201298",
+            "42214402",
+            "42223828",
+            "42301331",
+            "42307829",
+            "42324975",
+            "42351060",
+            "42355732",
+            "42367766"
+          ],
+          "pmid_count": 22
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Bone marrow<->Eosinophil:reverse",
+      "node_pair": [
+        "Bone marrow",
+        "Eosinophil"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Bone marrow",
+        "target": "Eosinophil",
+        "relation": "recruits",
+        "pmids": [
+          "35003998",
+          "35091338",
+          "35522053",
+          "35615348",
+          "35720294",
+          "35720347",
+          "35771474",
+          "35958837",
+          "35982175",
+          "36042524",
+          "36054652",
+          "38016013",
+          "38145912",
+          "38175326",
+          "38538755",
+          "38547428",
+          "38565078",
+          "38812515",
+          "38814679",
+          "39060015",
+          "39062104",
+          "39355749",
+          "39521285",
+          "39767651",
+          "40695068",
+          "40823575",
+          "40879006",
+          "40963601",
+          "41043936",
+          "41199880",
+          "41297347",
+          "41346596",
+          "41357187",
+          "41418640",
+          "41449546",
+          "41624843",
+          "41879294",
+          "42021957",
+          "42282964",
+          "42371045"
+        ]
+      },
+      "edge_b": {
+        "source": "Eosinophil",
+        "target": "Bone marrow",
+        "relation": "suppresses",
+        "pmids": [
+          "39060015"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Dupilumab->Airway:conflict",
+      "node_pair": [
+        "Dupilumab",
+        "Airway"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "41873994"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39736892"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Eosinophil->Bone marrow:conflict",
+      "node_pair": [
+        "Eosinophil",
+        "Bone marrow"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "differentiates_into",
+          "pmids": [
+            "35958837"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39060015"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Eosinophil<->IL-25:reverse",
+      "node_pair": [
+        "Eosinophil",
+        "IL-25"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Eosinophil",
+        "target": "IL-25",
+        "relation": "activates",
+        "pmids": [
+          "35615348"
+        ]
+      },
+      "edge_b": {
+        "source": "IL-25",
+        "target": "Eosinophil",
+        "relation": "suppresses",
+        "pmids": [
+          "35615348"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Eosinophil<->Mast cell:reverse",
+      "node_pair": [
+        "Eosinophil",
+        "Mast cell"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Eosinophil",
+        "target": "Mast cell",
+        "relation": "activates",
+        "pmids": [
+          "36627938"
+        ]
+      },
+      "edge_b": {
+        "source": "Mast cell",
+        "target": "Eosinophil",
+        "relation": "suppresses",
+        "pmids": [
+          "38538755"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "GATA3->Th2 cell:conflict",
+      "node_pair": [
+        "GATA3",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41786057",
+            "42094570"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "35615773",
+            "36054652",
+            "36502629",
+            "37575259",
+            "38923989",
+            "39394532",
+            "39470323",
+            "39609127",
+            "39737471",
+            "39803487",
+            "41764151",
+            "41786057",
+            "42094570"
+          ],
+          "pmid_count": 13
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Goblet cell<->Lung:reverse",
+      "node_pair": [
+        "Goblet cell",
+        "Lung"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Goblet cell",
+        "target": "Lung",
+        "relation": "suppresses",
+        "pmids": [
+          "41786057"
+        ]
+      },
+      "edge_b": {
+        "source": "Lung",
+        "target": "Goblet cell",
+        "relation": "differentiates_into",
+        "pmids": [
+          "39071568"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "House dust mite->Airway epithelium:conflict",
+      "node_pair": [
+        "House dust mite",
+        "Airway epithelium"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "34851736",
+            "35098856",
+            "35149050",
+            "35627266",
+            "35801505",
+            "35917932",
+            "36230980",
+            "36243221",
+            "36306937",
+            "36402066",
+            "36427449",
+            "36776398",
+            "38784796",
+            "39245681",
+            "39444792",
+            "39462225",
+            "39466641",
+            "39502000",
+            "39562597",
+            "39601620",
+            "39732106",
+            "41346596",
+            "41623094",
+            "41920083",
+            "42000636",
+            "42182742",
+            "42195233",
+            "42202638",
+            "42327952",
+            "42343077"
+          ],
+          "pmid_count": 30
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39732106"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39732106"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "House dust mite->IgE:conflict",
+      "node_pair": [
+        "House dust mite",
+        "IgE"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41795860"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "42284217"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "House dust mite->Th2 cell:conflict",
+      "node_pair": [
+        "House dust mite",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "39682780",
+            "41965727"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "38216081",
+            "38784796"
+          ],
+          "pmid_count": 2
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-25->Eosinophil:conflict",
+      "node_pair": [
+        "IL-25",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "35615348"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35615348"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-33->Airway epithelium:conflict",
+      "node_pair": [
+        "IL-33",
+        "Airway epithelium"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36297517"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "36297517"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-33->Lung:conflict",
+      "node_pair": [
+        "IL-33",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "41904701"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "34970267"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35908044"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-33->Type 2 inflammation:conflict",
+      "node_pair": [
+        "IL-33",
+        "Type 2 inflammation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "38457461"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "39301028"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-33<->IL-4:reverse",
+      "node_pair": [
+        "IL-33",
+        "IL-4"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IL-33",
+        "target": "IL-4",
+        "relation": "induces",
+        "pmids": [
+          "35693823",
+          "36426982"
+        ]
+      },
+      "edge_b": {
+        "source": "IL-4",
+        "target": "IL-33",
+        "relation": "suppresses",
+        "pmids": [
+          "36032072"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-33<->Lung:reverse",
+      "node_pair": [
+        "IL-33",
+        "Lung"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IL-33",
+        "target": "Lung",
+        "relation": "suppresses",
+        "pmids": [
+          "35908044"
+        ]
+      },
+      "edge_b": {
+        "source": "Lung",
+        "target": "IL-33",
+        "relation": "induces",
+        "pmids": [
+          "35908044"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-4->Eosinophil:conflict",
+      "node_pair": [
+        "IL-4",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35522053",
+            "41640356"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "41640356",
+            "42236192"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39552698"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-4->IL-5:conflict",
+      "node_pair": [
+        "IL-4",
+        "IL-5"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35821386"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "35821386",
+            "37779537"
+          ],
+          "pmid_count": 2
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-4->ILC2:conflict",
+      "node_pair": [
+        "IL-4",
+        "ILC2"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "37396395"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "37779537"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-4<->Th2 cell:reverse",
+      "node_pair": [
+        "IL-4",
+        "Th2 cell"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IL-4",
+        "target": "Th2 cell",
+        "relation": "induces",
+        "pmids": [
+          "39334402"
+        ]
+      },
+      "edge_b": {
+        "source": "Th2 cell",
+        "target": "IL-4",
+        "relation": "suppresses",
+        "pmids": [
+          "41724285"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IL-5->Eosinophil:conflict",
+      "node_pair": [
+        "IL-5",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "recruits",
+          "pmids": [
+            "34970267",
+            "34971621",
+            "35126350",
+            "35251534",
+            "35356877",
+            "35418991",
+            "35522053",
+            "35579040",
+            "35720294",
+            "35720347",
+            "35868977",
+            "35923421",
+            "35973984",
+            "35982175",
+            "36054652",
+            "36232470",
+            "36245744",
+            "36249456",
+            "36301080",
+            "36312895",
+            "36314316",
+            "36335418",
+            "36343258",
+            "36357156",
+            "36377070",
+            "36403040",
+            "36426982",
+            "36481478",
+            "36494835",
+            "36497064",
+            "36498632",
+            "36524437",
+            "36543689",
+            "36579077",
+            "36618395",
+            "36618942",
+            "36628218",
+            "36629239",
+            "36643820",
+            "36699060",
+            "37396395",
+            "37488944",
+            "37780108",
+            "38145912",
+            "38457461",
+            "38493955",
+            "38540714",
+            "38579561",
+            "38598774",
+            "38710145",
+            "38814679",
+            "38844678",
+            "38909363",
+            "39052598",
+            "39055133",
+            "39097197",
+            "39270571",
+            "39396109",
+            "39432687",
+            "39439801",
+            "39459021",
+            "39521278",
+            "39521285",
+            "39552698",
+            "39559998",
+            "39612890",
+            "39624446",
+            "39632158",
+            "39661227",
+            "39672815",
+            "39674169",
+            "39687398",
+            "39719614",
+            "39734474",
+            "39742914",
+            "39766355",
+            "39797273",
+            "40777291",
+            "40891582",
+            "41042267",
+            "41322401",
+            "41418640",
+            "41590514",
+            "41640356",
+            "41711394",
+            "41852620",
+            "41853324",
+            "41854953",
+            "41873839",
+            "41903881",
+            "41904357",
+            "41904701",
+            "41916430",
+            "41928209",
+            "41934326",
+            "42032301",
+            "42032643",
+            "42036049",
+            "42039166",
+            "42044815",
+            "42058205",
+            "42061467",
+            "42093973",
+            "42123654",
+            "42144066",
+            "42152594",
+            "42193381",
+            "42194806",
+            "42200324",
+            "42201298",
+            "42223828",
+            "42235311",
+            "42236192",
+            "42264210",
+            "42307829",
+            "42318010",
+            "42367766",
+            "42382776"
+          ],
+          "pmid_count": 118
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39396109",
+            "39439801",
+            "39797273",
+            "40454563",
+            "40777291",
+            "41418640",
+            "41590514",
+            "41640356",
+            "41854953",
+            "41873839",
+            "41903881",
+            "41904357",
+            "41904701",
+            "41916430",
+            "41928209",
+            "41934326",
+            "42032301",
+            "42036049",
+            "42039166",
+            "42044815",
+            "42061467",
+            "42193381",
+            "42194806",
+            "42200324",
+            "42201298",
+            "42223828",
+            "42235311",
+            "42236192",
+            "42264210",
+            "42307829",
+            "42318010",
+            "42367766"
+          ],
+          "pmid_count": 32
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36481478",
+            "36579077",
+            "36629239",
+            "38493955"
+          ],
+          "pmid_count": 4
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "36497064"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "ILC2->Eosinophil:conflict",
+      "node_pair": [
+        "ILC2",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "recruits",
+          "pmids": [
+            "36323785",
+            "36343258"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36323785"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "36343258"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "ILC2->IL-33:conflict",
+      "node_pair": [
+        "ILC2",
+        "IL-33"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "34867937",
+            "36506643",
+            "41640356",
+            "42256021"
+          ],
+          "pmid_count": 4
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "34921233",
+            "38844678",
+            "39462230",
+            "40972980",
+            "41042267"
+          ],
+          "pmid_count": 5
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35795686"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "recruits",
+          "pmids": [
+            "38844678"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "ILC2->IL-5:conflict",
+      "node_pair": [
+        "ILC2",
+        "IL-5"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "34867937",
+            "34971621",
+            "34974065",
+            "35048721",
+            "35524325",
+            "35567742",
+            "35720347",
+            "35821386",
+            "35911708",
+            "35923421",
+            "36032072",
+            "36047139",
+            "36244335",
+            "36343258",
+            "36422624",
+            "36426982",
+            "36506643",
+            "36585333",
+            "37396395",
+            "37779537",
+            "38373665",
+            "38540714",
+            "38598774",
+            "38650035",
+            "38844678",
+            "38909363",
+            "39008023",
+            "39052598",
+            "39437527",
+            "39459021",
+            "39559998",
+            "39633345",
+            "40454563",
+            "40777291",
+            "40891582",
+            "40972980",
+            "41042267",
+            "41318705",
+            "41455133",
+            "41550587",
+            "41590514",
+            "41786057",
+            "41904701",
+            "41916430",
+            "42032301",
+            "42061467",
+            "42201298",
+            "42226044",
+            "42259242"
+          ],
+          "pmid_count": 49
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42032301"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "37779537"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "ILC2->Th2 cell:conflict",
+      "node_pair": [
+        "ILC2",
+        "Th2 cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "recruits",
+          "pmids": [
+            "41780570",
+            "42094570"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36359381",
+            "42094570"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "35098856",
+            "36047139",
+            "36244335"
+          ],
+          "pmid_count": 3
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "ILC2<->Airway epithelium:reverse",
+      "node_pair": [
+        "ILC2",
+        "Airway epithelium"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "ILC2",
+        "target": "Airway epithelium",
+        "relation": "activates",
+        "pmids": [
+          "35048721"
+        ]
+      },
+      "edge_b": {
+        "source": "Airway epithelium",
+        "target": "ILC2",
+        "relation": "suppresses",
+        "pmids": [
+          "41172625"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IgE->Lung:conflict",
+      "node_pair": [
+        "IgE",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42134609"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "36045388",
+            "41896876",
+            "42134609"
+          ],
+          "pmid_count": 3
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "39996724"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IgE<->Lung:reverse",
+      "node_pair": [
+        "IgE",
+        "Lung"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IgE",
+        "target": "Lung",
+        "relation": "activates",
+        "pmids": [
+          "39996724"
+        ]
+      },
+      "edge_b": {
+        "source": "Lung",
+        "target": "IgE",
+        "relation": "suppresses",
+        "pmids": [
+          "36585880"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IgE<->Mast cell:reverse",
+      "node_pair": [
+        "IgE",
+        "Mast cell"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IgE",
+        "target": "Mast cell",
+        "relation": "activates",
+        "pmids": [
+          "34813381",
+          "35054974",
+          "35091338",
+          "35266441",
+          "35567742",
+          "35724607",
+          "35810745",
+          "35818417",
+          "35911641",
+          "35936002",
+          "36211602",
+          "36344588",
+          "36356925",
+          "36362328",
+          "36373505",
+          "36430453",
+          "36430941",
+          "36499702",
+          "36685604",
+          "37348229",
+          "38315158",
+          "38535499",
+          "38578780",
+          "38579561",
+          "38599205",
+          "38605816",
+          "38631146",
+          "38784796",
+          "38790633",
+          "38881896",
+          "38958812",
+          "38971550",
+          "38995478",
+          "39055133",
+          "39270557",
+          "39274456",
+          "39419650",
+          "39469483",
+          "39483467",
+          "39585499",
+          "39803223",
+          "41354902",
+          "41389453",
+          "41606715",
+          "41652394",
+          "41764151",
+          "41781362",
+          "41875747",
+          "41896876",
+          "41927112",
+          "41943501",
+          "42043389",
+          "42134608",
+          "42140557",
+          "42264445",
+          "42285366",
+          "42361439",
+          "42382776"
+        ]
+      },
+      "edge_b": {
+        "source": "Mast cell",
+        "target": "IgE",
+        "relation": "suppresses",
+        "pmids": [
+          "35911641"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "IgE<->Th2 cell:reverse",
+      "node_pair": [
+        "IgE",
+        "Th2 cell"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "IgE",
+        "target": "Th2 cell",
+        "relation": "suppresses",
+        "pmids": [
+          "38599205",
+          "41904701"
+        ]
+      },
+      "edge_b": {
+        "source": "Th2 cell",
+        "target": "IgE",
+        "relation": "induces",
+        "pmids": [
+          "40139187"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Lung->Airway inflammation:conflict",
+      "node_pair": [
+        "Lung",
+        "Airway inflammation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "42199635"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "38082290"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39345572"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Lung->Eosinophil:conflict",
+      "node_pair": [
+        "Lung",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "38457461"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39692536"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Lung->Goblet cell:conflict",
+      "node_pair": [
+        "Lung",
+        "Goblet cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35670856"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "differentiates_into",
+          "pmids": [
+            "39071568"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Mast cell->Airway inflammation:conflict",
+      "node_pair": [
+        "Mast cell",
+        "Airway inflammation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "34813381",
+            "35048721",
+            "35054974",
+            "35091338",
+            "35190755",
+            "35266441",
+            "35281014",
+            "35349200",
+            "35418991",
+            "35508769",
+            "35524325",
+            "35563671",
+            "35579040",
+            "35640416",
+            "35724607",
+            "35771467",
+            "35779668",
+            "35810745",
+            "35818417",
+            "35861676",
+            "35909266",
+            "35911641",
+            "35936002",
+            "35988786",
+            "36045388",
+            "36084726",
+            "36087468",
+            "36096346",
+            "36103960",
+            "36107283",
+            "36120576",
+            "36170837",
+            "36184313",
+            "36211602",
+            "36290772",
+            "36344588",
+            "36362328",
+            "36373505",
+            "36395984",
+            "36430453",
+            "36430941",
+            "36499702",
+            "36627938",
+            "36685604",
+            "36730855",
+            "37063885",
+            "37348229",
+            "38175326",
+            "38315158",
+            "38381001",
+            "38496062",
+            "38535499",
+            "38578780",
+            "38579561",
+            "38599205",
+            "38605816",
+            "38631146",
+            "38725289",
+            "38790633",
+            "38805387",
+            "38934407",
+            "38958812",
+            "38966605",
+            "38995478",
+            "39055133",
+            "39056463",
+            "39097197",
+            "39097558",
+            "39194521",
+            "39270557",
+            "39274456",
+            "39483467",
+            "39521285",
+            "39585499",
+            "39591475",
+            "39614276",
+            "39629220",
+            "39641750",
+            "39707175",
+            "39719741",
+            "39803223",
+            "40451557",
+            "41066105",
+            "41089358",
+            "41199880",
+            "41354902",
+            "41389453",
+            "41539200",
+            "41552786",
+            "41577142",
+            "41595614",
+            "41606715",
+            "41621690",
+            "41652394",
+            "41665817",
+            "41690350",
+            "41764151",
+            "41805075",
+            "41878326",
+            "41896876",
+            "41898664",
+            "41898724",
+            "41930449",
+            "41943501",
+            "41946436",
+            "41965727",
+            "41977353",
+            "42032301",
+            "42043389",
+            "42084904",
+            "42112346",
+            "42123654",
+            "42133797",
+            "42180681",
+            "42184481",
+            "42197063",
+            "42200718",
+            "42215290",
+            "42264445",
+            "42285366",
+            "42286958",
+            "42335985",
+            "42344483",
+            "42361439",
+            "42382776"
+          ],
+          "pmid_count": 125
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42264445"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "36430941"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Mast cell->IgE:conflict",
+      "node_pair": [
+        "Mast cell",
+        "IgE"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "35567742"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35911641"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Mast cell<->Airway inflammation:reverse",
+      "node_pair": [
+        "Mast cell",
+        "Airway inflammation"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Mast cell",
+        "target": "Airway inflammation",
+        "relation": "activates",
+        "pmids": [
+          "36430941"
+        ]
+      },
+      "edge_b": {
+        "source": "Airway inflammation",
+        "target": "Mast cell",
+        "relation": "suppresses",
+        "pmids": [
+          "38790633"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Mepolizumab->Eosinophil:conflict",
+      "node_pair": [
+        "Mepolizumab",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "35251534",
+            "35496822",
+            "35522053",
+            "35964610",
+            "36043197",
+            "36301080",
+            "36322679",
+            "36335418",
+            "36343053",
+            "36357156",
+            "36377070",
+            "36403040",
+            "36413432",
+            "36498632",
+            "36538979",
+            "36572182",
+            "36601503",
+            "36629198",
+            "36629239",
+            "38493955",
+            "38817801",
+            "39097197",
+            "39323188",
+            "39364473",
+            "39396109",
+            "39401916",
+            "39432687",
+            "39515519",
+            "39521278",
+            "39521285",
+            "39549986",
+            "39616011",
+            "39672815",
+            "39709955",
+            "39742914",
+            "41595614",
+            "41672447",
+            "41693409",
+            "41721757",
+            "41814604",
+            "41852620",
+            "41873839",
+            "41904357",
+            "41928209",
+            "41934326",
+            "41936961",
+            "41974006",
+            "42025815",
+            "42039166",
+            "42050830",
+            "42200324",
+            "42211876",
+            "42219146",
+            "42223828",
+            "42261614",
+            "42296041",
+            "42301331",
+            "42305539",
+            "42335035",
+            "42367766",
+            "42375362"
+          ],
+          "pmid_count": 61
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39515519"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Mucus hypersecretion->IL-13:conflict",
+      "node_pair": [
+        "Mucus hypersecretion",
+        "IL-13"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41786057"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "41786057"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Neutrophil->Net Formation:conflict",
+      "node_pair": [
+        "Neutrophil",
+        "Net Formation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "42377211"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39720267"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Neutrophil<->Airway inflammation:reverse",
+      "node_pair": [
+        "Neutrophil",
+        "Airway inflammation"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Neutrophil",
+        "target": "Airway inflammation",
+        "relation": "induces",
+        "pmids": [
+          "33854510",
+          "34702270",
+          "34813381",
+          "34851736",
+          "34970267",
+          "35053307",
+          "35356877",
+          "35571100",
+          "35579040",
+          "35640416",
+          "35657107",
+          "35795686",
+          "35868977",
+          "35884804",
+          "35963455",
+          "35986608",
+          "36054652",
+          "36067034",
+          "36271366",
+          "36304163",
+          "36311787",
+          "36332136",
+          "36343053",
+          "36359917",
+          "36371864",
+          "36377541",
+          "36381724",
+          "36395984",
+          "36408342",
+          "36417973",
+          "36426949",
+          "36428455",
+          "36428547",
+          "36451840",
+          "36458743",
+          "36460835",
+          "36463697",
+          "36465915",
+          "36472006",
+          "36473624",
+          "36478588",
+          "36517803",
+          "36518751",
+          "36578267",
+          "36596408",
+          "36597444",
+          "36613652",
+          "36627938",
+          "36686170",
+          "36729951",
+          "36893862",
+          "37692274",
+          "38175326",
+          "38216081",
+          "38317239",
+          "38547428",
+          "38579176",
+          "38599290",
+          "38650035",
+          "38651968",
+          "38710145",
+          "38814679",
+          "38844678",
+          "39097197",
+          "39194521",
+          "39211080",
+          "39270557",
+          "39358991",
+          "39366382",
+          "39366998",
+          "39381551",
+          "39393303",
+          "39408083",
+          "39409176",
+          "39414787",
+          "39417308",
+          "39438439",
+          "39448961",
+          "39450103",
+          "39459021",
+          "39460965",
+          "39462225",
+          "39466641",
+          "39515107",
+          "39524483",
+          "39528992",
+          "39552698",
+          "39568050",
+          "39580967",
+          "39594673",
+          "39614276",
+          "39617466",
+          "39687398",
+          "39719614",
+          "39732106",
+          "39736750",
+          "39751959",
+          "39767651",
+          "39796021",
+          "39965565",
+          "40695068",
+          "40963601",
+          "41025995",
+          "41042267",
+          "41174322",
+          "41196933",
+          "41346596",
+          "41418640",
+          "41438487",
+          "41602451",
+          "41621690",
+          "41641011",
+          "41652394",
+          "41750988",
+          "41800242",
+          "41814604",
+          "41822759",
+          "41939905",
+          "41940032",
+          "41966354",
+          "42028242",
+          "42093973",
+          "42095968",
+          "42107555",
+          "42116176",
+          "42123654",
+          "42152594",
+          "42156983",
+          "42156999",
+          "42157421",
+          "42165218",
+          "42166932",
+          "42168720",
+          "42181267",
+          "42191069",
+          "42208332",
+          "42212465",
+          "42214402",
+          "42219086",
+          "42219146",
+          "42219455",
+          "42220538",
+          "42222524",
+          "42223828",
+          "42228185",
+          "42244110",
+          "42250977",
+          "42264447",
+          "42273223",
+          "42276779",
+          "42286958",
+          "42287317",
+          "42291299",
+          "42305539",
+          "42335035",
+          "42337860",
+          "42341914",
+          "42367282",
+          "42370274",
+          "42372954",
+          "42379419",
+          "42381004"
+        ]
+      },
+      "edge_b": {
+        "source": "Airway inflammation",
+        "target": "Neutrophil",
+        "relation": "suppresses",
+        "pmids": [
+          "36686170"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Nf\u03bab1->ILC2:conflict",
+      "node_pair": [
+        "Nf\u03bab1",
+        "ILC2"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "37575259"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "37575259"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Omalizumab->Mast cell:conflict",
+      "node_pair": [
+        "Omalizumab",
+        "Mast cell"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36107283",
+            "39419650"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "39419650"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "39419650"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "STAT6->Eosinophil:conflict",
+      "node_pair": [
+        "STAT6",
+        "Eosinophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "36426982"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36426982"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "STAT6->IL-33:conflict",
+      "node_pair": [
+        "STAT6",
+        "IL-33"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "41904701"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36426982",
+            "41904701"
+          ],
+          "pmid_count": 2
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "STAT6->Lung:conflict",
+      "node_pair": [
+        "STAT6",
+        "Lung"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41724285"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "induces",
+          "pmids": [
+            "41724285"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Th2 cell->Airway inflammation:conflict",
+      "node_pair": [
+        "Th2 cell",
+        "Airway inflammation"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39608849"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "activates",
+          "pmids": [
+            "42123294"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Th2 cell->IL-4:conflict",
+      "node_pair": [
+        "Th2 cell",
+        "IL-4"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "35085518",
+            "35123286",
+            "35356877",
+            "35524325",
+            "35567742",
+            "35821386",
+            "35923421",
+            "36343939",
+            "36345503",
+            "36403519",
+            "36502629",
+            "36585333",
+            "36685604",
+            "37779537",
+            "38538755",
+            "38664707",
+            "39270571",
+            "39667222",
+            "39684469",
+            "39767651",
+            "41623094",
+            "41724285",
+            "41764151",
+            "41965727",
+            "42184481",
+            "42201298",
+            "42202393",
+            "42235311",
+            "42292369",
+            "42318010"
+          ],
+          "pmid_count": 30
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "41724285"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Th2 cell->IL-5:conflict",
+      "node_pair": [
+        "Th2 cell",
+        "IL-5"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "35085518",
+            "35123286",
+            "35356877",
+            "35524325",
+            "35567742",
+            "35821386",
+            "35923421",
+            "36047139",
+            "36343258",
+            "36403519",
+            "36502629",
+            "36585333",
+            "36685604",
+            "37779537",
+            "38664707",
+            "39147278",
+            "39270571",
+            "39459021",
+            "39521285",
+            "39633345",
+            "39667222",
+            "39684469",
+            "39725616",
+            "41550587",
+            "41623094",
+            "42201298",
+            "42202393",
+            "42235311",
+            "42318010",
+            "42382776"
+          ],
+          "pmid_count": 30
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "39459021"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Type 2 inflammation<->IL-33:reverse",
+      "node_pair": [
+        "Type 2 inflammation",
+        "IL-33"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Type 2 inflammation",
+        "target": "IL-33",
+        "relation": "suppresses",
+        "pmids": [
+          "34995358"
+        ]
+      },
+      "edge_b": {
+        "source": "IL-33",
+        "target": "Type 2 inflammation",
+        "relation": "activates",
+        "pmids": [
+          "39301028"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Type 2 inflammation<->IL-4:reverse",
+      "node_pair": [
+        "Type 2 inflammation",
+        "IL-4"
+      ],
+      "type": "opposing_directions",
+      "edge_a": {
+        "source": "Type 2 inflammation",
+        "target": "IL-4",
+        "relation": "induces",
+        "pmids": [
+          "38639267"
+        ]
+      },
+      "edge_b": {
+        "source": "IL-4",
+        "target": "Type 2 inflammation",
+        "relation": "suppresses",
+        "pmids": [
+          "42212541"
+        ]
+      },
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Were->House dust mite:conflict",
+      "node_pair": [
+        "Were",
+        "House dust mite"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "activates",
+          "pmids": [
+            "38664707",
+            "42264445"
+          ],
+          "pmid_count": 2
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "38216081"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Which->IL-4:conflict",
+      "node_pair": [
+        "Which",
+        "IL-4"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "35567742"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "42212541"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    },
+    {
+      "id": "Wogonin->Neutrophil:conflict",
+      "node_pair": [
+        "Wogonin",
+        "Neutrophil"
+      ],
+      "type": "opposing_relations_same_direction",
+      "edges": [
+        {
+          "relation": "induces",
+          "pmids": [
+            "36371864"
+          ],
+          "pmid_count": 1
+        },
+        {
+          "relation": "suppresses",
+          "pmids": [
+            "36371864"
+          ],
+          "pmid_count": 1
+        }
+      ],
+      "resolution": "UNRESOLVED"
+    }
+  ],
+  "batf3_contradictions_found": 1
+}

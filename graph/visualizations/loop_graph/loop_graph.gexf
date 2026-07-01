@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-07-01">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="2" title="relation" type="string" />
+      <attribute id="3" title="pmid_count" type="long" />
+      <attribute id="4" title="pmids" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="node_type" type="string" />
+      <attribute id="1" title="pmid_count" type="long" />
+    </attributes>
+    <nodes>
+      <node id="Dendritic cell" label="Dendritic cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="13" />
+        </attvalues>
+      </node>
+      <node id="IL-5" label="IL-5">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="159" />
+        </attvalues>
+      </node>
+      <node id="Airway inflammation" label="Airway inflammation">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="402" />
+        </attvalues>
+      </node>
+      <node id="Bone marrow" label="Bone marrow">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="43" />
+        </attvalues>
+      </node>
+      <node id="ILC2" label="ILC2">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="95" />
+        </attvalues>
+      </node>
+      <node id="Batf3" label="Batf3">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="Eosinophil" label="Eosinophil">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="471" />
+        </attvalues>
+      </node>
+      <node id="IgE" label="IgE">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="70" />
+        </attvalues>
+      </node>
+      <node id="Th2 cell" label="Th2 cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="183" />
+        </attvalues>
+      </node>
+      <node id="TSLP" label="TSLP">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="94" />
+        </attvalues>
+      </node>
+      <node id="IL-4" label="IL-4">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="55" />
+        </attvalues>
+      </node>
+      <node id="Tissue-resident memory T cell" label="Tissue-resident memory T cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="19" />
+        </attvalues>
+      </node>
+      <node id="Mast cell" label="Mast cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="130" />
+        </attvalues>
+      </node>
+      <node id="Allergen" label="Allergen">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="128" />
+        </attvalues>
+      </node>
+      <node id="IL-33" label="IL-33">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="70" />
+        </attvalues>
+      </node>
+      <node id="Airway epithelium" label="Airway epithelium">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="109" />
+        </attvalues>
+      </node>
+      <node id="Type 2 inflammation" label="Type 2 inflammation">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="272" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="Dendritic cell" target="Th2 cell" id="0">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="IL-33" id="1">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="ILC2" id="2">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42287819" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="Tissue-resident memory T cell" id="3">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="33952647" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Eosinophil" id="4">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="90" />
+          <attvalue for="4" value="34970267,34971621,35126350,35251534,35356877" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Bone marrow" id="5">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="9" />
+          <attvalue for="4" value="41391519,41418640,42235311,34974065,35522053" />
+        </attvalues>
+      </edge>
+      <edge source="Bone marrow" target="Eosinophil" id="6">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="39" />
+          <attvalue for="4" value="41624843,41418640,41879294,41357187,42371045" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="IL-5" id="7">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="49" />
+          <attvalue for="4" value="42061467,41904701,42201298,40777291,42226044" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="IL-33" id="8">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41640356,42256021" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Th2 cell" id="9">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41780570,42094570" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Allergen" id="10">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Type 2 inflammation" id="11">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42256021" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Dendritic cell" id="12">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="4" />
+          <attvalue for="4" value="40184040,33952647,41025995,28515363" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Tissue-resident memory T cell" id="13">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Allergen" id="14">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Airway inflammation" id="15">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="28515363" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Airway inflammation" id="16">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="251" />
+          <attvalue for="4" value="34851736,34932383,34971621,34983110,35091338" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Mast cell" id="17">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="41606715,41652394,41781362,41875747,42134608" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Th2 cell" id="18">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="IL-5" id="19">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="42201298,41550587,42235311,42318010,42202393" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="IL-4" id="20">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="42201298,42292369,41965727,42235311,42202393" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Dendritic cell" id="21">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42189350" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Type 2 inflammation" id="22">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="35333296,35754131,35795686,35908044,35911708" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="Th2 cell" id="23">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="23" />
+          <attvalue for="4" value="41391519,42201298,41788470,42292369,41965727" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="Eosinophil" id="24">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41640356,42236192" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Airway inflammation" id="25">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="16" />
+          <attvalue for="4" value="40184040,40866145,41817596,42228188,41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Th2 cell" id="26">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41805545" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Airway inflammation" id="27">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="118" />
+          <attvalue for="4" value="40451557,41898724,41898664,42285366,42335985" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Th2 cell" id="28">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="127" />
+          <attvalue for="4" value="41904701,41781362,41988246,42199635,41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="IgE" id="29">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41781362" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Tissue-resident memory T cell" id="30">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42134609" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="ILC2" id="31">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="42061467,41904701,41418640,40866145,42189350" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="IL-33" id="32">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="45" />
+          <attvalue for="4" value="41904701,42189350,41550587,42256021,42253476" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Mast cell" id="33">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41896876" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Eosinophil" id="34">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42025815" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="TSLP" id="35">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="38" />
+          <attvalue for="4" value="42193381,42253476,42189350,42345643,35098856" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Airway inflammation" id="36">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42327952" />
+        </attvalues>
+      </edge>
+      <edge source="Type 2 inflammation" target="Eosinophil" id="37">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="211" />
+          <attvalue for="4" value="41904701,42250977,42178280,42296041,41916430" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

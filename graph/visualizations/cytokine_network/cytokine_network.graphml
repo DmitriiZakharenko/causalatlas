@@ -1,0 +1,763 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d4" for="edge" attr.name="pmids" attr.type="string" />
+  <key id="d3" for="edge" attr.name="pmid_count" attr.type="long" />
+  <key id="d2" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d1" for="node" attr.name="pmid_count" attr.type="long" />
+  <key id="d0" for="node" attr.name="node_type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Elarekibep Is An Inhaled Anticalin Protein Developed To">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Tezepelumab">
+      <data key="d0">Molecule</data>
+      <data key="d1">30</data>
+    </node>
+    <node id="Benralizumab">
+      <data key="d0">Molecule</data>
+      <data key="d1">55</data>
+    </node>
+    <node id="GATA3">
+      <data key="d0">Molecule</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="Downregulated The">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="STAT6">
+      <data key="d0">Molecule</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="By Rg1">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="ST2">
+      <data key="d0">Molecule</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="S100P Expression In Aecs">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Lung">
+      <data key="d0">Tissue</data>
+      <data key="d1">31</data>
+    </node>
+    <node id="Were Found To">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Platelets">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="IL-12">
+      <data key="d0">Cytokine</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="Adherent Platelets Rapidly">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Airway remodeling">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">66</data>
+    </node>
+    <node id="Macrophages Exhibited The Highest">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Mucus hypersecretion">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">35</data>
+    </node>
+    <node id="Transcellular Ltc4 Synthesis">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="ILC2">
+      <data key="d0">Cell</data>
+      <data key="d1">95</data>
+    </node>
+    <node id="IL-25">
+      <data key="d0">Cytokine</data>
+      <data key="d1">39</data>
+    </node>
+    <node id="Th2 cell">
+      <data key="d0">Cell</data>
+      <data key="d1">183</data>
+    </node>
+    <node id="TSLP">
+      <data key="d0">Cytokine</data>
+      <data key="d1">94</data>
+    </node>
+    <node id="Asthma Exacerbations In Severe Asthma">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="IL-4">
+      <data key="d0">Cytokine</data>
+      <data key="d1">55</data>
+    </node>
+    <node id="Our Previous Study Demonstrated That Laundry Detergents">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Inflammation And Tissue Damage">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Antibody-Dependent Cellular Cytotoxicity">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Airway epithelium">
+      <data key="d0">Tissue</data>
+      <data key="d1">109</data>
+    </node>
+    <node id="We Further Observed An Early Increase In Dual">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Marked Improvement In Ear Symptoms">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Type 2 inflammation">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">272</data>
+    </node>
+    <node id="Dendritic cell">
+      <data key="d0">Cell</data>
+      <data key="d1">13</data>
+    </node>
+    <node id="And">
+      <data key="d0">Molecule</data>
+      <data key="d1">33</data>
+    </node>
+    <node id="And Significantly">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Demonstrated Enhanced">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Airway inflammation">
+      <data key="d0">Clinical_phenotype</data>
+      <data key="d1">402</data>
+    </node>
+    <node id="Bone marrow">
+      <data key="d0">Tissue</data>
+      <data key="d1">43</data>
+    </node>
+    <node id="Remodelling Of The Rbm In Asthma May">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Eosinophil">
+      <data key="d0">Cell</data>
+      <data key="d1">471</data>
+    </node>
+    <node id="It Also">
+      <data key="d0">Molecule</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="Scit-Igg1 Significantly">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Although Platelet Ltc4S Was Not Needed To">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Rg1">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Allergic Asthma Is">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="And The Mrna And Protein">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="IL-33">
+      <data key="d0">Cytokine</data>
+      <data key="d1">70</data>
+    </node>
+    <node id="Decreased The Protein">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Platelet-Adherent Macs">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Mrna And Protein Expression">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Basophil">
+      <data key="d0">Cell</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="IL-5">
+      <data key="d0">Cytokine</data>
+      <data key="d1">159</data>
+    </node>
+    <node id="Laundry Detergents">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Which">
+      <data key="d0">Molecule</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="Type-2 Inflammation Is Driven By The">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="IL-13">
+      <data key="d0">Cytokine</data>
+      <data key="d1">101</data>
+    </node>
+    <node id="Allergen">
+      <data key="d0">Molecule</data>
+      <data key="d1">128</data>
+    </node>
+    <node id="While Il-18R Was Highly">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Bsmcs Were">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="16Hbe Cells">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="In Both Patients With Allergic Asthma And Murine Model">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Such As The Synergistic">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="Il-9">
+      <data key="d0">Molecule</data>
+      <data key="d1">1</data>
+    </node>
+    <edge source="Elarekibep Is An Inhaled Anticalin Protein Developed To" target="IL-4">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41981420</data>
+    </edge>
+    <edge source="Tezepelumab" target="TSLP">
+      <data key="d2">suppresses</data>
+      <data key="d3">29</data>
+      <data key="d4">41873839,42189350,42002456,42178280,42150582</data>
+    </edge>
+    <edge source="Benralizumab" target="Eosinophil">
+      <data key="d2">suppresses</data>
+      <data key="d3">34</data>
+      <data key="d4">35251534,35496822,35522053,36301080,36314316</data>
+    </edge>
+    <edge source="Benralizumab" target="IL-5">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42201298</data>
+    </edge>
+    <edge source="GATA3" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">41786057,42094570</data>
+    </edge>
+    <edge source="Downregulated The" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42233266</data>
+    </edge>
+    <edge source="STAT6" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="STAT6" target="IL-13">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="STAT6" target="Th2 cell">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="Lung" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42157421</data>
+    </edge>
+    <edge source="Lung" target="Airway inflammation">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42199635</data>
+    </edge>
+    <edge source="Were Found To" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42061467</data>
+    </edge>
+    <edge source="Platelets" target="IL-33">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="IL-12" target="Airway inflammation">
+      <data key="d2">suppresses</data>
+      <data key="d3">3</data>
+      <data key="d4">35821386,42125803,28515363</data>
+    </edge>
+    <edge source="Adherent Platelets Rapidly" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="Macrophages Exhibited The Highest" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42328437</data>
+    </edge>
+    <edge source="Mucus hypersecretion" target="IL-13">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41786057</data>
+    </edge>
+    <edge source="ILC2" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">49</data>
+      <data key="d4">42061467,41904701,42201298,40777291,42226044</data>
+    </edge>
+    <edge source="ILC2" target="IL-13">
+      <data key="d2">induces</data>
+      <data key="d3">40</data>
+      <data key="d4">42061467,41904701,42201298,40777291,42226044</data>
+    </edge>
+    <edge source="ILC2" target="IL-33">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">41640356,42256021</data>
+    </edge>
+    <edge source="ILC2" target="Lung">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41780570</data>
+    </edge>
+    <edge source="ILC2" target="Th2 cell">
+      <data key="d2">recruits</data>
+      <data key="d3">2</data>
+      <data key="d4">41780570,42094570</data>
+    </edge>
+    <edge source="ILC2" target="Allergen">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41780570</data>
+    </edge>
+    <edge source="ILC2" target="Type 2 inflammation">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42256021</data>
+    </edge>
+    <edge source="IL-25" target="ILC2">
+      <data key="d2">activates</data>
+      <data key="d3">26</data>
+      <data key="d4">42061467,42189350,42259242,42253476,42032301</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">30</data>
+      <data key="d4">42201298,41550587,42235311,42318010,42202393</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-13">
+      <data key="d2">induces</data>
+      <data key="d3">32</data>
+      <data key="d4">42201298,42292369,41965727,41550587,42235311</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">30</data>
+      <data key="d4">42201298,42292369,41965727,42235311,42202393</data>
+    </edge>
+    <edge source="TSLP" target="Inflammation And Tissue Damage">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">40292285</data>
+    </edge>
+    <edge source="TSLP" target="Asthma Exacerbations In Severe Asthma">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41552786</data>
+    </edge>
+    <edge source="TSLP" target="Dendritic cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42189350</data>
+    </edge>
+    <edge source="TSLP" target="Type 2 inflammation">
+      <data key="d2">activates</data>
+      <data key="d3">34</data>
+      <data key="d4">35333296,35754131,35795686,35908044,35911708</data>
+    </edge>
+    <edge source="IL-4" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">23</data>
+      <data key="d4">41391519,42201298,41788470,42292369,41965727</data>
+    </edge>
+    <edge source="IL-4" target="Eosinophil">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">41640356,42236192</data>
+    </edge>
+    <edge source="IL-4" target="GATA3">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42235311</data>
+    </edge>
+    <edge source="IL-4" target="In Both Patients With Allergic Asthma And Murine Model">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42328437</data>
+    </edge>
+    <edge source="Our Previous Study Demonstrated That Laundry Detergents" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41640356</data>
+    </edge>
+    <edge source="Airway epithelium" target="ST2">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">40866145</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">45</data>
+      <data key="d4">41904701,42189350,41550587,42256021,42253476</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-25">
+      <data key="d2">induces</data>
+      <data key="d3">33</data>
+      <data key="d4">42061467,42189350,42253476,42324975,41590514</data>
+    </edge>
+    <edge source="Airway epithelium" target="Eosinophil">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42025815</data>
+    </edge>
+    <edge source="Airway epithelium" target="TSLP">
+      <data key="d2">induces</data>
+      <data key="d3">38</data>
+      <data key="d4">42193381,42253476,42189350,42345643,35098856</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway inflammation">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42327952</data>
+    </edge>
+    <edge source="We Further Observed An Early Increase In Dual" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">40777291</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Eosinophil">
+      <data key="d2">induces</data>
+      <data key="d3">211</data>
+      <data key="d4">41904701,42250977,42178280,42296041,41916430</data>
+    </edge>
+    <edge source="Dendritic cell" target="Th2 cell">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41391519</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-33">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="Dendritic cell" target="ILC2">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42287819</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-12">
+      <data key="d2">induces</data>
+      <data key="d3">4</data>
+      <data key="d4">35821386,38806137,39270571,28515363</data>
+    </edge>
+    <edge source="And" target="IL-13">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41550587</data>
+    </edge>
+    <edge source="And" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41780570</data>
+    </edge>
+    <edge source="And" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41916430</data>
+    </edge>
+    <edge source="And" target="Eosinophil">
+      <data key="d2">activates</data>
+      <data key="d3">2</data>
+      <data key="d4">42379525,41943501</data>
+    </edge>
+    <edge source="And" target="Lung">
+      <data key="d2">suppresses</data>
+      <data key="d3">2</data>
+      <data key="d4">42264447,42220538</data>
+    </edge>
+    <edge source="And" target="ILC2">
+      <data key="d2">suppresses</data>
+      <data key="d3">2</data>
+      <data key="d4">42259242,42256021</data>
+    </edge>
+    <edge source="And Significantly" target="IL-5">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41418640</data>
+    </edge>
+    <edge source="Demonstrated Enhanced" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41965727</data>
+    </edge>
+    <edge source="Bone marrow" target="Eosinophil">
+      <data key="d2">recruits</data>
+      <data key="d3">39</data>
+      <data key="d4">41624843,41418640,41879294,41357187,42371045</data>
+    </edge>
+    <edge source="Remodelling Of The Rbm In Asthma May" target="TSLP">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42345643</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway remodeling">
+      <data key="d2">induces</data>
+      <data key="d3">52</data>
+      <data key="d4">41948100,42320919,41904357,42335985,41602451</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">251</data>
+      <data key="d4">34851736,34932383,34971621,34983110,35091338</data>
+    </edge>
+    <edge source="It Also" target="IL-33">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41786057</data>
+    </edge>
+    <edge source="Scit-Igg1 Significantly" target="IL-33">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42256021</data>
+    </edge>
+    <edge source="Although Platelet Ltc4S Was Not Needed To" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="Rg1" target="IL-33">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41550587</data>
+    </edge>
+    <edge source="Rg1" target="IL-5">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41550587</data>
+    </edge>
+    <edge source="Allergic Asthma Is" target="IL-4">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41922900</data>
+    </edge>
+    <edge source="And The Mrna And Protein" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41418640</data>
+    </edge>
+    <edge source="IL-33" target="ILC2">
+      <data key="d2">activates</data>
+      <data key="d3">36</data>
+      <data key="d4">42061467,41904701,41418640,40866145,42189350</data>
+    </edge>
+    <edge source="IL-33" target="ST2">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">40866145</data>
+    </edge>
+    <edge source="IL-33" target="By Rg1">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41550587</data>
+    </edge>
+    <edge source="IL-33" target="Transcellular Ltc4 Synthesis">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="IL-33" target="Lung">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="IL-33" target="Il-9">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42032301</data>
+    </edge>
+    <edge source="Decreased The Protein" target="IL-13">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41786057</data>
+    </edge>
+    <edge source="Platelet-Adherent Macs" target="IL-33">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41577142</data>
+    </edge>
+    <edge source="Basophil" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42359483</data>
+    </edge>
+    <edge source="IL-5" target="Eosinophil">
+      <data key="d2">recruits</data>
+      <data key="d3">90</data>
+      <data key="d4">34970267,34971621,35126350,35251534,35356877</data>
+    </edge>
+    <edge source="IL-5" target="Bone marrow">
+      <data key="d2">activates</data>
+      <data key="d3">9</data>
+      <data key="d4">41391519,41418640,42235311,34974065,35522053</data>
+    </edge>
+    <edge source="IL-5" target="Marked Improvement In Ear Symptoms">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42261614</data>
+    </edge>
+    <edge source="IL-5" target="Antibody-Dependent Cellular Cytotoxicity">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42367766</data>
+    </edge>
+    <edge source="Laundry Detergents" target="IL-13">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41640356</data>
+    </edge>
+    <edge source="Which" target="ILC2">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41791620</data>
+    </edge>
+    <edge source="Which" target="Airway inflammation">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41817596</data>
+    </edge>
+    <edge source="Which" target="Lung">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="Which" target="IL-5">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="Which" target="Eosinophil">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42121933</data>
+    </edge>
+    <edge source="Type-2 Inflammation Is Driven By The" target="IL-4">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">40454563</data>
+    </edge>
+    <edge source="IL-13" target="Mucus hypersecretion">
+      <data key="d2">induces</data>
+      <data key="d3">34</data>
+      <data key="d4">41391519,42371471,41839285,41788470,40777291</data>
+    </edge>
+    <edge source="IL-13" target="Airway remodeling">
+      <data key="d2">induces</data>
+      <data key="d3">25</data>
+      <data key="d4">41839285,41788470,40777291,42193381,42311018</data>
+    </edge>
+    <edge source="IL-13" target="16Hbe Cells">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41786057</data>
+    </edge>
+    <edge source="IL-13" target="Lung">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">41904701</data>
+    </edge>
+    <edge source="IL-13" target="S100P Expression In Aecs">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42032605</data>
+    </edge>
+    <edge source="IL-13" target="Eosinophil">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">42193381</data>
+    </edge>
+    <edge source="IL-13" target="Mrna And Protein Expression">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42317364</data>
+    </edge>
+    <edge source="Allergen" target="Th2 cell">
+      <data key="d2">activates</data>
+      <data key="d3">127</data>
+      <data key="d4">41904701,41781362,41988246,42199635,41780570</data>
+    </edge>
+    <edge source="Allergen" target="IL-13">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">41640356</data>
+    </edge>
+    <edge source="Allergen" target="Lung">
+      <data key="d2">induces</data>
+      <data key="d3">4</data>
+      <data key="d4">42134609,42228188,41733137,42199635</data>
+    </edge>
+    <edge source="While Il-18R Was Highly" target="IL-13">
+      <data key="d2">induces</data>
+      <data key="d3">1</data>
+      <data key="d4">40777291</data>
+    </edge>
+    <edge source="Bsmcs Were" target="IL-4">
+      <data key="d2">activates</data>
+      <data key="d3">1</data>
+      <data key="d4">42372812</data>
+    </edge>
+    <edge source="Such As The Synergistic" target="IL-4">
+      <data key="d2">suppresses</data>
+      <data key="d3">1</data>
+      <data key="d4">42039166</data>
+    </edge>
+  </graph>
+</graphml>

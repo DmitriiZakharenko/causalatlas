@@ -1,0 +1,40 @@
+{
+  "hypothesis_id": "H-C001",
+  "reviewed_at": "2026-07-01T11:56:16.040535+00:00",
+  "reviewer_searches": [
+    {
+      "reviewer": "A_immunologist",
+      "query": "Batf3 CD103 IL-12 house dust mite",
+      "count": "1",
+      "pmids": ["28515363"]
+    },
+    {
+      "reviewer": "B_systems_biologist",
+      "query": "Batf3 resident memory house dust mite",
+      "count": "1",
+      "pmids": ["40184040"]
+    },
+    {
+      "reviewer": "C_editor",
+      "query": "Batf3 IL-12 resident memory allergic airway reconcile",
+      "count": "0",
+      "pmids": []
+    }
+  ],
+  "votes": {
+    "A_immunologist": {
+      "vote": "ACCEPT",
+      "reason": "Search returns only PMID 28515363 (IL-12/cDC1 chronic exacerbation); no paper reconciles with PMID 40184040. Harmonized head-to-head protocol is appropriate C-class resolution."
+    },
+    "B_systems_biologist": {
+      "vote": "UNCERTAIN",
+      "reason": "PMID 28515363 already shows chronic HDM exacerbation within Batf3-/- (not only acute). 'Duration alone' is insufficient—hypothesis must specify TRM establishment kinetics as modulating variable under harmonized protocol."
+    },
+    "C_editor": {
+      "vote": "ACCEPT",
+      "reason": "Reconciliation search returns 0 hits. No prior art states inter-study protocol/TRM-kinetics as resolving variable. Falsification criteria pre-specified."
+    }
+  },
+  "consensus": "ACCEPT",
+  "consensus_note": "2 ACCEPT / 1 UNCERTAIN — accepted conditionally: resolution depends on whether TRM establishment kinetics (not duration alone) modulates dominance of IL-12 restraint vs TRM amplification under harmonized HDM."
+}

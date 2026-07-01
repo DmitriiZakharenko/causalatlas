@@ -1,0 +1,26 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# node
+node_modules/
+dist/
+frontend/.vite/
+
+# db
+*.db
+*.sqlite
+*.sqlite3
+
+# os
+.DS_Store
+
+# matplotlib cache from legacy scripts
+graph/visualizations/.mpl/

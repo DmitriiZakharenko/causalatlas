@@ -1,0 +1,5656 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d0" for="node" attr.name="node_type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Allergen">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Th2 cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Batf3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dendritic cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Tissue-resident memory T cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Airway inflammation">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Airway hyperresponsiveness">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Type 2 inflammation">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Eosinophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Airway remodeling">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Airway">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="T Cell Migratory And Differentiation Pathways">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="House dust mite">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Immunosuppressive Activities">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="ILC2">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="IL-5">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="IL-13">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Mucus hypersecretion">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="IL-33">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Airway epithelium">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="ST2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bone marrow">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Autophagy Inhibition">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dc Over-Maturation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-4">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Neutrophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Cytokine Analysis Revealed Synergistic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IgE">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mast cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Trained immunity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Innate immune cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="S1 Demonstrated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd11C+Cd69+ Apcs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Suggesting">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ea-Bn Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ea-Bn">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gata-3 Expression In Cd3+Cd4+ T Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ultimately">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd4+ T-Cell Proliferation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cells Specialize In The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Immune Homeostasis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Their Survival">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rg1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Rg1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cars On T Cells Facilitates Precise">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="TSLP">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Asthma Exacerbations In Severe Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Platelets">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Platelet-Adherent Macs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-25">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Propofol Markedly Improved Ova-Induced Asthma And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Propofol Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Mediators">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Laundry Detergents">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Axis Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lung">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Fd Exposure">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Promoted Dc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="16Hbe Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="GATA3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="It Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Goblet cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Fibroblast">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Which">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pathology">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Enhanced">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Et-1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Benralizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Number Of Total Asthma Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 39">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dupilumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mepolizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tezepelumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Omalizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mean R5-R20">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 0">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pharmacological">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hypoxia">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hif-1Α Upregulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tal Alleviates Allergic Asthma By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="STAT6">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Through">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="35 Points And A Statistically Significant">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Thereby">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Allergic Asthma Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Treatment That">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Systemic Corticosteroid">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Airway smooth muscle">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Ndufa1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="M2 Macrophage Polarization In Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Both Groups">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Usual Care">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alternatively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Macrophages">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ccl24-Ccr3 To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Demonstrated Enhanced">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Primarily By Infiltrating Inflammatory Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Likely">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pnecs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gdnf Receptors">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Suppressed The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Glycolysis-Associated Proteins">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Clinical">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Allergic Diseases">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bronchial Inflammation In Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Chronic Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-9">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Interleukin-13">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 82">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Healthcare Utilization">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Homeostasis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cn Markedly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cytokine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cn And Luteolin Significantly Inhibited Cytokine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Was Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Chronic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Chronic Activation Of These Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Despite Surface">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ly6G">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma-Related Inflammatory Mediators In Asthmatic Mice">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="But">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Their Proliferation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Annualized Asthma Exacerbations By 61">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Coincident With">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tissue Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cur">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Colony">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Factor 3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-1Β">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Epithelial Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Particularly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Five">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Common Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dexamethasone">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mouse">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Epithelial-Mesenchymal Transition">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gclc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Decreasing The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Predominantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Epithelial Tuft Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tissue Damage">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Melatonin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-18 Paradoxically">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Altered">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation-Related Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Distinct Cytokine-Targeted Strategies">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="But Required">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Toll-Like Receptor 4">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Morbidity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Implementation May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inter-Centre Variability">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gngt2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ast Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Downregulated The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ecp">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Late-Onset Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gene And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T-Cell Activation Markers">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Scit-Igg1 Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Alarmins">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gl Dose-Dependently">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma By Age 5 Years">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Rab44-Knockout">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cell Adhesion And Chemotaxis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pbmcs And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sputum From Acute Asthma Patients">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cytokine Release">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mean Snot-22">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 76">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Oxpc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mediated Relaxation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Forskolin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Oxpapc Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Oxpapc Dose-Dependently">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Iso-">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hospitalizations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="57-85">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fut1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rapid">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Kit">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Further Confirming">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Effector T-Cell">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Icam-1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Identified">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cellular Metabolism">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pck2-K100 Succinylation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lactate Accumulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Characterized By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Follicular B Cell Populations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Without">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Accelerated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="At Abs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas Lactate Supplementation Exacerbated Inflammation By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Histone Lactylation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mgtx">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="3 Inhibition">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="M2 Markers">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Peimisine Alleviated Allergic Asthma By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Differentially">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mv130">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Basophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Reciprocal">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Antibody-Dependent Cellular Cytotoxicity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And It">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Elevated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ef Alleviates Allergic Asthma By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bsmcs Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Qfxbf Markedly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sting Expression">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Innate Immunity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Antagonists">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Its Inhibition">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sputum Analysis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Pathogens">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Net Formation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Autophagosomes By 16Hbe Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Autophagosomes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lc3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Effects">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Excursion">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="For Differentially">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="That Could">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 2-Deoxy-D-Glucose">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pathologic Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fstl1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lwoffii Exposure">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Adenosine Receptor A2A Was Abundantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Two Innate Immune Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Activation Of Two Innate Immune Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Steroid-Insensitive Asthma In Sensitized Mice">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Macrophage Phenotype">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sars-Cov-2 Infection">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Wild-Type">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Treg Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Epithelium-Specific Deletion Of Atg5">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-4R">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sprr3 Knockdown">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Factor 1 Receptor">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Csf-1R-Dominant Macrophages">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Proteins">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-6">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Data Revealed C-Kit+ Cells Could Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pathological Changes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Symptoms">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ace Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Interferon-Γ">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="As B Cell Specific Foxo1 Deficiency">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Evs Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ast May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Down-Regulate The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Enhance The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Petn Protein">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dta-64">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tgf-Β1/Smad">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Periostin Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Postn">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Including The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Disease Pathogenesis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Eotaxin-3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Although Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cooh">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Subepithelial">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Compound A Treatment Of Rbl-2H3 Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Allergies">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Are">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation In Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dexamethasone Successfully">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="On Adult Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Physiological Functions">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hla-Dr">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Th17 Cell Induction And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-18 Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammasome Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cell Type-Specific Transcriptomic Changes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Unnecessary Controversy">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Leading To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Th 17 Cell Responses">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gene">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Concentration-Dependently">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Cxcl8">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From Hbaso">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From Mbaso">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Possibly By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Innate Lymphoid Cells 2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Including">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Chymase">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd5L">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rv Infection">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="3 Or 7 Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ifns">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bmdcs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Administration Of Anti-Il-23 Antibody Led To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Administration Of Anti-Il-23 Antibody">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthmatic Mice">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="G-Rh2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tnf-Α">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hbmsc Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Both Treatments">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cells And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-8">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Potentially">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cyslt1R">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Is Highly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="X47 Priming">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Indicating">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Virus Clearance">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Circulatory Cells Were Not Required To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Showing That New Circulatory Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Exacerbations In Adults">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Japan">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Uncontrolled Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Menthone Supplementation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Decreased Mrna">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In The Intractable Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Vitro">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Foxp3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="No Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="2G4 Antibody Suppressed The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pro-Inflammatory Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Histamine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Selectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="H2R">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Ranitidine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="H1R">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Phospholipase-A2 Activity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alox15+ Macrophages">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bhb Directly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Alternative">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pge2 Directly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Development Of Allergic Asthma In Childhood">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Epithelial Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nmu Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pbmcs">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Nmu">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nmu">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="50 Ppb Experienced A Greater">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alternaria-Induced Dna">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Was Suppressed">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reduced Asthma Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="2 Expressed By Immune Cells That">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Feno Likewise">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 63">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Often">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Slc7A8 Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tiotropium">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Phospholipase Cγ1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bronchoconstriction">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Monensin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mc Number">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Exacerbation Rates">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Remission Of Egpa-Related Asthma And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Eb-A">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Virus-Induced Asthma Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Thrombin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dclk1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Wogonin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Huc-Mscs Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Molecules">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Improving The Efficacy Of Asthma Therapy">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T2-Related Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T2-High Asthma Was Characterized By Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tf-1-Cell Proliferation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Them Into Helper T Cells 2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="It Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="To Explore">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nk1R Expression">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reduces">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Decreases In These Cells Correlated With">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With No">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Severity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Drug-Free Remission In Bronchial Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Severe Asthma Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fk506 Completely">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fk506 Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cald">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd80 Expression">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="I-309">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Decreased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Interleukin 13">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="That Ultimately">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-10 Production In Cd4+ T-Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Protection">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mocs-Dependency">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 39">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Annualized Asthma Exacerbation Rate">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Clinical Trials">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Leonurine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Leonurine Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="That">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pathogenic Pulmonary Immune Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fingolimod Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fingolimod">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="16 Hbe Cells Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Cyslt">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Light">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Contractility">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Abnormal">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Cell Infiltration">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="100 Fxmol And L1 Efaroxan">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Insulin Secretion">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tgf-Β1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reos-Like Cells Demonstrated A Higher Gene">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Its Receptors In Asthma Patients">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Were Notably">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Age">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Toxicity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="All Primarily">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pneumonia">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Gene">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T-Bet">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Had">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nf-Κb Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Aaers Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Improvements Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="2-Fold Were Those That">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="5 And Granulocyte Macrophage-Colony">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Factor">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="It Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Phosphoinositide 3-Kinase">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cell Proliferation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Jax2 Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Then">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rhoa">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Phenotyping">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Delayed Asthma Diagnosis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ccr3 Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rbl-2H3 Cells Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tfh Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Melo Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Differentially">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Intracellular Calcium">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Considerably">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mettl3 Knockdown">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Apetala">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="10 Mg/Kg Sam Had">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Smoking">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="About 80">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Copd">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nr4A2-Deficient Cells Had Elevated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Immune Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Lipopolysaccharide">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Narirutin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reduced The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Various Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With A">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Level Of Myeloid Cell Leukemia 1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nuclear Factor-">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Src/Egfr Pathway">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Punicalagin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Resolution Of Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas Homeostasis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bodily Health">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Disease Control">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mrna">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tryptase">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cytotoxic Effector Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Increased Cytokine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="After The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 33">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 40">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Vasodilators">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inappropriate">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="High">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Anti-Cd3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Anti-Cd3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Exacerbations Of Asthmatic Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pro-Inflammatory Mediators">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cytokines Interleukin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nfκb1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Runx1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Patients With Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Induce The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-17">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Intestinal Adults">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Adults">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Murine Model Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Ovalbumin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ampk Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Lipopolysaccharide">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Eda">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Its">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reduces Cytokine Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd226 Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Immunopathology">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Amlexanox Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Asthma In Most-But Not All-Studies">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mmp12">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hlms Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By T2-High">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From Hlms">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rosa">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lipopolysaccharide">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="5-Hydroxytryptamine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sigmodontis Mf">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Are">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Airflow Obstruction">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mucus Plugging">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Instrumental In">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hallmark Features Of Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Benzylisoquinolinium Neuromuscular">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cells To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Blocked The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Piezo1 Is">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Yoda1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Numerous Immune Cells Including Macrophages">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bkc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Expression Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Muscarinic M3 Receptor Blockage">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hfd">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Both Asthma Protocols">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ibrutinib">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Na">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hlms">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="1-97 And 98-132 Fragments">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Vegf-A">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hse">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hse Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Serpinb2-Induced 15Lo1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Interleukin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="7 Macrophages Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Calycosin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Calycosin Markedly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Likely">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Treatment Failure">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In An Asthma Mouse Model">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cuproptosis-Related Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dee Exposure">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rapidly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Amdk19-Hk">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Dexamethasone">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cell Proliferation Concomitant With A">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hpd Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Were Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Maraviroc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Rsv">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Single Cell">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Kv Subunits">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Repeated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Gm-Csf">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Maintaining Homeostasis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd127">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ifn-Γ Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Activation Of Cd8+ T Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Each Other">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Papain">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Evidenced By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="It Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Diazinon">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Diazinon">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Activating Inkt">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Increasing Ifn-Γ">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-17A">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation And Oxidative Stress">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Pgd2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Prostaglandin D2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Persistent Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hmo Receptors">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mps">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Mdm2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Apoptosis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Short-Term Stress">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Immune Tolerance">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Had">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fev1/Fvc">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mif">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pbm Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nlrp3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Together">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Obese Asthma Phenotype">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Relapse">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Depemokimab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Os Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cftr Function">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Released From">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Genetic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Following Stimulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Risk">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Cells From Mice With Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lut">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Allergic Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Farm-Dust Stimulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cell Type-Specific Regulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Models Of Allergic Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With Significant">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Barnesiella_Intestinihominis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 12">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sensory Neurons">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Substance P">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Development">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Clinical Asthma Remission">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Am-Specific">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Club Cell Proliferation In A Yap">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="1 And Tlr4 Were Constitutively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Acly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Shikonin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Upon Activation Of The Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cbd-X Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Along With">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Leukocyte">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cbd-X Administration">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fbac Administration">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Oxidative Stress">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fbac">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Abrogated Inflammation By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sting Agonists">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T Regulatory">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Qafa">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ferroptosis-Related Proteins">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Smzcl">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Not Only">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mc Populations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Promote Naïve T-Cell">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alarmin Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tzp May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Wide-Ranging Effects">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alt-Ext-Induced Protein">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Effects">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-17C">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Raw264">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Further">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Synbiotics">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Patient">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reliever-Triggered Ics">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Citrulline Could">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alveolar Development">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Surface Receptors">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dp2 Antagonism">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By A Protease-Activated Receptor 1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Caccinh-A01">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mucin-5Ac">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Overexpression Of Ipmk In Hif2Α-Deficient Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Phosphatidylinositol">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas Pharmacological">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Severe Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Actively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tlr Agonists">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Imiquimod">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas P/I">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="For The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lead To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Silencing Smad4">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ferroptosis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Infiltration">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cleaved-Caspase-9">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Novel Therapeutic Strategies For Asthma Management">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="2Α In">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-9 Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Jak2-Stat3-Irf1 Pathway">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Ultimately">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Phosphatidylcholine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="That Of A Th1 Cytokine">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Systemic Medication">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Level Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By 56">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cycloz Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Marked">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pon1 Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Interleukin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Endogenous Glucocorticoid">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Gsh">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma-Induced Oxidative-Stress Damage">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="4 Receptor Α Subunit And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hmgb1 Cko">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthmatic Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Upe">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Upe Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Enhances The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Autophagy">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Shp2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Genotype-Guided Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lower Asthma Exacerbation Rates">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd4+ T Cells">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Relevant Molecules">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sevoflurane Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Peribronchial Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And By Reducing Local B-Cell">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Thus">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dominance">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Sputum">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Self-Management">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Allergic Asthma Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Serum">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Significant">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Versus Placebo">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="13 Inhibitor That Specifically">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Increased Ccl4">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Mucus">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Estrogen Could">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 4">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Severe Asthma Exacerbation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Was Associated With The Increased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Therapeutically">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Transient Therapeutic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Combined">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Single-Cell Rna Sequencing Similarly Demonstrated">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Icos">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Particularly Those">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Immunotherapy">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Stem Cells Can">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthmatic Phenotypes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation And Hyperreactivity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Protein">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Hce Markedly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lkb1 Deficiency">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Scavenger Receptor Class B Type 1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fvc Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In 9">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fev1 Was">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Brg1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pharmacologic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Apm">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Stronger No">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="cDC1">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Using A Murine Asthma Model">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Murine Asthma Evs Failed To">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="T Lymphocytes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas Disrupted Regulatory T-Cell Function May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tolerance Thresholds">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cytokine Memory Involving Il-7 And Il-15">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Altered T- And B-Cell Homeostasis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Palbociclib Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pathway">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dex">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Everolimus">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Everolimus Effectively">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Th17 Cell Differentiation Models">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="By Nets">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Stim-4">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Interleukin-6">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ros Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reversible">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="I-20S Β5I">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Aconitase">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Mannose">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mtor/Pparγ Signaling">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mtorc1 Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Neuromedin U Receptor 1">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Typical Symptoms">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Nf-Κb">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammatory Markers">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Over Time">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And Pharmacologic">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Cd207 Deletion">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lgwwjxd">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In X5">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Demonstrating">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Activation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rt-Qpcr Showed">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Th17 Cell Differentiation In Dep-Exacerbated Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Decreased">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ratio">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 48">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ctsb Inhibition">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Markedly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Proinflammatory Mediators">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Clearance Of Senescent Cells Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rosiglitazone">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dotp May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation Even Without High T2-Markers">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lar-Mrna Biomarkers In T Cell Populations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Ultimately">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tissue Remodelling">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fbxw7">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="4-Hne">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bronchial Hyperreactivity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 234">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Azithromycin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Exacerbations Clinically">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="In Type 2 Alveolar Epithelium">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Asthma Pathogenesis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Both Strains">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Receptor Fcεr1 And Can Be">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pgd2/Dp2 Stimulation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ifn-Γ Production">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dep Exposure Exacerbates Asthma By">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fibrosis-Related Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Qrrz Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rdn Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Eos Viability">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rdn">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mitophagy">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Spina-Christi">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Clinicians Should">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ctsl">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Indicating Effective">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which Often">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Suboptimal Outcomes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Threshold Validation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Enhancing Asthma Control And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Severe Exacerbations In Patients With Asthma">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Inflammation-Associated Gene Sets">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Whereas">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bcl-Xl">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Resistin">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Antibody">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tbvcomp">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Antibodies That">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="From 57">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Β2-Adrenergic Receptors">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Rnase2A Expression">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Clp Primarily">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Il-12">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Can Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mastocytosis">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Compared With">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Alveolar Macrophages">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Locally">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-12">
+      <data key="d0">Cytokine</data>
+    </node>
+    <edge source="Allergen" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Allergen" target="IL-13">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergen" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Allergen" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Allergen" target="Tissue-resident memory T cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Allergen" target="Development Of Allergic Asthma In Childhood">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Type 2 inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Allergen" target="Exacerbations Of Asthmatic Inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergen" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Allergic Asthma">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Goblet cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Airway hyperresponsiveness">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergen" target="Proinflammatory Mediators">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergen" target="Lar-Mrna Biomarkers In T Cell Populations">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th2 cell" target="Chronic Inflammation">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Th2 cell" target="Treg Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Th2 cell" target="GATA3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="Allergen">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th2 cell" target="Each Other">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th2 cell" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th2 cell" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-25">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Batf3" target="Dendritic cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Batf3" target="Tissue-resident memory T cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Batf3" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Batf3" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Batf3" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Batf3" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dendritic cell" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-33">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Dendritic cell" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dendritic cell" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dendritic cell" target="Tissue-resident memory T cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-12">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway hyperresponsiveness">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Pathology">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Lung">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Asthmatic Phenotypes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="M2 Macrophage Polarization In Asthma">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway inflammation" target="In Rab44-Knockout">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Macrophage Phenotype">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway inflammation" target="Airway hyperresponsiveness">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway inflammation" target="Lung">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Airway inflammation" target="Tgf-Β1/Smad">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway inflammation" target="Airway smooth muscle">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Ampk Activation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="By Papain">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="Persistent Exacerbations">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway inflammation" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Mucus hypersecretion">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway inflammation" target="Il-12">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Subepithelial">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Th 17 Cell Responses">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway hyperresponsiveness" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Cyslt1R">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Threshold Validation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Of Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Cell Adhesion And Chemotaxis">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Significantly">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="IL-25">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Bone marrow">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Asthma Exacerbations In Adults">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Of Cyslt">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="IL-4">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Phenotyping">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Src/Egfr Pathway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Cytotoxic Effector Cells">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Eosinophil" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Cftr Function">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="With Interleukin">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Novel Therapeutic Strategies For Asthma Management">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Systemic Medication">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="In Serum">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Over Time">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="From 234">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Sputum">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="From 57">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Β2-Adrenergic Receptors">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Rnase2A Expression">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway remodeling" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway remodeling" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway remodeling" target="Endogenous Glucocorticoid">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway remodeling" target="Bronchial Hyperreactivity">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Airway" target="T Cell Migratory And Differentiation Pathways">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway" target="Sputum Analysis">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway" target="STAT6">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="Airflow Obstruction">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="Numerous Immune Cells Including Macrophages">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="By Repeated">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway" target="Asthma Severity">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="Mucin-5Ac">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Immunosuppressive Activities">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="House dust mite" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="House dust mite" target="Bronchial Inflammation In Asthma">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="House dust mite" target="Of Autophagosomes By 16Hbe Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Autophagosomes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Basophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="House dust mite" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Fibroblast">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="TSLP">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="House dust mite" target="By A Protease-Activated Receptor 1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="House dust mite" target="Cleaved-Caspase-9">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Mtor/Pparγ Signaling">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="House dust mite" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Batf3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="House dust mite" target="Allergen">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="IL-5">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Their Survival">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="IL-33">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="ILC2" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Allergen">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Homeostasis">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="ILC2" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="In Interferon-Γ">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="ILC2" target="Airway hyperresponsiveness">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="ILC2" target="Bmdcs">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="In Vitro">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="In Patients With Asthma">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="ILC2" target="With Interleukin">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="By Dexamethasone">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="ILC2" target="Maintaining Homeostasis">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Cd127">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="With Pgd2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Hmo Receptors">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="ILC2" target="ST2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="IL-25">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Scavenger Receptor Class B Type 1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Ros Production">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="Typical Symptoms">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-5" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-5" target="Bone marrow">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-5" target="Antibody-Dependent Cellular Cytotoxicity">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-5" target="Airway remodeling">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-5" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="Mepolizumab">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="By Cytokines">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-5" target="Its Receptors In Asthma Patients">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-5" target="Exacerbation Rates">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="By 40">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-5" target="Asthma Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-5" target="Mc Populations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-13" target="Mucus hypersecretion">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="16Hbe Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-13" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-13" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="Sars-Cov-2 Infection">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-13" target="Airway epithelium">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="IL-13" target="Fibroblast">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="House dust mite">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-13" target="Rhoa">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-13" target="Apoptosis">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-13" target="Jak2-Stat3-Irf1 Pathway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mucus hypersecretion" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mucus hypersecretion" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mucus hypersecretion" target="Mucus Plugging">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="ILC2">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="IL-33" target="ST2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="By Rg1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-33" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-33" target="Il-9">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Inflammation In Asthma">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="Unnecessary Controversy">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="From Mbaso">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Basophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Virus-Induced Asthma Exacerbations">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="By Eda">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-33" target="Mast cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-33" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Nlrp3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-33" target="Il-9 Production">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="By Everolimus">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-33" target="In Type 2 Alveolar Epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="ST2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Cars On T Cells Facilitates Precise">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-25">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Their Proliferation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Of Alarmins">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Asthma By Age 5 Years">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Type 2 inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway hyperresponsiveness">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="Cell Type-Specific Transcriptomic Changes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Innate Lymphoid Cells 2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="Tnf-Α">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Epithelial Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Improving The Efficacy Of Asthma Therapy">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="House dust mite">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Tgf-Β1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Il-6">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Intracellular Calcium">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Airway epithelium" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="Cytokines Interleukin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="In Asthma In Most-But Not All-Studies">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway epithelium" target="Cuproptosis-Related Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Mif">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Asthma Exacerbations">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Alarmin Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Interleukin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="Relevant Molecules">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ST2" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Bone marrow" target="Eosinophil">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Bone marrow" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Bone marrow" target="By Rsv">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Bone marrow" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Autophagy Inhibition" target="Dc Over-Maturation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="GATA3">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-4" target="Csf-1R-Dominant Macrophages">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="IL-4" target="Eotaxin-3">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-4" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="Tfh Cells">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="IL-4" target="By 33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="From Hlms">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="By Diazinon">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="STAT6">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4" target="Type 2 inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Ndufa1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Innate Immunity">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="Net Formation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="Significantly">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="By Lipopolysaccharide">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Resolution Of Inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="In Na">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Asthma Development">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="Upon Activation Of The Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Oxidative Stress">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Neutrophil" target="Autophagy">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Neutrophil" target="Fibrosis-Related Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Cytokine Analysis Revealed Synergistic" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IgE" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="Sting Expression">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IgE" target="Steroid-Insensitive Asthma In Sensitized Mice">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Asthmatic Mice">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Bronchoconstriction">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Them Into Helper T Cells 2">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="IgE" target="Nk1R Expression">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Cd80 Expression">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IgE" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Phosphoinositide 3-Kinase">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="Considerably">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IgE" target="Asthma Risk">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="That Of A Th1 Cytokine">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IgE" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="Inflammatory Mediators">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Asthma Symptoms">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="Allergen">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Postn">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Disease Pathogenesis">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mast cell" target="Airway remodeling">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="Drug-Free Remission In Bronchial Asthma">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Severe Asthma Treatment">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Tryptase">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mast cell" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="Inflammatory Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Histamine">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Acly">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Surface Receptors">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mast cell" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mast cell" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Trained immunity" target="Innate immune cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Trained immunity" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Trained immunity" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="S1 Demonstrated" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cd11C+Cd69+ Apcs" target="Trained immunity">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Suggesting" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Suggesting" target="Phospholipase-A2 Activity">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ea-Bn Also" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ea-Bn" target="Gata-3 Expression In Cd3+Cd4+ T Cells">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ultimately" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ultimately" target="Epithelial-Mesenchymal Transition">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ultimately" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Significantly" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Significantly" target="By Ranitidine">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Significantly" target="Inflammatory Markers">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Effectively" target="Cd4+ T-Cell Proliferation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cells Specialize In The" target="Immune Homeostasis">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Rg1" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rg1" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Asthma Exacerbations In Severe Asthma">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Dendritic cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Asthma Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Reduced Asthma Exacerbations">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Hlms">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="TSLP" target="From Hlms">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="1-97 And 98-132 Fragments">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Of Vegf-A">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="IL-25">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="TSLP" target="Ferroptosis-Related Proteins">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="TSLP" target="Fibroblast">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="TSLP" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Cd4+ T Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="TSLP" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Platelets" target="IL-33">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Platelet-Adherent Macs" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-25" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-25" target="Two Innate Immune Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-25" target="Type 2 inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-25" target="Activation Of Two Innate Immune Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-25" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-25" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-25" target="Hla-Dr">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Propofol Markedly Improved Ova-Induced Asthma And" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Propofol Significantly" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Laundry Detergents" target="IL-13">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Axis Activation" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="Morbidity">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="Late-Onset Asthma">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Pathologic Inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="Pathological Changes">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Physiological Functions">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Lung" target="Goblet cell">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Lung" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="Mucus hypersecretion">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="Asthma Severity">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="By Anti-Cd3">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Following Stimulation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="Club Cell Proliferation In A Yap">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="T Regulatory">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="Inflammatory Infiltration">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lung" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lung" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lung" target="Asthma Pathogenesis">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Fd Exposure" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Promoted Dc" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="GATA3" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="GATA3" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="GATA3" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="It Also" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="It Also" target="Goblet cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="It Also" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="It Also" target="Type 2 inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Goblet cell" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Goblet cell" target="Ecp">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Goblet cell" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Goblet cell" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Goblet cell" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fibroblast" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Fibroblast" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Fibroblast" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Fibroblast" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Fibroblast" target="Bcl-Xl">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Tissue Damage">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="Kit">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Goblet cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="Mmp12">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="Apoptosis">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Asthma Relapse">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="From 12">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which" target="Self-Management">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="From 4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which" target="Inflammation And Hyperreactivity">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="Interleukin-6">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which" target="Aconitase">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Can" target="Asthma">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Can" target="Vasodilators">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Can" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Can" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Can" target="Inflammation Even Without High T2-Markers">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Enhanced" target="Et-1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Enhanced" target="Th2 cell">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Benralizumab" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Benralizumab" target="Healthcare Utilization">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Benralizumab" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Benralizumab" target="Rapid">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Number Of Total Asthma Exacerbations" target="By 39">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Type 2 inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Clinical Asthma Remission">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dupilumab" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Asthmatic Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Tezepelumab">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dupilumab" target="Inflammation-Associated Gene Sets">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mepolizumab" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mepolizumab" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mepolizumab" target="Tf-1-Cell Proliferation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="Annualized Asthma Exacerbations By 61">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="In Japan">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Tezepelumab" target="In Annualized Asthma Exacerbation Rate">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="Severe Asthma Exacerbation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Omalizumab" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Omalizumab" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Omalizumab" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Omalizumab" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mean R5-R20" target="From 0">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pharmacological" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pharmacological" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pharmacological" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pharmacological" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pharmacological" target="Ctsl">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hypoxia" target="Hif-1Α Upregulation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tal Alleviates Allergic Asthma By" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="IL-13">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="STAT6" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="GATA3">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="STAT6" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="Serpinb2-Induced 15Lo1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="STAT6" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Through" target="Dendritic cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Were" target="STAT6">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Were" target="With Interleukin-13">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Were" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Were" target="IL-13">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Were" target="IL-4">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Were" target="In The Intractable Asthma">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Were" target="Asthma Protection">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="35 Points And A Statistically Significant" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thereby" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Thereby" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Thereby" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thereby" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Thereby" target="STAT6">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thereby" target="Cell Proliferation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thereby" target="Nuclear Factor-">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Thereby" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thereby" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergic Asthma Is" target="IL-4">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergic Asthma Is" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Treatment That" target="Systemic Corticosteroid">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Allergen">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Rhoa">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Cell Proliferation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Both Groups" target="Usual Care">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Alternatively" target="Macrophages">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Alternatively" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Ccl24-Ccr3 To" target="Eosinophil">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Demonstrated Enhanced" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which Were" target="Primarily By Infiltrating Inflammatory Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Likely" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Pnecs" target="Gdnf Receptors">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Suppressed The" target="Glycolysis-Associated Proteins">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Suppressed The" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Clinical" target="Allergic Diseases">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Il-9" target="Airway hyperresponsiveness">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Was" target="By 82">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Was" target="In Alternative">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Was" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Cn Markedly" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cytokine" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Cn And Luteolin Significantly Inhibited Cytokine" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Was Significantly" target="Fibroblast">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Chronic" target="Airway remodeling">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Chronic Activation Of These Cells" target="Airway remodeling">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Despite Surface" target="Ly6G">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Asthma-Related Inflammatory Mediators In Asthmatic Mice">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Lc3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Pro-Inflammatory Mediators">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And The" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And The" target="Histamine">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="But" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="But" target="By Everolimus">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Coincident With" target="Tissue Inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cur" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Colony" target="Factor 3">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Colony" target="Factor 1 Receptor">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Il-1Β" target="Epithelial Activation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Particularly" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Five" target="Common Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dexamethasone" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mouse" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Gclc" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Decreasing The" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Decreasing The" target="Inflammatory Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Predominantly" target="By Epithelial Tuft Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Melatonin" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Il-18 Paradoxically" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Altered" target="Inflammation-Related Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which May" target="Distinct Cytokine-Targeted Strategies">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which May" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which May" target="Toxicity">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which May" target="Immunopathology">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which May" target="Treatment Failure">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="But Required" target="Toll-Like Receptor 4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Implementation May" target="Inter-Centre Variability">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Gngt2" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Ast Can" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Downregulated The" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Gene And" target="T-Cell Activation Markers">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Scit-Igg1 Significantly" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Gl Dose-Dependently" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pbmcs And" target="Sputum From Acute Asthma Patients">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="May" target="Cytokine Release">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mean Snot-22" target="From 76">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Significantly" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Significantly" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Significantly" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Significantly" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Significantly" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Significantly" target="Fev1/Fvc">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Oxpc" target="Airway smooth muscle">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mediated Relaxation" target="By Forskolin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Oxpapc Significantly" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Oxpapc Dose-Dependently" target="Iso-">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hospitalizations" target="57-85">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="With Increased" target="Fut1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="With Increased" target="T2-Related Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Further Confirming" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Effector T-Cell" target="Icam-1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Identified" target="Cellular Metabolism">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Pck2-K100 Succinylation" target="Lactate Accumulation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Characterized By" target="Follicular B Cell Populations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Without" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="With Accelerated" target="At Abs">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Whereas Lactate Supplementation Exacerbated Inflammation By" target="Histone Lactylation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mgtx" target="STAT6">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="3 Inhibition" target="M2 Markers">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Peimisine Alleviated Allergic Asthma By" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Differentially" target="Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Differentially" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mv130" target="Trained immunity">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Basophil" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Basophil" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Basophil" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Basophil" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Basophil" target="Omalizumab">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Reciprocal" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And It" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And It" target="No Production">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Elevated" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ef Alleviates Allergic Asthma By" target="STAT6">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Bsmcs Were" target="IL-4">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Qfxbf Markedly" target="Airway hyperresponsiveness">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Antagonists" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Its Inhibition" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Pathogens" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="With Effects" target="In Excursion">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="For Differentially" target="Macrophages">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="That Could" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Was" target="By 2-Deoxy-D-Glucose">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which Can" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Can" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fstl1" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Lwoffii Exposure" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Adenosine Receptor A2A Was Abundantly" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which Is" target="Goblet cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Is" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Asthma Was" target="In Wild-Type">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Epithelium-Specific Deletion Of Atg5" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4R" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4R" target="IgE">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-4R" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4R" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4R" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4R" target="Raw264">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-4R" target="Interleukin">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Sprr3 Knockdown" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Proteins" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Whereas The" target="Il-6">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Il-6" target="Il-10 Production In Cd4+ T-Cells">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Data Revealed C-Kit+ Cells Could Significantly" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ace Treatment" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="As B Cell Specific Foxo1 Deficiency" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Evs Were" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ast May" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Down-Regulate The" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Enhance The" target="Petn Protein">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dta-64" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Periostin Is" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Including The" target="Homeostasis">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Including The" target="Immune Tolerance">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Although Increased" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Cooh" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Compound A Treatment Of Rbl-2H3 Cells" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergies" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Which Are" target="IL-33">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Dexamethasone Successfully" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="On Adult Asthma" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Th17 Cell Induction And" target="Il-18 Production">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Inflammasome Is" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Leading To" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leading To" target="Disease Control">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leading To" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leading To" target="5-Hydroxytryptamine">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leading To" target="Ifn-Γ Production">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Gene" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Gene" target="Foxp3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Concentration-Dependently" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Cxcl8" target="From Hbaso">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Possibly By" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Including" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Including" target="Inflammatory Cell Infiltration">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Including" target="Sputum">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Chymase" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cd5L" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cd5L" target="Nf-Κb">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rv Infection" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="3 Or 7 Can" target="Ifns">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Administration Of Anti-Il-23 Antibody Led To" target="Airway hyperresponsiveness">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Administration Of Anti-Il-23 Antibody" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="G-Rh2" target="Airway remodeling">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="G-Rh2" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="G-Rh2" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="G-Rh2" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hbmsc Treatment" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Both Treatments" target="Airway remodeling">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cells And" target="Il-8">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Potentially" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Potentially" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Is Highly" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="X47 Priming" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Indicating" target="Virus Clearance">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Circulatory Cells Were Not Required To" target="Allergen">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Showing That New Circulatory Cells" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Uncontrolled Asthma" target="In Japan">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Menthone Supplementation" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Decreased Mrna" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="In Vitro" target="IgE">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="2G4 Antibody Suppressed The" target="Pro-Inflammatory Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Histamine" target="Fibroblast">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Selectively" target="H2R">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which Selectively" target="H1R">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Alox15+ Macrophages" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Bhb Directly" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Was" target="STAT6">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Pge2 Directly" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Nmu Effectively" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Pbmcs" target="By Nmu">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Nmu" target="IL-5">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="50 Ppb Experienced A Greater" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Alternaria-Induced Dna" target="Was Suppressed">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="2 Expressed By Immune Cells That" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Feno Likewise" target="From 63">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Often" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Slc7A8 Was" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tiotropium" target="Phospholipase Cγ1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tiotropium" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Monensin" target="Mc Number">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Monensin" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Exacerbation Rates" target="From 2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Effectively" target="Remission Of Egpa-Related Asthma And">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Effectively" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Eb-A" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Thrombin" target="Dclk1">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Wogonin" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Huc-Mscs Effectively" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Molecules" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="T2-High Asthma Was Characterized By Increased" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="It Significantly" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="To Explore" target="Basophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Reduces" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Decreases In These Cells Correlated With" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="With No" target="Chymase">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Fk506 Completely" target="ST2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fk506 Also" target="IL-13">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cald" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cald" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Increased" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Increased" target="I-309">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Increased" target="I-309">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Increased" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Increased" target="Prostaglandin D2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Decreased" target="Interleukin 13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="That Ultimately" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mocs-Dependency" target="From 39">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Clinical Trials" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leonurine" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Leonurine Also" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="That" target="Pathogenic Pulmonary Immune Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="That" target="IL-33">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="That" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Fingolimod Significantly" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fingolimod" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="16 Hbe Cells Were" target="IL-4">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Light" target="Contractility">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Abnormal" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="100 Fxmol And L1 Efaroxan" target="Insulin Secretion">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tgf-Β1" target="Fibroblast">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Reos-Like Cells Demonstrated A Higher Gene" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Were Notably" target="By Age">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="All Primarily" target="Pneumonia">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Gene" target="T-Bet">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Had" target="Nf-Κb Activation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Aaers Were" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Improvements Were" target="Dupilumab">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="2-Fold Were Those That" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="5 And Granulocyte Macrophage-Colony" target="Factor">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="It Is" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Jax2 Significantly" target="Airway remodeling">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Then" target="With Interleukin-13">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Then" target="With Lipopolysaccharide">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And May" target="Delayed Asthma Diagnosis">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ccr3 Is" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Rbl-2H3 Cells Were" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Melo Were" target="Airway smooth muscle">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Differentially" target="Gene">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Differentially" target="Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mettl3 Knockdown" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Apetala" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="10 Mg/Kg Sam Had" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Smoking" target="About 80">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Copd" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Nr4A2-Deficient Cells Had Elevated" target="Immune Genes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Narirutin" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Reduced The" target="Various Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Reduced The" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="With A" target="Level Of Myeloid Cell Leukemia 1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="With A" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="With A" target="In Phosphatidylcholine">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Punicalagin" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Whereas Homeostasis" target="Bodily Health">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Mrna" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Increased Cytokine" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="After The" target="Asthma">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Inappropriate" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="High" target="Tissue-resident memory T cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="High" target="Th2 cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Anti-Cd3" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Nfκb1" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Nfκb1" target="Runx1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Induce The" target="Il-17">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Intestinal Adults" target="Dendritic cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Adults" target="Lung">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Asthma Murine Model Was" target="By Ovalbumin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Its" target="Reduces Cytokine Production">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cd226 Is" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Amlexanox Significantly" target="Bone marrow">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hlms Were" target="By T2-High">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Rosa" target="Lipopolysaccharide">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Sigmodontis Mf" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Are" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Are" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Instrumental In" target="Hallmark Features Of Asthma">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Benzylisoquinolinium Neuromuscular" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cells To" target="Type 2 inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Blocked The" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Piezo1 Is" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Yoda1" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Bkc" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Expression Was" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Muscarinic M3 Receptor Blockage" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hfd" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Both Asthma Protocols" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ibrutinib" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hse" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hse" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hse Effectively" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="7 Macrophages Were" target="IL-4">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Calycosin" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Calycosin Markedly" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Likely" target="Allergen">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="In An Asthma Mouse Model" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dee Exposure" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Rapidly" target="Type 2 inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Amdk19-Hk" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cell Proliferation Concomitant With A" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hpd Treatment" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Were Significantly" target="By Maraviroc">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Single Cell" target="Kv Subunits">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Gm-Csf" target="Lung">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Ifn-Γ Also" target="Activation Of Cd8+ T Cells">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Evidenced By" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Evidenced By" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And By" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And By" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="It Can" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Diazinon" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Diazinon" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Activating Inkt" target="Increasing Ifn-Γ">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Il-17A" target="Inflammation And Oxidative Stress">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mps" target="Dendritic cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Mdm2" target="Lung">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Short-Term Stress" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Had" target="Fev1/Fvc">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pbm Were" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Together" target="Obese Asthma Phenotype">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Depemokimab" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Os Can" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Released From" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Genetic" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Inflammatory Cells From Mice With Asthma" target="By Ovalbumin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lut" target="Tgf-Β1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lut" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Farm-Dust Stimulation" target="Cell Type-Specific Regulation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="In Models Of Allergic Asthma" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="With Significant" target="In Barnesiella_Intestinihominis">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="With Significant" target="In X5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Sensory Neurons" target="Substance P">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Am-Specific" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="1 And Tlr4 Were Constitutively" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Shikonin" target="Airway hyperresponsiveness">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cbd-X Significantly" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Along With" target="Leukocyte">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cbd-X Administration" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Fbac Administration" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fbac" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Abrogated Inflammation By" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Sting Agonists" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Qafa" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Smzcl" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Not Only" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Promote Naïve T-Cell" target="Th2 cell">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Tzp May" target="Wide-Ranging Effects">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Alt-Ext-Induced Protein" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Effects" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Il-17C" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Further" target="TSLP">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Which Further" target="Th17 Cell Differentiation In Dep-Exacerbated Asthma">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Synbiotics" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Patient" target="Reliever-Triggered Ics">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Citrulline Could" target="Alveolar Development">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Dp2 Antagonism" target="Airway smooth muscle">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Caccinh-A01" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Overexpression Of Ipmk In Hif2Α-Deficient Cells" target="Phosphatidylinositol">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Whereas Pharmacological" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Severe Asthma" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Actively" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Tlr Agonists" target="Airway inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Imiquimod" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Whereas P/I" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="For The" target="Inflammatory Mediators">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Lead To" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Silencing Smad4" target="Ferroptosis">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="2Α In" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And Ultimately" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Level Were" target="By 56">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cycloz Also" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which Marked" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pon1 Treatment" target="IL-25">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Gsh" target="Asthma-Induced Oxidative-Stress Damage">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="4 Receptor Α Subunit And" target="IL-4">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Hmgb1 Cko" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Upe" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Upe Treatment" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Enhances The" target="Airway epithelium">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Shp2" target="Neutrophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Genotype-Guided Treatment" target="Lower Asthma Exacerbation Rates">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Sevoflurane Significantly" target="Peribronchial Inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And By Reducing Local B-Cell" target="IgE">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Thus" target="Dominance">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Thus" target="Interleukin">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Allergic Asthma Was" target="House dust mite">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Significant" target="Versus Placebo">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="13 Inhibitor That Specifically" target="IL-13">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Increased Ccl4" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Mucus" target="Allergic Diseases">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Estrogen Could" target="Neutrophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Asthma Was Associated With The Increased" target="Pro-Inflammatory Cytokines">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Therapeutically" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Transient Therapeutic" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Combined" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Single-Cell Rna Sequencing Similarly Demonstrated" target="Icos">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Particularly Those" target="By Immunotherapy">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Stem Cells Can" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Protein" target="Toll-Like Receptor 4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Hce Markedly" target="Airway">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lkb1 Deficiency" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fvc Was" target="In 9">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Fev1 Was" target="In 9">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Brg1" target="IL-5">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Brg1" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Pharmacologic" target="Brg1">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Apm" target="Stronger No">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="cDC1" target="TSLP">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="cDC1" target="Tissue-resident memory T cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Using A Murine Asthma Model" target="By Ovalbumin">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Murine Asthma Evs Failed To" target="T Lymphocytes">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Whereas Disrupted Regulatory T-Cell Function May" target="Tolerance Thresholds">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cytokine Memory Involving Il-7 And Il-15" target="Altered T- And B-Cell Homeostasis">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Palbociclib Significantly" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Pathway" target="ILC2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Dex" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Everolimus Effectively" target="IL-33">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Th17 Cell Differentiation Models" target="By Nets">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Stim-4" target="Mast cell">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Reversible" target="I-20S Β5I">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And Mannose" target="Bone marrow">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Mtorc1 Activation" target="Neuromedin U Receptor 1">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="And Pharmacologic" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Cd207 Deletion" target="House dust mite">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Lgwwjxd" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Demonstrating" target="Activation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rt-Qpcr Showed" target="GATA3">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Decreased" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Ratio" target="From 48">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Ctsb Inhibition" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Markedly" target="Exacerbations">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Clearance Of Senescent Cells Significantly" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rosiglitazone" target="Allergen">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dotp May" target="Airway">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which Ultimately" target="Tissue Remodelling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Fbxw7" target="Airway epithelium">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="4-Hne" target="Airway remodeling">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Azithromycin" target="Exacerbations Clinically">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Both Strains" target="IL-5">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Receptor Fcεr1 And Can Be" target="IgE">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Pgd2/Dp2 Stimulation" target="Basophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Dep Exposure Exacerbates Asthma By" target="Airway">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Qrrz Significantly" target="IL-13">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rdn Significantly" target="Eos Viability">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Rdn" target="Mitophagy">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Spina-Christi" target="Th2 cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Clinicians Should" target="Dupilumab">
+      <data key="d1">maintains</data>
+    </edge>
+    <edge source="Indicating Effective" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Which Often" target="Suboptimal Outcomes">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Enhancing Asthma Control And" target="Severe Exacerbations In Patients With Asthma">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Whereas" target="Fibroblast">
+      <data key="d1">differentiates_into</data>
+    </edge>
+    <edge source="Resistin" target="Antibody">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tbvcomp" target="Type 2 inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Antibodies That" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Clp Primarily" target="Mast cell">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Can Also" target="Mastocytosis">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Compared With" target="Alveolar Macrophages">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="Locally" target="IgE">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-12" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+  </graph>
+</graphml>

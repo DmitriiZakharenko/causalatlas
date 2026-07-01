@@ -1,0 +1,4288 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-07-01">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="edge">
+      <attribute id="2" title="relation" type="string" />
+      <attribute id="3" title="pmid_count" type="long" />
+      <attribute id="4" title="pmids" type="string" />
+    </attributes>
+    <attributes mode="static" class="node">
+      <attribute id="0" title="node_type" type="string" />
+      <attribute id="1" title="pmid_count" type="long" />
+    </attributes>
+    <nodes>
+      <node id="Elarekibep Is An Inhaled Anticalin Protein Developed To" label="Elarekibep Is An Inhaled Anticalin Protein Developed To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Were" label="Were">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="GATA3" label="GATA3">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="3" />
+        </attvalues>
+      </node>
+      <node id="Benralizumab" label="Benralizumab">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="55" />
+        </attvalues>
+      </node>
+      <node id="Downregulated The" label="Downregulated The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Can Alter The Natural Course Of Allergic Diseases And" label="Can Alter The Natural Course Of Allergic Diseases And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="In Rab44-Knockout" label="In Rab44-Knockout">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Only 17Β-Estradiol" label="Only 17Β-Estradiol">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Were Found To" label="Were Found To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And Elevated" label="And Elevated">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Rapid" label="Rapid">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Dupilumab" label="Dupilumab">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="27" />
+        </attvalues>
+      </node>
+      <node id="Adherent Platelets Rapidly" label="Adherent Platelets Rapidly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cn And Luteolin Significantly Inhibited Cytokine" label="Cn And Luteolin Significantly Inhibited Cytokine">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="cDC1" label="cDC1">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="This" label="This">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Il-18 Paradoxically" label="Il-18 Paradoxically">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Exacerbations" label="Exacerbations">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="IL-25" label="IL-25">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="39" />
+        </attvalues>
+      </node>
+      <node id="S Ability To" label="S Ability To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Sought To Investigate Whether Epithelial Fucosylation" label="We Sought To Investigate Whether Epithelial Fucosylation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="But" label="But">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="This Means That Respiratory Diseases May" label="This Means That Respiratory Diseases May">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Reciprocal" label="Reciprocal">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Chronic Inflammation" label="Chronic Inflammation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Reactive Oxygen Species" label="Reactive Oxygen Species">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Adhesion And Chemokine Receptors" label="Adhesion And Chemokine Receptors">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Pharmacological Inhibition Of Kat8" label="Pharmacological Inhibition Of Kat8">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mast cell" label="Mast cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="130" />
+        </attvalues>
+      </node>
+      <node id="Airway epithelium" label="Airway epithelium">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="109" />
+        </attvalues>
+      </node>
+      <node id="Decreasing The" label="Decreasing The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Maintained Junctional Organization And" label="Maintained Junctional Organization And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="This Cell Type" label="This Cell Type">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mouse" label="Mouse">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Qfxbf Markedly" label="Qfxbf Markedly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Airway inflammation" label="Airway inflammation">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="402" />
+        </attvalues>
+      </node>
+      <node id="Signal Transducer And Activator Of Transcription 3" label="Signal Transducer And Activator Of Transcription 3">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Particularly" label="Particularly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Application Of A Ret-Specific Inhibitor" label="Application Of A Ret-Specific Inhibitor">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="This Phenotype" label="This Phenotype">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Although Platelet Ltc4S Was Not Needed To" label="Although Platelet Ltc4S Was Not Needed To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Blockade Of Lymphocyte Egress During The Primary Phase" label="Blockade Of Lymphocyte Egress During The Primary Phase">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And Pathogens" label="And Pathogens">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cars On T Cells Facilitates Precise" label="Cars On T Cells Facilitates Precise">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Neutrophil" label="Neutrophil">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="42" />
+        </attvalues>
+      </node>
+      <node id="Bet V 7 Has The Functional Capacity To" label="Bet V 7 Has The Functional Capacity To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="For" label="For">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Peimisine Alleviated Allergic Asthma By" label="Peimisine Alleviated Allergic Asthma By">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Is More Likely To" label="Is More Likely To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Pathogenesis Of Allergic Disorders" label="The Pathogenesis Of Allergic Disorders">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cn Markedly" label="Cn Markedly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="35 Points And A Statistically Significant" label="35 Points And A Statistically Significant">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Formation Of Nets" label="The Formation Of Nets">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Propofol Significantly" label="Propofol Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ccl8- Ccr8 To" label="Ccl8- Ccr8 To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Its Inhibition" label="Its Inhibition">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ea-Bn Also" label="Ea-Bn Also">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Vitamin D Levels" label="Vitamin D Levels">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cd4+ T Cell Apoptosis In Kr-Treated Mice" label="Cd4+ T Cell Apoptosis In Kr-Treated Mice">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cell Adhesion And Chemotaxis" label="Cell Adhesion And Chemotaxis">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Suggesting" label="Suggesting">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="While Il-18R Was Highly" label="While Il-18R Was Highly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Genetic Knockout Of Fkbp5" label="Genetic Knockout Of Fkbp5">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Their Proliferation" label="Their Proliferation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Of Alarmins" label="Of Alarmins">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Il-9" label="Il-9">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And It" label="And It">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Low-Dose Intranasal Lps Alone" label="Low-Dose Intranasal Lps Alone">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Nf-ĸb May Regulate The" label="Nf-ĸb May Regulate The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="ST2" label="ST2">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="3" />
+        </attvalues>
+      </node>
+      <node id="Experimental Asthma Was" label="Experimental Asthma Was">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Attenuating Severe Exacerbations" label="Attenuating Severe Exacerbations">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Neutralization Of Osteopontin" label="Neutralization Of Osteopontin">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Long-Term Biologic Therapy" label="Long-Term Biologic Therapy">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Sting Expression" label="Sting Expression">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Airway hyperresponsiveness" label="Airway hyperresponsiveness">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="14" />
+        </attvalues>
+      </node>
+      <node id="Barrier Integrity Via The Ifn-Α/Ifnar1 Pathway" label="Barrier Integrity Via The Ifn-Α/Ifnar1 Pathway">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Favorable Disease Control After Discontinuation" label="Favorable Disease Control After Discontinuation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Net Formation" label="Net Formation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Inflammatory Mediators" label="Inflammatory Mediators">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Of Alarmin Cytokines" label="Of Alarmin Cytokines">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Investigated Whether Glucocorticoids Can" label="We Investigated Whether Glucocorticoids Can">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Innate Immunity" label="Innate Immunity">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Homeostasis" label="Homeostasis">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Molecular Mechanisms" label="The Molecular Mechanisms">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Melatonin" label="Melatonin">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Production Of Inflammatory Mediators" label="The Production Of Inflammatory Mediators">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Gclc" label="Gclc">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Significantly" label="Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="ILC2" label="ILC2">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="95" />
+        </attvalues>
+      </node>
+      <node id="Cn And Luteolin Significantly" label="Cn And Luteolin Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Asthma Exacerbations In Severe Asthma" label="Asthma Exacerbations In Severe Asthma">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="TSLP" label="TSLP">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="94" />
+        </attvalues>
+      </node>
+      <node id="Air Is Designed To" label="Air Is Designed To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ndufa1" label="Ndufa1">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Inflammation And Tissue Damage" label="Inflammation And Tissue Damage">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Significant Clinical Lessening Of The Condition" label="Significant Clinical Lessening Of The Condition">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Smurf2 Was Markedly" label="Smurf2 Was Markedly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Two Synergistically Affect The" label="The Two Synergistically Affect The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Not Only As A Necessary Step For" label="Not Only As A Necessary Step For">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Prolonged Immunosuppressive Therapy" label="Prolonged Immunosuppressive Therapy">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Autophagosomes" label="Autophagosomes">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Animal Models Have Been Central To Uncovering How Fungi" label="Animal Models Have Been Central To Uncovering How Fungi">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Secretion Of Il-6" label="The Secretion Of Il-6">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Marked Improvement In Ear Symptoms" label="Marked Improvement In Ear Symptoms">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Type 2 inflammation" label="Type 2 inflammation">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="272" />
+        </attvalues>
+      </node>
+      <node id="Any Type Ia Mechanism For" label="Any Type Ia Mechanism For">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Bronchoalveolar Lavage Fluid" label="Bronchoalveolar Lavage Fluid">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Demonstrated Enhanced" label="Demonstrated Enhanced">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Bone marrow" label="Bone marrow">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="43" />
+        </attvalues>
+      </node>
+      <node id="Remodelling Of The Rbm In Asthma May" label="Remodelling Of The Rbm In Asthma May">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Versus Placebo With Sustained" label="Versus Placebo With Sustained">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="It Also" label="It Also">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Scit-Igg1 Significantly" label="Scit-Igg1 Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="A Transcription Factor" label="A Transcription Factor">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Air Purification Is Widely" label="Air Purification Is Widely">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Chronic" label="Chronic">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Myeloid-Specific Par2 Deletion Significantly" label="Myeloid-Specific Par2 Deletion Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And Vitamin D Supplementation Significantly" label="And Vitamin D Supplementation Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Which Enhanced The" label="Which Enhanced The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Axis Activation" label="Axis Activation">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Is Characterized By" label="Is Characterized By">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Although Most Patients" label="Although Most Patients">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Decreased The Protein" label="Decreased The Protein">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Significantly Increasing The" label="Significantly Increasing The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Common Γ-Chain Cytokines Il-2/Il-7 Induced And" label="Common Γ-Chain Cytokines Il-2/Il-7 Induced And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Combined Inhibition Can" label="Combined Inhibition Can">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Suggest That Gdnf-Ret Signaling" label="We Suggest That Gdnf-Ret Signaling">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cytokine Analysis Revealed Synergistic" label="Cytokine Analysis Revealed Synergistic">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Inflammatory Signaling And" label="Inflammatory Signaling And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Of Autophagosomes By 16Hbe Cells" label="Of Autophagosomes By 16Hbe Cells">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Asthma By Age 5 Years" label="Asthma By Age 5 Years">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Type-2 Inflammation Is Driven By The" label="Type-2 Inflammation Is Driven By The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cur" label="Cur">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Bsmcs Were" label="Bsmcs Were">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Demonstrated That Scit Increased The" label="We Demonstrated That Scit Increased The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Rbet V 7" label="Rbet V 7">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ccl24-Ccr3 To" label="Ccl24-Ccr3 To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ultimately" label="Ultimately">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="3" />
+        </attvalues>
+      </node>
+      <node id="Such As The Synergistic" label="Such As The Synergistic">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Trained immunity" label="Trained immunity">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="7" />
+        </attvalues>
+      </node>
+      <node id="In Ko Mice Compared With Wt Mice" label="In Ko Mice Compared With Wt Mice">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Tal Alleviates Allergic Asthma By" label="Tal Alleviates Allergic Asthma By">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Antagonists" label="Antagonists">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="S100P Expression In Aecs" label="S100P Expression In Aecs">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Present Study Revealed That Cimifugin Effectively" label="The Present Study Revealed That Cimifugin Effectively">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Platelets" label="Platelets">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Combined Inhibition Can Reduce The" label="Combined Inhibition Can Reduce The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="IL-12" label="IL-12">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="5" />
+        </attvalues>
+      </node>
+      <node id="Smurf2 Was Markedly Upregulated In Patient Samples And" label="Smurf2 Was Markedly Upregulated In Patient Samples And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Gngt2 Expression Was Selectively" label="Gngt2 Expression Was Selectively">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Airway remodeling" label="Airway remodeling">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="66" />
+        </attvalues>
+      </node>
+      <node id="Has Demonstrated Efficacy In" label="Has Demonstrated Efficacy In">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Gngt2" label="Gngt2">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Randomized Trials Of Monoclonal Antibodies" label="Randomized Trials Of Monoclonal Antibodies">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Macrophages Exhibited The Highest" label="Macrophages Exhibited The Highest">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Healthcare Utilization" label="Healthcare Utilization">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Its Underlying Inflammatory Processes" label="Its Underlying Inflammatory Processes">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Omalizumab" label="Omalizumab">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="25" />
+        </attvalues>
+      </node>
+      <node id="Nlrp3 In Bmdcs" label="Nlrp3 In Bmdcs">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Platelet-Specific Ltc4S Deletion" label="Platelet-Specific Ltc4S Deletion">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Transcellular Ltc4 Synthesis" label="Transcellular Ltc4 Synthesis">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Chronic Metabolic Stress" label="Chronic Metabolic Stress">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="IgE" label="IgE">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="70" />
+        </attvalues>
+      </node>
+      <node id="Th2 cell" label="Th2 cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="183" />
+        </attvalues>
+      </node>
+      <node id="Along With A Concurrent" label="Along With A Concurrent">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Fibroblast" label="Fibroblast">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Of Granule Proteins" label="Of Granule Proteins">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Minimal Relaxation In High-K+-Induced Contractions" label="Minimal Relaxation In High-K+-Induced Contractions">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Without" label="Without">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Their Survival" label="Their Survival">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Co-Incubation With Mirna-146B-5P Mimics" label="Co-Incubation With Mirna-146B-5P Mimics">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Suggesting That Il1R1" label="Suggesting That Il1R1">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Annualized Asthma Exacerbations By 61" label="Annualized Asthma Exacerbations By 61">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And" label="And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="33" />
+        </attvalues>
+      </node>
+      <node id="And Significantly" label="And Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Which In Turn" label="Which In Turn">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Tim-3 Expression Is" label="Tim-3 Expression Is">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Compared With Those Before Treatment" label="Compared With Those Before Treatment">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Type-2 Cytokines" label="Type-2 Cytokines">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Of Cytokines" label="Of Cytokines">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="Allergic Asthma Is" label="Allergic Asthma Is">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And The Mrna And Protein" label="And The Mrna And Protein">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mscs Were Isolated And" label="Mscs Were Isolated And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Chemokine Receptor-Encoding Gene" label="The Chemokine Receptor-Encoding Gene">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Locally" label="Locally">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Neonatal Hmpv Infection" label="Neonatal Hmpv Infection">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Nf-Κb Pathway Expression" label="Nf-Κb Pathway Expression">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ongoing Disease Activity" label="Ongoing Disease Activity">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Which" label="Which">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="10" />
+        </attvalues>
+      </node>
+      <node id="Remission Has Been" label="Remission Has Been">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Thereby" label="Thereby">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="7" />
+        </attvalues>
+      </node>
+      <node id="Was Sufficient To" label="Was Sufficient To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="IL-13" label="IL-13">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="101" />
+        </attvalues>
+      </node>
+      <node id="The Development Of Targeted Therapies" label="The Development Of Targeted Therapies">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Allergen" label="Allergen">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="128" />
+        </attvalues>
+      </node>
+      <node id="Single-Cell Rna Sequencing Showed That Fkbp5 Knockout" label="Single-Cell Rna Sequencing Showed That Fkbp5 Knockout">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="An Effect Reproduced By" label="An Effect Reproduced By">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="At Selected Time Points" label="At Selected Time Points">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Further Found That Gclc" label="We Further Found That Gclc">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Immunosuppressive Activities" label="Immunosuppressive Activities">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Tezepelumab" label="Tezepelumab">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="30" />
+        </attvalues>
+      </node>
+      <node id="These Responses Were Significantly" label="These Responses Were Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Chronic Exposure To These Cytokines" label="Chronic Exposure To These Cytokines">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Propofol Markedly Improved Ova-Induced Asthma And" label="Propofol Markedly Improved Ova-Induced Asthma And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Pathology" label="Pathology">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="This Qtl" label="This Qtl">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Batf3" label="Batf3">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="By Rg1" label="By Rg1">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="STAT6" label="STAT6">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="With Osteopontin In Vitro Was Conducted" label="With Osteopontin In Vitro Was Conducted">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Whereas Dysregulated Crosstalk" label="Whereas Dysregulated Crosstalk">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Lung" label="Lung">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="31" />
+        </attvalues>
+      </node>
+      <node id="They Have Strongly" label="They Have Strongly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cd11C+Cd69+ Trained Apcs" label="Cd11C+Cd69+ Trained Apcs">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mepolizumab" label="Mepolizumab">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="61" />
+        </attvalues>
+      </node>
+      <node id="Er Stress Inhibition May" label="Er Stress Inhibition May">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Gngt2 Promotes Nf-Κb Activation And" label="Gngt2 Promotes Nf-Κb Activation And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Release Of Autophagosomes By 16Hbe Cells" label="The Release Of Autophagosomes By 16Hbe Cells">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Hypothesized That Osteopontin" label="We Hypothesized That Osteopontin">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mgtx And Cla Outperformed Dex In" label="Mgtx And Cla Outperformed Dex In">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Airway" label="Airway">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="17" />
+        </attvalues>
+      </node>
+      <node id="The Anti-Tl1A Antibody Interventions" label="The Anti-Tl1A Antibody Interventions">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Gl Dose-Dependently" label="Gl Dose-Dependently">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mucus hypersecretion" label="Mucus hypersecretion">
+        <attvalues>
+          <attvalue for="0" value="Clinical_phenotype" />
+          <attvalue for="1" value="35" />
+        </attvalues>
+      </node>
+      <node id="House dust mite" label="House dust mite">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="43" />
+        </attvalues>
+      </node>
+      <node id="These Results Provide Proof Of Concept That" label="These Results Provide Proof Of Concept That">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Convergent Fcεri/Tlr-Mapk/Nf-Κb Signaling" label="Convergent Fcεri/Tlr-Mapk/Nf-Κb Signaling">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Likely" label="Likely">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Airway smooth muscle" label="Airway smooth muscle">
+        <attvalues>
+          <attvalue for="0" value="Tissue" />
+          <attvalue for="1" value="6" />
+        </attvalues>
+      </node>
+      <node id="We Established A Murine Am Model By First" label="We Established A Murine Am Model By First">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Antibody-Dependent Cellular Cytotoxicity" label="Antibody-Dependent Cellular Cytotoxicity">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="IL-4" label="IL-4">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="55" />
+        </attvalues>
+      </node>
+      <node id="Tissue-resident memory T cell" label="Tissue-resident memory T cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="19" />
+        </attvalues>
+      </node>
+      <node id="And While They Can" label="And While They Can">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Our Previous Study Demonstrated That Laundry Detergents" label="Our Previous Study Demonstrated That Laundry Detergents">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="By Epithelial-Derived Cytokines Such As Interleukin" label="By Epithelial-Derived Cytokines Such As Interleukin">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Tim-3 Expression Is Upregulated In" label="Tim-3 Expression Is Upregulated In">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Granulocyte-Macrophage Colony-Stimulating Factor" label="Granulocyte-Macrophage Colony-Stimulating Factor">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="By The Tissue Alarmins Interleukin" label="By The Tissue Alarmins Interleukin">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Pharmacological" label="Pharmacological">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="4" />
+        </attvalues>
+      </node>
+      <node id="Clodronate Liposome Treatment" label="Clodronate Liposome Treatment">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Bronchial Inflammation In Asthma" label="Bronchial Inflammation In Asthma">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Further Observed An Early Increase In Dual" label="We Further Observed An Early Increase In Dual">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="These Factors Can" label="These Factors Can">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Chronic Activation Of These Cells" label="Chronic Activation Of These Cells">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Dendritic cell" label="Dendritic cell">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="13" />
+        </attvalues>
+      </node>
+      <node id="And Promoted Dc" label="And Promoted Dc">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Dioscin Administration Was Associated With" label="Dioscin Administration Was Associated With">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Macrophages Play Central Role In" label="Macrophages Play Central Role In">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Eosinophil" label="Eosinophil">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="471" />
+        </attvalues>
+      </node>
+      <node id="Autophagy Was Required To" label="Autophagy Was Required To">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Further Confirming" label="Further Confirming">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Rg1" label="Rg1">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="By Targeting The Traf6/Nf-Κb Signaling Pathway" label="By Targeting The Traf6/Nf-Κb Signaling Pathway">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Aad We Now Show That Germinal Centres" label="Aad We Now Show That Germinal Centres">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Ast Can" label="Ast Can">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Dexamethasone" label="Dexamethasone">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="This Glucocorticoid-Resistant Phenotype" label="This Glucocorticoid-Resistant Phenotype">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="IL-33" label="IL-33">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="70" />
+        </attvalues>
+      </node>
+      <node id="Common Γ-Chain Cytokines Il-2/Il-7" label="Common Γ-Chain Cytokines Il-2/Il-7">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Platelet-Adherent Macs" label="Platelet-Adherent Macs">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Our Data Suggests That Pollutant Particles Such As Dep May" label="Our Data Suggests That Pollutant Particles Such As Dep May">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Mrna And Protein Expression" label="Mrna And Protein Expression">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Basophil" label="Basophil">
+        <attvalues>
+          <attvalue for="0" value="Cell" />
+          <attvalue for="1" value="2" />
+        </attvalues>
+      </node>
+      <node id="IL-5" label="IL-5">
+        <attvalues>
+          <attvalue for="0" value="Cytokine" />
+          <attvalue for="1" value="159" />
+        </attvalues>
+      </node>
+      <node id="Of Histamine And Other Inflammatory Mediators" label="Of Histamine And Other Inflammatory Mediators">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Cytokine" label="Cytokine">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Laundry Detergents" label="Laundry Detergents">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And Initiate Early Type-2 Immune Responses By" label="And Initiate Early Type-2 Immune Responses By">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Timeless Expression Was" label="Timeless Expression Was">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Th17/Treg Balance And" label="Th17/Treg Balance And">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="And Engagement With Tim-3 Agonists" label="And Engagement With Tim-3 Agonists">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Autophagy In Bmdcs" label="Autophagy In Bmdcs">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Kat8 Expression Was Significantly" label="Kat8 Expression Was Significantly">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Kr Decreased The" label="Kr Decreased The">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Immune Disease And Maintain Homeostasis" label="Immune Disease And Maintain Homeostasis">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="Through" label="Through">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="We Aim To Uncover Key Mechanisms" label="We Aim To Uncover Key Mechanisms">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="M2 Macrophage Polarization In Asthma" label="M2 Macrophage Polarization In Asthma">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="The Number Of Injections And Improving Safety" label="The Number Of Injections And Improving Safety">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="16Hbe Cells" label="16Hbe Cells">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+      <node id="In Both Patients With Allergic Asthma And Murine Model" label="In Both Patients With Allergic Asthma And Murine Model">
+        <attvalues>
+          <attvalue for="0" value="Molecule" />
+          <attvalue for="1" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="Elarekibep Is An Inhaled Anticalin Protein Developed To" target="IL-4" id="0">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41981420" />
+        </attvalues>
+      </edge>
+      <edge source="Were" target="STAT6" id="1">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Were" target="House dust mite" id="2">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264445" />
+        </attvalues>
+      </edge>
+      <edge source="GATA3" target="Th2 cell" id="3">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41786057,42094570" />
+        </attvalues>
+      </edge>
+      <edge source="GATA3" target="The Secretion Of Il-6" id="4">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="Benralizumab" target="Eosinophil" id="5">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="35251534,35496822,35522053,36301080,36314316" />
+        </attvalues>
+      </edge>
+      <edge source="Benralizumab" target="Healthcare Utilization" id="6">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42044815" />
+        </attvalues>
+      </edge>
+      <edge source="Benralizumab" target="IL-5" id="7">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42201298" />
+        </attvalues>
+      </edge>
+      <edge source="Benralizumab" target="Rapid" id="8">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42307829" />
+        </attvalues>
+      </edge>
+      <edge source="Downregulated The" target="IL-4" id="9">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42233266" />
+        </attvalues>
+      </edge>
+      <edge source="Can Alter The Natural Course Of Allergic Diseases And" target="Type 2 inflammation" id="10">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42256021" />
+        </attvalues>
+      </edge>
+      <edge source="Only 17Β-Estradiol" target="ST2" id="11">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40866145" />
+        </attvalues>
+      </edge>
+      <edge source="Were Found To" target="IL-5" id="12">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42061467" />
+        </attvalues>
+      </edge>
+      <edge source="And Elevated" target="Neutrophil" id="13">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42370274" />
+        </attvalues>
+      </edge>
+      <edge source="Dupilumab" target="Type 2 inflammation" id="14">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="27" />
+          <attvalue for="4" value="41873839,42178280,42337920,42281560,42223828" />
+        </attvalues>
+      </edge>
+      <edge source="Dupilumab" target="Airway" id="15">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41873994" />
+        </attvalues>
+      </edge>
+      <edge source="Dupilumab" target="Exacerbations" id="16">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42379525" />
+        </attvalues>
+      </edge>
+      <edge source="Adherent Platelets Rapidly" target="IL-33" id="17">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Cn And Luteolin Significantly Inhibited Cytokine" target="House dust mite" id="18">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42084904" />
+        </attvalues>
+      </edge>
+      <edge source="cDC1" target="Tissue-resident memory T cell" id="19">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="33952647" />
+        </attvalues>
+      </edge>
+      <edge source="This" target="Airway inflammation" id="20">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42205905" />
+        </attvalues>
+      </edge>
+      <edge source="Il-18 Paradoxically" target="Mast cell" id="21">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42200718" />
+        </attvalues>
+      </edge>
+      <edge source="IL-25" target="ILC2" id="22">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="26" />
+          <attvalue for="4" value="42061467,42189350,42259242,42253476,42032301" />
+        </attvalues>
+      </edge>
+      <edge source="S Ability To" target="ILC2" id="23">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41552786" />
+        </attvalues>
+      </edge>
+      <edge source="We Sought To Investigate Whether Epithelial Fucosylation" target="Airway inflammation" id="24">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42305044" />
+        </attvalues>
+      </edge>
+      <edge source="But" target="Neutrophil" id="25">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42107555" />
+        </attvalues>
+      </edge>
+      <edge source="This Means That Respiratory Diseases May" target="IgE" id="26">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42352300" />
+        </attvalues>
+      </edge>
+      <edge source="Reciprocal" target="IgE" id="27">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42359483" />
+        </attvalues>
+      </edge>
+      <edge source="Pharmacological Inhibition Of Kat8" target="Airway inflammation" id="28">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41952982" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Airway inflammation" id="29">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="118" />
+          <attvalue for="4" value="40451557,41898724,41898664,42285366,42335985" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Attenuating Severe Exacerbations" id="30">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41552786" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="The Production Of Inflammatory Mediators" id="31">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41606715" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Inflammatory Mediators" id="32">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41606715" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Lung" id="33">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41896876" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="House dust mite" id="34">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41896876" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Of Histamine And Other Inflammatory Mediators" id="35">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42043389" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="Convergent Fcεri/Tlr-Mapk/Nf-Κb Signaling" id="36">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264445" />
+        </attvalues>
+      </edge>
+      <edge source="Mast cell" target="The Pathogenesis Of Allergic Disorders" id="37">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42285366" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="ST2" id="38">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40866145" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="IL-33" id="39">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="45" />
+          <attvalue for="4" value="41904701,42189350,41550587,42256021,42253476" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Cars On T Cells Facilitates Precise" id="40">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41551012" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="IL-25" id="41">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="33" />
+          <attvalue for="4" value="42061467,42189350,42253476,42324975,41590514" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Mast cell" id="42">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41896876" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Of Alarmin Cytokines" id="43">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Eosinophil" id="44">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42025815" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Their Proliferation" id="45">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42109475" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="TSLP" id="46">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="38" />
+          <attvalue for="4" value="42193381,42253476,42189350,42345643,35098856" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Neutrophil" id="47">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42248217" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Airway" id="48">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42253476" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Of Alarmins" id="49">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42259139" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Asthma By Age 5 Years" id="50">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264881" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Airway inflammation" id="51">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42327952" />
+        </attvalues>
+      </edge>
+      <edge source="Airway epithelium" target="Reactive Oxygen Species" id="52">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="Decreasing The" target="Th2 cell" id="53">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42182742" />
+        </attvalues>
+      </edge>
+      <edge source="Maintained Junctional Organization And" target="Allergen" id="54">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42305044" />
+        </attvalues>
+      </edge>
+      <edge source="Mouse" target="House dust mite" id="55">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42182742" />
+        </attvalues>
+      </edge>
+      <edge source="Qfxbf Markedly" target="Airway hyperresponsiveness" id="56">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372812" />
+        </attvalues>
+      </edge>
+      <edge source="Airway inflammation" target="M2 Macrophage Polarization In Asthma" id="57">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41952982" />
+        </attvalues>
+      </edge>
+      <edge source="Airway inflammation" target="Signal Transducer And Activator Of Transcription 3" id="58">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41952982" />
+        </attvalues>
+      </edge>
+      <edge source="Airway inflammation" target="In Rab44-Knockout" id="59">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42282964" />
+        </attvalues>
+      </edge>
+      <edge source="Particularly" target="ILC2" id="60">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42168720" />
+        </attvalues>
+      </edge>
+      <edge source="Application Of A Ret-Specific Inhibitor" target="ILC2" id="61">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41968620" />
+        </attvalues>
+      </edge>
+      <edge source="Although Platelet Ltc4S Was Not Needed To" target="IL-33" id="62">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Blockade Of Lymphocyte Egress During The Primary Phase" target="Airway inflammation" id="63">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42228188" />
+        </attvalues>
+      </edge>
+      <edge source="And Pathogens" target="Airway epithelium" id="64">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42373456" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Airway inflammation" id="65">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="40" />
+          <attvalue for="4" value="42208332,42250977,42335035,42372954,42379419" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="With Osteopontin In Vitro Was Conducted" id="66">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41939905" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Ndufa1" id="67">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41939905" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Bronchoalveolar Lavage Fluid" id="68">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42228185" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Innate Immunity" id="69">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372954" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Lung" id="70">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372954" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Airway" id="71">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372954" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="The Formation Of Nets" id="72">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="Neutrophil" target="Net Formation" id="73">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="Bet V 7 Has The Functional Capacity To" target="Mast cell" id="74">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41781362" />
+        </attvalues>
+      </edge>
+      <edge source="For" target="Neutrophil" id="75">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42157421" />
+        </attvalues>
+      </edge>
+      <edge source="Peimisine Alleviated Allergic Asthma By" target="Th2 cell" id="76">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42342059" />
+        </attvalues>
+      </edge>
+      <edge source="Is More Likely To" target="IgE" id="77">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42331528" />
+        </attvalues>
+      </edge>
+      <edge source="Cn Markedly" target="Airway inflammation" id="78">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42084904" />
+        </attvalues>
+      </edge>
+      <edge source="35 Points And A Statistically Significant" target="Eosinophil" id="79">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41913399" />
+        </attvalues>
+      </edge>
+      <edge source="Propofol Significantly" target="IgE" id="80">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41606715" />
+        </attvalues>
+      </edge>
+      <edge source="Ccl8- Ccr8 To" target="Th2 cell" id="81">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41965727" />
+        </attvalues>
+      </edge>
+      <edge source="Its Inhibition" target="Neutrophil" id="82">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372954" />
+        </attvalues>
+      </edge>
+      <edge source="Ea-Bn Also" target="Th2 cell" id="83">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="Suggesting" target="Th2 cell" id="84">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="While Il-18R Was Highly" target="IL-13" id="85">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40777291" />
+        </attvalues>
+      </edge>
+      <edge source="Genetic Knockout Of Fkbp5" target="House dust mite" id="86">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42089322" />
+        </attvalues>
+      </edge>
+      <edge source="And It" target="Eosinophil" id="87">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42367766" />
+        </attvalues>
+      </edge>
+      <edge source="Low-Dose Intranasal Lps Alone" target="Airway hyperresponsiveness" id="88">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42219086" />
+        </attvalues>
+      </edge>
+      <edge source="Nf-ĸb May Regulate The" target="ILC2" id="89">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42269551" />
+        </attvalues>
+      </edge>
+      <edge source="ST2" target="Vitamin D Levels" id="90">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42194624" />
+        </attvalues>
+      </edge>
+      <edge source="Experimental Asthma Was" target="House dust mite" id="91">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40696474" />
+        </attvalues>
+      </edge>
+      <edge source="Neutralization Of Osteopontin" target="Neutrophil" id="92">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41939905" />
+        </attvalues>
+      </edge>
+      <edge source="Airway hyperresponsiveness" target="Mast cell" id="93">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41877820" />
+        </attvalues>
+      </edge>
+      <edge source="Airway hyperresponsiveness" target="Neutrophil" id="94">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264447" />
+        </attvalues>
+      </edge>
+      <edge source="Airway hyperresponsiveness" target="Airway" id="95">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42342059" />
+        </attvalues>
+      </edge>
+      <edge source="Airway hyperresponsiveness" target="Airway inflammation" id="96">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42370274" />
+        </attvalues>
+      </edge>
+      <edge source="We Investigated Whether Glucocorticoids Can" target="Airway epithelium" id="97">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42181872" />
+        </attvalues>
+      </edge>
+      <edge source="The Molecular Mechanisms" target="ILC2" id="98">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42309230" />
+        </attvalues>
+      </edge>
+      <edge source="Melatonin" target="Eosinophil" id="99">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42199420" />
+        </attvalues>
+      </edge>
+      <edge source="Gclc" target="Airway epithelium" id="100">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42182742" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="IL-5" id="101">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="49" />
+          <attvalue for="4" value="42061467,41904701,42201298,40777291,42226044" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="IL-13" id="102">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="40" />
+          <attvalue for="4" value="42061467,41904701,42201298,40777291,42226044" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Their Survival" id="103">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41484153" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="IL-33" id="104">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41640356,42256021" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Lung" id="105">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Th2 cell" id="106">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41780570,42094570" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Allergen" id="107">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="By Epithelial-Derived Cytokines Such As Interleukin" id="108">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41916430" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="By The Tissue Alarmins Interleukin" id="109">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42032301" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Homeostasis" id="110">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42061467" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Immune Disease And Maintain Homeostasis" id="111">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42061467" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Type 2 inflammation" id="112">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42256021" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="Nf-Κb Pathway Expression" id="113">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42259242" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="By Targeting The Traf6/Nf-Κb Signaling Pathway" id="114">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42259242" />
+        </attvalues>
+      </edge>
+      <edge source="ILC2" target="This Phenotype" id="115">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42309230" />
+        </attvalues>
+      </edge>
+      <edge source="Cn And Luteolin Significantly" target="House dust mite" id="116">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42084904" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Inflammation And Tissue Damage" id="117">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40292285" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Asthma Exacerbations In Severe Asthma" id="118">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41552786" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Dendritic cell" id="119">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42189350" />
+        </attvalues>
+      </edge>
+      <edge source="TSLP" target="Type 2 inflammation" id="120">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="35333296,35754131,35795686,35908044,35911708" />
+        </attvalues>
+      </edge>
+      <edge source="Air Is Designed To" target="Tissue-resident memory T cell" id="121">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42347596" />
+        </attvalues>
+      </edge>
+      <edge source="Smurf2 Was Markedly" target="Mast cell" id="122">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42285366" />
+        </attvalues>
+      </edge>
+      <edge source="The Two Synergistically Affect The" target="ILC2" id="123">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42269551" />
+        </attvalues>
+      </edge>
+      <edge source="Not Only As A Necessary Step For" target="Th2 cell" id="124">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42028242" />
+        </attvalues>
+      </edge>
+      <edge source="Animal Models Have Been Central To Uncovering How Fungi" target="Airway inflammation" id="125">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42291299" />
+        </attvalues>
+      </edge>
+      <edge source="Type 2 inflammation" target="Eosinophil" id="126">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="211" />
+          <attvalue for="4" value="41904701,42250977,42178280,42296041,41916430" />
+        </attvalues>
+      </edge>
+      <edge source="Type 2 inflammation" target="Long-Term Biologic Therapy" id="127">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264210" />
+        </attvalues>
+      </edge>
+      <edge source="Any Type Ia Mechanism For" target="IgE" id="128">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42134608" />
+        </attvalues>
+      </edge>
+      <edge source="Demonstrated Enhanced" target="IL-4" id="129">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41965727" />
+        </attvalues>
+      </edge>
+      <edge source="Bone marrow" target="Eosinophil" id="130">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="39" />
+          <attvalue for="4" value="41624843,41418640,41879294,41357187,42371045" />
+        </attvalues>
+      </edge>
+      <edge source="Remodelling Of The Rbm In Asthma May" target="TSLP" id="131">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42345643" />
+        </attvalues>
+      </edge>
+      <edge source="Versus Placebo With Sustained" target="Eosinophil" id="132">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41903881" />
+        </attvalues>
+      </edge>
+      <edge source="It Also" target="IL-33" id="133">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="Scit-Igg1 Significantly" target="IL-33" id="134">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42256021" />
+        </attvalues>
+      </edge>
+      <edge source="A Transcription Factor" target="Dendritic cell" id="135">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Air Purification Is Widely" target="Airway inflammation" id="136">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41979079" />
+        </attvalues>
+      </edge>
+      <edge source="Chronic" target="Airway remodeling" id="137">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42095968" />
+        </attvalues>
+      </edge>
+      <edge source="Myeloid-Specific Par2 Deletion Significantly" target="Mucus hypersecretion" id="138">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41788470" />
+        </attvalues>
+      </edge>
+      <edge source="And Vitamin D Supplementation Significantly" target="Neutrophil" id="139">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41966354" />
+        </attvalues>
+      </edge>
+      <edge source="Which Enhanced The" target="Eosinophil" id="140">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42089322" />
+        </attvalues>
+      </edge>
+      <edge source="Axis Activation" target="IgE" id="141">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41652394" />
+        </attvalues>
+      </edge>
+      <edge source="Is Characterized By" target="ST2" id="142">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41484153" />
+        </attvalues>
+      </edge>
+      <edge source="Although Most Patients" target="Omalizumab" id="143">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42050841" />
+        </attvalues>
+      </edge>
+      <edge source="Decreased The Protein" target="IL-13" id="144">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="Significantly Increasing The" target="ILC2" id="145">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42169007" />
+        </attvalues>
+      </edge>
+      <edge source="Common Γ-Chain Cytokines Il-2/Il-7 Induced And" target="ILC2" id="146">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42309230" />
+        </attvalues>
+      </edge>
+      <edge source="Combined Inhibition Can" target="ILC2" id="147">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42269551" />
+        </attvalues>
+      </edge>
+      <edge source="We Suggest That Gdnf-Ret Signaling" target="ILC2" id="148">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41968620" />
+        </attvalues>
+      </edge>
+      <edge source="Cytokine Analysis Revealed Synergistic" target="Th2 cell" id="149">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41346596" />
+        </attvalues>
+      </edge>
+      <edge source="Inflammatory Signaling And" target="Airway hyperresponsiveness" id="150">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42370274" />
+        </attvalues>
+      </edge>
+      <edge source="Type-2 Inflammation Is Driven By The" target="IL-4" id="151">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40454563" />
+        </attvalues>
+      </edge>
+      <edge source="Cur" target="Airway inflammation" id="152">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42153286" />
+        </attvalues>
+      </edge>
+      <edge source="Bsmcs Were" target="IL-4" id="153">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372812" />
+        </attvalues>
+      </edge>
+      <edge source="We Demonstrated That Scit Increased The" target="Allergen" id="154">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42256021" />
+        </attvalues>
+      </edge>
+      <edge source="Rbet V 7" target="Mast cell" id="155">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41781362" />
+        </attvalues>
+      </edge>
+      <edge source="Ccl24-Ccr3 To" target="Eosinophil" id="156">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41965727" />
+        </attvalues>
+      </edge>
+      <edge source="Ultimately" target="Th2 cell" id="157">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="Ultimately" target="Lung" id="158">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="Such As The Synergistic" target="IL-4" id="159">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42039166" />
+        </attvalues>
+      </edge>
+      <edge source="Trained immunity" target="Allergen" id="160">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41733137" />
+        </attvalues>
+      </edge>
+      <edge source="Tal Alleviates Allergic Asthma By" target="Mast cell" id="161">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41878326" />
+        </attvalues>
+      </edge>
+      <edge source="Antagonists" target="Neutrophil" id="162">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372954" />
+        </attvalues>
+      </edge>
+      <edge source="The Present Study Revealed That Cimifugin Effectively" target="ILC2" id="163">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41791620" />
+        </attvalues>
+      </edge>
+      <edge source="Platelets" target="IL-33" id="164">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Combined Inhibition Can Reduce The" target="ILC2" id="165">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42269551" />
+        </attvalues>
+      </edge>
+      <edge source="IL-12" target="Airway inflammation" id="166">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="35821386,42125803,28515363" />
+        </attvalues>
+      </edge>
+      <edge source="Smurf2 Was Markedly Upregulated In Patient Samples And" target="Mast cell" id="167">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42285366" />
+        </attvalues>
+      </edge>
+      <edge source="Gngt2 Expression Was Selectively" target="Neutrophil" id="168">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42228185" />
+        </attvalues>
+      </edge>
+      <edge source="Has Demonstrated Efficacy In" target="Airway inflammation" id="169">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42115805" />
+        </attvalues>
+      </edge>
+      <edge source="Gngt2" target="Neutrophil" id="170">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42228185" />
+        </attvalues>
+      </edge>
+      <edge source="Randomized Trials Of Monoclonal Antibodies" target="Eosinophil" id="171">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42219146" />
+        </attvalues>
+      </edge>
+      <edge source="Macrophages Exhibited The Highest" target="IL-4" id="172">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42328437" />
+        </attvalues>
+      </edge>
+      <edge source="Omalizumab" target="IgE" id="173">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="25" />
+          <attvalue for="4" value="42292482,41873839,42134608,42202421,41934326" />
+        </attvalues>
+      </edge>
+      <edge source="Omalizumab" target="Favorable Disease Control After Discontinuation" id="174">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42050841" />
+        </attvalues>
+      </edge>
+      <edge source="Platelet-Specific Ltc4S Deletion" target="Eosinophil" id="175">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Chronic Metabolic Stress" target="ILC2" id="176">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42183945" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Mast cell" id="177">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="41606715,41652394,41781362,41875747,42134608" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Lung" id="178">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="42134609,41896876" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Th2 cell" id="179">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Compared With Those Before Treatment" id="180">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41987437" />
+        </attvalues>
+      </edge>
+      <edge source="IgE" target="Sting Expression" id="181">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42372812" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="IL-5" id="182">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="42201298,41550587,42235311,42318010,42202393" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="IL-13" id="183">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="32" />
+          <attvalue for="4" value="42201298,42292369,41965727,41550587,42235311" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="IL-4" id="184">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="42201298,42292369,41965727,42235311,42202393" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="Chronic Inflammation" id="185">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42028242" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="This Glucocorticoid-Resistant Phenotype" id="186">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42208332" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="Cd4+ T Cell Apoptosis In Kr-Treated Mice" id="187">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42235311" />
+        </attvalues>
+      </edge>
+      <edge source="Th2 cell" target="Barrier Integrity Via The Ifn-Α/Ifnar1 Pathway" id="188">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42292369" />
+        </attvalues>
+      </edge>
+      <edge source="Along With A Concurrent" target="Th2 cell" id="189">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="Fibroblast" target="Airway remodeling" id="190">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41788470" />
+        </attvalues>
+      </edge>
+      <edge source="Fibroblast" target="Airway inflammation" id="191">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42089322" />
+        </attvalues>
+      </edge>
+      <edge source="Without" target="Th2 cell" id="192">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42336691" />
+        </attvalues>
+      </edge>
+      <edge source="Co-Incubation With Mirna-146B-5P Mimics" target="ILC2" id="193">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42259242" />
+        </attvalues>
+      </edge>
+      <edge source="Suggesting That Il1R1" target="Mast cell" id="194">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42349175" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Airway" id="195">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41389453" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="IL-13" id="196">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41550587" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Th2 cell" id="197">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Mast cell" id="198">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41878326" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="IL-5" id="199">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41916430" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Eosinophil" id="200">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="42379525,41943501" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Reactive Oxygen Species" id="201">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42153286" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="Lung" id="202">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="42264447,42220538" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="ILC2" id="203">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="42259242,42256021" />
+        </attvalues>
+      </edge>
+      <edge source="And" target="IgE" id="204">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42370412" />
+        </attvalues>
+      </edge>
+      <edge source="And Significantly" target="IL-5" id="205">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41418640" />
+        </attvalues>
+      </edge>
+      <edge source="Which In Turn" target="Th2 cell" id="206">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Which In Turn" target="ILC2" id="207">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42032301" />
+        </attvalues>
+      </edge>
+      <edge source="Tim-3 Expression Is" target="ILC2" id="208">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41922900" />
+        </attvalues>
+      </edge>
+      <edge source="Type-2 Cytokines" target="Mucus hypersecretion" id="209">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40454563" />
+        </attvalues>
+      </edge>
+      <edge source="Allergic Asthma Is" target="IL-4" id="210">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41922900" />
+        </attvalues>
+      </edge>
+      <edge source="And The Mrna And Protein" target="IL-5" id="211">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41418640" />
+        </attvalues>
+      </edge>
+      <edge source="Mscs Were Isolated And" target="House dust mite" id="212">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40696474" />
+        </attvalues>
+      </edge>
+      <edge source="Locally" target="IgE" id="213">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42050830" />
+        </attvalues>
+      </edge>
+      <edge source="Neonatal Hmpv Infection" target="Th2 cell" id="214">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41805545" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="ILC2" id="215">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41791620" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="Airway inflammation" id="216">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41817596" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="Lung" id="217">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="IL-5" id="218">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="Neutrophil" id="219">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41939905,42377211" />
+        </attvalues>
+      </edge>
+      <edge source="Which" target="Eosinophil" id="220">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42121933" />
+        </attvalues>
+      </edge>
+      <edge source="Remission Has Been" target="Mepolizumab" id="221">
+        <attvalues>
+          <attvalue for="2" value="maintains" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42335035" />
+        </attvalues>
+      </edge>
+      <edge source="Thereby" target="Eosinophil" id="222">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41916430" />
+        </attvalues>
+      </edge>
+      <edge source="Thereby" target="Type 2 inflammation" id="223">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41970030" />
+        </attvalues>
+      </edge>
+      <edge source="Thereby" target="Airway" id="224">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41987437" />
+        </attvalues>
+      </edge>
+      <edge source="Thereby" target="Th2 cell" id="225">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42183945" />
+        </attvalues>
+      </edge>
+      <edge source="Thereby" target="STAT6" id="226">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42371045" />
+        </attvalues>
+      </edge>
+      <edge source="Was Sufficient To" target="Airway inflammation" id="227">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41346596" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="Mucus hypersecretion" id="228">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="41391519,42371471,41839285,41788470,40777291" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="Airway remodeling" id="229">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="25" />
+          <attvalue for="4" value="41839285,41788470,40777291,42193381,42311018" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="16Hbe Cells" id="230">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="Lung" id="231">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="S100P Expression In Aecs" id="232">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42032605" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="Eosinophil" id="233">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42193381" />
+        </attvalues>
+      </edge>
+      <edge source="IL-13" target="Mrna And Protein Expression" id="234">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42317364" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Th2 cell" id="235">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="127" />
+          <attvalue for="4" value="41904701,41781362,41988246,42199635,41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Aad We Now Show That Germinal Centres" id="236">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41106482" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="IL-13" id="237">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41640356" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="The Number Of Injections And Improving Safety" id="238">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41733137" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Lung" id="239">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="4" />
+          <attvalue for="4" value="42134609,42228188,41733137,42199635" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="IgE" id="240">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41781362" />
+        </attvalues>
+      </edge>
+      <edge source="Allergen" target="Tissue-resident memory T cell" id="241">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42134609" />
+        </attvalues>
+      </edge>
+      <edge source="Single-Cell Rna Sequencing Showed That Fkbp5 Knockout" target="Eosinophil" id="242">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42089322" />
+        </attvalues>
+      </edge>
+      <edge source="An Effect Reproduced By" target="IgE" id="243">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42134609" />
+        </attvalues>
+      </edge>
+      <edge source="We Further Found That Gclc" target="Airway epithelium" id="244">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42182742" />
+        </attvalues>
+      </edge>
+      <edge source="Tezepelumab" target="TSLP" id="245">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="29" />
+          <attvalue for="4" value="41873839,42189350,42002456,42178280,42150582" />
+        </attvalues>
+      </edge>
+      <edge source="Tezepelumab" target="Annualized Asthma Exacerbations By 61" id="246">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42115805" />
+        </attvalues>
+      </edge>
+      <edge source="Tezepelumab" target="Significant Clinical Lessening Of The Condition" id="247">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42115805" />
+        </attvalues>
+      </edge>
+      <edge source="Tezepelumab" target="Exacerbations" id="248">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42346632" />
+        </attvalues>
+      </edge>
+      <edge source="These Responses Were Significantly" target="ILC2" id="249">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Chronic Exposure To These Cytokines" target="ILC2" id="250">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41916430" />
+        </attvalues>
+      </edge>
+      <edge source="Propofol Markedly Improved Ova-Induced Asthma And" target="Mast cell" id="251">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41606715" />
+        </attvalues>
+      </edge>
+      <edge source="This Qtl" target="ILC2" id="252">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41484153" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Dendritic cell" id="253">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="4" />
+          <attvalue for="4" value="40184040,33952647,41025995,28515363" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Tissue-resident memory T cell" id="254">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Allergen" id="255">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="The Chemokine Receptor-Encoding Gene" id="256">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Batf3" target="Airway inflammation" id="257">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="28515363" />
+        </attvalues>
+      </edge>
+      <edge source="STAT6" target="IL-33" id="258">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="STAT6" target="IL-13" id="259">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="STAT6" target="Th2 cell" id="260">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="Whereas Dysregulated Crosstalk" target="Eosinophil" id="261">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42121933" />
+        </attvalues>
+      </edge>
+      <edge source="Lung" target="House dust mite" id="262">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41788470" />
+        </attvalues>
+      </edge>
+      <edge source="Lung" target="Exacerbations" id="263">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41873994" />
+        </attvalues>
+      </edge>
+      <edge source="Lung" target="Th2 cell" id="264">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42157421" />
+        </attvalues>
+      </edge>
+      <edge source="Lung" target="Airway inflammation" id="265">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42199635" />
+        </attvalues>
+      </edge>
+      <edge source="They Have Strongly" target="Airway inflammation" id="266">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40184040" />
+        </attvalues>
+      </edge>
+      <edge source="Cd11C+Cd69+ Trained Apcs" target="Th2 cell" id="267">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41389664" />
+        </attvalues>
+      </edge>
+      <edge source="Mepolizumab" target="Eosinophil" id="268">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="61" />
+          <attvalue for="4" value="42335035,42367766,42200324,42301331,42296041" />
+        </attvalues>
+      </edge>
+      <edge source="Er Stress Inhibition May" target="Airway epithelium" id="269">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42181872" />
+        </attvalues>
+      </edge>
+      <edge source="Gngt2 Promotes Nf-Κb Activation And" target="Neutrophil" id="270">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42228185" />
+        </attvalues>
+      </edge>
+      <edge source="We Hypothesized That Osteopontin" target="Neutrophil" id="271">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41939905" />
+        </attvalues>
+      </edge>
+      <edge source="Mgtx And Cla Outperformed Dex In" target="Airway hyperresponsiveness" id="272">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42341914" />
+        </attvalues>
+      </edge>
+      <edge source="Airway" target="Th2 cell" id="273">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42192147" />
+        </attvalues>
+      </edge>
+      <edge source="The Anti-Tl1A Antibody Interventions" target="Th2 cell" id="274">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41970030" />
+        </attvalues>
+      </edge>
+      <edge source="Gl Dose-Dependently" target="Mast cell" id="275">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264445" />
+        </attvalues>
+      </edge>
+      <edge source="Mucus hypersecretion" target="IL-13" id="276">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="Mucus hypersecretion" target="House dust mite" id="277">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41788470" />
+        </attvalues>
+      </edge>
+      <edge source="Mucus hypersecretion" target="Minimal Relaxation In High-K+-Induced Contractions" id="278">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42357518" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Immunosuppressive Activities" id="279">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40696474" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Autophagy In Bmdcs" id="280">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41297347" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Airway epithelium" id="281">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="42343077,42000636,42182742,42195233,41346596" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Nlrp3 In Bmdcs" id="282">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41346596" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="IgE" id="283">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41795860" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Th2 cell" id="284">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41965727" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Bronchial Inflammation In Asthma" id="285">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42028242" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Neutrophil" id="286">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42157421" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Allergen" id="287">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42195233" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="The Release Of Autophagosomes By 16Hbe Cells" id="288">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Of Autophagosomes By 16Hbe Cells" id="289">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="House dust mite" target="Autophagosomes" id="290">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="These Results Provide Proof Of Concept That" target="Allergen" id="291">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41817596" />
+        </attvalues>
+      </edge>
+      <edge source="Likely" target="ILC2" id="292">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41968620" />
+        </attvalues>
+      </edge>
+      <edge source="Airway smooth muscle" target="Airway hyperresponsiveness" id="293">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="5" />
+          <attvalue for="4" value="42372812,42244300,42341626,42050607,41939905" />
+        </attvalues>
+      </edge>
+      <edge source="We Established A Murine Am Model By First" target="House dust mite" id="294">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41320122" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="Th2 cell" id="295">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="23" />
+          <attvalue for="4" value="41391519,42201298,41788470,42292369,41965727" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="Eosinophil" id="296">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="41640356,42236192" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="GATA3" id="297">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42235311" />
+        </attvalues>
+      </edge>
+      <edge source="IL-4" target="In Both Patients With Allergic Asthma And Murine Model" id="298">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42328437" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Airway inflammation" id="299">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="16" />
+          <attvalue for="4" value="40184040,40866145,41817596,42228188,41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Airway hyperresponsiveness" id="300">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="40184040,41817596" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Pathology" id="301">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41805545" />
+        </attvalues>
+      </edge>
+      <edge source="Tissue-resident memory T cell" target="Th2 cell" id="302">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41805545" />
+        </attvalues>
+      </edge>
+      <edge source="And While They Can" target="IgE" id="303">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41106482" />
+        </attvalues>
+      </edge>
+      <edge source="Our Previous Study Demonstrated That Laundry Detergents" target="IL-33" id="304">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41640356" />
+        </attvalues>
+      </edge>
+      <edge source="Tim-3 Expression Is Upregulated In" target="ILC2" id="305">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41922900" />
+        </attvalues>
+      </edge>
+      <edge source="Granulocyte-Macrophage Colony-Stimulating Factor" target="ILC2" id="306">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Pharmacological" target="Mast cell" id="307">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41877820" />
+        </attvalues>
+      </edge>
+      <edge source="Pharmacological" target="Airway inflammation" id="308">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41952982" />
+        </attvalues>
+      </edge>
+      <edge source="Pharmacological" target="Neutrophil" id="309">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42244110" />
+        </attvalues>
+      </edge>
+      <edge source="Clodronate Liposome Treatment" target="Neutrophil" id="310">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41939905" />
+        </attvalues>
+      </edge>
+      <edge source="We Further Observed An Early Increase In Dual" target="IL-5" id="311">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40777291" />
+        </attvalues>
+      </edge>
+      <edge source="These Factors Can" target="Airway epithelium" id="312">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41652394" />
+        </attvalues>
+      </edge>
+      <edge source="Chronic Activation Of These Cells" target="Airway remodeling" id="313">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42095968" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="Th2 cell" id="314">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41391519" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="IL-33" id="315">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="ILC2" id="316">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42287819" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="Tissue-resident memory T cell" id="317">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="33952647" />
+        </attvalues>
+      </edge>
+      <edge source="Dendritic cell" target="IL-12" id="318">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="4" />
+          <attvalue for="4" value="35821386,38806137,39270571,28515363" />
+        </attvalues>
+      </edge>
+      <edge source="And Promoted Dc" target="Th2 cell" id="319">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41780570" />
+        </attvalues>
+      </edge>
+      <edge source="Dioscin Administration Was Associated With" target="Airway hyperresponsiveness" id="320">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42184481" />
+        </attvalues>
+      </edge>
+      <edge source="Macrophages Play Central Role In" target="Airway inflammation" id="321">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42244110" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Airway remodeling" id="322">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="52" />
+          <attvalue for="4" value="41948100,42320919,41904357,42335985,41602451" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Of Granule Proteins" id="323">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42121933" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="The Development Of Targeted Therapies" id="324">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42194806" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Of Cytokines" id="325">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42194806" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="In Ko Mice Compared With Wt Mice" id="326">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42282964" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Cell Adhesion And Chemotaxis" id="327">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42282964" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Adhesion And Chemokine Receptors" id="328">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42282964" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Significantly" id="329">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42296041" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Ongoing Disease Activity" id="330">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42335035" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Prolonged Immunosuppressive Therapy" id="331">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42335035" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="This Cell Type" id="332">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42336834" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="At Selected Time Points" id="333">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42346632" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Its Underlying Inflammatory Processes" id="334">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42368184" />
+        </attvalues>
+      </edge>
+      <edge source="Eosinophil" target="Airway inflammation" id="335">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="251" />
+          <attvalue for="4" value="34851736,34932383,34971621,34983110,35091338" />
+        </attvalues>
+      </edge>
+      <edge source="Autophagy Was Required To" target="Th2 cell" id="336">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42157421" />
+        </attvalues>
+      </edge>
+      <edge source="Further Confirming" target="Th2 cell" id="337">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42318010" />
+        </attvalues>
+      </edge>
+      <edge source="Rg1" target="IL-33" id="338">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41550587" />
+        </attvalues>
+      </edge>
+      <edge source="Rg1" target="IL-5" id="339">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41550587" />
+        </attvalues>
+      </edge>
+      <edge source="Ast Can" target="IgE" id="340">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42233266" />
+        </attvalues>
+      </edge>
+      <edge source="Dexamethasone" target="Airway epithelium" id="341">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42181872" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="ILC2" id="342">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="42061467,41904701,41418640,40866145,42189350" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="ST2" id="343">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="40866145" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="By Rg1" id="344">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41550587" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="Transcellular Ltc4 Synthesis" id="345">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="Lung" id="346">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="IL-33" target="Il-9" id="347">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42032301" />
+        </attvalues>
+      </edge>
+      <edge source="Common Γ-Chain Cytokines Il-2/Il-7" target="ILC2" id="348">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42309230" />
+        </attvalues>
+      </edge>
+      <edge source="Platelet-Adherent Macs" target="IL-33" id="349">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41577142" />
+        </attvalues>
+      </edge>
+      <edge source="Our Data Suggests That Pollutant Particles Such As Dep May" target="Th2 cell" id="350">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41965727" />
+        </attvalues>
+      </edge>
+      <edge source="Basophil" target="IL-4" id="351">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42359483" />
+        </attvalues>
+      </edge>
+      <edge source="Basophil" target="Neutrophil" id="352">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42377211" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Eosinophil" id="353">
+        <attvalues>
+          <attvalue for="2" value="recruits" />
+          <attvalue for="3" value="90" />
+          <attvalue for="4" value="34970267,34971621,35126350,35251534,35356877" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Bone marrow" id="354">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="9" />
+          <attvalue for="4" value="41391519,41418640,42235311,34974065,35522053" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Marked Improvement In Ear Symptoms" id="355">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42261614" />
+        </attvalues>
+      </edge>
+      <edge source="IL-5" target="Antibody-Dependent Cellular Cytotoxicity" id="356">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42367766" />
+        </attvalues>
+      </edge>
+      <edge source="Cytokine" target="House dust mite" id="357">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42084904" />
+        </attvalues>
+      </edge>
+      <edge source="Laundry Detergents" target="IL-13" id="358">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41640356" />
+        </attvalues>
+      </edge>
+      <edge source="And Initiate Early Type-2 Immune Responses By" target="Dendritic cell" id="359">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42095968" />
+        </attvalues>
+      </edge>
+      <edge source="Timeless Expression Was" target="Airway epithelium" id="360">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42109475" />
+        </attvalues>
+      </edge>
+      <edge source="Th17/Treg Balance And" target="ILC2" id="361">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41786057" />
+        </attvalues>
+      </edge>
+      <edge source="And Engagement With Tim-3 Agonists" target="ILC2" id="362">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41922900" />
+        </attvalues>
+      </edge>
+      <edge source="Kat8 Expression Was Significantly" target="Bone marrow" id="363">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41952982" />
+        </attvalues>
+      </edge>
+      <edge source="Kr Decreased The" target="Th2 cell" id="364">
+        <attvalues>
+          <attvalue for="2" value="induces" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42235311" />
+        </attvalues>
+      </edge>
+      <edge source="Through" target="Dendritic cell" id="365">
+        <attvalues>
+          <attvalue for="2" value="suppresses" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="41904701" />
+        </attvalues>
+      </edge>
+      <edge source="We Aim To Uncover Key Mechanisms" target="Airway epithelium" id="366">
+        <attvalues>
+          <attvalue for="2" value="activates" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="42264881" />
+        </attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

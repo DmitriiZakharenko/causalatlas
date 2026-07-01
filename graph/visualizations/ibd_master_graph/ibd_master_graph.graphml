@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d0" for="node" attr.name="node_type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Intestinal epithelium">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="NOD2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Intestinal inflammation">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="TNF">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Epithelial barrier">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-22">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="ILC3">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Th17 cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="IL-23">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Eosinophil">
+      <data key="d0">Cell</data>
+    </node>
+    <edge source="Intestinal epithelium" target="NOD2">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Intestinal epithelium" target="Epithelial barrier">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="NOD2" target="Intestinal inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="NOD2" target="Epithelial barrier">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="TNF" target="Intestinal inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TNF" target="Epithelial barrier">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="IL-22" target="Intestinal epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-22" target="Epithelial barrier">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC3" target="IL-22">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th17 cell" target="Intestinal inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-23" target="Th17 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Eosinophil" target="Intestinal inflammation">
+      <data key="d1">induces</data>
+    </edge>
+  </graph>
+</graphml>

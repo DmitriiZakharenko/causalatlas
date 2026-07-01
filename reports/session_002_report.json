@@ -1,0 +1,43 @@
+{
+  "session": "002",
+  "hypotheses_generated": [],
+  "peer_review": {
+    "hypothesis_id": "H-S002-01",
+    "reviewer_searches": [
+      {
+        "reviewer": "A_immunologist",
+        "query": "cDC1 CD103 dendritic cell memory T cell lung allergy",
+        "pmids": []
+      },
+      {
+        "reviewer": "B_systems_biologist",
+        "query": "Xcr1- cDC1 Xcr1+ lung allergic inflammation",
+        "pmids": []
+      },
+      {
+        "reviewer": "C_editor",
+        "query": "Batf3 resident memory asthma independent replication",
+        "pmids": [
+          "40184040"
+        ]
+      }
+    ],
+    "votes": {
+      "A_immunologist": {
+        "vote": "UNCERTAIN",
+        "reason": "PMID 37251386 shows Xcr1- vs Xcr1+ cDC1 subsets with distinct profiles; priming specificity plausible but DC\u2192TRM direct evidence thin"
+      },
+      "B_systems_biologist": {
+        "vote": "UNCERTAIN",
+        "reason": "D-class gap valid but hypothesis still closely derived from single primary paper"
+      },
+      "C_editor": {
+        "vote": "REJECT",
+        "reason": "Fails novelty bar \u2014 Agent 9 D-class but not E; no independent replication; Batf3 contradiction unresolved"
+      }
+    },
+    "consensus": "REJECT"
+  },
+  "accepted_hypotheses": [],
+  "experiments": []
+}

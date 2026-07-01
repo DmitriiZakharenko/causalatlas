@@ -1,0 +1,41 @@
+{
+  "description": "Registry of migrated + future pipeline sessions. `include_in_eval_flywheel` scopes Phase 4's historical backfill (see build prompt: Phase 4 depends on Sessions 001-003 being real historical data).",
+  "sessions": [
+    {
+      "session_id": "asthma_001",
+      "disease": "asthma",
+      "session_number": 1,
+      "source": "reports/session_001_asthma_kg.md + data/publications_*.json (original locations, copied not moved)",
+      "hypotheses": ["H1", "H2", "H3", "H4"],
+      "include_in_eval_flywheel": true,
+      "notes": "Baseline run. H1 and H2 were originally ACCEPTED / CONDITIONALLY ACCEPTED; both were later found on external audit (Session 002) to be RESTATED (H1, single-paper restatement of PMID 40184040) and Established consensus (H2, since ~2016-2018) respectively. This is the founding failure case for the whole novelty-gating system (see immunology_pipeline.md preamble)."
+    },
+    {
+      "session_id": "asthma_002",
+      "disease": "asthma",
+      "session_number": 2,
+      "source": "reports/session_002_*.{md,json} (original locations, copied not moved)",
+      "hypotheses": ["H-C001"],
+      "include_in_eval_flywheel": true,
+      "notes": "Introduced mandatory Agent 9 novelty gating; re-audited H1/H2 from Session 001 (see graph/novelty_audit.json audits[]). No hypothesis reached ACCEPT at the Agent-10 stage in this session -- 0/0, distinct from a 0% false-positive rate."
+    },
+    {
+      "session_id": "asthma_003",
+      "disease": "asthma",
+      "session_number": 3,
+      "source": "reports/session_003_*.{md,json} (original locations, copied not moved)",
+      "hypotheses": ["H-D001", "H-C002"],
+      "include_in_eval_flywheel": true,
+      "notes": "Graph unchanged from Session 002 (949 nodes / 753 edges at the time). Added IBD cross-disease graph + cross_disease_motifs.json."
+    },
+    {
+      "session_id": "asthma_004_hardening",
+      "disease": "asthma",
+      "session_number": 4,
+      "source": "reports/session_004_diff.md, data/mechanisms_extracted_s004.json, graph/noise_audit.json (original locations, copied not moved)",
+      "hypotheses": [],
+      "include_in_eval_flywheel": false,
+      "notes": "Graph hardening / full re-extraction pass only, explicitly deferred hypothesis generation to a Session 005 that was never run. Excluded from Phase 4 scope per explicit user decision (2026-07-01) -- not mentioned in the build prompt's 'Sessions 001-003' framing. Overwrote graph/asthma_knowledge_graph.json in place (949/753 -> 838/1143); see /data/graphs/README.md for the resulting lineage caveat."
+    }
+  ]
+}

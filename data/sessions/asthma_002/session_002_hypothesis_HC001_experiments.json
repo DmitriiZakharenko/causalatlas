@@ -1,0 +1,37 @@
+{
+  "hypothesis_id": "H-C001",
+  "status": "ACCEPTED",
+  "model": "Batf3-/- and littermate WT C57BL/6J; same HDM batch, same facility; power for time-course",
+  "design": [
+    {
+      "id": "E-C001-1",
+      "title": "Harmonized HDM time-course with dual readouts",
+      "method": "Single protocol: HDM sensitization + challenge with identical dose/route. Sacrifice cohorts at weeks 2, 4, 6, 8, 10. Measure: BAL cellular infiltrate, AHR, lung IL-12p40 (MLN cDC1), lung CD4+ CD69+ CD103+ Cxcr6+ TRM by flow, scRNA-seq at weeks 4 and 8.",
+      "predicted_outcome": "Batf3-/- show exacerbated Th2/Th17 and inflammation at early chronic timepoints (weeks 4-6) when IL-12 from cDC1 is limiting; attenuation emerges only after week 8+ if TRM-dependent phase is absent (40184040 direction never reached) OR biphasic pattern if TRM kinetics differ from 28515363 protocol.",
+      "negative_controls": "IL-12 supplementation arm (per PMID 28515363); WT time-course",
+      "falsification": "Batf3-/- show same direction (exacerbated OR attenuated) at all chronic timepoints under harmonized protocol, with no phase transition between IL-12-dominant and TRM-dominant windows"
+    },
+    {
+      "id": "E-C001-2",
+      "title": "Protocol cross-replication",
+      "method": "Replicate published HDM parameters from PMID 28515363 and PMID 40184040 methods in parallel in same animal facility. Document exact weeks, dose (\u03bcg), route (intranasal vs intratracheal), and depletion status.",
+      "predicted_outcome": "Opposite chronic phenotypes reproduce when protocols are copied; harmonized intermediate protocol yields biphasic or intermediate phenotype.",
+      "falsification": "Same direction at chronic endpoint regardless of which protocol is copied"
+    },
+    {
+      "id": "E-C001-3",
+      "title": "Mechanistic dissociation",
+      "method": "Batf3-/- \u00d7 IL-12p40-/- double knockout; Batf3-/- with anti-CD4 depletion at week 6 to block TRM maintenance. Compare inflammation at week 8-10.",
+      "predicted_outcome": "IL-12 loss in Batf3-/- background prolongs exacerbation phase; TRM depletion prevents late attenuation seen in 40184040.",
+      "falsification": "No effect of IL-12 or TRM blockade on time-course direction"
+    }
+  ],
+  "primary_readouts": [
+    "BAL eosinophils/neutrophils",
+    "AHR",
+    "MLN IL-12p40+ cDC1",
+    "lung Cxcr6+ CD4+ TRM",
+    "scRNA-seq TRM cluster",
+    "serum IgE"
+  ]
+}

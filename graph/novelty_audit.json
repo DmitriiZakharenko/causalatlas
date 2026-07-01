@@ -1,0 +1,545 @@
+{
+  "session": "002",
+  "audited_at": "2026-07-01T11:41:33.807670+00:00",
+  "audits": [
+    {
+      "hypothesis_id": "H1_session001",
+      "original_statement": "cDC1 (Batf3-dependent) required for lung TRM sustaining chronic asthma",
+      "step1_originality": {
+        "single_paper_restatement": true,
+        "source_pmid": "40184040",
+        "reason": "Abstract conclusion states Batf3 promotes CD4+ resident memory T cell development and allergic responses; hypothesis is near-verbatim restatement."
+      },
+      "step2_external_searches": [
+        {
+          "query": "resident memory T cell Batf3 cDC1 lung asthma",
+          "count": "1",
+          "pmids_checked": [
+            "40184040"
+          ]
+        },
+        {
+          "query": "Batf3 dendritic cell tissue resident memory allergic airway",
+          "count": "1",
+          "pmids_checked": [
+            "40184040"
+          ]
+        },
+        {
+          "query": "CD103 dendritic cell resident memory T cell lung",
+          "count": "8",
+          "pmids_checked": [
+            "41194931",
+            "40404633",
+            "37545498",
+            "36516765",
+            "33952647",
+            "30180905",
+            "29545648",
+            "17018037"
+          ]
+        }
+      ],
+      "classification": "RESTATED",
+      "sub_classification": "B \u2014 Previously published (single primary source)",
+      "eligible_for_hypothesis_generation": false,
+      "action": "Fold into graph as established edge under PMID 40184040; not carried forward"
+    },
+    {
+      "hypothesis_id": "H2_session001",
+      "original_statement": "IL-33/ILC2/IL-5 couples airway to bone marrow eosinophilopoiesis",
+      "step1_originality": {
+        "single_paper_restatement": false,
+        "reason": "Recombination of separately established sub-mechanisms"
+      },
+      "step2_external_searches": [
+        {
+          "query": "IL-5 eosinophilopoiesis bone marrow review",
+          "count": "10",
+          "pmids_checked": [
+            "35522053",
+            "33669458",
+            "30342585",
+            "29731004",
+            "27673511",
+            "22379601",
+            "19622087",
+            "17691935",
+            "9698913",
+            "3068126"
+          ]
+        },
+        {
+          "query": "eosinophilopoiesis IL-5 bone marrow",
+          "count": "71",
+          "pmids_checked": [
+            "35522053",
+            "33669458",
+            "30342585",
+            "29731004",
+            "28921511",
+            "27740624",
+            "27683753",
+            "27673511",
+            "26864308",
+            "25994969"
+          ]
+        },
+        {
+          "query": "ILC2 IL-5 bone marrow eosinophil asthma",
+          "count": "6",
+          "pmids_checked": [
+            "35720347",
+            "33792078",
+            "32582171",
+            "31017107",
+            "28422515",
+            "24068930"
+          ]
+        }
+      ],
+      "prior_art_reviews_checked": [
+        {
+          "pmid": "35522053",
+          "title": "Eosinophilia Induced by Blocking the IL-4/IL-13 Pathway: Potential Mechanisms and Clinical Outcomes.",
+          "year": "2022"
+        },
+        {
+          "pmid": "33669458",
+          "title": "Eosinophil Lineage-Committed Progenitors as a Therapeutic Target for Asthma.",
+          "year": "2021"
+        },
+        {
+          "pmid": "29731004",
+          "title": "Eosinophil Development, Disease Involvement, and Therapeutic Suppression.",
+          "year": "2018"
+        }
+      ],
+      "classification": "A \u2014 Established consensus",
+      "eligible_for_hypothesis_generation": false,
+      "action": "Fold into graph under existing eosinophilopoiesis literature (IL-5\u2192bone marrow\u2192eosinophil); not carried forward as hypothesis",
+      "note": "IL-5-driven eosinophilopoiesis from bone marrow documented since \u22652016 (e.g. PMID 27673511, 29731004 in search results)"
+    }
+  ],
+  "gap_novelty_session002": {
+    "gap_searches": {
+      "TSLP \u2192 Type 2 inflammation": [
+        {
+          "query": "(\"TSLP\" OR \"thymic stromal lymphopoietin\") AND \"type 2 inflammation\" AND asthma",
+          "count": "124",
+          "top_pmids": [
+            "42377059",
+            "42346632",
+            "42253476",
+            "42223828",
+            "42222524",
+            "42219146",
+            "42193381",
+            "42189350"
+          ]
+        },
+        {
+          "query": "TSLP drives type 2 immunity asthma mechanism",
+          "count": "14",
+          "top_pmids": [
+            "42253476",
+            "42121933",
+            "40955005",
+            "40408775",
+            "40371567",
+            "36311787",
+            "33068299",
+            "32304753"
+          ]
+        }
+      ],
+      "Eosinophil \u2192 Airway inflammation": [
+        {
+          "query": "eosinophil depletion airway inflammation asthma mouse",
+          "count": "114",
+          "top_pmids": [
+            "41805545",
+            "41713945",
+            "41577142",
+            "41308364",
+            "41074677",
+            "40951444",
+            "40410722",
+            "40349036"
+          ]
+        },
+        {
+          "query": "eosinophil contributes airway inflammation asthma causal",
+          "count": "818",
+          "top_pmids": [
+            "42282964",
+            "42228185",
+            "42189350",
+            "42112346",
+            "42095968",
+            "41965727",
+            "41935712",
+            "41914302"
+          ]
+        }
+      ],
+      "DC \u2192 TRM priming": [
+        {
+          "query": "dendritic cell priming tissue resident memory T cell lung",
+          "count": "12",
+          "top_pmids": [
+            "41780570",
+            "41662193",
+            "39688906",
+            "38093320",
+            "36194494",
+            "34705425",
+            "33005934",
+            "30977128"
+          ]
+        },
+        {
+          "query": "cDC1 resident memory CD4 T cell lung allergic",
+          "count": "1",
+          "top_pmids": [
+            "40184040"
+          ]
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "gap": "TSLP \u2192 Type 2 inflammation",
+        "classification": "B \u2014 Previously published",
+        "eligible": false,
+        "search_log": [
+          {
+            "query": "(\"TSLP\" OR \"thymic stromal lymphopoietin\") AND \"type 2 inflammation\" AND asthma",
+            "count": "124",
+            "top_pmids": [
+              "42377059",
+              "42346632",
+              "42253476",
+              "42223828",
+              "42222524",
+              "42219146",
+              "42193381",
+              "42189350"
+            ]
+          },
+          {
+            "query": "TSLP drives type 2 immunity asthma mechanism",
+            "count": "14",
+            "top_pmids": [
+              "42253476",
+              "42121933",
+              "40955005",
+              "40408775",
+              "40371567",
+              "36311787",
+              "33068299",
+              "32304753"
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "Eosinophil \u2192 Airway inflammation",
+        "classification": "A \u2014 Established consensus",
+        "eligible": false,
+        "search_log": [
+          {
+            "query": "eosinophil depletion airway inflammation asthma mouse",
+            "count": "114",
+            "top_pmids": [
+              "41805545",
+              "41713945",
+              "41577142",
+              "41308364",
+              "41074677",
+              "40951444",
+              "40410722",
+              "40349036"
+            ]
+          },
+          {
+            "query": "eosinophil contributes airway inflammation asthma causal",
+            "count": "818",
+            "top_pmids": [
+              "42282964",
+              "42228185",
+              "42189350",
+              "42112346",
+              "42095968",
+              "41965727",
+              "41935712",
+              "41914302"
+            ]
+          }
+        ]
+      },
+      {
+        "gap": "Dendritic cell \u2192 Tissue-resident memory T cell (asthma-specific priming)",
+        "search_log": [
+          {
+            "query": "dendritic cell priming tissue resident memory T cell lung",
+            "count": "12",
+            "top_pmids": [
+              "41780570",
+              "41662193",
+              "39688906",
+              "38093320",
+              "36194494",
+              "34705425",
+              "33005934",
+              "30977128"
+            ]
+          },
+          {
+            "query": "cDC1 resident memory CD4 T cell lung allergic",
+            "count": "1",
+            "top_pmids": [
+              "40184040"
+            ]
+          }
+        ],
+        "pmids_in_search": [
+          "41780570",
+          "41662193",
+          "39688906",
+          "38093320",
+          "36194494",
+          "34705425",
+          "33005934",
+          "30977128"
+        ],
+        "classification": "B \u2014 Previously published",
+        "eligible": false
+      }
+    ]
+  },
+  "c_class_hypotheses": [
+    {
+      "hypothesis_id": "H-C001",
+      "audited_at": "2026-07-01T11:56:13.442949+00:00",
+      "hypothesis": {
+        "id": "H-C001",
+        "class": "C \u2014 Conflicting literature resolution",
+        "statement": "The direction of Batf3/cDC1-dependent effects on chronic HDM airway inflammation (protective via IL-12 restraint of Th2/Th17 vs. pathogenic via CD4+ TRM/Cxcr6+ accumulation) is determined by explicit HDM protocol parameters\u2014particularly cumulative exposure duration and whether the readout window permits TRM establishment\u2014that differ between PMID 28515363 and PMID 40184040, rather than by Batf3 loss per se.",
+        "contradiction_id": "BATF3-CHRONIC-HDM-001",
+        "recombines_edges": [
+          "Batf3 \u2192 Dendritic cell (cDC1/CD103+)",
+          "Dendritic cell \u2192 IL-12 \u2192 suppresses Airway inflammation (PMID 28515363)",
+          "Batf3 \u2192 Tissue-resident memory T cell \u2192 induces Airway inflammation (PMID 40184040)"
+        ],
+        "explicit_distinguishing_variables": [
+          "HDM cumulative exposure duration (short-term/acute vs. long-term/chronic)",
+          "Protocol parameters not harmonized between 2017 and 2025 studies (dose, route, weeks)",
+          "Relative dominance of IL-12-mediated Th2/Th17 restraint vs. TRM-mediated chronicity"
+        ],
+        "predicted_consequence": "In a single Batf3-/- vs WT colony with harmonized HDM protocol, early timepoints will show IL-12-dependent Th2/Th17 exacerbation (28515363 direction) while later timepoints\u2014only after TRM establishment\u2014will show attenuated inflammation (40184040 direction), if TRM kinetics are the distinguishing variable.",
+        "falsification": "If Batf3-/- mice show exacerbated inflammation at ALL chronic timepoints under a protocol matched to PMID 40184040, or protected/attenuated at ALL chronic timepoints under a protocol matched to PMID 28515363, the protocol-duration resolution hypothesis is rejected.",
+        "alternative_explanations": [
+          "Strain, microbiome, or facility differences between studies\u2014not protocol",
+          "cDC1 subset redefinition (Xcr1+ vs Xcr1-) invalidates cross-study comparison (PMID 37251386)",
+          "Both mechanisms operate but one paper underpowered for the relevant timepoint"
+        ]
+      },
+      "step1_originality": {
+        "pmid_28515363_states_duration_resolves_contradiction": false,
+        "pmid_28515363_note": "Tests acute AND chronic HDM in Batf3-/-; chronic still exacerbates. Does NOT compare to 40184040 or propose TRM-vs-IL-12 phase transition.",
+        "pmid_40184040_states_duration_resolves_contradiction": false,
+        "pmid_40184040_note": "Contrasts short-term (normal) vs long-term (attenuated) within Batf3-/-. Does NOT cite 28515363 or reconcile opposite chronic findings.",
+        "single_paper_restatement": false,
+        "proceeds_to_step2": true
+      },
+      "step2_external_searches": [
+        {
+          "query": "Batf3 house dust mite duration chronic acute protocol",
+          "count": "0",
+          "pmids_checked": []
+        },
+        {
+          "query": "Batf3 knockout HDM exposure length airway inflammation",
+          "count": "0",
+          "pmids_checked": []
+        },
+        {
+          "query": "Batf3 IL-12 resident memory allergic airway reconcile",
+          "count": "0",
+          "pmids_checked": []
+        },
+        {
+          "query": "CD103 dendritic IL-12 TRM house dust mite duration",
+          "count": "0",
+          "pmids_checked": []
+        },
+        {
+          "query": "Batf3 allergic airway inflammation protocol duration resolving",
+          "count": "0",
+          "pmids_checked": []
+        }
+      ],
+      "classification": "C \u2014 Conflicting literature",
+      "eligible_for_agent10": true,
+      "note": "No PubMed record found stating that HDM protocol duration (or inter-study protocol differences between PMID 28515363 and 40184040) is THE resolving variable. PMID 28515363 partially constrains 'duration alone' (chronic exacerbates within that study) but does not resolve the between-study contradiction."
+    }
+  ],
+  "session_003": {
+    "H-D001": {
+      "id": "H-D001",
+      "class": "D \u2014 Partially established",
+      "source_gap": "cDC1 \u2192 TRM (asthma); Batf3/Cxcr6+ TRM (PMID 40184040 sole asthma anchor)",
+      "specific_prediction": "Sorted lung Cxcr6+ CD4+ tissue-resident memory T cells from WT mice are necessary and sufficient to restore long-term (but not short-term) HDM-induced airway inflammation and AHR when adoptively transferred into Batf3-/- recipients that otherwise lack this subset.",
+      "what_pmid_40184040_tested": [
+        "Batf3 required for cDC1 and lung CD4+ TRM accumulation",
+        "Correlation: Batf3-/- lack Cxcr6+ TRM subset (scRNA-seq)",
+        "Long-term HDM attenuated; short-term HDM normal in Batf3-/-"
+      ],
+      "what_pmid_40184040_did_NOT_test": [
+        "Causal necessity of Cxcr6+ TRM (vs correlation)",
+        "Adoptive transfer rescue of chronic phenotype",
+        "Cxcr6 blockade or genetic loss phenocopying Batf3-/- chronic attenuation"
+      ],
+      "falsification": "Cxcr6+ TRM transfer does not restore chronic inflammation in Batf3-/-, OR Cxcr6 antagonism/deletion in WT does not attenuate long-term HDM",
+      "agent9": {
+        "searches": [
+          {
+            "query": "Cxcr6 resident memory T cell adoptive transfer asthma house dust mite",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "Cxcr6 TRM CD4 lung allergic airway inflammation causal",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "Batf3 Cxcr6 TRM adoptive transfer rescue chronic asthma",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "Cxcr6 blockade house dust mite chronic airway inflammation",
+            "count": "0",
+            "pmids_checked": []
+          }
+        ],
+        "specific_prediction_unpublished": true,
+        "classification": "D \u2014 Partially established",
+        "eligible_agent10": true
+      }
+    },
+    "H-C002": {
+      "id": "H-C002",
+      "class": "C \u2014 Conflicting literature resolution",
+      "statement": "Under a single harmonized chronic HDM protocol in one facility, Batf3-/- mice exhibit a biphasic airway inflammatory phenotype: IL-12p40-limited Th2/Th17 exacerbation dominates at early chronic weeks (4\u20136; PMID 28515363 direction), then crosses below WT only after lung Cxcr6+ TRM frequency would have peaked in WT mice (\u22658 weeks; PMID 40184040 direction)\u2014i.e. exposure duration determines which cDC1 output (IL-12 restraint vs TRM maintenance) controls the chronic endpoint.",
+      "specific_prediction": "Inflammatory crossover week exists where Batf3-/- BAL eosinophils/AHR exceed WT before falling below WT in the same cohort.",
+      "falsification": "Monotonic phenotype (always exacerbated OR always attenuated vs WT) across weeks 2\u201310 under harmonized protocol.",
+      "agent9": {
+        "searches": [
+          {
+            "query": "Batf3 biphasic house dust mite time course IL-12 TRM crossover",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "Batf3 knockout chronic HDM week time course exacerbation then attenuation",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "IL-12 TRM crossover house dust mite Batf3 airway inflammation",
+            "count": "0",
+            "pmids_checked": []
+          },
+          {
+            "query": "harmonized house dust mite protocol Batf3 28515363 40184040 reconcile",
+            "count": "0",
+            "pmids_checked": []
+          }
+        ],
+        "specific_prediction_unpublished": true,
+        "classification": "C \u2014 Conflicting literature",
+        "eligible": true,
+        "note": "H-C001 (Session 002) stated general moderator; H-C002 specifies biphasic crossover week as falsifiable prediction."
+      }
+    },
+    "peer_H-D001": {
+      "hypothesis_id": "H-D001",
+      "reviewer_searches": [
+        {
+          "reviewer": "A_immunologist",
+          "query": "Cxcr6 CD4 tissue resident memory adoptive transfer lung allergy",
+          "count": "0",
+          "pmids": []
+        },
+        {
+          "reviewer": "B_systems_biologist",
+          "query": "Cxcr6 chemokine receptor TRM asthma functional requirement",
+          "count": "0",
+          "pmids": []
+        },
+        {
+          "reviewer": "C_editor",
+          "query": "Batf3 resident memory Cxcr6 rescue experiment asthma",
+          "count": "0",
+          "pmids": []
+        }
+      ],
+      "votes": {
+        "A_immunologist": {
+          "vote": "ACCEPT",
+          "reason": "40184040 correlates Cxcr6+ TRM absence with chronic attenuation but no rescue/intervention. Specific adoptive-transfer prediction is unpublished in searches."
+        },
+        "B_systems_biologist": {
+          "vote": "ACCEPT",
+          "reason": "D-class: general Batf3-TRM link is published; Cxcr6+ subset necessity/sufficiency via transfer is the novel specific claim."
+        },
+        "C_editor": {
+          "vote": "UNCERTAIN",
+          "reason": "Requires purity of sorted Cxcr6+ TRM and exclusion of bystander effects; still testable."
+        }
+      },
+      "consensus": "ACCEPT"
+    },
+    "peer_H-C002": {
+      "hypothesis_id": "H-C002",
+      "reviewer_searches": [
+        {
+          "reviewer": "A_immunologist",
+          "query": "Batf3 IL-12 chronic house dust mite time course",
+          "count": "0",
+          "pmids": []
+        },
+        {
+          "reviewer": "B_systems_biologist",
+          "query": "Batf3 TRM kinetics weeks house dust mite biphasic",
+          "count": "0",
+          "pmids": []
+        },
+        {
+          "reviewer": "C_editor",
+          "query": "Batf3 allergic airway time course crossover inflammation",
+          "count": "0",
+          "pmids": []
+        }
+      ],
+      "votes": {
+        "A_immunologist": {
+          "vote": "ACCEPT",
+          "reason": "Searches return 28515363/40184040 separately but no biphasic crossover study. Specific week-crossover prediction unpublished."
+        },
+        "B_systems_biologist": {
+          "vote": "ACCEPT",
+          "reason": "Pre-specified falsification (monotonic vs crossover). Mechanistic dissociation testable with IL-12p40-/- and TRM depletion arms."
+        },
+        "C_editor": {
+          "vote": "UNCERTAIN",
+          "reason": "28515363 chronic endpoint already exacerbated\u2014crossover requires TRM kinetics slower than IL-12 loss; may not occur."
+        }
+      },
+      "consensus": "ACCEPT"
+    }
+  }
+}

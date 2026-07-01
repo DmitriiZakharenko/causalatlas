@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d0" for="node" attr.name="node_type" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="Allergen">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Th2 cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Batf3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dendritic cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Tissue-resident memory T cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Airway inflammation">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Airway hyperresponsiveness">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Type 2 inflammation">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="Eosinophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Airway remodeling">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="TSLP">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Airway">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Mast cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="ILC2">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="IL-5">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="IL-13">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Mucus hypersecretion">
+      <data key="d0">Clinical_phenotype</data>
+    </node>
+    <node id="IL-4">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="House dust mite">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Lung">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Significantly">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-33">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Airway epithelium">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="ST2">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IgE">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Chronic Inflammation">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Bone marrow">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="And">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Neutrophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Trained immunity">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Innate immune cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="This">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Ultimately">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="IL-25">
+      <data key="d0">Cytokine</data>
+    </node>
+    <node id="Which">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="GATA3">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="It Also">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Goblet cell">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Genes">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="STAT6">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Fibroblast">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="Benralizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Dupilumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Mepolizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Tezepelumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Omalizumab">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Exacerbations">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Of Cytokines">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Pharmacological">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which In Turn">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Were">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Thereby">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Airway smooth muscle">
+      <data key="d0">Tissue</data>
+    </node>
+    <node id="Compared With Those Before Treatment">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="And The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="But">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="With">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Reactive Oxygen Species">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Which May">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="To Investigate The">
+      <data key="d0">Molecule</data>
+    </node>
+    <node id="Basophil">
+      <data key="d0">Cell</data>
+    </node>
+    <node id="IL-12">
+      <data key="d0">Cytokine</data>
+    </node>
+    <edge source="Allergen" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Allergen" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Th2 cell" target="IL-4">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Batf3" target="Dendritic cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Batf3" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dendritic cell" target="IL-12">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Tissue-resident memory T cell" target="Airway hyperresponsiveness">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Type 2 inflammation" target="Eosinophil">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Eosinophil" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="TSLP" target="Type 2 inflammation">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Mast cell" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="IL-5">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="IL-13">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="ILC2" target="IL-33">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="ILC2" target="Th2 cell">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="IL-5" target="Eosinophil">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="IL-5" target="Bone marrow">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-13" target="Mucus hypersecretion">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-13" target="Airway remodeling">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-4" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-4" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="House dust mite" target="Airway epithelium">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-33" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-33">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="IL-25">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Airway epithelium" target="TSLP">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IgE" target="Mast cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IgE" target="Lung">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Bone marrow" target="Eosinophil">
+      <data key="d1">recruits</data>
+    </edge>
+    <edge source="And" target="Eosinophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="And" target="Lung">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="And" target="ILC2">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Neutrophil" target="Airway inflammation">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="Trained immunity" target="Innate immune cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="IL-25" target="ILC2">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Which" target="Neutrophil">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="GATA3" target="Th2 cell">
+      <data key="d1">activates</data>
+    </edge>
+    <edge source="Benralizumab" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Dupilumab" target="Type 2 inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Mepolizumab" target="Eosinophil">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Tezepelumab" target="TSLP">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Omalizumab" target="IgE">
+      <data key="d1">suppresses</data>
+    </edge>
+    <edge source="Airway smooth muscle" target="Airway hyperresponsiveness">
+      <data key="d1">induces</data>
+    </edge>
+    <edge source="IL-12" target="Airway inflammation">
+      <data key="d1">suppresses</data>
+    </edge>
+  </graph>
+</graphml>

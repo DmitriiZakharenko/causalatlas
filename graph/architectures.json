@@ -1,0 +1,161 @@
+[
+  {
+    "name": "Epithelial alarmin \u2192 ILC2 \u2192 Type 2 cytokine loop",
+    "path": [
+      "Airway epithelium",
+      "IL-33",
+      "ILC2",
+      "IL-5",
+      "Eosinophil"
+    ],
+    "edges_present": 4,
+    "edges_total": 4,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 198,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "Mast cell-IgE effector loop",
+    "path": [
+      "Allergen",
+      "IgE",
+      "Mast cell",
+      "Airway inflammation"
+    ],
+    "edges_present": 3,
+    "edges_total": 3,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 138,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "IL-5 eosinophil amplification",
+    "path": [
+      "ILC2",
+      "IL-5",
+      "Eosinophil",
+      "Airway inflammation"
+    ],
+    "edges_present": 3,
+    "edges_total": 3,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 332,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "IL-4/IL-13 Th2 positive feedback",
+    "path": [
+      "Th2 cell",
+      "IL-4",
+      "Th2 cell"
+    ],
+    "edges_present": 2,
+    "edges_total": 2,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 69,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "IL-13 remodeling axis",
+    "path": [
+      "Th2 cell",
+      "IL-13",
+      "Airway remodeling"
+    ],
+    "edges_present": 2,
+    "edges_total": 2,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 54,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "Bone marrow eosinophilopoiesis axis",
+    "path": [
+      "IL-5",
+      "Bone marrow",
+      "Eosinophil"
+    ],
+    "edges_present": 2,
+    "edges_total": 2,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 43,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "TSLP-dendritic-Th2 axis",
+    "path": [
+      "Airway epithelium",
+      "TSLP",
+      "Dendritic cell",
+      "Th2 cell",
+      "IL-4"
+    ],
+    "edges_present": 4,
+    "edges_total": 4,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 69,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "Tissue-resident memory chronicity loop",
+    "path": [
+      "Batf3",
+      "Dendritic cell",
+      "Tissue-resident memory T cell",
+      "Airway inflammation"
+    ],
+    "edges_present": 3,
+    "edges_total": 3,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 20,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "Biologic anti-TSLP",
+    "path": [
+      "Tezepelumab",
+      "TSLP",
+      "Type 2 inflammation"
+    ],
+    "edges_present": 2,
+    "edges_total": 2,
+    "completeness": 1.0,
+    "completeness_session001_claim": true,
+    "missing_edges": [],
+    "pmid_count": 83,
+    "under_extracted_risk": false
+  },
+  {
+    "name": "Biologic anti-IL-4R",
+    "path": [
+      "Dupilumab",
+      "Type 2 inflammation",
+      "Airway inflammation"
+    ],
+    "edges_present": 1,
+    "edges_total": 2,
+    "completeness": 0.5,
+    "completeness_session001_claim": false,
+    "missing_edges": [
+      "Type 2 inflammation \u2192 Airway inflammation"
+    ],
+    "pmid_count": 32,
+    "under_extracted_risk": true
+  }
+]
