@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
-from app import db, eval as eval_mod
+from app import db, eval as eval_mod, graphs as graphs_mod
 from app.agent_registry import AGENT_ORDER
 from app.orchestrator import run_manager
 
@@ -167,6 +167,19 @@ async def stream_pipeline_run(run_id: str, after_seq: int = -1):
             yield {"event": event.get("type", "message"), "data": json.dumps(event)}
 
     return EventSourceResponse(event_generator())
+
+
+@app.get("/api/graphs")
+async def list_graphs() -> dict:
+    return {"graphs": graphs_mod.list_available_graphs()}
+
+
+@app.get("/api/graphs/{disease_slug}")
+async def get_graph(disease_slug: str) -> dict:
+    try:
+        return graphs_mod.load_graph_for_ui(disease_slug)
+    except graphs_mod.GraphNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
 @app.post("/api/eval/backfill")

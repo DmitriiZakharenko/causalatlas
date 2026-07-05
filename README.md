@@ -232,4 +232,43 @@ constraint as Phase 3; the historical half is real data, the live-judge half is 
   completed live 13-agent run yet to judge, since Phase 2's dev-loop run hit a subscription rate
   limit mid-Agent-1. No dashboard UI -- Phase 5's job.
 
+Phase 5 (UI): the real `/frontend` (React + TypeScript + Vite, scaffolded in Phase 0) now has
+four working views wired to every real backend endpoint above -- nothing here is a mock or a
+Phase 0-style stub anymore:
+- **Launch & Runs** (`/`) -- start a real pipeline run (disease/gene, autonomy-level radio group,
+  the same `dev_pubmed_retmax` cost knob as the backend), plus a polling table of all runs
+  (`GET /api/pipeline/runs`).
+- **Run detail** (`/runs/:runId`) -- subscribes to the real SSE stream
+  (`src/api/sse.ts`'s `subscribeToRun`, one `addEventListener` per named event type, since the
+  backend names each SSE event after its own `type` field rather than sending anonymous
+  `message` events) and renders a live timeline of `skill_loaded`/`agent_started`/
+  `agent_completed`/`run_paused`/`run_completed`/`run_failed`. When a run is `paused`, an
+  approve/reject/edit panel posts straight to `POST /api/pipeline/{run_id}/decision`, and the
+  full `human_interventions` audit trail renders once populated.
+- **Graph Explorer** (`/graphs`) -- `react-cytoscapejs` rendering of a new backend endpoint,
+  `GET /api/graphs/{disease_slug}` (`backend/app/graphs.py`), built specifically for this page:
+  it strips the on-disk `knowledge_graph.json`'s full per-node/edge PMID lists (what makes the
+  real asthma graph ~1.1MB for 838 nodes / 1143 edges) down to a `pmid_count` + a small citable
+  sample (~392KB stripped) -- a rendering client needs the count for visual weight, not the
+  whole list every load. Click any node/edge for its type/relation/confidence and PubMed-linked
+  sample citations.
+- **Reliability Dashboard** (`/eval`) -- renders the real Phase 4 backfill
+  (`historical_gate_retroactive_catch_rate`, outcome breakdown, the actual scored-hypothesis
+  table with real reasoning text) plus a "Recompute historical backfill" button
+  (`POST /api/eval/backfill` -- pure/zero-cost, per Phase 4).
+- Test coverage: 7 new mocked/real-file backend tests (`test_graphs_api.py`, same
+  "real files, no synthesized content" pattern as `test_eval_backfill.py`). Frontend
+  verification is `tsc -b` (clean), `vite build` (clean, no runtime dependency errors), `oxlint`
+  (clean), and a live smoke check of both dev servers together (backend on :8000, frontend on
+  :5173, CORS confirmed, every page module transforms without error) -- no frontend unit-test
+  framework was added, consistent with this project's "important technical checks, not
+  excessive test scope" standing constraint; there is no headless-browser tool available in this
+  environment to capture an actual rendered screenshot as further evidence.
+- Deliberately NOT done in this pass: no run has actually reached `paused`/`completed` against
+  the real UI yet (no completed live 13-agent run exists on disk to click through), and the
+  live-judge trigger button/UI for `POST /api/eval/judge/{run_id}` was intentionally left out of
+  the dashboard for now (it dispatches a real, subscription-billed Claude Code call, and this
+  project's standing constraint is to never wire a real-cost action behind a casual UI click
+  without it being explicitly requested first).
+
 See TODOs / commit history for phase progress.

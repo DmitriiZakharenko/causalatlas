@@ -1,0 +1,54 @@
+import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { api } from "../api/client";
+
+const links = [
+  { to: "/", label: "Launch & Runs", end: true },
+  { to: "/graphs", label: "Graph Explorer" },
+  { to: "/eval", label: "Reliability Dashboard" },
+];
+
+export default function NavBar() {
+  const [phase, setPhase] = useState<string | null>(null);
+  const [online, setOnline] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .health()
+      .then((h) => {
+        if (!cancelled) {
+          setPhase(h.phase);
+          setOnline(true);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setOnline(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return (
+    <header className="navbar">
+      <div className="navbar__brand">
+        <span className="navbar__logo">LoopFinder</span>
+        <span className={`status-dot ${online ? "status-dot--ok" : online === false ? "status-dot--down" : ""}`} />
+        <span className="navbar__phase">{online === false ? "backend unreachable" : phase ?? "connecting…"}</span>
+      </div>
+      <nav className="navbar__links">
+        {links.map((l) => (
+          <NavLink
+            key={l.to}
+            to={l.to}
+            end={l.end}
+            className={({ isActive }) => `navbar__link${isActive ? " navbar__link--active" : ""}`}
+          >
+            {l.label}
+          </NavLink>
+        ))}
+      </nav>
+    </header>
+  );
+}
