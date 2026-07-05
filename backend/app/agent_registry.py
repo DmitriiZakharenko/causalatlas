@@ -31,6 +31,12 @@ AGENT_ORDER: list[str] = [
 
 ORCHESTRATOR = "agent00_orchestrator"
 
+# Phase 4: independent post-hoc auditor, deliberately NOT part of AGENT_ORDER --
+# never dispatched by the orchestrator's 13-agent sequence, only invoked
+# separately by backend/app/eval.py's run_live_judge() once a run is already
+# complete. See agents/agent14_eval_judge/AGENTS.md.
+EVAL_JUDGE = "agent14_eval_judge"
+
 # Least-privilege tool grants. Agents 1/2/10/12 are the only ones with a hard
 # constraint requiring *live* external lookups/search (see their AGENTS.md
 # files) -- every other agent operates only on upstream JSON already on disk.
@@ -55,6 +61,11 @@ AGENT_TOOLS: dict[str, list[str]] = {
     "agent11_hypothesis_generation": ["Read", "Write"],
     "agent12_peer_review": ["WebSearch", "WebFetch", "Read", "Write", "Skill"],
     "agent13_experiment_design": ["Read", "Write"],
+    # Read-only auditor: no Write grant -- its verdict is returned as
+    # structured JSON output (--json-schema) and persisted by the backend,
+    # never written to a pipeline session file directly (see its AGENTS.md's
+    # "read-only audit" hard constraint).
+    EVAL_JUDGE: ["WebSearch", "WebFetch", "Read", "Skill"],
 }
 
 AGENT_MODEL = "sonnet"

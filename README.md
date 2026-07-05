@@ -187,4 +187,49 @@ live CLI tests later" request; zero live `claude` calls in this phase's own test
   UI for the autonomy slider or pause/approve controls -- that's Phase 5's job per this
   project's phase breakdown.
 
+Phase 4 (eval flywheel -- built per the same "no live Claude calls unless explicitly requested"
+constraint as Phase 3; the historical half is real data, the live-judge half is environment-only):
+- **Historical backfill (`backend/app/eval.py`'s `backfill_historical_sessions`)**: pure,
+  deterministic, zero-cost Python that parses the REAL, already-committed Session 001-003 files
+  (`data/graphs/asthma/novelty_audit.json`, `reports/session_002_report.json`,
+  `reports/session_003_report.json`) -- nothing here is synthesized, per the project's original
+  constraint that Phase 4 depends on these three sessions being real historical data. One
+  hardcoded scorer function per session (not a generic schema-sniffing parser: each historical
+  session's file format genuinely differs, and a "clever" generic parser risks silently
+  mis-extracting ground truth it was never shown). Actually run against the live DB (not just
+  tested) -- see `eval/historical_backfill.json` for the real output:
+  - H1/H2 (Session 001, the founding failure case from `immunology_pipeline.md`'s preamble) ->
+    `confirmed_false_positive_historical`, ground truth RESTATED / "A -- Established consensus"
+    respectively (from the real Session 002 re-audit).
+  - H-S002-01 (Session 002) -> `correctly_rejected` (real 3-reviewer REJECT consensus).
+  - H-D001 / H-C002 (Session 003) -> `accepted_pending_validation` -- deliberately NOT scored
+    as correct/incorrect, since no wet-lab result exists anywhere in this repo; fabricating one
+    would violate the same "never synthesize" constraint.
+  - Session 004 (hardening pass) excluded, per `sessions_manifest.json`'s own
+    `include_in_eval_flywheel: false` and an earlier explicit project decision.
+- **Dashboard metrics (`compute_dashboard_metrics`)**: a real computed fact, not an assertion --
+  both known historical false positives have a ground truth that is non-D/E under the CURRENT
+  Agent 9/10 rule (only D/E may reach hypothesis generation), so `historical_gate_retroactive_
+  catch_rate` correctly comes out to `1.0`: the mandatory novelty gate this project exists to
+  enforce would have caught 100% of its own founding failure case, retroactively.
+- **`agent14_eval_judge`** (`agents/agent14_eval_judge/AGENTS.md`, registered in
+  `agent_registry.py` but deliberately excluded from `AGENT_ORDER`): an independent, blind
+  post-hoc auditor for FUTURE live runs, institutionalizing the same external-audit principle
+  that caught H1/H2 in the first place. `eval.py`'s `build_judge_prompt` withholds the
+  pipeline's own classification label so `agrees_with_pipeline` is a real disagreement signal,
+  not an anchored rubber stamp. Read-only tool grant (no `Write`) -- a verdict can never modify
+  a pipeline session file or the knowledge graph itself.
+- New endpoints: `POST /api/eval/backfill` (recompute, idempotent, zero cost), `GET
+  /api/eval/dashboard`, `GET /api/eval/scores` (filterable by `subject_type`/`session_id`), and
+  `POST /api/eval/judge/{run_id}` (dispatches `agent14_eval_judge` for one hypothesis -- a REAL,
+  subscription-billed call; 404 unknown run, 409 if the run isn't `completed` yet).
+- Test coverage (all mocked or against real static files, zero live `claude` cost): 18 cases in
+  `test_eval_backfill.py` (real-file parsing correctness, dashboard math, agent shape, a mocked
+  `run_live_judge` round-trip) + 7 cases in `test_eval_api.py` (the four new HTTP endpoints,
+  including the mocked live-judge dispatch).
+- Deliberately NOT done in this pass: `run_live_judge` has never been exercised against the real
+  `claude` CLI (same "environment now, live tests later" pattern as Phase 3) -- there is also no
+  completed live 13-agent run yet to judge, since Phase 2's dev-loop run hit a subscription rate
+  limit mid-Agent-1. No dashboard UI -- Phase 5's job.
+
 See TODOs / commit history for phase progress.

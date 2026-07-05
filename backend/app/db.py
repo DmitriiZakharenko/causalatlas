@@ -62,6 +62,20 @@ CREATE TABLE IF NOT EXISTS human_interventions (
     created_at  REAL NOT NULL,
     FOREIGN KEY (run_id) REFERENCES runs(run_id)
 );
+
+CREATE TABLE IF NOT EXISTS eval_scores (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    subject_type    TEXT NOT NULL,       -- 'historical_backfill' | 'live_judge'
+    session_id      TEXT NOT NULL,       -- e.g. 'asthma_001', or a live pipeline run_id
+    hypothesis_id   TEXT,                -- NULL for a graph/run-level (not per-hypothesis) score
+    original_label  TEXT,                -- the pipeline's own classification/verdict at the time
+    ground_truth    TEXT,                -- later-established real classification, if known
+    outcome         TEXT NOT NULL,       -- see eval.py's Outcome constants for the fixed vocabulary
+    reasoning       TEXT,
+    created_at      REAL NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_eval_scores_session ON eval_scores(session_id);
 """
 
 
@@ -201,5 +215,69 @@ async def get_human_interventions(run_id: str, db_path: Path | None = None) -> l
             "SELECT * FROM human_interventions WHERE run_id = ? ORDER BY created_at ASC",
             (run_id,),
         )
+        rows = await cursor.fetchall()
+        return [dict(r) for r in rows]
+
+
+async def record_eval_score(
+    subject_type: str,
+    session_id: str,
+    outcome: str,
+    *,
+    hypothesis_id: str | None = None,
+    original_label: str | None = None,
+    ground_truth: str | None = None,
+    reasoning: str | None = None,
+    db_path: Path | None = None,
+) -> None:
+    async with aiosqlite.connect(db_path or DB_PATH) as db:
+        await db.execute(
+            "INSERT INTO eval_scores (subject_type, session_id, hypothesis_id, original_label, "
+            "ground_truth, outcome, reasoning, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (
+                subject_type,
+                session_id,
+                hypothesis_id,
+                original_label,
+                ground_truth,
+                outcome,
+                reasoning,
+                time.time(),
+            ),
+        )
+        await db.commit()
+
+
+async def clear_eval_scores(subject_type: str, db_path: Path | None = None) -> None:
+    """Backfill is idempotent: re-running it must replace, not accumulate,
+    the previous `historical_backfill` rows (it always recomputes the full
+    set from the same real files) -- without this, re-running the endpoint
+    twice would silently double-count every dashboard metric."""
+    async with aiosqlite.connect(db_path or DB_PATH) as db:
+        await db.execute("DELETE FROM eval_scores WHERE subject_type = ?", (subject_type,))
+        await db.commit()
+
+
+async def list_eval_scores(
+    *,
+    subject_type: str | None = None,
+    session_id: str | None = None,
+    db_path: Path | None = None,
+) -> list[dict]:
+    query = "SELECT * FROM eval_scores"
+    clauses = []
+    params: list[str] = []
+    if subject_type is not None:
+        clauses.append("subject_type = ?")
+        params.append(subject_type)
+    if session_id is not None:
+        clauses.append("session_id = ?")
+        params.append(session_id)
+    if clauses:
+        query += " WHERE " + " AND ".join(clauses)
+    query += " ORDER BY created_at ASC"
+    async with aiosqlite.connect(db_path or DB_PATH) as db:
+        db.row_factory = aiosqlite.Row
+        cursor = await db.execute(query, params)
         rows = await cursor.fetchall()
         return [dict(r) for r in rows]

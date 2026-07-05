@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
-from app import db
+from app import db, eval as eval_mod
 from app.agent_registry import AGENT_ORDER
 from app.orchestrator import run_manager
 
@@ -50,6 +50,12 @@ class DecisionRequest(BaseModel):
     note: str | None = None
 
 
+class JudgeHypothesisRequest(BaseModel):
+    hypothesis_id: str
+    statement: str
+    recombined_edges: list[str] = Field(default_factory=list)
+
+
 VALID_AUTONOMY_LEVELS = {"autocomplete", "supervised", "let_it_rip"}
 VALID_DECISIONS = {"approve", "reject", "edit"}
 
@@ -64,7 +70,7 @@ async def health() -> dict:
     return {
         "status": "ok",
         "service": "loopfinder-backend",
-        "phase": "3-autonomy-control",
+        "phase": "4-eval-flywheel",
         "pipeline_agents": AGENT_ORDER,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
@@ -161,3 +167,47 @@ async def stream_pipeline_run(run_id: str, after_seq: int = -1):
             yield {"event": event.get("type", "message"), "data": json.dumps(event)}
 
     return EventSourceResponse(event_generator())
+
+
+@app.post("/api/eval/backfill")
+async def run_eval_backfill() -> dict:
+    """Phase 4: recompute `historical_backfill` eval_scores from the REAL
+    Session 001-003 files already on disk (see app/eval.py's module
+    docstring) -- pure, deterministic, zero-cost, idempotent. Safe to call
+    any time; never touches the `claude` CLI.
+    """
+    records = await eval_mod.backfill_historical_sessions()
+    return {"scored": len(records), "records": records}
+
+
+@app.get("/api/eval/dashboard")
+async def get_eval_dashboard(subject_type: str | None = None) -> dict:
+    records = await db.list_eval_scores(subject_type=subject_type)
+    return eval_mod.compute_dashboard_metrics(records)
+
+
+@app.get("/api/eval/scores")
+async def list_eval_scores(subject_type: str | None = None, session_id: str | None = None) -> dict:
+    return {"scores": await db.list_eval_scores(subject_type=subject_type, session_id=session_id)}
+
+
+@app.post("/api/eval/judge/{run_id}")
+async def trigger_live_judge(run_id: str, req: JudgeHypothesisRequest) -> dict:
+    """Phase 4: dispatch the independent `agent14_eval_judge` against ONE
+    hypothesis from an already-completed run. A REAL, subscription-billed
+    `claude` CLI invocation -- unlike `/api/eval/backfill`, this has a real
+    cost and must only be triggered on explicit request (e.g. from a future
+    UI's "run independent audit" button), never automatically or in a loop.
+    """
+    run = await db.get_run(run_id)
+    if run is None:
+        raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
+    if run["status"] != "completed":
+        raise HTTPException(
+            status_code=409,
+            detail=f"run {run_id} is not completed yet (status={run['status']!r}) -- nothing to audit",
+        )
+    verdict = await eval_mod.run_live_judge(
+        run_id, req.hypothesis_id, req.statement, req.recombined_edges
+    )
+    return {"run_id": run_id, "hypothesis_id": req.hypothesis_id, "verdict": verdict}

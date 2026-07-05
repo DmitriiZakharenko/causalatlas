@@ -1,0 +1,42 @@
+[
+  {
+    "session_id": "asthma_001",
+    "hypothesis_id": "H1_session001",
+    "original_label": "ACCEPTED (pre-gate ad-hoc peer review, Session 001)",
+    "ground_truth": "RESTATED",
+    "outcome": "confirmed_false_positive_historical",
+    "reasoning": "Fold into graph as established edge under PMID 40184040; not carried forward"
+  },
+  {
+    "session_id": "asthma_001",
+    "hypothesis_id": "H2_session001",
+    "original_label": "ACCEPTED (pre-gate ad-hoc peer review, Session 001)",
+    "ground_truth": "A \u2014 Established consensus",
+    "outcome": "confirmed_false_positive_historical",
+    "reasoning": "Fold into graph under existing eosinophilopoiesis literature (IL-5\u2192bone marrow\u2192eosinophil); not carried forward as hypothesis"
+  },
+  {
+    "session_id": "asthma_002",
+    "hypothesis_id": "H-S002-01",
+    "original_label": null,
+    "ground_truth": null,
+    "outcome": "correctly_rejected",
+    "reasoning": "Peer review consensus: REJECT. A_immunologist: UNCERTAIN (PMID 37251386 shows Xcr1- vs Xcr1+ cDC1 subsets with distinct profiles; priming specificity plausible but DC\u2192TRM direct evidence thin); B_systems_biologist: UNCERTAIN (D-class gap valid but hypothesis still closely derived from single primary paper); C_editor: REJECT (Fails novelty bar \u2014 Agent 9 D-class but not E; no independent replication; Batf3 contradiction unresolved)"
+  },
+  {
+    "session_id": "asthma_003",
+    "hypothesis_id": "H-D001",
+    "original_label": "ACCEPTED",
+    "ground_truth": null,
+    "outcome": "accepted_pending_validation",
+    "reasoning": "Peer review consensus: ACCEPT, no experimental result on file yet."
+  },
+  {
+    "session_id": "asthma_003",
+    "hypothesis_id": "H-C002",
+    "original_label": "ACCEPTED",
+    "ground_truth": null,
+    "outcome": "accepted_pending_validation",
+    "reasoning": "Peer review consensus: ACCEPT, no experimental result on file yet."
+  }
+]
