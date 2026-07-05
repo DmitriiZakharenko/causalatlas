@@ -45,7 +45,13 @@ class PipelineRunRequest(BaseModel):
     )
 
 
+class DecisionRequest(BaseModel):
+    decision: str
+    note: str | None = None
+
+
 VALID_AUTONOMY_LEVELS = {"autocomplete", "supervised", "let_it_rip"}
+VALID_DECISIONS = {"approve", "reject", "edit"}
 
 
 @app.on_event("startup")
@@ -58,7 +64,7 @@ async def health() -> dict:
     return {
         "status": "ok",
         "service": "loopfinder-backend",
-        "phase": "2-pipeline-orchestration",
+        "phase": "3-autonomy-control",
         "pipeline_agents": AGENT_ORDER,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
@@ -93,11 +99,44 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
     }
 
 
+@app.post("/api/pipeline/{run_id}/decision")
+async def submit_pipeline_decision(run_id: str, req: DecisionRequest) -> dict:
+    """Phase 3 autonomy control: submit a human approve/reject/edit decision
+    for a run that is currently `paused` at a checkpoint (per its
+    `autonomy_level` -- see agents/agent00_orchestrator/AGENTS.md), resuming
+    its SAME claude session with the decision as the next input.
+    """
+    if req.decision not in VALID_DECISIONS:
+        raise HTTPException(
+            status_code=422, detail=f"decision must be one of {sorted(VALID_DECISIONS)}"
+        )
+    run = await db.get_run(run_id)
+    if run is None:
+        raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
+    if run["status"] != "paused":
+        raise HTTPException(
+            status_code=409,
+            detail=f"run {run_id} is not paused (status={run['status']!r}) -- nothing to decide on",
+        )
+    try:
+        await run_manager.resume_run(run_id, req.decision, req.note)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    return {
+        "run_id": run_id,
+        "status": "resumed",
+        "decision": req.decision,
+        "stream_url": f"/api/pipeline/{run_id}/stream",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
 @app.get("/api/pipeline/{run_id}/status")
 async def get_run_status(run_id: str) -> dict:
     run = await db.get_run(run_id)
     if run is None:
         raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
+    run["interventions"] = await db.get_human_interventions(run_id)
     return run
 
 

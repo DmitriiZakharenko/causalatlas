@@ -34,6 +34,9 @@ CREATE TABLE IF NOT EXISTS runs (
     status          TEXT NOT NULL,       -- pending|running|paused|completed|failed
     current_agent   TEXT,
     error           TEXT,
+    session_id      TEXT,                -- Phase 3: claude CLI session id, set at
+                                          -- creation so a "paused" run can be resumed
+                                          -- later via `claude --resume <session_id>`
     created_at      REAL NOT NULL,
     updated_at      REAL NOT NULL
 );
@@ -75,15 +78,16 @@ async def create_run(
     disease: str,
     gene: str | None,
     autonomy_level: str,
+    session_id: str | None = None,
     db_path: Path | None = None,
 ) -> None:
     now = time.time()
     async with aiosqlite.connect(db_path or DB_PATH) as db:
         await db.execute(
             "INSERT INTO runs (run_id, disease, gene, autonomy_level, status, "
-            "current_agent, error, created_at, updated_at) VALUES (?, ?, ?, ?, 'pending', "
-            "NULL, NULL, ?, ?)",
-            (run_id, disease, gene, autonomy_level, now, now),
+            "current_agent, error, session_id, created_at, updated_at) VALUES "
+            "(?, ?, ?, ?, 'pending', NULL, NULL, ?, ?, ?)",
+            (run_id, disease, gene, autonomy_level, session_id, now, now),
         )
         await db.commit()
 
@@ -185,3 +189,17 @@ async def record_human_intervention(
             (run_id, agent_name, decision, note, time.time()),
         )
         await db.commit()
+
+
+async def get_human_interventions(run_id: str, db_path: Path | None = None) -> list[dict]:
+    """Phase 3 audit trail: every human approve/reject/edit decision recorded
+    against a run, oldest first -- this is the record a supervised/autocomplete
+    run's pauses actually got a real human sign-off, not just a UI checkbox."""
+    async with aiosqlite.connect(db_path or DB_PATH) as db:
+        db.row_factory = aiosqlite.Row
+        cursor = await db.execute(
+            "SELECT * FROM human_interventions WHERE run_id = ? ORDER BY created_at ASC",
+            (run_id,),
+        )
+        rows = await cursor.fetchall()
+        return [dict(r) for r in rows]

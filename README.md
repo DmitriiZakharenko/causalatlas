@@ -154,4 +154,37 @@ safety-critical agents:
   any demo-quality run. Agent 1 completed a real 28-tool-call canonical-baseline lookup before
   the run hit the subscription's five-hour rate limit; to be retried once quota resets.
 
+Phase 3 (autonomy control -- environment only, per an explicit "build the environment now,
+live CLI tests later" request; zero live `claude` calls in this phase's own test suite):
+- `runs.session_id` (`backend/app/db.py`): generated up front (`uuid4()`, not parsed back out
+  of the first stream event) and persisted at run creation, so a run that pauses before its
+  very first event still has a resumable session on file.
+- `backend/app/claude_cli.py`: `_build_command` now only passes `--no-session-persistence` for
+  the never-resumed single-shot agent calls; the orchestrator instead gets `--session-id
+  <id>` on first launch and `--resume <id>` on resume, per `claude --help`'s documented
+  flags -- this specific flag combination has NOT yet been exercised against the real CLI.
+- Exact machine-parseable pause protocol formalized in `agents/agent00_orchestrator/AGENTS.md`:
+  the orchestrator ends its turn with a first line of exactly
+  `PAUSED_FOR_APPROVAL: <agent_name> — <reason>` at each of its `autonomy_level`'s pause
+  points (every agent for `autocomplete`; before Agent 10's classification and before Agent 13
+  for `supervised`; never for `let_it_rip`). `StreamTranslator` in `orchestrator.py` parses this
+  exact marker into a `run_paused` UI event (kept distinct from `run_completed`, which the raw
+  CLI `result` event otherwise looks identical to).
+- `RunManager.resume_run()`: validates the run is actually `paused`, records the human's
+  approve/reject/edit decision + optional note to the new `get_human_interventions` audit-trail
+  table, and relaunches the SAME claude session (`resume=True`) with the decision as the next
+  prompt. New endpoint `POST /api/pipeline/{run_id}/decision` (404 unknown run, 422 invalid
+  decision value, 409 if the run isn't currently paused). `GET /api/pipeline/{run_id}/status`
+  now also returns the full `interventions` audit trail for that run.
+- Test coverage (all mocked, zero live cost): 11 new cases across `test_orchestrator.py`
+  (pause-marker translation, session_id plumbing, full pause->resume->complete lifecycle
+  against a fake two-stage claude_cli, resume validation errors) and a new `test_main_api.py`
+  (4 cases, real FastAPI `TestClient` + mocked `claude_cli`, exercising the actual HTTP
+  `/decision` endpoint end-to-end including its error responses).
+- Deliberately NOT done in this pass (left for the "live CLI tests later" follow-up): no live
+  run has actually exercised `--session-id`/`--resume` against the real `claude` binary yet, so
+  the flag combination is unverified beyond `claude --help`'s documented behavior. No frontend
+  UI for the autonomy slider or pause/approve controls -- that's Phase 5's job per this
+  project's phase breakdown.
+
 See TODOs / commit history for phase progress.

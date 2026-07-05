@@ -24,11 +24,18 @@ from __future__ import annotations
 
 import asyncio
 import re
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
 from app import claude_cli, db
 from app.agent_registry import AGENT_ORDER
+
+# Phase 3: the exact machine-parseable marker agent00_orchestrator's AGENTS.md
+# instructs it to print (as the first line of its final text response) when
+# an autonomy-pause checkpoint is reached. Kept as one shared constant so the
+# translator's parsing and the AGENTS.md doc can't silently drift apart.
+PAUSE_MARKER = "PAUSED_FOR_APPROVAL:"
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SESSIONS_DIR = REPO_ROOT / "data" / "sessions"
@@ -185,12 +192,23 @@ class StreamTranslator:
         if rtype == "result":
             if raw.get("is_error"):
                 return [{"type": "run_failed", "reason": raw.get("result", "unknown error")}]
+            result_text = raw.get("result", "")
+            if result_text.lstrip().startswith(PAUSE_MARKER):
+                # Per agent00_orchestrator/AGENTS.md's autonomy-pause protocol:
+                # the orchestrator ends its turn (the CLI process exits 0)
+                # rather than continuing to dispatch, with this exact marker
+                # as the first line -- distinguishing a deliberate pause from
+                # genuine completion, which otherwise look identical (both
+                # are a non-error "result" event).
+                reason = result_text.split(PAUSE_MARKER, 1)[1].strip()
+                agent = reason.split("\u2014", 1)[0].strip(" -:") or None
+                return [{"type": "run_paused", "agent": agent, "reason": reason}]
             return [
                 {
                     "type": "run_completed",
                     "cost_usd": raw.get("total_cost_usd"),
                     "duration_ms": raw.get("duration_ms"),
-                    "result_text": raw.get("result", ""),
+                    "result_text": result_text,
                 }
             ]
 
@@ -287,24 +305,12 @@ class RunManager:
     ) -> str:
         run_id = make_run_id(disease)
         session_dir = session_dir_for(run_id)
-        await db.create_run(run_id, disease, gene, autonomy_level)
-        task = asyncio.create_task(
-            self._run(run_id, disease, gene, autonomy_level, session_dir, pubmed_retmax_override)
-        )
-        self._tasks[run_id] = task
-        return run_id
-
-    async def _run(
-        self,
-        run_id: str,
-        disease: str,
-        gene: str | None,
-        autonomy_level: str,
-        session_dir: Path,
-        pubmed_retmax_override: int | None = None,
-    ) -> None:
-        await db.update_run_status(run_id, "running")
-        translator = StreamTranslator()
+        # Generated up front (not parsed back out of the first stream event)
+        # so it's known before the process even starts, and so a run that
+        # pauses before producing any events still has a resumable session_id
+        # on file.
+        session_id = str(uuid.uuid4())
+        await db.create_run(run_id, disease, gene, autonomy_level, session_id=session_id)
         prompt = build_orchestrator_prompt(
             run_id=run_id,
             disease=disease,
@@ -313,10 +319,46 @@ class RunManager:
             session_dir=session_dir,
             pubmed_retmax_override=pubmed_retmax_override,
         )
+        stream = claude_cli.run_orchestrator_stream(prompt, session_id=session_id)
+        task = asyncio.create_task(self._run(run_id, stream))
+        self._tasks[run_id] = task
+        return run_id
+
+    async def resume_run(self, run_id: str, decision: str, note: str | None = None) -> None:
+        """Phase 3: continue a `paused` run's SAME claude session after a human
+        approve/reject/edit decision, per agent00_orchestrator/AGENTS.md's
+        autonomy-pause protocol. Raises ValueError if the run isn't actually
+        paused (callers -- see main.py -- turn that into an HTTP 409)."""
+        run = await db.get_run(run_id)
+        if run is None:
+            raise ValueError(f"no run found with id {run_id}")
+        if run["status"] != "paused":
+            raise ValueError(f"run {run_id} is not paused (status={run['status']!r})")
+        if not run["session_id"]:
+            raise ValueError(f"run {run_id} has no session_id on file -- cannot resume")
+
+        await db.record_human_intervention(run_id, run["current_agent"] or "unknown", decision, note)
+        resume_prompt = (
+            f"HUMAN DECISION for the paused checkpoint at {run['current_agent']}: "
+            f"{decision.upper()}."
+            + (f" Note: {note}" if note else "")
+            + " Continue the pipeline per your AGENTS.md autonomy-pause rules -- if REJECT, "
+            "do not proceed past this checkpoint as originally planned; ask what to do "
+            "differently instead of retrying the identical action."
+        )
+        stream = claude_cli.run_orchestrator_stream(
+            resume_prompt, session_id=run["session_id"], resume=True
+        )
+        await db.update_run_status(run_id, "running")
+        task = asyncio.create_task(self._run(run_id, stream))
+        self._tasks[run_id] = task
+
+    async def _run(self, run_id: str, stream) -> None:
+        translator = StreamTranslator()
         terminal_types = ("run_completed", "run_failed")
         terminal_emitted = False
         try:
-            async for raw_event in claude_cli.run_orchestrator_stream(prompt):
+            async for raw_event in stream:
                 for ui_event in translator.feed(raw_event):
                     etype = ui_event["type"]
                     if etype in terminal_types:
@@ -346,6 +388,14 @@ class RunManager:
                     elif etype == "run_failed":
                         await db.update_run_status(
                             run_id, "failed", error=str(ui_event.get("reason", ""))[:2000]
+                        )
+                    elif etype == "run_paused":
+                        # NOT in `terminal_types`: unlike completed/failed, more
+                        # events legitimately arrive later, once `resume_run`
+                        # starts a fresh `_run` task for the same run_id after
+                        # a human decision comes in.
+                        await db.update_run_status(
+                            run_id, "paused", current_agent=ui_event.get("agent")
                         )
                     seq = await db.append_event(run_id, etype, ui_event)
                     await self._publish(run_id, seq, ui_event)

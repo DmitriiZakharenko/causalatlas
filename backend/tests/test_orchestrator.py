@@ -155,6 +155,34 @@ def test_translator_run_failed_on_synthetic_process_failure_event():
     assert "permission denied" in events[0]["reason"]
 
 
+def test_translator_run_paused_on_pause_marker_result():
+    """Phase 3: a non-error `result` event whose text starts with the exact
+    `PAUSED_FOR_APPROVAL:` marker (per agent00_orchestrator/AGENTS.md's
+    pause protocol) must be translated to `run_paused`, not `run_completed`
+    -- the two otherwise look identical (both non-error `result` events)."""
+    t = StreamTranslator()
+    events = t.feed(
+        {
+            "type": "result",
+            "is_error": False,
+            "result": "PAUSED_FOR_APPROVAL: agent10_novelty_verification \u2014 3 hypotheses classified B, review before promotion\n\nSummary: ...",
+        }
+    )
+    assert events == [
+        {
+            "type": "run_paused",
+            "agent": "agent10_novelty_verification",
+            "reason": "agent10_novelty_verification \u2014 3 hypotheses classified B, review before promotion\n\nSummary: ...",
+        }
+    ]
+
+
+def test_translator_run_completed_not_confused_with_pause_marker():
+    t = StreamTranslator()
+    events = t.feed({"type": "result", "is_error": False, "result": "All 13 agents completed successfully."})
+    assert events[0]["type"] == "run_completed"
+
+
 # ---------------------------------------------------------------------------
 # Session / merge helpers
 # ---------------------------------------------------------------------------
@@ -367,6 +395,111 @@ async def test_run_manager_subscribe_replays_history_then_stops(isolated_env, mo
         "agent_completed",
         "run_completed",
     ]
+
+
+async def test_start_run_persists_a_session_id(isolated_env, monkeypatch):
+    """Phase 3: session_id must be generated and persisted at creation time
+    (not parsed back out of the first stream event), so a run that pauses
+    before any event even the very first checkpoint still has a resumable
+    session_id on file."""
+    import app.orchestrator as orch_mod
+
+    captured_kwargs = {}
+
+    async def _capturing_stream(prompt, **kwargs):
+        captured_kwargs.update(kwargs)
+        for event in FAKE_STREAM:
+            yield event
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _capturing_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Session Id Disease", None, "let_it_rip")
+    async for _ in manager.subscribe(run_id):
+        pass
+
+    run = await db.get_run(run_id)
+    assert run["session_id"], "session_id must be persisted on the run row"
+    assert captured_kwargs.get("session_id") == run["session_id"]
+
+
+async def test_run_manager_pause_then_resume_full_lifecycle(isolated_env, monkeypatch):
+    """Phase 3 end-to-end (mocked): a run that pauses must land in DB status
+    'paused' with `current_agent` set from the pause marker, record a human
+    intervention on resume, call claude_cli.run_orchestrator_stream a SECOND
+    time with `resume=True` and the SAME session_id, and finish 'completed'."""
+    import app.orchestrator as orch_mod
+
+    PAUSE_RESULT = {
+        "type": "result",
+        "is_error": False,
+        "result": "PAUSED_FOR_APPROVAL: agent10_novelty_verification \u2014 review needed",
+    }
+    resume_calls = []
+
+    async def _first_stream(prompt, **kwargs):
+        yield _tool_use_event("Skill", {"skill": "novelty-verification-protocol"}, tool_id="s1")
+        yield PAUSE_RESULT
+
+    async def _resume_stream(prompt, **kwargs):
+        resume_calls.append({"prompt": prompt, **kwargs})
+        yield {"type": "result", "is_error": False, "total_cost_usd": 0.02, "duration_ms": 200, "result": "All done."}
+
+    def _dispatch_stream(prompt, **kwargs):
+        if kwargs.get("resume"):
+            return _resume_stream(prompt, **kwargs)
+        return _first_stream(prompt, **kwargs)
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _dispatch_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Pausing Disease", "IL23A", "supervised")
+    first_events = [e async for e in manager.subscribe(run_id)]
+    assert first_events[-1]["type"] == "run_paused"
+    assert first_events[-1]["agent"] == "agent10_novelty_verification"
+
+    run = await db.get_run(run_id)
+    assert run["status"] == "paused"
+    assert run["current_agent"] == "agent10_novelty_verification"
+    session_id_before = run["session_id"]
+    assert session_id_before
+
+    await manager.resume_run(run_id, "approve", note="looks fine")
+    second_events = [e async for e in manager.subscribe(run_id, after_seq=first_events[-1]["seq"])]
+    assert second_events[-1]["type"] == "run_completed"
+
+    assert len(resume_calls) == 1
+    assert resume_calls[0]["session_id"] == session_id_before
+    assert resume_calls[0]["resume"] is True
+    assert "APPROVE" in resume_calls[0]["prompt"]
+
+    run = await db.get_run(run_id)
+    assert run["status"] == "completed"
+    assert run["session_id"] == session_id_before  # same session throughout
+
+
+async def test_resume_run_rejects_non_paused_run(isolated_env, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _fake_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Not Paused Disease", None, "let_it_rip")
+    async for _ in manager.subscribe(run_id):
+        pass  # drains to "completed"
+
+    with pytest.raises(ValueError, match="not paused"):
+        await manager.resume_run(run_id, "approve")
+
+
+async def test_resume_run_rejects_unknown_run_id(isolated_env):
+    await db.init_db()
+    manager = RunManager()
+    with pytest.raises(ValueError, match="no run found"):
+        await manager.resume_run("nonexistent_run_id", "approve")
 
 
 async def test_run_manager_marks_run_failed_on_exception(isolated_env, monkeypatch):

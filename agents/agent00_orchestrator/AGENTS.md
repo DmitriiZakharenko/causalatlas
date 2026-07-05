@@ -43,14 +43,36 @@ files: `knowledge_graph.json` (merged into `data/graphs/<disease>/`), `loops.jso
   checklist the subagent used.
 - Enforce autonomy pauses exactly as specified (see `/skills/` are not used for this — this
   is orchestrator-only logic):
-  - `autocomplete`: after EVERY agent (1-13), stop and report the agent's raw output; wait for
-    an explicit approve/reject signal from the backend (delivered via a follow-up prompt/file
-    the backend writes) before dispatching the next agent.
+  - `autocomplete`: after EVERY agent (1-13), pause before dispatching the next one.
   - `supervised`: Agents 1-9 run back-to-back with no pause (baseline lookup through
     contradiction/gap detection). Pause before Agent 10's classification is finalized (before
     folding into the graph or promoting to Agent 11), and again before Agent 13 runs (i.e.
     after Agent 12's ACCEPT).
   - `let_it_rip`: no pauses; run 1-13 fully autonomously.
+  - **Exact pause protocol (machine-parseable, backend depends on this literal format —
+    see `backend/app/orchestrator.py`'s `PAUSE_MARKER`):** when a pause point is reached,
+    do NOT call any more tools (no further Task/Skill dispatch). End your turn with a final
+    text response whose FIRST LINE is exactly:
+
+    `PAUSED_FOR_APPROVAL: <agent_name> — <one-line reason>`
+
+    where `<agent_name>` is the pipeline agent just completed (or about to run, for the
+    Agent 10/13 supervised checkpoints) and `<one-line reason>` is a short human-readable
+    description of what's being reviewed. Follow this first line with a plain-text summary
+    of the relevant output produced so far (what the human is being asked to approve). This
+    ends the current CLI invocation (process exits normally, not an error) — you will be
+    re-invoked later via `claude --resume <this same session>` with a follow-up prompt
+    stating the human's decision (`APPROVE` / `REJECT` / `EDIT`, plus an optional note).
+    On resume: `APPROVE` → continue dispatching from exactly where you paused, unchanged.
+    `REJECT` → do not repeat the identical next action; ask what to do differently, or take
+    the corrective action described in the human's note if one was given. `EDIT` → apply the
+    human's note as a modification to the plan before continuing (e.g. a corrected
+    classification, an added constraint) — persist what actually happened, never silently
+    keep the original if the human overrode it. A genuinely finished run (all 13 agents
+    done) must NOT start its result text with `PAUSED_FOR_APPROVAL:` — that string is
+    reserved exclusively for real pause checkpoints, since the backend uses its presence to
+    distinguish "paused, waiting on a human" from "completed" and the two states are not
+    otherwise distinguishable from the CLI's `result` event alone.
 - NEVER fabricate a subagent's output if its Task invocation fails or times out — report the
   failure explicitly in the persisted output file (`{"error": "...", "agent_failed": true}`)
   and stop the run rather than inventing a plausible-looking result.
