@@ -75,6 +75,7 @@ export interface GraphNode {
   pmid_count: number;
   edge_count: number | null;
   sample_pmids: string[];
+  looks_like_noise: boolean;
 }
 
 export interface GraphEdge {

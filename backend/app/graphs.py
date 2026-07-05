@@ -20,6 +20,48 @@ GRAPHS_DIR = REPO_ROOT / "data" / "graphs"
 
 SAMPLE_PMID_LIMIT = 5
 
+# Some on-disk graphs (e.g. asthma Session 004) already went through the
+# source pipeline's own noise-cleaning passes (see graph_quality_report.json's
+# "pattern_artifact_heuristics" + "stopword_node_cleanup") and still ended up
+# with ~40% of nodes being leftover sentence-fragment extraction artifacts
+# ("Suggesting", "And Effectively", "Number Of Total Asthma Exacerbations")
+# rather than real biological entities. This is a best-effort *display*
+# heuristic on top of that -- it never edits the underlying file, it just
+# flags nodes so the UI can offer a declutter toggle. Not a ground-truth
+# classifier: expect both false positives and false negatives.
+_NOISE_WORDS = {
+    "and", "or", "but", "by", "of", "in", "on", "at", "to", "is", "was", "were",
+    "are", "be", "been", "the", "a", "an", "then", "also", "through", "thereby",
+    "therefore", "thus", "hence", "which", "that", "this", "these", "those",
+    "can", "could", "may", "might", "will", "would", "it", "its", "their",
+    "they", "suggesting", "showing", "revealing", "indicating", "demonstrating",
+    "indicates", "shows", "reveals", "suggests", "significantly", "markedly",
+    "ultimately", "primarily", "whereas", "while", "after", "before", "both",
+    "from", "with", "as", "not", "no", "so", "such", "than", "completely",
+    "demonstrated", "revealed", "showed", "expressed", "induced", "reduced",
+    "increased", "decreased", "enhanced", "promoted", "inhibited", "activated",
+    "downregulated", "upregulated", "regulates", "mediates", "triggers",
+    "causes", "leads", "results", "led", "result",
+}
+
+
+def _looks_like_extraction_noise(label: str) -> bool:
+    words = label.split()
+    if not words:
+        return True
+    lowered = [w.strip(".,;:").lower() for w in words]
+    if len(words) >= 5:
+        return True
+    if lowered[0] in _NOISE_WORDS or lowered[-1] in _NOISE_WORDS:
+        return True
+    if len(words) >= 3 and any(w in _NOISE_WORDS for w in lowered):
+        return True
+    if words[0].isdigit():
+        return True
+    if len(words) >= 2 and all(w in _NOISE_WORDS for w in lowered):
+        return True
+    return False
+
 
 class GraphNotFoundError(LookupError):
     pass
@@ -60,6 +102,7 @@ def _strip_node(node: dict) -> dict:
         "pmid_count": node.get("pmid_count", len(pmids)),
         "edge_count": node.get("edge_count"),
         "sample_pmids": pmids[:SAMPLE_PMID_LIMIT],
+        "looks_like_noise": _looks_like_extraction_noise(node["id"]),
     }
 
 

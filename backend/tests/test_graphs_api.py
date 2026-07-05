@@ -45,6 +45,25 @@ def test_load_graph_for_ui_strips_full_pmid_lists_to_a_sample():
     assert "pmids" not in edge
 
 
+def test_looks_like_extraction_noise_flags_known_sentence_fragments():
+    for label in ["Suggesting", "And Effectively", "Number Of Total Asthma Exacerbations", "Which", "By 39"]:
+        assert graphs_mod._looks_like_extraction_noise(label), label
+
+
+def test_looks_like_extraction_noise_spares_real_entities():
+    for label in ["IL-33", "Th2 cell", "Airway epithelium", "16Hbe Cells", "Tissue-resident memory T cell"]:
+        assert not graphs_mod._looks_like_extraction_noise(label), label
+
+
+def test_load_graph_for_ui_flags_noise_on_real_asthma_nodes():
+    graph = graphs_mod.load_graph_for_ui("asthma")
+    flagged = [n for n in graph["elements"]["nodes"] if n["looks_like_noise"]]
+    # this is a real, messy historical graph -- assert a plausible non-trivial
+    # fraction is flagged without pinning an exact count that would break the
+    # moment the heuristic is tuned further
+    assert 0.2 * len(graph["elements"]["nodes"]) < len(flagged) < 0.7 * len(graph["elements"]["nodes"])
+
+
 def test_load_graph_for_ui_counts_match_metadata():
     graph = graphs_mod.load_graph_for_ui("asthma")
     assert len(graph["elements"]["nodes"]) == graph["metadata"]["node_count"]
