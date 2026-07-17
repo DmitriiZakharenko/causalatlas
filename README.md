@@ -4,59 +4,108 @@
 
 ### Auditable mechanistic reasoning for biomedical discovery
 
-Turn a disease + target question into a traceable path from canonical biology and literature evidence to a causal graph, a novelty decision, and a falsifiable experiment.
+<p><strong>Disease + target → evidence trail → causal graph → novelty gate → falsifiable experiment</strong></p>
 
 <p>
-  <a href="#quickstart"><img src="https://img.shields.io/badge/quickstart-2_minutes-1ca78a?style=flat-square" alt="Quickstart" /></a>
-  <a href="#offline-demo"><img src="https://img.shields.io/badge/demo-zero_backend-4c6fff?style=flat-square" alt="Offline demo" /></a>
-  <a href="#security"><img src="https://img.shields.io/badge/security-no_committed_secrets-9254c7?style=flat-square" alt="Security" /></a>
+  <a href="#start-here"><img src="https://img.shields.io/badge/start_here-30_seconds-1ca78a?style=flat-square" alt="Start here" /></a>
+  <a href="#offline-demo-no-backend"><img src="https://img.shields.io/badge/offline_demo-no_backend-4c6fff?style=flat-square" alt="Offline demo" /></a>
+  <a href="#security"><img src="https://img.shields.io/badge/security-no_committed_keys-9254c7?style=flat-square" alt="No committed keys" /></a>
   <img src="https://img.shields.io/badge/status-research_prototype-c47718?style=flat-square" alt="Research prototype" />
 </p>
 
-<img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline: evidence, causal graph, novelty gate, peer review and experiment" width="100%" />
+<img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline from evidence to experiment" width="100%" />
 
-<p><em>Research software, not medical advice. Outputs are hypotheses for expert review.</em></p>
+<p><em>Research software, not medical advice. A generated hypothesis is not a clinical or therapeutic recommendation.</em></p>
 
 </div>
 
-## The idea
+## What is CausalAtlas?
 
-Language models are excellent at producing plausible biological stories. Plausibility is not novelty, causality, or evidence.
+CausalAtlas is a research platform for turning a biomedical question into an inspectable mechanistic argument. It is designed for the failure mode where an LLM produces a convincing biological story, but the story is already known, weakly sourced, or impossible to falsify.
 
-CausalAtlas separates those questions into inspectable stages:
+Instead of returning one paragraph, CausalAtlas preserves the trail:
 
-| Stage | What it protects against | Output |
-| --- | --- | --- |
-| Canonical baseline | Rediscovering established biology | Curated pathway facts |
-| Literature + verification | Weak or misidentified sources | Verified evidence corpus |
-| Causal graph | Untraceable narrative claims | Provenance-backed edges |
-| Novelty gate | False novelty | A–E classification |
-| Peer review + experiment | Attractive but unfalsifiable ideas | Testable validation plan |
+```text
+disease + target
+      ↓
+canonical baseline → literature → verification → quality filter
+      ↓                                      ↓
+mechanistic extraction → causal knowledge graph
+                              ↓
+                 novelty gate → peer review → experiment design
+```
 
-## What you get
+The result is a set of inspectable artifacts: publications, directed edges, provenance, contradictions, novelty audits, reviewer decisions and experimental controls.
 
-- **Live analysis UI** — launch runs, stream progress, inspect checkpoints and approve pause points.
-- **Causal graph explorer** — explore nodes, edges, loops, gaps and contradictions by disease.
-- **Evidence dashboard** — follow a claim from source publication to graph edge and hypothesis.
-- **Evaluation flywheel** — replay historical cases and compare pipeline decisions with independent review.
-- **Offline presentation mode** — inspect the product without Docker, backend, model login or API keys.
+## Start here
 
-## Quickstart
+There are three ways to use the project. Choose the one that matches your goal:
 
-### Full stack with Docker
+| Goal | Needs backend? | Needs model login? | Start here |
+| --- | ---: | ---: | --- |
+| See the interface and real stored graphs | No | No | [Offline demo](#offline-demo-no-backend) |
+| Run the API and explore persisted data | Yes | No | [Full stack](#full-stack-with-docker) |
+| Launch a new disease–target analysis | Yes | Yes | [Live analysis](#live-analysis-and-cli-authentication) |
+
+### The fastest path: open the demo directly
+
+After cloning, double-click this file or open it with your browser:
+
+[`frontend/demo.html`](frontend/demo.html)
+
+This works from `file://` and does not require `npm`, Docker, Python, a database, a CLI login or an API key. It includes the current UI shell, the recorded pipeline replay, embedded asthma/IBD/IPF graphs, disease selection, search, noise filtering and clickable graph nodes/edges.
+
+## Offline demo — no backend
+
+### Option 1: direct file opening
+
+```bash
+open frontend/demo.html       # macOS
+# xdg-open frontend/demo.html # Linux
+```
+
+Or open `frontend/demo.html` manually in Finder. If the browser shows `file://.../demo.html`, that is expected.
+
+### Option 2: static preview server
+
+Use this when you want to inspect the demo exactly as it will behave on a static host:
+
+```bash
+cd frontend
+nvm use                         # uses frontend/.nvmrc
+npm ci
+npm run build
+npm run preview
+```
+
+Open the printed URL followed by `/demo.html`, usually:
+
+<http://localhost:4173/demo.html>
+
+The standalone demo is a snapshot. It contains graph data bundled at preparation time; it does not read the backend and it does not start a new run. `Play replay` is a local UI animation, not a live model execution.
+
+## Full stack with Docker
+
+Use this path to run the actual React frontend, FastAPI backend, graph API and run persistence.
 
 Requirements: Docker Desktop and Docker Compose.
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/YOUR_USERNAME/causalatlas.git
 cd causalatlas
 cp .env.example .env
 docker compose up --build
 ```
 
-Open [localhost:5173](http://localhost:5173). API docs are available at [localhost:8000/docs](http://localhost:8000/docs).
+Open:
 
-### Local development
+- Web UI: <http://localhost:5173>
+- API: <http://localhost:8000>
+- API documentation: <http://localhost:8000/docs>
+
+The web UI may show `backend unreachable` until the API container is ready. Refresh after the backend starts.
+
+## Local development
 
 Requirements: Python 3.11+ and Node.js 20.19+ or 22.12+.
 
@@ -73,11 +122,15 @@ npm ci
 npm run dev
 ```
 
-The `.env.example` file documents optional literature rate-limit settings. Empty values are valid.
+Open <http://localhost:5173>. The frontend talks to `http://localhost:8000` by default. Change `VITE_API_BASE_URL` in your local `.env` only if the backend runs elsewhere.
 
-## LLM authentication
+## Live analysis and CLI authentication
 
-CausalAtlas does **not** ask for an LLM API key in the browser and does not send one from the frontend. The backend launches the locally installed CLI that you choose:
+The browser never receives an LLM credential. The backend starts a locally authenticated CLI subprocess. Select one provider in `.env`:
+
+```bash
+cp .env.example .env
+```
 
 ### Claude Code
 
@@ -86,15 +139,13 @@ claude --version
 claude login
 ```
 
-Complete the browser/OAuth login in the CLI. Then select Claude as the provider:
+Finish the OAuth flow in the CLI and set:
 
-```bash
-cp .env.example .env
-# edit .env and keep:
+```dotenv
 LLM_PROVIDER=claude
 ```
 
-This project uses Claude Code's authenticated CLI session. You do not need to add `ANTHROPIC_API_KEY` to `.env` for this integration.
+This integration uses the Claude Code subscription session. Do not add `ANTHROPIC_API_KEY` to the repository or frontend.
 
 ### Codex CLI
 
@@ -103,86 +154,135 @@ codex --version
 codex login
 ```
 
-Complete the login flow offered by your installed Codex CLI. Then set:
+Finish the authentication flow offered by your installed Codex CLI and set:
 
-```bash
+```dotenv
 LLM_PROVIDER=codex
 ```
 
-The Codex CLI keeps its credentials in its own user-level configuration. Never paste them into `frontend/.env`, `.env.example`, TypeScript, Python, GitHub Issues, or the repository. Direct `OPENAI_API_KEY`/`ANTHROPIC_API_KEY` calls are not implemented by this backend; authentication happens through the CLI subprocess.
+Codex stores its credentials in its own user-level configuration. Do not paste them into `.env.example`, React, Python, GitHub, screenshots or issues. Direct `OPENAI_API_KEY` and `ANTHROPIC_API_KEY` calls are not implemented by this backend.
 
-### What is safe to put in `.env`
+### Optional literature configuration
 
-The optional `PUBMED_API_KEY`, `SEMANTIC_SCHOLAR_API_KEY`, and `OPENALEX_MAILTO` values configure literature data sources only. They are read by the backend and are never sent to the browser. Leave them empty for a keyless run where the provider permits it.
+These values are unrelated to LLM authentication and may be left empty:
 
-## Offline demo
+```dotenv
+PUBMED_API_KEY=
+PUBMED_EMAIL=
+SEMANTIC_SCHOLAR_API_KEY=
+OPENALEX_MAILTO=
+```
 
-No backend. No database. No model login. No API keys.
+They configure optional rate limits for literature sources. They are read by the backend, never by the browser.
+
+## What the interface contains
+
+- **Launch & Runs** — submit a disease + gene/target, choose autonomy, and follow a run.
+- **Graph Explorer** — select asthma, IBD or IPF; search nodes; hide likely extraction noise; click nodes and edges to inspect PMIDs, relations and confidence.
+- **Text summary** — select any graph node and generate a pathogenesis summary around that node, not only around an automatically chosen hub.
+- **Agent Architecture** — see the 13-stage hand-off, skills and deterministic graph stages.
+- **Evidence Dashboard** — inspect stored quality, novelty and evaluation records.
+- **Presentation** — use the guided explanation of the problem and architecture.
+- **Demo Replay** — show a read-only completed run without model calls.
+
+## Scientific controls
+
+| Stage | Main question | Output |
+| --- | --- | --- |
+| Canonical baseline | Is this mechanism already established in curated biology? | Pathway facts with source type |
+| Literature retrieval | What papers mention the mechanism? | Deduplicated publication corpus |
+| Verification + quality | Are the publications real, relevant and strong enough? | Quality-scored evidence |
+| Mechanistic extraction | What directed causal statements are explicit? | Provenance-backed edges |
+| Graph analysis | Where are loops, gaps and contradictions? | Graph metrics and topology |
+| Novelty gate | Is this specific causal chain already known? | A–E audit with queries and sources |
+| Peer review | Can independent reviewers falsify it? | Review votes and reasoning |
+| Experiment design | What result would reject it? | Model, controls, readouts and falsification criterion |
+
+Only `D` and `E` novelty classes are eligible to proceed to hypothesis generation in the current scientific protocol. `A` means established consensus; `B` previously published; `C` conflicting; `D` partially established; `E` potentially novel. `RESTATED` is a separate early stop.
+
+## Repository map
+
+| Directory | Purpose |
+| --- | --- |
+| `backend/` | FastAPI, SQLite persistence, orchestration and graph/evidence endpoints |
+| `frontend/` | React + TypeScript + Vite production UI |
+| `frontend/demo.html` | Self-contained static presentation/demo entry point |
+| `agents/` | Human-readable pipeline contracts |
+| `skills/` | Retrieval, novelty, contradiction and graph procedures |
+| `data/graphs/` | Disease-level graph artifacts |
+| `data/sessions/` | Run artifacts and checkpoints |
+| `docs/` | Architecture, presentations and visual assets |
+| `.github/workflows/` | Offline CI for backend and frontend |
+
+## Verification
+
+Run the reproducible offline checks from the correct directories:
+
+```bash
+# backend — live Claude tests are deselected by backend/pytest.ini
+cd backend
+pytest -q
+
+# frontend — Node 20.19+ or 22.12+
+cd ../frontend
+npm ci
+npm run lint
+npm run build
+```
+
+Live tests are intentionally separate because they require a CLI login, external services and model quota:
+
+```bash
+cd backend
+pytest -m live_llm -v
+```
+
+For a low-cost wiring check, use `autonomy_level=autocomplete` and a small `dev_pubmed_retmax`. A live run can consume subscription quota.
+
+## Troubleshooting
+
+<details>
+<summary><strong>I only want to see the project, but the main site does not open</strong></summary>
+
+Open [`frontend/demo.html`](frontend/demo.html) directly. It is the public, zero-backend fallback and does not depend on the live site.
+</details>
+
+<details>
+<summary><strong>The UI says “backend unreachable”</strong></summary>
+
+Start the API with Docker or `uvicorn`, confirm <http://localhost:8000/api/health> opens, then refresh the frontend. The live frontend is not the same thing as the standalone `demo.html`.
+</details>
+
+<details>
+<summary><strong>Vite or Oxlint reports a native binding or Node version error</strong></summary>
+
+Use Node 20.19+ or 22.12+ and reinstall dependencies:
 
 ```bash
 cd frontend
 nvm use
 npm ci
-npm run build
-npm run preview
 ```
+</details>
 
-Open the printed URL followed by [`/demo.html`](http://localhost:4173/demo.html). The replay is read-only, makes no network requests, and includes animated `Play replay` flow controls. It can be hosted as a static page on GitHub Pages.
+<details>
+<summary><strong>I want to run a new analysis</strong></summary>
 
-## Architecture
+Install and authenticate either `claude` or `codex`, set `LLM_PROVIDER` in `.env`, start both services, then use **Launch &amp; Runs**. Do not put a provider key in the browser or repository.
+</details>
 
-```text
-question: disease + target
-          │
-          ▼
-canonical baseline → literature → verification → quality filter
-          │                                      │
-          └──────── causal graph ◄─ mechanism extraction
-                              │
-                              ▼
-             novelty gate → hypothesis → review → experiment
-```
+## Security
 
-| Directory | Responsibility |
-| --- | --- |
-| `backend/` | FastAPI, SQLite persistence, orchestration and graph/evidence endpoints |
-| `frontend/` | React + TypeScript + Vite interface |
-| `agents/` | Human-readable contracts for pipeline roles |
-| `skills/` | Reusable retrieval, novelty, contradiction and graph procedures |
-| `data/graphs/` | Disease-level graph artifacts |
-| `data/sessions/` | Pipeline artifacts and checkpoints |
-| `docs/` | Architecture, presentation notes and visual assets |
-| `eval/` | Historical backfill and evaluation utilities |
+Keep `.env` files local. `.env`, local databases, virtual environments, caches, generated sessions and build output are ignored. If a real credential was ever committed, revoke and rotate it; deleting the line is not enough because Git history retains it.
 
-## Configuration and security
-
-Copy `.env.example` to `.env`. Never place credentials in Python, TypeScript, JSON, screenshots, issues or commits.
-
-- `PUBMED_API_KEY` and `PUBMED_EMAIL` are optional.
-- `SEMANTIC_SCHOLAR_API_KEY` is optional.
-- `OPENALEX_MAILTO` is optional.
-- `LLM_PROVIDER=claude` or `LLM_PROVIDER=codex` selects the locally authenticated CLI.
-- `VITE_*` values are public browser configuration and must never contain secrets.
-
-See [SECURITY.md](SECURITY.md) for reporting guidance. If a real credential was ever committed, revoke and rotate it; deleting the line is not enough because Git history retains it.
-
-## Verification
-
-```bash
-cd frontend
-npm run lint
-npm run build
-
-cd ../backend
-pytest -q
-```
-
-For cheap wiring checks, use `autonomy_level=autocomplete` and a small `dev_pubmed_retmax`. Live model runs can consume subscription quota and should be started deliberately.
-
-## Project status
-
-CausalAtlas is an experimental research platform. It is intentionally transparent about uncertainty, failed checks and human approval points. Contributions that improve provenance, reproducibility, evaluation or safety are welcome.
+See [SECURITY.md](SECURITY.md) for vulnerability reporting and research-safety scope.
 
 ## License and citation
 
-Add the preferred license and citation metadata before making the repository public. Scientific artifacts retain source identifiers and should be cited according to their originating databases and publications.
+This project is licensed under **GNU GPL v3 or later**. See [`LICENSE`](LICENSE).
+
+Scientific artifacts retain source identifiers and should be cited according to their originating databases and publications.
+
+## Status
+
+CausalAtlas is an experimental research platform. It exposes uncertainty, failed checks and human approval points rather than presenting generated mechanisms as established science.
