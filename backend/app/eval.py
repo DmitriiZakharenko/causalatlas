@@ -38,12 +38,13 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from app import claude_cli, db
+from app import db, llm_cli as claude_cli
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 REPORTS_DIR = REPO_ROOT / "reports"
 GRAPHS_DIR = REPO_ROOT / "data" / "graphs"
 EVAL_DIR = REPO_ROOT / "eval"
+HISTORICAL_FIXTURES_DIR = REPO_ROOT / "data" / "eval" / "historical"
 
 
 class Outcome:
@@ -68,7 +69,10 @@ def _score_session_001() -> list[dict]:
     immunology_pipeline.md's preamble). Both are real historical false
     positives; nothing here is synthesized.
     """
-    audit_path = GRAPHS_DIR / "asthma" / "novelty_audit.json"
+    # Session 001 is historical ground truth. Do not read the mutable current
+    # graph audit here: later live/fallback runs may overwrite that path with
+    # a different schema or a new candidate and silently corrupt the backfill.
+    audit_path = HISTORICAL_FIXTURES_DIR / "session_001_novelty_audit.json"
     audit = json.loads(audit_path.read_text())
     records = []
     for entry in audit["audits"]:

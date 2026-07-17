@@ -1,0 +1,18 @@
+[
+  {
+    "rank": 1,
+    "name": "cytokine_amplification:Airway epithelium -> IL-33 -> ILC2 -> IL-13",
+    "completeness": 1.0,
+    "pmid_count": 4,
+    "avg_confidence": 0.0,
+    "composite_score": 4.0
+  },
+  {
+    "rank": 2,
+    "name": "positive_feedback:Airway epithelium -> TSLP -> ILC2 -> IL-13",
+    "completeness": 1.0,
+    "pmid_count": 3,
+    "avg_confidence": 0.0,
+    "composite_score": 3.0
+  }
+]

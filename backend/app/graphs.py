@@ -74,20 +74,22 @@ def list_available_graphs() -> list[dict]:
     graphs = []
     if not GRAPHS_DIR.exists():
         return graphs
-    for disease_dir in sorted(GRAPHS_DIR.iterdir()):
-        graph_path = disease_dir / "knowledge_graph.json"
-        if not graph_path.exists():
-            continue
+    graph_paths = sorted(GRAPHS_DIR.glob("*/knowledge_graph.json"))
+    graph_paths += sorted(GRAPHS_DIR.glob("*/*/knowledge_graph.json"))
+    for graph_path in graph_paths:
+        disease_dir = graph_path.parent.parent if graph_path.parent.parent != GRAPHS_DIR else graph_path.parent
         raw = json.loads(graph_path.read_text())
         metadata = raw.get("metadata", {})
+        graph_key = "__".join(graph_path.relative_to(GRAPHS_DIR).parent.parts)
         graphs.append(
             {
-                "disease_slug": disease_dir.name,
+                "disease_slug": graph_key,
                 "disease": metadata.get("disease", disease_dir.name),
                 "node_count": metadata.get("node_count", len(raw.get("nodes", []))),
                 "edge_count": metadata.get("edge_count", len(raw.get("edges", []))),
                 "version": metadata.get("version"),
                 "updated": metadata.get("updated"),
+                "run_id": graph_path.parent.name if graph_path.parent.parent != GRAPHS_DIR else None,
             }
         )
     return graphs
@@ -127,7 +129,8 @@ def load_graph_for_ui(disease_slug: str) -> dict:
     verbatim (it wraps each in `{"data": ...}` on the frontend side, kept
     there rather than here so this stays plain, easily-tested JSON).
     """
-    graph_path = GRAPHS_DIR / disease_slug / "knowledge_graph.json"
+    parts = disease_slug.split("__", 1)
+    graph_path = (GRAPHS_DIR / parts[0] / parts[1] / "knowledge_graph.json") if len(parts) == 2 else (GRAPHS_DIR / disease_slug / "knowledge_graph.json")
     if not graph_path.exists():
         raise GraphNotFoundError(f"no graph found for disease slug {disease_slug!r}")
     raw = json.loads(graph_path.read_text())

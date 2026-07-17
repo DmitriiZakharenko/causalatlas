@@ -28,7 +28,7 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app import claude_cli, db
+from app import db, llm_cli as claude_cli
 from app.agent_registry import AGENT_ORDER
 
 # Phase 3: the exact machine-parseable marker agent00_orchestrator's AGENTS.md
@@ -286,8 +286,8 @@ class RunManager:
     def _subs(self, run_id: str) -> list[asyncio.Queue]:
         return self._subscribers.setdefault(run_id, [])
 
-    async def _publish(self, run_id: str, seq: int, event: dict) -> None:
-        payload = {"seq": seq, **event}
+    async def _publish(self, run_id: str, seq: int, event: dict, *, created_at: float) -> None:
+        payload = {"seq": seq, "created_at": created_at, **event}
         for q in list(self._subs(run_id)):
             await q.put(payload)
 
@@ -353,6 +353,72 @@ class RunManager:
         task = asyncio.create_task(self._run(run_id, stream))
         self._tasks[run_id] = task
 
+    async def retry_run(self, run_id: str) -> None:
+        """Continue a `failed` run's SAME claude session (`--resume`) instead of
+        starting over from Agent 1.
+
+        Found necessary live (2026-07-05): a run that fails mid-pipeline for a
+        transient reason -- most commonly the subscription's rolling usage cap
+        (`rate_limit_event` in the raw stream, resets on its own after the
+        window) rather than a real bug -- had no way to continue, because
+        `resume_run` above only accepts `status == "paused"` (a deliberate
+        autonomy checkpoint, semantically different from an involuntary
+        failure: there's no human decision to record here, just "try again").
+        Safe to expose unconditionally rather than trying to auto-detect
+        "was this a rate limit": `--session-id` was used (never
+        `--no-session-persistence`) for every run, so the underlying
+        conversation -- including whatever any already-completed agents wrote
+        to `data/sessions/<run_id>/` -- is genuinely still on disk to resume
+        into; if the failure wasn't transient, retrying just fails again
+        instead of silently fabricating progress.
+        """
+        run = await db.get_run(run_id)
+        if run is None:
+            raise ValueError(f"no run found with id {run_id}")
+        if run["status"] != "failed":
+            raise ValueError(f"run {run_id} is not failed (status={run['status']!r}) -- nothing to retry")
+        if not run["session_id"]:
+            raise ValueError(f"run {run_id} has no session_id on file -- cannot retry")
+
+        retry_prompt = (
+            f"The previous attempt was interrupted before completion (recorded reason: "
+            f"{run['error'] or 'unknown'}). Check data/sessions/{run_id}/ for any agent "
+            "outputs already written, then continue the pipeline from the next required "
+            "step per your AGENTS.md -- do not re-run an agent whose output file already "
+            "exists and looks complete, and do not fabricate results for a step that "
+            "hasn't actually run yet."
+        )
+        stream = claude_cli.run_orchestrator_stream(retry_prompt, session_id=run["session_id"], resume=True)
+        # NOTE: update_run_status's COALESCE(NULLIF(?, ''), error) deliberately
+        # never clears a previously recorded error (see its docstring) -- the
+        # prior failure reason stays visible in `status.error` as history even
+        # while `status` flips back to "running", rather than disappearing.
+        await db.update_run_status(run_id, "running")
+        task = asyncio.create_task(self._run(run_id, stream))
+        self._tasks[run_id] = task
+
+    async def cancel_run(self, run_id: str) -> None:
+        """Stop a live run and mark it terminal without pretending it failed."""
+        run = await db.get_run(run_id)
+        if run is None:
+            raise ValueError(f"no run found with id {run_id}")
+        if run["status"] not in {"pending", "running", "paused"}:
+            raise ValueError(f"run {run_id} is not active (status={run['status']!r})")
+        task = self._tasks.get(run_id)
+        if task and not task.done():
+            task.cancel()
+            try:
+                await task
+            except asyncio.CancelledError:
+                pass
+        reason = "Cancelled by user"
+        await db.update_run_status(run_id, "cancelled", error=reason)
+        event = {"type": "run_cancelled", "reason": reason}
+        seq, created_at = await db.append_event(run_id, "run_cancelled", event)
+        await self._publish(run_id, seq, event, created_at=created_at)
+        await self._finish(run_id)
+        self._tasks.pop(run_id, None)
+
     async def _run(self, run_id: str, stream) -> None:
         translator = StreamTranslator()
         terminal_types = ("run_completed", "run_failed")
@@ -397,14 +463,14 @@ class RunManager:
                         await db.update_run_status(
                             run_id, "paused", current_agent=ui_event.get("agent")
                         )
-                    seq = await db.append_event(run_id, etype, ui_event)
-                    await self._publish(run_id, seq, ui_event)
+                    seq, created_at = await db.append_event(run_id, etype, ui_event)
+                    await self._publish(run_id, seq, ui_event, created_at=created_at)
         except Exception as exc:  # noqa: BLE001 -- must surface, never swallow
             if not terminal_emitted:
                 await db.update_run_status(run_id, "failed", error=str(exc)[:2000])
                 err_event = {"type": "run_failed", "reason": str(exc)}
-                seq = await db.append_event(run_id, "run_failed", err_event)
-                await self._publish(run_id, seq, err_event)
+                seq, created_at = await db.append_event(run_id, "run_failed", err_event)
+                await self._publish(run_id, seq, err_event, created_at=created_at)
         finally:
             await self._finish(run_id)
 
@@ -417,12 +483,32 @@ class RunManager:
         terminal_types = ("run_completed", "run_failed")
         try:
             history = await db.get_events_since(run_id, after_seq)
-            already_finished = False
+            run_row = await db.get_run(run_id)
+            # Retried runs keep old run_failed events in the append-only log while
+            # `runs.status` flips back to "running" -- discovered live (2026-07-05)
+            # when the UI refreshed mid-retry and showed every prior failure at
+            # once, then stopped receiving live events because ANY historical
+            # terminal event incorrectly set `already_finished`.
+            if run_row and run_row["status"] in ("running", "paused"):
+                already_finished = False
+            elif history:
+                already_finished = (
+                    history[-1]["event_type"] in terminal_types
+                    and run_row is not None
+                    and run_row["status"] in ("completed", "failed")
+                )
+            else:
+                # Status may flip to failed/completed before the terminal row is
+                # appended -- keep listening so the in-flight event isn't dropped.
+                already_finished = False
             for ev in history:
                 seen.add(ev["seq"])
-                if ev["event_type"] in terminal_types:
-                    already_finished = True
-                yield {"seq": ev["seq"], "type": ev["event_type"], **ev["payload"]}
+                yield {
+                    "seq": ev["seq"],
+                    "type": ev["event_type"],
+                    "created_at": ev["created_at"],
+                    **ev["payload"],
+                }
             # If the terminal event is already in the replayed history, the run
             # is fully done and no more events will EVER be appended (`_run`
             # appends exactly one terminal event, always last) -- safe to stop

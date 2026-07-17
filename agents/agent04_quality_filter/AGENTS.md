@@ -7,8 +7,9 @@ agent's single responsibility is evidence grading — it does not decide relevan
 or extract mechanisms (Agent 5), only how much weight downstream agents should give a paper.
 
 ## Inputs
-- `data/sessions/<run_id>/verification_report.json` (Agent 3 output) — the `verified`
-  publication list only (rejected papers are never passed downstream).
+- `data/sessions/<run_id>/publications_verified_compact.json` (Agent 3 derived input) —
+  verified publications with compacted metadata/abstracts; rejected papers are never
+  passed downstream.
 
 ## Outputs
 `data/sessions/<run_id>/quality_scores.json`, schema:

@@ -1,0 +1,52 @@
+[
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "Crohn disease"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "MAP kinase signaling"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "MAPK"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "NF-kappaB"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "NOD-like receptor signaling"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "RIP2"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "RIPK2"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "autophagy"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "intestinal Paneth cells"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "muramyl dipeptide"
+  }
+]

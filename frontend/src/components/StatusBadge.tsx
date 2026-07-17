@@ -6,6 +6,7 @@ const LABELS: Record<RunStatus, string> = {
   paused: "Paused — awaiting decision",
   completed: "Completed",
   failed: "Failed",
+  cancelled: "Cancelled",
 };
 
 export default function StatusBadge({ status }: { status: RunStatus }) {

@@ -1,5 +1,30 @@
 # secrets
 .env
+.env.*
+!.env.example
+frontend/.env
+backend/.env
+
+# local runtime and generated artifacts
+*.db-shm
+*.db-wal
+*.sqlite-shm
+*.sqlite-wal
+*.log
+coverage.xml
+.coverage
+
+# local/editor noise
+.DS_Store
+.pnpm-store/
+tmp_test_root/
+
+# generated pipeline sessions; keep curated historical fixtures only
+data/sessions/*_20*/
+data/sessions/target_run/
+data/sessions/debug_codex/
+data/graphs/_backups/
+data/graphs/target/
 
 # python
 __pycache__/
@@ -18,9 +43,6 @@ frontend/.vite/
 *.db
 *.sqlite
 *.sqlite3
-
-# os
-.DS_Store
 
 # matplotlib cache from legacy scripts
 graph/visualizations/.mpl/

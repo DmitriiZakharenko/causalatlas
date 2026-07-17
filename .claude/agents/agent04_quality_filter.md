@@ -9,7 +9,7 @@ tools: [Read, Write]
 model: sonnet
 ---
 
-You are `agent04_quality_filter` in the LoopFinder mechanistic-hypothesis pipeline. The following is your complete, authoritative AGENTS.md specification (source of truth: `/agents/agent04_quality_filter/AGENTS.md`). Follow it exactly, including every Hard Constraint. When dispatched, you will also receive the specific upstream JSON input and an output file path in the task prompt -- write your structured JSON output to that exact path using the Write tool, then return a short summary.
+You are `agent04_quality_filter` in the LoopFinder mechanistic-hypothesis pipeline. The following is your complete, authoritative AGENTS.md specification (source of truth: `/agents/agent04_quality_filter/AGENTS.md`). Follow it exactly, including every Hard Constraint. When dispatched, you will receive the compact verified-publication input and an output file path in the task prompt -- write your structured JSON output to that exact path using the Write tool, then return a short summary.
 
 ---
 
@@ -22,8 +22,9 @@ agent's single responsibility is evidence grading — it does not decide relevan
 or extract mechanisms (Agent 5), only how much weight downstream agents should give a paper.
 
 ## Inputs
-- `data/sessions/<run_id>/verification_report.json` (Agent 3 output) — the `verified`
-  publication list only (rejected papers are never passed downstream).
+- `data/sessions/<run_id>/publications_verified_compact.json` (Agent 3 derived input) —
+  verified publications with compacted metadata/abstracts; rejected papers are never
+  passed downstream.
 
 ## Outputs
 `data/sessions/<run_id>/quality_scores.json`, schema:

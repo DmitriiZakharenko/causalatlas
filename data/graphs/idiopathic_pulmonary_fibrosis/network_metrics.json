@@ -1,0 +1,378 @@
+{
+  "centrality": {
+    "IL-11": {
+      "degree": 17,
+      "betweenness": 1.0,
+      "pagerank": 0.0943,
+      "eigenvector": 0.2763
+    },
+    "Myofibroblast": {
+      "degree": 3,
+      "betweenness": 0.1765,
+      "pagerank": 0.0399,
+      "eigenvector": 0.2645
+    },
+    "Sirt1": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.2298
+    },
+    "Smad2": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.2298
+    },
+    "\u03b1-SMA expression": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "Fibronectin expression": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "Collagen I expression": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "ERK and MEK phosphorylation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "rmIL-11": {
+      "degree": 3,
+      "betweenness": 0.1765,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "Lung fibrosis": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0231,
+      "eigenvector": 0.0
+    },
+    "Pulmonary hypertension": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0231,
+      "eigenvector": 0.0
+    },
+    "Endothelial to mesenchymal transition": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0231,
+      "eigenvector": 0.0
+    },
+    "hrIL-11": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "Pulmonary artery smooth muscle cell to myofibroblast-like transformation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0332,
+      "eigenvector": 0.0
+    },
+    "Collagen deposition": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "Progenitor activation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "Mature alveolar epithelial cells": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "TGF\u03b2 signaling": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.2298
+    },
+    "IL11 blocking antibodies": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "STAT3 activation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0332,
+      "eigenvector": 0.0
+    },
+    "STAT3 phosphorylation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "ERK1/2 phosphorylation": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "Fibrocyte": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0246,
+      "eigenvector": 0.2298
+    },
+    "IL-11 scFv": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "Fibrosis": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.0332,
+      "eigenvector": 0.0
+    },
+    "IL-11 W147C dimer": {
+      "degree": 2,
+      "betweenness": 0.1176,
+      "pagerank": 0.018,
+      "eigenvector": 0.0209
+    },
+    "TF-1 cell proliferation": {
+      "degree": 2,
+      "betweenness": 0.1176,
+      "pagerank": 0.0332,
+      "eigenvector": 0.0348
+    },
+    "PEGylated IL-11 W147C analogs": {
+      "degree": 2,
+      "betweenness": 0.1176,
+      "pagerank": 0.018,
+      "eigenvector": 0.0209
+    },
+    "Pulmonary fibrosis": {
+      "degree": 2,
+      "betweenness": 0.1176,
+      "pagerank": 0.0399,
+      "eigenvector": 0.2439
+    },
+    "siIL11": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.2298
+    },
+    "IL-11 ASOs": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.2298
+    },
+    "IL-11 neutralizing antibodies": {
+      "degree": 1,
+      "betweenness": 0.0588,
+      "pagerank": 0.018,
+      "eigenvector": 0.017
+    },
+    "IL11": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "IL11RA": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "IL6ST": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "IPF": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "JAK1": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "JAK2": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "STAT3": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "TYK2": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    },
+    "idiopathic pulmonary fibrosis": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.018,
+      "eigenvector": 0.0
+    }
+  },
+  "communities": [
+    {
+      "community_id": 1,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Collagen I expression",
+        "Collagen deposition",
+        "ERK and MEK phosphorylation",
+        "ERK1/2 phosphorylation",
+        "Fibrocyte",
+        "Fibronectin expression",
+        "IL-11",
+        "IL-11 ASOs",
+        "IL-11 W147C dimer",
+        "IL-11 neutralizing antibodies",
+        "Mature alveolar epithelial cells",
+        "Myofibroblast",
+        "PEGylated IL-11 W147C analogs",
+        "Progenitor activation",
+        "Pulmonary fibrosis",
+        "STAT3 phosphorylation",
+        "Sirt1",
+        "Smad2",
+        "TF-1 cell proliferation",
+        "TGF\u03b2 signaling",
+        "siIL11",
+        "\u03b1-SMA expression"
+      ]
+    },
+    {
+      "community_id": 2,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Endothelial to mesenchymal transition",
+        "Lung fibrosis",
+        "Pulmonary hypertension",
+        "rmIL-11"
+      ]
+    },
+    {
+      "community_id": 3,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Fibrosis",
+        "IL-11 scFv"
+      ]
+    },
+    {
+      "community_id": 4,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL11"
+      ]
+    },
+    {
+      "community_id": 5,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL11 blocking antibodies",
+        "STAT3 activation"
+      ]
+    },
+    {
+      "community_id": 6,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL11RA"
+      ]
+    },
+    {
+      "community_id": 7,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL6ST"
+      ]
+    },
+    {
+      "community_id": 8,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IPF"
+      ]
+    },
+    {
+      "community_id": 9,
+      "algorithm": "connected_components",
+      "nodes": [
+        "JAK1"
+      ]
+    },
+    {
+      "community_id": 10,
+      "algorithm": "connected_components",
+      "nodes": [
+        "JAK2"
+      ]
+    },
+    {
+      "community_id": 11,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Pulmonary artery smooth muscle cell to myofibroblast-like transformation",
+        "hrIL-11"
+      ]
+    },
+    {
+      "community_id": 12,
+      "algorithm": "connected_components",
+      "nodes": [
+        "STAT3"
+      ]
+    },
+    {
+      "community_id": 13,
+      "algorithm": "connected_components",
+      "nodes": [
+        "TYK2"
+      ]
+    },
+    {
+      "community_id": 14,
+      "algorithm": "connected_components",
+      "nodes": [
+        "idiopathic pulmonary fibrosis"
+      ]
+    }
+  ],
+  "architectures": []
+}

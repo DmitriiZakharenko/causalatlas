@@ -1,55 +1,87 @@
 [
   {
-    "source": "TSLP",
-    "target": "Type 2 inflammation",
-    "status": "EVIDENCED",
-    "pmid_count": 54,
-    "pmids": [
-      "34971621",
-      "35098856",
-      "35693823",
-      "35754131",
-      "35908044"
-    ],
-    "tag": "PRIORITY_SESSION_002"
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL1RAP"
   },
   {
-    "source": "Eosinophil",
-    "target": "Airway inflammation",
-    "status": "EVIDENCED",
-    "pmid_count": 251,
-    "pmids": [
-      "34851736",
-      "34932383",
-      "34971621",
-      "34983110",
-      "35091338"
-    ],
-    "tag": "PRIORITY_SESSION_002"
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL1RAP-1"
   },
   {
-    "source": "Dendritic cell",
-    "target": "Tissue-resident memory T cell",
-    "status": "EVIDENCED_GENERAL_LUNG",
-    "asthma_specific_status": "INSUFFICIENT EVIDENCE",
-    "pmid_count": 1,
-    "pmids": ["33952647"],
-    "note": "PMID 33952647 is influenza vaccine TRM (CCR2/monocyte), not allergic asthma. Asthma/cDC1-specific query returns only PMID 40184040.",
-    "tag": "PRIORITY_SESSION_002"
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL1RL1"
   },
   {
-    "source": "cDC1",
-    "target": "Tissue-resident memory T cell",
-    "status": "EVIDENCED_GENERAL_LUNG",
-    "asthma_specific_status": "INSUFFICIENT EVIDENCE",
-    "pmid_count": 1,
-    "pmids": ["40184040"],
-    "note": "Only asthma-relevant cDC1→TRM source in targeted PubMed search (novelty_audit gap search: count=1).",
-    "tag": "PRIORITY_SESSION_002"
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL5"
   },
   {
-    "node": "cDC1",
-    "status": "POORLY_STUDIED",
-    "pmid": "33952647"
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IRAK"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IgE"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "MAPK"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "MAPKs"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "MYD88"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "NF-kappa-B"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "NK cells"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "TRAF6"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "Th2 cells"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "asthma"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "basophils"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "eosinophils"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "mast cells"
   }
 ]

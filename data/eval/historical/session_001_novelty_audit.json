@@ -1,0 +1,17 @@
+{
+  "fixture_type": "historical_eval_ground_truth",
+  "source": "git history: data/graphs/asthma/novelty_audit.json (Session 002 re-audit)",
+  "session_id": "asthma_001",
+  "audits": [
+    {
+      "hypothesis_id": "H1_session001",
+      "classification": "RESTATED",
+      "action": "Single-paper restatement of PMID 40184040; do not advance to hypothesis generation."
+    },
+    {
+      "hypothesis_id": "H2_session001",
+      "classification": "A — Established consensus",
+      "action": "Established consensus; do not advance to hypothesis generation."
+    }
+  ]
+}

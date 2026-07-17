@@ -1,19 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import CytoscapeComponent from "react-cytoscapejs";
 import type * as cytoscape from "cytoscape";
+import { Link } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import type { GraphEdge, GraphNode, GraphResponse, GraphSummary } from "../api/types";
 
 const TYPE_COLORS: Record<string, string> = {
-  Cell: "#5b8def",
-  Cytokine: "#ef8354",
-  Molecule: "#8ac926",
-  Tissue: "#bd93f9",
-  Clinical_phenotype: "#e63946",
+  Cell: "#6b8fcf",
+  Cytokine: "#e07a3f",
+  Molecule: "#5aa469",
+  Tissue: "#8f7be8",
+  Clinical_phenotype: "#c23a4b",
 };
-const DEFAULT_COLOR = "#8892a6";
-const SPOTLIGHT_COLOR = "#ffd166";
-const SEARCH_COLOR = "#2ecc71";
+const DEFAULT_COLOR = "#9ca7b8";
+const SPOTLIGHT_COLOR = "#d97706";
+const SEARCH_COLOR = "#15803d";
+const GRAPH_CANVAS_BG = "#f7faff";
 
 // Cytoscape core supports "mapData(prop, min, max, out_min, out_max)" as a
 // string-encoded mapper -- used here instead of JS function style values so
@@ -28,13 +30,14 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
       label: "data(label)",
       "font-size": 8,
       "min-zoomed-font-size": 7,
-      color: "#e6e8ee",
+      color: "#1f2937",
       "text-outline-width": 1.2,
-      "text-outline-color": "#1a1d29",
+      "text-outline-color": "#ffffff",
       "text-margin-y": -2,
       width: "mapData(pmid_count, 0, 150, 9, 42)",
       height: "mapData(pmid_count, 0, 150, 9, 42)",
-      "border-width": 0,
+      "border-width": 1,
+      "border-color": "#ffffff",
       "transition-property": "opacity, border-width, border-color",
       "transition-duration": 120,
     },
@@ -43,12 +46,12 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
     selector: "edge",
     style: {
       width: "mapData(pmid_count, 0, 50, 0.6, 5)",
-      "line-color": "#3a3f55",
-      "target-arrow-color": "#3a3f55",
+      "line-color": "#94a3b8",
+      "target-arrow-color": "#94a3b8",
       "target-arrow-shape": "triangle",
       "arrow-scale": 0.7,
       "curve-style": "bezier",
-      opacity: 0.55,
+      opacity: 0.65,
       "transition-property": "opacity, line-color, width",
       "transition-duration": 120,
     },
@@ -245,6 +248,14 @@ export default function GraphExplorerPage() {
               {graph.metadata.version ? ` · v${graph.metadata.version}` : null}
             </span>
           )}
+          {selectedSlug && (
+            <Link
+              className="button"
+              to={`/graphs/${selectedSlug}/pathogenesis${selected?.kind === "node" ? `?node=${encodeURIComponent(selected.data.id)}` : ""}`}
+            >
+              {selected?.kind === "node" ? `Summarize ${selected.data.label}` : "Text summary"}
+            </Link>
+          )}
         </div>
         {hideNoise && hiddenNoiseCount > 0 && (
           <p className="muted" style={{ marginTop: "0.5rem" }}>
@@ -272,7 +283,7 @@ export default function GraphExplorerPage() {
                   numIter: 1500,
                 } as cytoscape.LayoutOptions
               }
-              style={{ width: "100%", height: "70vh", background: "#12141d", borderRadius: 8 }}
+              style={{ width: "100%", height: "70vh", background: GRAPH_CANVAS_BG, borderRadius: 8 }}
               cy={(cy) => {
                 cyRef.current = cy;
                 cy.removeAllListeners();

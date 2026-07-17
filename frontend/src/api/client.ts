@@ -8,9 +8,10 @@ import type {
   RunStatusResponse,
   RunSummary,
   StartRunResponse,
+  EvidenceSummary,
 } from "./types";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 
 export class ApiError extends Error {
   status: number;
@@ -40,7 +41,7 @@ function qs(params: Record<string, string | undefined>): string {
 
 export const api = {
   health: () =>
-    request<{ status: string; service: string; phase: string; pipeline_agents: string[]; timestamp: string }>(
+    request<{ status: string; service: string; phase: string; llm_provider: string; pipeline_agents: string[]; timestamp: string }>(
       "/api/health"
     ),
 
@@ -60,11 +61,17 @@ export const api = {
 
   getRunStatus: (runId: string) => request<RunStatusResponse>(`/api/pipeline/${runId}/status`),
 
+  getEvidence: (runId: string) => request<EvidenceSummary>(`/api/evidence/${runId}`),
+
+  getDemoReplay: () => request<EvidenceSummary>("/api/demo/replay"),
+
   submitDecision: (runId: string, decision: "approve" | "reject" | "edit", note?: string) =>
     request<{ run_id: string; status: string; decision: string; stream_url: string; timestamp: string }>(
       `/api/pipeline/${runId}/decision`,
       { method: "POST", body: JSON.stringify({ decision, note }) }
     ),
+
+  cancelRun: (runId: string) => request<{ run_id: string; status: string; timestamp: string }>(`/api/pipeline/${runId}/cancel`, { method: "POST" }),
 
   streamUrl: (runId: string, afterSeq?: number) =>
     `${API_BASE_URL}/api/pipeline/${runId}/stream${afterSeq !== undefined ? `?after_seq=${afterSeq}` : ""}`,

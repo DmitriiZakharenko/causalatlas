@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import { subscribeToRun } from "../api/sse";
@@ -23,6 +23,8 @@ function describeEvent(event: PipelineEvent): string {
       return `Run completed${event.cost_usd !== undefined ? ` — $${event.cost_usd.toFixed(4)}` : ""}`;
     case "run_failed":
       return `Run failed — ${event.reason}`;
+    case "run_cancelled":
+      return `Run cancelled — ${event.reason}`;
     case "run_paused":
       return `Paused at ${event.agent ?? "unknown agent"} — ${event.reason}`;
     default:
@@ -38,7 +40,7 @@ export default function RunDetailPage() {
   const [decisionNote, setDecisionNote] = useState("");
   const [submittingDecision, setSubmittingDecision] = useState(false);
   const [decisionError, setDecisionError] = useState<string | null>(null);
-  const seqRef = useRef(0);
+  const [cancelling, setCancelling] = useState(false);
 
   const refreshStatus = useCallback(() => {
     if (!runId) return;
@@ -55,12 +57,13 @@ export default function RunDetailPage() {
   useEffect(() => {
     if (!runId) return;
     const unsubscribe = subscribeToRun(runId, (event) => {
-      seqRef.current += 1;
-      setTimeline((prev) => [...prev, { key: `${seqRef.current}`, at: Date.now(), event }]);
-      // Status transitions (paused/completed/failed) live in the DB, not just
-      // the stream -- refresh so the badge/interventions panel stays in sync
-      // even if this tab was opened after the run already reached that state.
-      refreshStatus();
+      const atMs = event.created_at ? event.created_at * 1000 : Date.now();
+      const key = event.seq !== undefined ? `seq-${event.seq}` : `${atMs}-${event.type}`;
+      setTimeline((prev) => {
+        if (prev.some((entry) => entry.key === key)) return prev;
+        return [...prev, { key, at: atMs, event }];
+      });
+      if (event.type !== "skill_loaded") refreshStatus();
     });
     return unsubscribe;
   }, [runId, refreshStatus]);
@@ -80,6 +83,19 @@ export default function RunDetailPage() {
     }
   };
 
+  const cancelRun = async () => {
+    if (!runId) return;
+    setCancelling(true);
+    try {
+      await api.cancelRun(runId);
+      refreshStatus();
+    } catch (err) {
+      setStatusError(err instanceof ApiError ? `${err.status}: ${err.message}` : String(err));
+    } finally {
+      setCancelling(false);
+    }
+  };
+
   if (!runId) return <p className="error-text">No run id in URL.</p>;
 
   return (
@@ -96,9 +112,23 @@ export default function RunDetailPage() {
           </div>
           {status && <StatusBadge status={status.status} />}
         </div>
+        {status && ["pending", "running", "paused"].includes(status.status) && (
+          <button className="button button--danger run-cancel-button" disabled={cancelling} onClick={cancelRun}>
+            {cancelling ? "Stopping…" : "Stop run"}
+          </button>
+        )}
 
         {statusError && <p className="error-text">{statusError}</p>}
-        {status?.error && <pre className="error-text">{status.error}</pre>}
+        {status?.error && status.status === "failed" && (
+          <pre className="error-text">{status.error}</pre>
+        )}
+
+        {status?.status === "running" && (
+          <p className="muted">
+            Run is in progress. Older failures in the timeline are from previous attempts — not
+            necessarily the current one. Avoid refreshing this page while agents are working.
+          </p>
+        )}
 
         {status?.status === "paused" && (
           <div className="pause-panel">
@@ -131,6 +161,14 @@ export default function RunDetailPage() {
           </div>
         )}
       </section>
+
+      {status?.evidence_summary && (
+        <section className="run-quality-strip">
+          <div><span>Pipeline execution</span><strong>{status.evidence_summary.execution.complete ? "completed" : status.evidence_summary.execution.status}</strong></div>
+          <div><span>Evidence quality</span><strong className={status.evidence_summary.evidence.quality === "degraded" ? "run-quality-strip__warn" : ""}>{status.evidence_summary.evidence.quality}</strong></div>
+          <div><span>Hypothesis readiness</span><strong className={status.evidence_summary.hypotheses.ready ? "run-quality-strip__ok" : "run-quality-strip__warn"}>{status.evidence_summary.hypotheses.ready ? "ready" : "not ready"}</strong></div>
+        </section>
+      )}
 
       <section className="card">
         <h2>Live progress</h2>

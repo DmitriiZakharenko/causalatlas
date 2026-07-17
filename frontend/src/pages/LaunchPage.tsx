@@ -33,6 +33,7 @@ export default function LaunchPage() {
 
   const [runs, setRuns] = useState<RunSummary[] | null>(null);
   const [runsError, setRunsError] = useState<string | null>(null);
+  const [provider, setProvider] = useState<string | null>(null);
 
   const loadRuns = () => {
     api
@@ -43,6 +44,7 @@ export default function LaunchPage() {
 
   useEffect(() => {
     loadRuns();
+    api.health().then((health) => setProvider(health.llm_provider)).catch(() => undefined);
     const interval = setInterval(loadRuns, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -75,7 +77,7 @@ export default function LaunchPage() {
       <section className="card">
         <h1>Launch a mechanistic-hypothesis run</h1>
         <p className="muted">
-          Dispatches the real 13-agent pipeline via the Claude Code CLI, sequentially, per{" "}
+          Runs a live {provider ?? "configured"} pipeline sequentially, per{" "}
           <code>agents/agent00_orchestrator/AGENTS.md</code>. Nothing here is a stub or mock.
         </p>
 
@@ -133,7 +135,7 @@ export default function LaunchPage() {
           {submitError && <p className="error-text">{submitError}</p>}
 
           <button type="submit" className="button button--primary" disabled={submitting}>
-            {submitting ? "Starting…" : "Start pipeline run"}
+            {submitting ? "Starting…" : `Run live ${provider ?? "pipeline"} analysis`}
           </button>
         </form>
       </section>

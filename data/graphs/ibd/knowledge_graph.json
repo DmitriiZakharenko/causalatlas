@@ -1,1043 +1,752 @@
 {
-  "metadata": {
-    "disease": "IBD",
-    "node_count": 11,
-    "edge_count": 14,
-    "session": "003",
-    "version": "1.0.0"
-  },
   "nodes": [
     {
-      "id": "Intestinal epithelium",
-      "type": "Tissue",
-      "pmid_count": 91,
-      "pmids": [
-        "36182776",
-        "39918275",
-        "39936162",
-        "40022314",
-        "40054799",
-        "40101416",
-        "40138118",
-        "40279942",
-        "40350808",
-        "40542081",
-        "40576745",
-        "40672311",
-        "40705352",
-        "40717126",
-        "40772620",
-        "40789238",
-        "40806121",
-        "40939913",
-        "40992441",
-        "41010526",
-        "41019044",
-        "41090218",
-        "41148805",
-        "41254358",
-        "41266201",
-        "41301831",
-        "41405338",
-        "41475762",
-        "41552362",
-        "41583118",
-        "41638505",
-        "41675494",
-        "41714083",
-        "41740414",
-        "41771477",
-        "41790398",
-        "41796864",
-        "41904124",
-        "41924270",
-        "42001514",
-        "42021603",
-        "42028753",
-        "42054366",
-        "42105812",
-        "42106047",
-        "42158829",
-        "42200545",
-        "42257857",
-        "42263101",
-        "42278255",
-        "42293390",
-        "42295683",
-        "42296782",
-        "42296875",
-        "42299911",
-        "42302942",
-        "42306181",
-        "42308787",
-        "42309454",
-        "42310292",
-        "42316543",
-        "42317318",
-        "42319827",
-        "42322270",
-        "42322570",
-        "42322763",
-        "42322861",
-        "42324373",
-        "42329424",
-        "42331300",
-        "42334735",
-        "42336837",
-        "42342144",
-        "42343834",
-        "42344920",
-        "42347216",
-        "42349804",
-        "42352943",
-        "42352981",
-        "42353131",
-        "42356172",
-        "42356278",
-        "42356475",
-        "42357730",
-        "42358364",
-        "42358961",
-        "42358979",
-        "42364076",
-        "42378030",
-        "42380324",
-        "42383198"
-      ]
-    },
-    {
-      "id": "TSLP",
-      "type": "Cytokine",
+      "id": "nocodazole",
+      "type": "Molecule",
       "pmid_count": 1,
       "pmids": [
-        "36182776"
-      ]
+        "41528771"
+      ],
+      "edge_count": 1
     },
     {
       "id": "NOD2",
       "type": "Molecule",
-      "pmid_count": 30,
+      "pmid_count": 1,
       "pmids": [
-        "39918275",
-        "40468178",
-        "40500692",
-        "40542081",
-        "40672311",
-        "40766554",
-        "40772620",
-        "40789238",
-        "40816861",
-        "40824708",
-        "40841786",
-        "41090218",
-        "41148551",
-        "41148805",
-        "41300823",
-        "41301831",
-        "41321314",
-        "41552362",
-        "41675494",
-        "41678017",
-        "41765035",
-        "41771477",
-        "41790398",
-        "41796864",
-        "41924270",
-        "42054366",
-        "42263101",
-        "42316543",
-        "42329424",
-        "42344920"
-      ]
+        "41528771"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "Intestinal inflammation",
-      "type": "Clinical_phenotype",
-      "pmid_count": 97,
-      "pmids": [
-        "39918275",
-        "39936162",
-        "39987456",
-        "40010414",
-        "40138118",
-        "40500692",
-        "40526227",
-        "40542081",
-        "40649782",
-        "40672311",
-        "40713669",
-        "40766554",
-        "40806121",
-        "40816861",
-        "40824708",
-        "40963293",
-        "41010526",
-        "41015798",
-        "41148551",
-        "41258994",
-        "41300823",
-        "41301831",
-        "41321314",
-        "41632832",
-        "41638505",
-        "41678017",
-        "41707181",
-        "41740414",
-        "41765035",
-        "41790398",
-        "41924270",
-        "41975658",
-        "42004944",
-        "42054366",
-        "42064076",
-        "42070310",
-        "42096094",
-        "42099600",
-        "42105812",
-        "42106904",
-        "42113310",
-        "42119868",
-        "42127147",
-        "42128790",
-        "42138836",
-        "42153603",
-        "42158829",
-        "42166334",
-        "42166934",
-        "42188321",
-        "42190856",
-        "42195170",
-        "42200545",
-        "42201570",
-        "42202920",
-        "42207086",
-        "42212373",
-        "42214821",
-        "42220489",
-        "42222980",
-        "42225164",
-        "42233398",
-        "42235313",
-        "42244158",
-        "42267895",
-        "42269048",
-        "42274393",
-        "42274423",
-        "42278255",
-        "42296171",
-        "42302942",
-        "42305552",
-        "42307033",
-        "42308787",
-        "42316543",
-        "42317318",
-        "42322570",
-        "42322762",
-        "42324373",
-        "42329424",
-        "42334735",
-        "42342332",
-        "42344924",
-        "42349582",
-        "42353045",
-        "42353858",
-        "42356018",
-        "42356036",
-        "42356205",
-        "42356278",
-        "42356543",
-        "42358961",
-        "42362204",
-        "42364076",
-        "42367809",
-        "42378030",
-        "42380324"
-      ]
-    },
-    {
-      "id": "TNF",
-      "type": "Cytokine",
-      "pmid_count": 77,
-      "pmids": [
-        "39918275",
-        "39936162",
-        "39987456",
-        "40010414",
-        "40138118",
-        "40500692",
-        "40526227",
-        "40649782",
-        "40713669",
-        "40806121",
-        "41010526",
-        "41148551",
-        "41254358",
-        "41255010",
-        "41258994",
-        "41301831",
-        "41632832",
-        "41638505",
-        "41707181",
-        "41765035",
-        "41790398",
-        "41975658",
-        "42004944",
-        "42070310",
-        "42105812",
-        "42106904",
-        "42119868",
-        "42127147",
-        "42128790",
-        "42138836",
-        "42153603",
-        "42166334",
-        "42188321",
-        "42190856",
-        "42195170",
-        "42200545",
-        "42201570",
-        "42202920",
-        "42207086",
-        "42212373",
-        "42214821",
-        "42220489",
-        "42222980",
-        "42225164",
-        "42229378",
-        "42233398",
-        "42244158",
-        "42257857",
-        "42269048",
-        "42274393",
-        "42274423",
-        "42278255",
-        "42296171",
-        "42302942",
-        "42305552",
-        "42307033",
-        "42308787",
-        "42316543",
-        "42317318",
-        "42322570",
-        "42322762",
-        "42324373",
-        "42329424",
-        "42334735",
-        "42342332",
-        "42349582",
-        "42353045",
-        "42356018",
-        "42356205",
-        "42356278",
-        "42356543",
-        "42358961",
-        "42362204",
-        "42364076",
-        "42367809",
-        "42378030",
-        "42380324"
-      ]
-    },
-    {
-      "id": "Epithelial barrier",
+      "id": "NOD2 activation",
       "type": "Molecule",
-      "pmid_count": 97,
+      "pmid_count": 1,
       "pmids": [
-        "39936162",
-        "40022314",
-        "40054799",
-        "40138118",
-        "40279942",
-        "40350808",
-        "40468178",
-        "40576745",
-        "40672311",
-        "40717126",
-        "40772620",
-        "40806121",
-        "40841786",
-        "40939913",
-        "40992441",
-        "41010526",
-        "41019044",
-        "41148805",
-        "41254358",
-        "41255010",
-        "41266201",
-        "41300823",
-        "41301831",
-        "41405338",
-        "41552362",
-        "41583118",
-        "41638505",
-        "41675494",
-        "41714083",
-        "41740414",
-        "41771477",
-        "41790398",
-        "41796864",
-        "41924270",
-        "42001514",
-        "42021603",
-        "42028753",
-        "42054366",
-        "42105812",
-        "42106047",
-        "42127147",
-        "42128790",
-        "42158829",
-        "42188321",
-        "42190856",
-        "42200545",
-        "42222980",
-        "42225164",
-        "42229378",
-        "42257857",
-        "42278255",
-        "42293390",
-        "42295683",
-        "42296171",
-        "42296782",
-        "42296875",
-        "42299911",
-        "42302942",
-        "42305552",
-        "42306181",
-        "42308787",
-        "42309454",
-        "42310292",
-        "42316543",
-        "42317318",
-        "42319827",
-        "42322270",
-        "42322570",
-        "42322762",
-        "42322763",
-        "42322861",
-        "42324373",
-        "42331300",
-        "42334735",
-        "42336837",
-        "42342144",
-        "42343834",
-        "42344920",
-        "42347216",
-        "42349804",
-        "42352943",
-        "42352981",
-        "42353131",
-        "42356172",
-        "42356278",
-        "42356475",
-        "42356543",
-        "42357730",
-        "42358364",
-        "42358961",
-        "42358979",
-        "42362204",
-        "42364076",
-        "42367809",
-        "42378030",
-        "42380324",
-        "42383198"
-      ]
+        "41528771"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "IL-22",
-      "type": "Cytokine",
-      "pmid_count": 28,
+      "id": "IBD symptoms",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
       "pmids": [
-        "39936162",
-        "40022314",
-        "40054799",
-        "40101416",
-        "40138118",
-        "40279942",
-        "40350808",
-        "40576745",
-        "40705352",
-        "40717126",
-        "40939913",
-        "40987409",
-        "40992441",
-        "41010526",
-        "41019044",
-        "41254358",
-        "41266201",
-        "41405338",
-        "41475762",
-        "41583118",
-        "41638505",
-        "41740414",
-        "41904124",
-        "42001514",
-        "42021603",
-        "42106047",
-        "42299911",
-        "42336837"
-      ]
+        "41528771"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "ILC3",
+      "id": "intestinal microbiota",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41714083"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "host immune systems",
       "type": "Cell",
-      "pmid_count": 10,
+      "pmid_count": 1,
       "pmids": [
-        "40054799",
-        "40101416",
-        "40279942",
-        "40987409",
-        "40992441",
-        "41019044",
-        "41266201",
-        "41583118",
-        "42001514",
-        "42299911"
-      ]
+        "41714083"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "Th17 cell",
-      "type": "Cell",
-      "pmid_count": 18,
+      "id": "epithelial barrier integrity",
+      "type": "Tissue",
+      "pmid_count": 1,
       "pmids": [
-        "40542081",
-        "40672311",
-        "40963293",
-        "41015798",
-        "41740414",
-        "42064076",
-        "42096094",
-        "42099600",
-        "42113310",
-        "42158829",
-        "42166934",
-        "42214821",
-        "42235313",
-        "42267895",
-        "42307033",
-        "42316543",
-        "42344924",
-        "42353858"
-      ]
+        "41714083"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "IL-23",
-      "type": "Cytokine",
-      "pmid_count": 3,
+      "id": "dysbiotic microbiota",
+      "type": "Molecule",
+      "pmid_count": 1,
       "pmids": [
-        "42099600",
-        "42316543",
-        "42353858"
-      ]
+        "41714083"
+      ],
+      "edge_count": 1
     },
     {
-      "id": "Eosinophil",
-      "type": "Cell",
+      "id": "IBD",
+      "type": "Clinical_phenotype",
       "pmid_count": 2,
       "pmids": [
-        "42190856",
-        "42356036"
-      ]
+        "41155222",
+        "41714083"
+      ],
+      "edge_count": 3
+    },
+    {
+      "id": "NOD2 mutations",
+      "type": "Molecule",
+      "pmid_count": 2,
+      "pmids": [
+        "39469976",
+        "41924270"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "antimicrobial defense",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "41924270"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "antibiotic overuse",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "41924270"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "broad-spectrum antibiotic exposure",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "41924270"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "pattern-recognition receptor signaling",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41924270"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "AMP regulation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41924270"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "gut mucosal barrier function",
+      "type": "Tissue",
+      "pmid_count": 1,
+      "pmids": [
+        "39469976"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "NOD2 risk variants",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "39469976"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "first decompensation",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "39469976"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "increased intestinal permeability",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "40841786"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "whole tissue inflammation",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "40841786"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "impaired OTUD3 function",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41155222"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "impaired OTUD5 function",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41155222"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "activation of STING",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41155222"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "type I IFNs",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41155222"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "activation of TRAF3",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41155222"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "NOD2\u2022GIV assembly",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41959225"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "cAMP",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41959225"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "NOD2\u2022GIV\u2022G\u03b1i-axis",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41959225"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "mucosal barrier integrity",
+      "type": "Tissue",
+      "pmid_count": 1,
+      "pmids": [
+        "41959225"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Crohn disease",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "MAP kinase signaling",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "MAPK",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "NF-kappaB",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "NOD-like receptor signaling",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "RIP2",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "RIPK2",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "autophagy",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "intestinal Paneth cells",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "muramyl dipeptide",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
     }
   ],
   "edges": [
     {
-      "source": "Intestinal epithelium",
-      "target": "TSLP",
-      "primary_relation": "induces",
+      "source": "nocodazole",
+      "target": "NOD2",
       "relations": [
-        "induces"
+        "activates"
       ],
+      "primary_relation": "activates",
       "pmids": [
-        "36182776"
+        "41528771"
       ],
       "pmid_count": 1,
-      "source_type": "Tissue",
-      "target_type": "Cytokine",
-      "evidence_strength": "weak"
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.94,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
     },
     {
-      "source": "Intestinal epithelium",
-      "target": "NOD2",
-      "primary_relation": "induces",
-      "relations": [
-        "induces"
-      ],
-      "pmids": [
-        "39918275",
-        "40542081",
-        "40672311",
-        "40772620",
-        "40789238",
-        "41090218",
-        "41148805",
-        "41301831",
-        "41552362",
-        "41675494",
-        "41771477",
-        "41790398",
-        "41796864",
-        "41924270",
-        "42054366",
-        "42263101",
-        "42316543",
-        "42329424",
-        "42344920"
-      ],
-      "pmid_count": 19,
-      "source_type": "Tissue",
-      "target_type": "Molecule",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "NOD2",
-      "target": "Intestinal inflammation",
-      "primary_relation": "suppresses",
+      "source": "NOD2 activation",
+      "target": "IBD symptoms",
       "relations": [
         "suppresses"
       ],
+      "primary_relation": "suppresses",
       "pmids": [
-        "39918275",
-        "40500692",
-        "40766554",
-        "41148551",
-        "41300823",
-        "41321314",
-        "41765035",
-        "42054366",
-        "42316543"
+        "41528771"
       ],
-      "pmid_count": 9,
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.89,
+      "evidence_strength": "weak",
       "source_type": "Molecule",
-      "target_type": "Clinical_phenotype",
-      "evidence_strength": "strong"
+      "target_type": "Clinical_phenotype"
     },
     {
-      "source": "TNF",
-      "target": "Intestinal inflammation",
-      "primary_relation": "induces",
+      "source": "intestinal microbiota",
+      "target": "host immune systems",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "41714083"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.82,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "intestinal microbiota",
+      "target": "epithelial barrier integrity",
+      "relations": [
+        "maintains"
+      ],
+      "primary_relation": "maintains",
+      "pmids": [
+        "41714083"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.82,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Tissue"
+    },
+    {
+      "source": "dysbiotic microbiota",
+      "target": "IBD",
       "relations": [
         "induces"
       ],
+      "primary_relation": "induces",
       "pmids": [
-        "39918275",
-        "39936162",
-        "39987456",
-        "40010414",
-        "40138118",
-        "40500692",
-        "40526227",
-        "40649782",
-        "40713669",
-        "40806121",
-        "41010526",
-        "41148551",
-        "41258994",
-        "41301831",
-        "41632832",
-        "41638505",
-        "41707181",
-        "41765035",
-        "41790398",
-        "41975658",
-        "42004944",
-        "42070310",
-        "42105812",
-        "42106904",
-        "42119868",
-        "42127147",
-        "42128790",
-        "42138836",
-        "42153603",
-        "42166334",
-        "42188321",
-        "42190856",
-        "42195170",
-        "42200545",
-        "42201570",
-        "42202920",
-        "42207086",
-        "42212373",
-        "42214821",
-        "42220489",
-        "42222980",
-        "42225164",
-        "42233398",
-        "42244158",
-        "42269048",
-        "42274393",
-        "42274423",
-        "42278255",
-        "42296171",
-        "42302942",
-        "42305552",
-        "42307033",
-        "42308787",
-        "42316543",
-        "42317318",
-        "42322570",
-        "42322762",
-        "42324373",
-        "42329424",
-        "42334735",
-        "42342332",
-        "42349582",
-        "42353045",
-        "42356018",
-        "42356205",
-        "42356278",
-        "42356543",
-        "42358961",
-        "42362204",
-        "42364076",
-        "42367809",
-        "42378030",
-        "42380324"
+        "41714083"
       ],
-      "pmid_count": 73,
-      "source_type": "Cytokine",
-      "target_type": "Clinical_phenotype",
-      "evidence_strength": "strong"
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.8,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
     },
     {
-      "source": "TNF",
-      "target": "Epithelial barrier",
-      "primary_relation": "suppresses",
+      "source": "NOD2 mutations",
+      "target": "antimicrobial defense",
       "relations": [
         "suppresses"
       ],
+      "primary_relation": "suppresses",
       "pmids": [
-        "39936162",
-        "40806121",
-        "41010526",
-        "41254358",
-        "41255010",
-        "41638505",
-        "41790398",
-        "42105812",
-        "42127147",
-        "42128790",
-        "42188321",
-        "42190856",
-        "42200545",
-        "42222980",
-        "42225164",
-        "42229378",
-        "42257857",
-        "42278255",
-        "42296171",
-        "42302942",
-        "42305552",
-        "42308787",
-        "42316543",
-        "42317318",
-        "42322762",
-        "42356543",
-        "42362204",
-        "42364076",
-        "42367809",
-        "42380324"
+        "41924270"
       ],
-      "pmid_count": 30,
-      "source_type": "Cytokine",
-      "target_type": "Molecule",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "IL-22",
-      "target": "Intestinal epithelium",
-      "primary_relation": "activates",
-      "relations": [
-        "activates"
+      "pmid_count": 1,
+      "years": [
+        "2026"
       ],
-      "pmids": [
-        "39936162",
-        "40022314",
-        "40054799",
-        "40101416",
-        "40138118",
-        "40279942",
-        "40350808",
-        "40576745",
-        "40705352",
-        "40717126",
-        "40939913",
-        "40992441",
-        "41010526",
-        "41019044",
-        "41254358",
-        "41266201",
-        "41405338",
-        "41475762",
-        "41583118",
-        "41638505",
-        "41740414",
-        "41904124",
-        "42001514",
-        "42021603",
-        "42106047",
-        "42336837"
+      "species": [
+        "human"
       ],
-      "pmid_count": 26,
-      "source_type": "Cytokine",
-      "target_type": "Tissue",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "IL-22",
-      "target": "Epithelial barrier",
-      "primary_relation": "activates",
-      "relations": [
-        "activates"
-      ],
-      "pmids": [
-        "39936162",
-        "40022314",
-        "40054799",
-        "40138118",
-        "40279942",
-        "40350808",
-        "40576745",
-        "40717126",
-        "40992441",
-        "41010526",
-        "41019044",
-        "41254358",
-        "41266201",
-        "41405338",
-        "41583118",
-        "41638505",
-        "41740414",
-        "42001514",
-        "42021603",
-        "42106047",
-        "42336837"
-      ],
-      "pmid_count": 21,
-      "source_type": "Cytokine",
-      "target_type": "Molecule",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "ILC3",
-      "target": "IL-22",
-      "primary_relation": "induces",
-      "relations": [
-        "induces"
-      ],
-      "pmids": [
-        "40054799",
-        "40101416",
-        "40279942",
-        "40987409",
-        "40992441",
-        "41019044",
-        "41266201",
-        "41583118",
-        "42001514",
-        "42299911"
-      ],
-      "pmid_count": 10,
-      "source_type": "Cell",
-      "target_type": "Cytokine",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "Intestinal epithelium",
-      "target": "Epithelial barrier",
-      "primary_relation": "induces",
-      "relations": [
-        "induces"
-      ],
-      "pmids": [
-        "40054799",
-        "40138118",
-        "40279942",
-        "40576745",
-        "40672311",
-        "40772620",
-        "40806121",
-        "40939913",
-        "40992441",
-        "41019044",
-        "41266201",
-        "41301831",
-        "41552362",
-        "41583118",
-        "41675494",
-        "41714083",
-        "41740414",
-        "41771477",
-        "41790398",
-        "41796864",
-        "41924270",
-        "42001514",
-        "42021603",
-        "42028753",
-        "42054366",
-        "42105812",
-        "42158829",
-        "42200545",
-        "42257857",
-        "42278255",
-        "42293390",
-        "42295683",
-        "42296782",
-        "42296875",
-        "42299911",
-        "42302942",
-        "42306181",
-        "42308787",
-        "42309454",
-        "42310292",
-        "42316543",
-        "42317318",
-        "42319827",
-        "42322270",
-        "42322570",
-        "42322763",
-        "42322861",
-        "42324373",
-        "42331300",
-        "42334735",
-        "42336837",
-        "42342144",
-        "42343834",
-        "42344920",
-        "42347216",
-        "42349804",
-        "42352943",
-        "42352981",
-        "42353131",
-        "42356172",
-        "42356278",
-        "42356475",
-        "42357730",
-        "42358364",
-        "42358961",
-        "42358979",
-        "42364076",
-        "42378030",
-        "42380324",
-        "42383198"
-      ],
-      "pmid_count": 70,
-      "source_type": "Tissue",
-      "target_type": "Molecule",
-      "evidence_strength": "strong"
-    },
-    {
-      "source": "NOD2",
-      "target": "Epithelial barrier",
-      "primary_relation": "activates",
-      "relations": [
-        "activates"
-      ],
-      "pmids": [
-        "40468178",
-        "40672311",
-        "40772620",
-        "40841786",
-        "41148805",
-        "41300823",
-        "41675494",
-        "41771477",
-        "41790398",
-        "41796864",
-        "42316543",
-        "42344920"
-      ],
-      "pmid_count": 12,
+      "confidence": 0.9,
+      "evidence_strength": "weak",
       "source_type": "Molecule",
-      "target_type": "Molecule",
-      "evidence_strength": "strong"
+      "target_type": "Clinical_phenotype"
     },
     {
-      "source": "NOD2",
-      "target": "Intestinal inflammation",
-      "primary_relation": "induces",
+      "source": "antibiotic overuse",
+      "target": "antimicrobial defense",
       "relations": [
-        "induces"
+        "suppresses"
       ],
+      "primary_relation": "suppresses",
       "pmids": [
-        "40542081",
-        "40766554",
-        "40816861",
-        "40824708",
-        "41301831",
-        "41321314",
-        "41678017",
-        "41924270",
-        "42316543"
+        "41924270"
       ],
-      "pmid_count": 9,
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.84,
+      "evidence_strength": "weak",
+      "source_type": "Clinical_phenotype",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "broad-spectrum antibiotic exposure",
+      "target": "pattern-recognition receptor signaling",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "41924270"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.84,
+      "evidence_strength": "weak",
+      "source_type": "Clinical_phenotype",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "broad-spectrum antibiotic exposure",
+      "target": "AMP regulation",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "41924270"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.84,
+      "evidence_strength": "weak",
+      "source_type": "Clinical_phenotype",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "NOD2 mutations",
+      "target": "gut mucosal barrier function",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "39469976"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.88,
+      "evidence_strength": "weak",
       "source_type": "Molecule",
-      "target_type": "Clinical_phenotype",
-      "evidence_strength": "strong"
+      "target_type": "Tissue"
     },
     {
-      "source": "Th17 cell",
-      "target": "Intestinal inflammation",
-      "primary_relation": "induces",
+      "source": "NOD2 risk variants",
+      "target": "first decompensation",
       "relations": [
         "induces"
       ],
+      "primary_relation": "induces",
       "pmids": [
-        "40542081",
-        "40672311",
-        "40963293",
-        "41015798",
-        "41740414",
-        "42064076",
-        "42096094",
-        "42099600",
-        "42113310",
-        "42158829",
-        "42166934",
-        "42214821",
-        "42235313",
-        "42267895",
-        "42307033",
-        "42316543",
-        "42344924",
-        "42353858"
+        "39469976"
       ],
-      "pmid_count": 18,
-      "source_type": "Cell",
-      "target_type": "Clinical_phenotype",
-      "evidence_strength": "strong"
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.9,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
     },
     {
-      "source": "IL-23",
-      "target": "Th17 cell",
-      "primary_relation": "activates",
+      "source": "increased intestinal permeability",
+      "target": "whole tissue inflammation",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "40841786"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.85,
+      "evidence_strength": "weak",
+      "source_type": "Clinical_phenotype",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "impaired OTUD3 function",
+      "target": "IBD",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41155222"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.88,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "impaired OTUD5 function",
+      "target": "IBD",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41155222"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.88,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "activation of STING",
+      "target": "type I IFNs",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41155222"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.9,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "activation of TRAF3",
+      "target": "type I IFNs",
+      "relations": [
+        "induces"
+      ],
+      "primary_relation": "induces",
+      "pmids": [
+        "41155222"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.9,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "NOD2\u2022GIV assembly",
+      "target": "cAMP",
       "relations": [
         "activates"
       ],
+      "primary_relation": "activates",
       "pmids": [
-        "42099600",
-        "42316543",
-        "42353858"
+        "41959225"
       ],
-      "pmid_count": 3,
-      "source_type": "Cytokine",
-      "target_type": "Cell",
-      "evidence_strength": "strong"
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.86,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
     },
     {
-      "source": "Eosinophil",
-      "target": "Intestinal inflammation",
-      "primary_relation": "induces",
+      "source": "NOD2\u2022GIV\u2022G\u03b1i-axis",
+      "target": "mucosal barrier integrity",
       "relations": [
-        "induces"
+        "maintains"
       ],
+      "primary_relation": "maintains",
       "pmids": [
-        "42190856",
-        "42356036"
+        "41959225"
       ],
-      "pmid_count": 2,
-      "source_type": "Cell",
-      "target_type": "Clinical_phenotype",
-      "evidence_strength": "moderate"
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.87,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Tissue"
     }
-  ]
+  ],
+  "metadata": {
+    "disease": "IBD",
+    "run_id": "ibd_20260713T171442Z",
+    "node_count": 39,
+    "edge_count": 18,
+    "source_session": "ibd_20260713T171442Z"
+  }
 }

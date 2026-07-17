@@ -1,5 +1,5 @@
 export type AutonomyLevel = "autocomplete" | "supervised" | "let_it_rip";
-export type RunStatus = "pending" | "running" | "paused" | "completed" | "failed";
+export type RunStatus = "pending" | "running" | "paused" | "completed" | "failed" | "cancelled";
 export type Decision = "approve" | "reject" | "edit";
 
 export interface HumanIntervention {
@@ -22,10 +22,36 @@ export interface RunSummary {
   session_id: string | null;
   created_at: number;
   updated_at: number;
+  evidence_summary?: EvidenceSummary;
 }
 
 export interface RunStatusResponse extends RunSummary {
   interventions: HumanIntervention[];
+}
+
+export interface EvidenceSummary {
+  run_id: string;
+  execution: { status: RunStatus; complete: boolean; current_agent: string | null; error: string | null };
+  evidence: {
+    quality: "usable" | "degraded";
+    verified_papers: number;
+    rejected_papers: number;
+    independent_sources: number;
+    papers_per_mechanism_chain: { strategy: string; query: string; papers: number }[];
+    fallback_count: number;
+    fallback_files: string[];
+    contradictions: number;
+  };
+  hypotheses: { novelty_candidates: number; d_e_candidates: number; generated: number; accepted: number; ready: boolean };
+  hypothesis_records?: { id: string | null; class: string | null; source_gap: string | null; specific_prediction: string | null; falsification: string | null }[];
+  experiment_design?: { status: string | null; hypothesis_id: string | null; model_system: string | null; experiments: { id?: string; method?: string; predicted_outcome?: string; falsification_criterion?: string }[]; primary_readout: string | null; negative_controls: string[] };
+  budgets?: Record<string, { max_queries: number; max_publications: number; deadline_s: number }>;
+  checkpoints?: string[];
+  novelty_audits?: { hypothesis_id: string | null; classification: string | null; eligible: boolean; statement: string | null; action: string | null }[];
+  novelty_catalog?: { source: string; hypothesis_id: string; classification: string; eligible: boolean; statement: string | null }[];
+  artifacts: string[];
+  replay_steps?: { number: string; title: string; description: string; metrics: string[]; artifact: string }[];
+  demo?: { recorded: boolean; source: string; live: boolean };
 }
 
 export interface StartRunResponse {
@@ -43,12 +69,13 @@ export interface StartRunResponse {
  * the SSE named-event name, so the frontend's EventSource listens for each
  * of these explicitly rather than relying on a generic `onmessage`. */
 export type PipelineEvent =
-  | { type: "skill_loaded"; skill: string; seq?: number }
-  | { type: "agent_started"; agent: string; seq?: number }
-  | { type: "agent_completed"; agent: string; seq?: number }
-  | { type: "run_completed"; cost_usd?: number; duration_ms?: number; seq?: number }
-  | { type: "run_failed"; reason: string; seq?: number }
-  | { type: "run_paused"; agent: string | null; reason: string; seq?: number };
+  | { type: "skill_loaded"; skill: string; seq?: number; created_at?: number }
+  | { type: "agent_started"; agent: string; seq?: number; created_at?: number }
+  | { type: "agent_completed"; agent: string; seq?: number; created_at?: number }
+  | { type: "run_completed"; cost_usd?: number; duration_ms?: number; seq?: number; created_at?: number }
+  | { type: "run_failed"; reason: string; seq?: number; created_at?: number }
+  | { type: "run_cancelled"; reason: string; seq?: number; created_at?: number }
+  | { type: "run_paused"; agent: string | null; reason: string; seq?: number; created_at?: number };
 
 export const PIPELINE_EVENT_TYPES = [
   "skill_loaded",
@@ -66,6 +93,7 @@ export interface GraphSummary {
   edge_count: number;
   version: string | null;
   updated: string | null;
+  run_id?: string | null;
 }
 
 export interface GraphNode {

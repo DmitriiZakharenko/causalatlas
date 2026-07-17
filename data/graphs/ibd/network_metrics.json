@@ -1,0 +1,406 @@
+{
+  "centrality": {
+    "nocodazole": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "NOD2": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "NOD2 activation": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "IBD symptoms": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "intestinal microbiota": {
+      "degree": 2,
+      "betweenness": 0.6667,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "host immune systems": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0275,
+      "eigenvector": 0.0
+    },
+    "epithelial barrier integrity": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0275,
+      "eigenvector": 0.0
+    },
+    "dysbiotic microbiota": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.5
+    },
+    "IBD": {
+      "degree": 3,
+      "betweenness": 1.0,
+      "pagerank": 0.0686,
+      "eigenvector": 0.5
+    },
+    "NOD2 mutations": {
+      "degree": 2,
+      "betweenness": 0.6667,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0006
+    },
+    "antimicrobial defense": {
+      "degree": 2,
+      "betweenness": 0.6667,
+      "pagerank": 0.044,
+      "eigenvector": 0.0006
+    },
+    "antibiotic overuse": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0004
+    },
+    "broad-spectrum antibiotic exposure": {
+      "degree": 2,
+      "betweenness": 0.6667,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "pattern-recognition receptor signaling": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0275,
+      "eigenvector": 0.0
+    },
+    "AMP regulation": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0275,
+      "eigenvector": 0.0
+    },
+    "gut mucosal barrier function": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0275,
+      "eigenvector": 0.0004
+    },
+    "NOD2 risk variants": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "first decompensation": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "increased intestinal permeability": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "whole tissue inflammation": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "impaired OTUD3 function": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.5
+    },
+    "impaired OTUD5 function": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.5
+    },
+    "activation of STING": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "type I IFNs": {
+      "degree": 2,
+      "betweenness": 0.6667,
+      "pagerank": 0.0522,
+      "eigenvector": 0.0
+    },
+    "activation of TRAF3": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "NOD2\u2022GIV assembly": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "cAMP": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "NOD2\u2022GIV\u2022G\u03b1i-axis": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "mucosal barrier integrity": {
+      "degree": 1,
+      "betweenness": 0.3333,
+      "pagerank": 0.0357,
+      "eigenvector": 0.0
+    },
+    "Crohn disease": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "MAP kinase signaling": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "MAPK": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "NF-kappaB": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "NOD-like receptor signaling": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "RIP2": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "RIPK2": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "autophagy": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "intestinal Paneth cells": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    },
+    "muramyl dipeptide": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0193,
+      "eigenvector": 0.0
+    }
+  },
+  "communities": [
+    {
+      "community_id": 1,
+      "algorithm": "connected_components",
+      "nodes": [
+        "AMP regulation",
+        "broad-spectrum antibiotic exposure",
+        "pattern-recognition receptor signaling"
+      ]
+    },
+    {
+      "community_id": 2,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Crohn disease"
+      ]
+    },
+    {
+      "community_id": 3,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IBD",
+        "dysbiotic microbiota",
+        "impaired OTUD3 function",
+        "impaired OTUD5 function"
+      ]
+    },
+    {
+      "community_id": 4,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IBD symptoms",
+        "NOD2 activation"
+      ]
+    },
+    {
+      "community_id": 5,
+      "algorithm": "connected_components",
+      "nodes": [
+        "MAP kinase signaling"
+      ]
+    },
+    {
+      "community_id": 6,
+      "algorithm": "connected_components",
+      "nodes": [
+        "MAPK"
+      ]
+    },
+    {
+      "community_id": 7,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NF-kappaB"
+      ]
+    },
+    {
+      "community_id": 8,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD-like receptor signaling"
+      ]
+    },
+    {
+      "community_id": 9,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD2",
+        "nocodazole"
+      ]
+    },
+    {
+      "community_id": 10,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD2 mutations",
+        "antibiotic overuse",
+        "antimicrobial defense",
+        "gut mucosal barrier function"
+      ]
+    },
+    {
+      "community_id": 11,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD2 risk variants",
+        "first decompensation"
+      ]
+    },
+    {
+      "community_id": 12,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD2\u2022GIV assembly",
+        "cAMP"
+      ]
+    },
+    {
+      "community_id": 13,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NOD2\u2022GIV\u2022G\u03b1i-axis",
+        "mucosal barrier integrity"
+      ]
+    },
+    {
+      "community_id": 14,
+      "algorithm": "connected_components",
+      "nodes": [
+        "RIP2"
+      ]
+    },
+    {
+      "community_id": 15,
+      "algorithm": "connected_components",
+      "nodes": [
+        "RIPK2"
+      ]
+    },
+    {
+      "community_id": 16,
+      "algorithm": "connected_components",
+      "nodes": [
+        "activation of STING",
+        "activation of TRAF3",
+        "type I IFNs"
+      ]
+    },
+    {
+      "community_id": 17,
+      "algorithm": "connected_components",
+      "nodes": [
+        "autophagy"
+      ]
+    },
+    {
+      "community_id": 18,
+      "algorithm": "connected_components",
+      "nodes": [
+        "epithelial barrier integrity",
+        "host immune systems",
+        "intestinal microbiota"
+      ]
+    },
+    {
+      "community_id": 19,
+      "algorithm": "connected_components",
+      "nodes": [
+        "increased intestinal permeability",
+        "whole tissue inflammation"
+      ]
+    },
+    {
+      "community_id": 20,
+      "algorithm": "connected_components",
+      "nodes": [
+        "intestinal Paneth cells"
+      ]
+    },
+    {
+      "community_id": 21,
+      "algorithm": "connected_components",
+      "nodes": [
+        "muramyl dipeptide"
+      ]
+    }
+  ],
+  "architectures": []
+}

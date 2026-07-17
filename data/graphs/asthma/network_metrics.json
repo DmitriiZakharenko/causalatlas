@@ -1,39 +1,515 @@
 {
-  "session": "004",
-  "baseline_for_future_sessions": true,
-  "total_nodes": 838,
-  "total_edges": 1143,
-  "core_subgraph_nodes": 534,
-  "core_subgraph_edges": 843,
-  "degree_centrality_top25": {
-    "ILC2": 78,
-    "Eosinophil": 77,
-    "Lung": 75,
-    "Th2 cell": 67,
-    "Airway epithelium": 60,
-    "Airway inflammation": 57,
-    "IL-4": 52,
-    "IL-33": 51,
-    "Neutrophil": 51,
-    "IgE": 49,
-    "House dust mite": 45,
-    "Airway": 43,
-    "Mast cell": 43,
-    "IL-5": 38,
-    "Allergen": 35,
-    "TSLP": 34,
-    "IL-13": 27,
-    "Airway hyperresponsiveness": 24,
-    "Type 2 inflammation": 22,
-    "Airway remodeling": 17,
-    "STAT6": 17,
-    "Tissue-resident memory T cell": 14,
-    "IL-25": 13,
-    "Fibroblast": 12,
-    "Dupilumab": 12
+  "centrality": {
+    "MyD88": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0129,
+      "eigenvector": 0.1101
+    },
+    "ILC2": {
+      "degree": 7,
+      "betweenness": 0.875,
+      "pagerank": 0.0498,
+      "eigenvector": 0.3479
+    },
+    "Airway inflammation": {
+      "degree": 3,
+      "betweenness": 0.375,
+      "pagerank": 0.0254,
+      "eigenvector": 0.1259
+    },
+    "MyD88 inhibitor LM8": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0534
+    },
+    "Airway hyperresponsiveness": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0251,
+      "eigenvector": 0.1047
+    },
+    "IL-5": {
+      "degree": 3,
+      "betweenness": 0.375,
+      "pagerank": 0.0374,
+      "eigenvector": 0.2385
+    },
+    "IL-13": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0374,
+      "eigenvector": 0.2988
+    },
+    "SCIT-IgG1": {
+      "degree": 5,
+      "betweenness": 0.625,
+      "pagerank": 0.0129,
+      "eigenvector": 0.1426
+    },
+    "Airway remodeling": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0151,
+      "eigenvector": 0.0328
+    },
+    "Mucus hypersecretion": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0266,
+      "eigenvector": 0.0747
+    },
+    "Eosinophil": {
+      "degree": 3,
+      "betweenness": 0.375,
+      "pagerank": 0.0196,
+      "eigenvector": 0.1248
+    },
+    "ILC2 proliferation": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0151,
+      "eigenvector": 0.0328
+    },
+    "IL-33": {
+      "degree": 8,
+      "betweenness": 1.0,
+      "pagerank": 0.0317,
+      "eigenvector": 0.4026
+    },
+    "sST2": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IL-33 signaling": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0239,
+      "eigenvector": 0.0
+    },
+    "Airway epithelium": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0447,
+      "eigenvector": 0.2584
+    },
+    "TSLP": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0271,
+      "eigenvector": 0.2427
+    },
+    "IL-25": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0271,
+      "eigenvector": 0.1829
+    },
+    "Dendritic cell": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0244,
+      "eigenvector": 0.0556
+    },
+    "Type 2 inflammation": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0491,
+      "eigenvector": 0.0726
+    },
+    "claudin-18 loss": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0169
+    },
+    "E-cadherin loss": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0169
+    },
+    "Allergen": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IL33": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0239,
+      "eigenvector": 0.0
+    },
+    "PDEVs": {
+      "degree": 6,
+      "betweenness": 0.75,
+      "pagerank": 0.0129,
+      "eigenvector": 0.2962
+    },
+    "IL-4": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0163,
+      "eigenvector": 0.1573
+    },
+    "Neutrophil": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0147,
+      "eigenvector": 0.0691
+    },
+    "EPT": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0995
+    },
+    "NF-kappa-B signaling": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0224,
+      "eigenvector": 0.1152
+    },
+    "TGF-beta signaling": {
+      "degree": 2,
+      "betweenness": 0.25,
+      "pagerank": 0.0224,
+      "eigenvector": 0.1152
+    },
+    "Azithromycin": {
+      "degree": 4,
+      "betweenness": 0.5,
+      "pagerank": 0.0129,
+      "eigenvector": 0.11
+    },
+    "IFN-\u03b2": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0156,
+      "eigenvector": 0.0257
+    },
+    "IFN-\u03bb": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0156,
+      "eigenvector": 0.0257
+    },
+    "Epithelial antiviral immunity": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0156,
+      "eigenvector": 0.0257
+    },
+    "Macrophage exosomes": {
+      "degree": 1,
+      "betweenness": 0.125,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0811
+    },
+    "miRNA-146b-5p mimics": {
+      "degree": 7,
+      "betweenness": 0.875,
+      "pagerank": 0.0129,
+      "eigenvector": 0.3781
+    },
+    "IL1RAP": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IL1RAP-1": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IL1RL1": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IL5": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IRAK": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "IgE": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "MAPK": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "MAPKs": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "MYD88": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "NF-kappa-B": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "NK cells": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "TRAF6": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "Th2 cells": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "asthma": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "basophils": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "eosinophils": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    },
+    "mast cells": {
+      "degree": 0,
+      "betweenness": 0.0,
+      "pagerank": 0.0129,
+      "eigenvector": 0.0
+    }
   },
-  "betweenness_top15": {},
-  "pagerank_top15": {},
-  "cycle_count_architecture_loops_complete": 6,
-  "cycle_count_architecture_loops_total": 6
+  "communities": [
+    {
+      "community_id": 1,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Airway epithelium",
+        "Airway hyperresponsiveness",
+        "Airway inflammation",
+        "Airway remodeling",
+        "Azithromycin",
+        "Dendritic cell",
+        "E-cadherin loss",
+        "EPT",
+        "Eosinophil",
+        "Epithelial antiviral immunity",
+        "IFN-\u03b2",
+        "IFN-\u03bb",
+        "IL-13",
+        "IL-25",
+        "IL-33",
+        "IL-4",
+        "IL-5",
+        "ILC2",
+        "ILC2 proliferation",
+        "Macrophage exosomes",
+        "Mucus hypersecretion",
+        "MyD88",
+        "MyD88 inhibitor LM8",
+        "NF-kappa-B signaling",
+        "Neutrophil",
+        "PDEVs",
+        "SCIT-IgG1",
+        "TGF-beta signaling",
+        "TSLP",
+        "Type 2 inflammation",
+        "claudin-18 loss",
+        "miRNA-146b-5p mimics"
+      ]
+    },
+    {
+      "community_id": 2,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Allergen",
+        "IL33"
+      ]
+    },
+    {
+      "community_id": 3,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL-33 signaling",
+        "sST2"
+      ]
+    },
+    {
+      "community_id": 4,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL1RAP"
+      ]
+    },
+    {
+      "community_id": 5,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL1RAP-1"
+      ]
+    },
+    {
+      "community_id": 6,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL1RL1"
+      ]
+    },
+    {
+      "community_id": 7,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IL5"
+      ]
+    },
+    {
+      "community_id": 8,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IRAK"
+      ]
+    },
+    {
+      "community_id": 9,
+      "algorithm": "connected_components",
+      "nodes": [
+        "IgE"
+      ]
+    },
+    {
+      "community_id": 10,
+      "algorithm": "connected_components",
+      "nodes": [
+        "MAPK"
+      ]
+    },
+    {
+      "community_id": 11,
+      "algorithm": "connected_components",
+      "nodes": [
+        "MAPKs"
+      ]
+    },
+    {
+      "community_id": 12,
+      "algorithm": "connected_components",
+      "nodes": [
+        "MYD88"
+      ]
+    },
+    {
+      "community_id": 13,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NF-kappa-B"
+      ]
+    },
+    {
+      "community_id": 14,
+      "algorithm": "connected_components",
+      "nodes": [
+        "NK cells"
+      ]
+    },
+    {
+      "community_id": 15,
+      "algorithm": "connected_components",
+      "nodes": [
+        "TRAF6"
+      ]
+    },
+    {
+      "community_id": 16,
+      "algorithm": "connected_components",
+      "nodes": [
+        "Th2 cells"
+      ]
+    },
+    {
+      "community_id": 17,
+      "algorithm": "connected_components",
+      "nodes": [
+        "asthma"
+      ]
+    },
+    {
+      "community_id": 18,
+      "algorithm": "connected_components",
+      "nodes": [
+        "basophils"
+      ]
+    },
+    {
+      "community_id": 19,
+      "algorithm": "connected_components",
+      "nodes": [
+        "eosinophils"
+      ]
+    },
+    {
+      "community_id": 20,
+      "algorithm": "connected_components",
+      "nodes": [
+        "mast cells"
+      ]
+    }
+  ],
+  "architectures": [
+    {
+      "rank": 1,
+      "name": "cytokine_amplification:Airway epithelium -> IL-33 -> ILC2 -> IL-13",
+      "completeness": 1.0,
+      "pmid_count": 4,
+      "avg_confidence": 0.0,
+      "composite_score": 4.0
+    },
+    {
+      "rank": 2,
+      "name": "positive_feedback:Airway epithelium -> TSLP -> ILC2 -> IL-13",
+      "completeness": 1.0,
+      "pmid_count": 3,
+      "avg_confidence": 0.0,
+      "composite_score": 3.0
+    }
+  ]
 }

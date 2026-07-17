@@ -1,0 +1,11 @@
+{
+  "session": "idiopathic_pulmonary_fibrosis_20260705T215344Z",
+  "candidates": [
+    {
+      "hypothesis_id": "G001",
+      "original_statement": "Mechanistic gap candidates in idiopathic_pulmonary_fibrosis",
+      "kind": "fallback",
+      "source": {}
+    }
+  ]
+}

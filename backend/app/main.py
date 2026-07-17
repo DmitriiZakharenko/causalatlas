@@ -1,5 +1,5 @@
 """
-LoopFinder backend — FastAPI entrypoint.
+CausalAtlas backend — FastAPI entrypoint.
 
 Phase 2: POST /api/pipeline/run now launches a REAL 13-agent pipeline run (via
 app/orchestrator.py -> the native `agent00_orchestrator` Claude Code subagent),
@@ -14,11 +14,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
-from app import db, eval as eval_mod, graphs as graphs_mod
+from app import db, eval as eval_mod, graphs as graphs_mod, evidence
 from app.agent_registry import AGENT_ORDER
+from app.llm_common import get_llm_provider
 from app.orchestrator import run_manager
 
-app = FastAPI(title="LoopFinder API", version="0.2.0")
+app = FastAPI(title="CausalAtlas API", version="0.2.0")
 
 # Local dev only: frontend (Vite) and backend run on different ports.
 app.add_middleware(
@@ -71,6 +72,7 @@ async def health() -> dict:
         "status": "ok",
         "service": "loopfinder-backend",
         "phase": "4-eval-flywheel",
+        "llm_provider": get_llm_provider(),
         "pipeline_agents": AGENT_ORDER,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
@@ -137,18 +139,79 @@ async def submit_pipeline_decision(run_id: str, req: DecisionRequest) -> dict:
     }
 
 
+@app.post("/api/pipeline/{run_id}/retry")
+async def retry_pipeline_run(run_id: str) -> dict:
+    """Continue a `failed` run's same claude session instead of restarting
+    from Agent 1 -- see `RunManager.retry_run`'s docstring for why this is
+    distinct from the `paused`-only `/decision` endpoint above."""
+    run = await db.get_run(run_id)
+    if run is None:
+        raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
+    if run["status"] != "failed":
+        raise HTTPException(
+            status_code=409,
+            detail=f"run {run_id} is not failed (status={run['status']!r}) -- nothing to retry",
+        )
+    try:
+        await run_manager.retry_run(run_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    return {
+        "run_id": run_id,
+        "status": "retrying",
+        "stream_url": f"/api/pipeline/{run_id}/stream",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@app.post("/api/pipeline/{run_id}/cancel")
+async def cancel_pipeline_run(run_id: str) -> dict:
+    try:
+        await run_manager.cancel_run(run_id)
+    except ValueError as exc:
+        message = str(exc)
+        status = 404 if "no run found" in message else 409
+        raise HTTPException(status_code=status, detail=message) from exc
+    return {"run_id": run_id, "status": "cancelled", "timestamp": datetime.now(timezone.utc).isoformat()}
+
+
 @app.get("/api/pipeline/{run_id}/status")
 async def get_run_status(run_id: str) -> dict:
     run = await db.get_run(run_id)
     if run is None:
         raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
     run["interventions"] = await db.get_human_interventions(run_id)
+    # Status is polled during SSE updates. Avoid rescanning the historical
+    # novelty corpus and large Codex transcripts on every progress event.
+    run["evidence_summary"] = evidence.summarize_run(run, include_catalog=False)
     return run
 
 
 @app.get("/api/pipeline/runs")
 async def list_pipeline_runs() -> dict:
-    return {"runs": await db.list_runs()}
+    runs = await db.list_runs()
+    # The launch page polls this endpoint frequently. Keep it lightweight;
+    # historical novelty-catalog aggregation belongs to /api/evidence/{run_id}.
+    return {
+        "runs": [
+            {**run, "evidence_summary": evidence.summarize_run(run, include_catalog=False)}
+            for run in runs
+        ]
+    }
+
+
+@app.get("/api/evidence/{run_id}")
+async def get_evidence_summary(run_id: str) -> dict:
+    run = await db.get_run(run_id)
+    if run is None:
+        raise HTTPException(status_code=404, detail=f"no run found with id {run_id}")
+    return evidence.summarize_run(run)
+
+
+@app.get("/api/demo/replay")
+async def get_demo_replay() -> dict:
+    """Read-only replay metadata from the completed persisted IPF+IL11 run."""
+    return evidence.demo_summary()
 
 
 @app.get("/api/pipeline/{run_id}/stream")

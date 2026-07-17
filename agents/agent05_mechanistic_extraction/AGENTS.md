@@ -7,8 +7,10 @@ recruits / differentiates / migrates / maintains / suppresses). This agent's sin
 responsibility is per-paper extraction — merging into a unified graph is Agent 6's job.
 
 ## Inputs
-- `data/sessions/<run_id>/quality_scores.json` (Agent 4 output) — verified + scored
-  publications only, plus the abstract/full-text each score references.
+- `data/sessions/<run_id>/publications_verified_compact.json` (Agent 3/4 derived input) —
+  top-ranked verified publications only, including compact abstracts for extraction.
+- `data/sessions/<run_id>/quality_scores_compact.json` (Agent 4 derived input) — compact
+  quality summary plus the top publication IDs used for this step.
 - `data/sessions/<run_id>/canonical_baseline.json` (Agent 1 output) — **read-only scaffold**,
   same treatment as the corpus: this agent may use it as context for entity naming/
   disambiguation (e.g. confirming "IL-33" and "ST2" are the canonical pairing already

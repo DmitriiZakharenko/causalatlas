@@ -1,0 +1,1011 @@
+{
+  "nodes": [
+    {
+      "id": "IL-11",
+      "type": "Cytokine",
+      "pmid_count": 10,
+      "pmids": [
+        "35731866",
+        "35906886",
+        "36166195",
+        "37228276",
+        "38455057",
+        "38561103",
+        "38679415",
+        "39791575",
+        "40305619",
+        "41419144"
+      ],
+      "edge_count": 20
+    },
+    {
+      "id": "Myofibroblast",
+      "type": "Cell",
+      "pmid_count": 6,
+      "pmids": [
+        "35731866",
+        "37228276",
+        "38679415",
+        "39489187",
+        "39528144",
+        "39791575"
+      ],
+      "edge_count": 6
+    },
+    {
+      "id": "Sirt1",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "35906886"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Smad2",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "35906886"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "\u03b1-SMA expression",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36166195"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Fibronectin expression",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36166195"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Collagen I expression",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36166195"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "ERK and MEK phosphorylation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36166195"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "rmIL-11",
+      "type": "Cytokine",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 3
+    },
+    {
+      "id": "Lung fibrosis",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Pulmonary hypertension",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Endothelial to mesenchymal transition",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "hrIL-11",
+      "type": "Cytokine",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Pulmonary artery smooth muscle cell to myofibroblast-like transformation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "36376885"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Collagen deposition",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "37228276"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Progenitor activation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "37228276"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Mature alveolar epithelial cells",
+      "type": "Cell",
+      "pmid_count": 1,
+      "pmids": [
+        "37228276"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "TGF\u03b2 signaling",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "38455057"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL11 blocking antibodies",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "38455057"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "STAT3 activation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "38455057"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "STAT3 phosphorylation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "38561103"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "ERK1/2 phosphorylation",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "38561103"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Fibrocyte",
+      "type": "Cell",
+      "pmid_count": 1,
+      "pmids": [
+        "38679415"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL-11 scFv",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "39122711"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "Fibrosis",
+      "type": "Clinical_phenotype",
+      "pmid_count": 1,
+      "pmids": [
+        "39122711"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL-11 W147C dimer",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "39489187"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "TF-1 cell proliferation",
+      "type": "Cell",
+      "pmid_count": 2,
+      "pmids": [
+        "39489187",
+        "39528144"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "PEGylated IL-11 W147C analogs",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "39528144"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "Pulmonary fibrosis",
+      "type": "Clinical_phenotype",
+      "pmid_count": 2,
+      "pmids": [
+        "39791575",
+        "42364821"
+      ],
+      "edge_count": 2
+    },
+    {
+      "id": "siIL11",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "40305619"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL-11 ASOs",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "41419144"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL-11 neutralizing antibodies",
+      "type": "Molecule",
+      "pmid_count": 1,
+      "pmids": [
+        "42364821"
+      ],
+      "edge_count": 1
+    },
+    {
+      "id": "IL11",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "IL11RA",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "IL6ST",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "IPF",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "JAK1",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "JAK2",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "STAT3",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "TYK2",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    },
+    {
+      "id": "idiopathic pulmonary fibrosis",
+      "type": "canonical_db",
+      "pmid_count": 0,
+      "pmids": [],
+      "edge_count": 0,
+      "provenance_type": "canonical_db"
+    }
+  ],
+  "edges": [
+    {
+      "source": "IL-11",
+      "target": "Myofibroblast",
+      "relations": [
+        "differentiates"
+      ],
+      "primary_relation": "differentiates",
+      "pmids": [
+        "37228276",
+        "35731866",
+        "39791575",
+        "38679415"
+      ],
+      "pmid_count": 4,
+      "years": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.5,
+      "evidence_strength": "strong",
+      "source_type": "Cytokine",
+      "target_type": "Cell"
+    },
+    {
+      "source": "Sirt1",
+      "target": "IL-11",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "35906886"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "Smad2",
+      "target": "IL-11",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "35906886"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "IL-11",
+      "target": "\u03b1-SMA expression",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36166195"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Fibronectin expression",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36166195"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Collagen I expression",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36166195"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "ERK and MEK phosphorylation",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36166195"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "rmIL-11",
+      "target": "Lung fibrosis",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36376885"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.7,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "rmIL-11",
+      "target": "Pulmonary hypertension",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36376885"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.7,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "rmIL-11",
+      "target": "Endothelial to mesenchymal transition",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36376885"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.7,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "hrIL-11",
+      "target": "Pulmonary artery smooth muscle cell to myofibroblast-like transformation",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "36376885"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2022"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.7,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Collagen deposition",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "37228276"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2023"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Progenitor activation",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "37228276"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2023"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Mature alveolar epithelial cells",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "37228276"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2023"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Cell"
+    },
+    {
+      "source": "TGF\u03b2 signaling",
+      "target": "IL-11",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "38455057"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.65,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "IL11 blocking antibodies",
+      "target": "STAT3 activation",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "38455057"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.65,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "STAT3 phosphorylation",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "38561103"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.65,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "ERK1/2 phosphorylation",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "38561103"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "human"
+      ],
+      "confidence": 0.65,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Molecule"
+    },
+    {
+      "source": "IL-11",
+      "target": "Fibrocyte",
+      "relations": [
+        "recruits"
+      ],
+      "primary_relation": "recruits",
+      "pmids": [
+        "38679415"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.45,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Cell"
+    },
+    {
+      "source": "IL-11 scFv",
+      "target": "Fibrosis",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "39122711"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "IL-11 W147C dimer",
+      "target": "TF-1 cell proliferation",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "39489187"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "IL-11 W147C dimer",
+      "target": "Myofibroblast",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "39489187"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "PEGylated IL-11 W147C analogs",
+      "target": "TF-1 cell proliferation",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "39528144"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "PEGylated IL-11 W147C analogs",
+      "target": "Myofibroblast",
+      "relations": [
+        "inhibits"
+      ],
+      "primary_relation": "inhibits",
+      "pmids": [
+        "39528144"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2024"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cell"
+    },
+    {
+      "source": "IL-11",
+      "target": "Pulmonary fibrosis",
+      "relations": [
+        "activates"
+      ],
+      "primary_relation": "activates",
+      "pmids": [
+        "39791575"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Cytokine",
+      "target_type": "Clinical_phenotype"
+    },
+    {
+      "source": "siIL11",
+      "target": "IL-11",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "40305619"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2025"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "IL-11 ASOs",
+      "target": "IL-11",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "41419144"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Cytokine"
+    },
+    {
+      "source": "IL-11 neutralizing antibodies",
+      "target": "Pulmonary fibrosis",
+      "relations": [
+        "suppresses"
+      ],
+      "primary_relation": "suppresses",
+      "pmids": [
+        "42364821"
+      ],
+      "pmid_count": 1,
+      "years": [
+        "2026"
+      ],
+      "species": [
+        "mouse"
+      ],
+      "confidence": 0.55,
+      "evidence_strength": "weak",
+      "source_type": "Molecule",
+      "target_type": "Clinical_phenotype"
+    }
+  ],
+  "metadata": {
+    "disease": "idiopathic_pulmonary_fibrosis",
+    "run_id": "idiopathic_pulmonary_fibrosis_20260705T215344Z",
+    "node_count": 41,
+    "edge_count": 28,
+    "source_session": "idiopathic_pulmonary_fibrosis_20260705T215344Z"
+  }
+}

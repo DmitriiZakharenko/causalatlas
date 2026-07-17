@@ -1,0 +1,47 @@
+[
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL11"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL11RA"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IL6ST"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "IPF"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "JAK1"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "JAK2"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "STAT3"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "TYK2"
+  },
+  {
+    "architecture": "global",
+    "status": "canonical_only",
+    "node": "idiopathic pulmonary fibrosis"
+  }
+]

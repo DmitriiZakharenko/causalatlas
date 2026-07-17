@@ -79,11 +79,34 @@ CREATE INDEX IF NOT EXISTS idx_eval_scores_session ON eval_scores(session_id);
 """
 
 
+# `CREATE TABLE IF NOT EXISTS` is a no-op for a table that already exists
+# with an OLDER shape -- discovered live when the first real full pipeline
+# run failed instantly with "table runs has no column named session_id",
+# because the on-disk data/loopfinder.db predated Phase 3 adding that column
+# and nothing had ever migrated it. This is the minimal fix: on every
+# startup, add any columns the current schema expects but the on-disk table
+# doesn't have yet. Additive-only (never drops/renames), same non-destructive
+# spirit as Agent 6's graph-merge constraint.
+_COLUMN_MIGRATIONS: dict[str, list[tuple[str, str]]] = {
+    "runs": [("session_id", "TEXT")],
+}
+
+
+async def _apply_column_migrations(db: aiosqlite.Connection) -> None:
+    for table, columns in _COLUMN_MIGRATIONS.items():
+        cursor = await db.execute(f"PRAGMA table_info({table})")
+        existing = {row[1] for row in await cursor.fetchall()}
+        for name, col_type in columns:
+            if name not in existing:
+                await db.execute(f"ALTER TABLE {table} ADD COLUMN {name} {col_type}")
+
+
 async def init_db(db_path: Path | None = None) -> None:
     path = db_path or DB_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
     async with aiosqlite.connect(path) as db:
         await db.executescript(_SCHEMA)
+        await _apply_column_migrations(db)
         await db.commit()
 
 
@@ -152,8 +175,9 @@ async def append_event(
     event_type: str,
     payload: dict,
     db_path: Path | None = None,
-) -> int:
-    """Append an event and return its sequence number (per-run, starting at 0)."""
+) -> tuple[int, float]:
+    """Append an event and return its (sequence number, created_at)."""
+    created_at = time.time()
     async with aiosqlite.connect(db_path or DB_PATH) as db:
         cursor = await db.execute(
             "SELECT COALESCE(MAX(seq), -1) + 1 FROM run_events WHERE run_id = ?", (run_id,)
@@ -162,10 +186,10 @@ async def append_event(
         await db.execute(
             "INSERT INTO run_events (run_id, seq, event_type, payload, created_at) "
             "VALUES (?, ?, ?, ?, ?)",
-            (run_id, seq, event_type, json.dumps(payload), time.time()),
+            (run_id, seq, event_type, json.dumps(payload), created_at),
         )
         await db.commit()
-        return seq
+        return seq, created_at
 
 
 async def get_events_since(

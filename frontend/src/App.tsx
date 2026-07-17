@@ -3,7 +3,12 @@ import NavBar from "./components/NavBar";
 import LaunchPage from "./pages/LaunchPage";
 import RunDetailPage from "./pages/RunDetailPage";
 import GraphExplorerPage from "./pages/GraphExplorerPage";
+import DiseasePathogenesisPage from "./pages/DiseasePathogenesisPage";
 import EvalDashboardPage from "./pages/EvalDashboardPage";
+import ArchitecturePage from "./pages/ArchitecturePage";
+import EvidenceDashboardPage from "./pages/EvidenceDashboardPage";
+import DemoReplayPage from "./pages/DemoReplayPage";
+import PresentationPage from "./pages/PresentationPage";
 import "./App.css";
 
 function App() {
@@ -15,7 +20,12 @@ function App() {
           <Route path="/" element={<LaunchPage />} />
           <Route path="/runs/:runId" element={<RunDetailPage />} />
           <Route path="/graphs" element={<GraphExplorerPage />} />
+          <Route path="/graphs/:diseaseSlug/pathogenesis" element={<DiseasePathogenesisPage />} />
           <Route path="/eval" element={<EvalDashboardPage />} />
+          <Route path="/architecture" element={<ArchitecturePage />} />
+          <Route path="/evidence" element={<EvidenceDashboardPage />} />
+          <Route path="/demo" element={<DemoReplayPage />} />
+          <Route path="/presentation" element={<PresentationPage />} />
         </Routes>
       </main>
     </BrowserRouter>

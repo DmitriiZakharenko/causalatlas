@@ -1,0 +1,13 @@
+{
+  "session_id": "idiopathic_pulmonary_fibrosis_20260705T215344Z",
+  "disease": "idiopathic_pulmonary_fibrosis",
+  "verified_publications": 0,
+  "graph": {
+    "nodes": 41,
+    "edges": 28,
+    "canonical_nodes": 9
+  },
+  "loops_found": 0,
+  "contradictions_found": 0,
+  "top_loop": null
+}

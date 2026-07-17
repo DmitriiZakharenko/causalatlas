@@ -21,30 +21,16 @@ from __future__ import annotations
 import asyncio
 import json
 from collections.abc import AsyncIterator
-from dataclasses import dataclass
 from pathlib import Path
 
 from app.agent_registry import tools_for
-
-REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-
-
-class ClaudeCliError(RuntimeError):
-    """Raised when a `claude` invocation fails or its output can't be parsed.
-
-    Per global constraint: callers must surface this to the user, never
-    silently substitute a fabricated result.
-    """
+from app.llm_common import AgentResult, LLMProviderError, REPO_ROOT
 
 
-@dataclass
-class AgentResult:
-    agent_name: str
-    result_text: str
-    structured_output: dict | None
-    cost_usd: float
-    duration_ms: int
-    raw: dict
+class ClaudeCliError(LLMProviderError):
+    """Raised when a `claude` invocation fails or its output can't be parsed."""
+
+__all__ = ["AgentResult", "ClaudeCliError", "run_agent", "run_agent_stream", "run_orchestrator_stream"]
 
 
 def _build_command(
@@ -208,7 +194,14 @@ async def run_orchestrator_stream(
         "agent00_orchestrator",
         prompt,
         output_format="stream-json",
-        extra_flags=["--verbose", "--include-partial-messages"],
+        # Do NOT pass --include-partial-messages here: live IPF run
+        # (2026-07-05) crashed mid-orchestrator with Claude CLI error
+        # "Separator is not found, and chunk exceed the limit" after Agent 2
+        # returned an ~83KB tool result -- the partial-message stream bloated
+        # stdout past the CLI's internal line/chunk parser. Skill/agent events
+        # still arrive from complete assistant messages (see StreamTranslator's
+        # empty-input skip for the partial duplicate tool_use blocks).
+        extra_flags=["--verbose"],
         session_id=session_id,
         resume=resume,
     )

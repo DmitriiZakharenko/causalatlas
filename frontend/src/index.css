@@ -1,21 +1,24 @@
 :root {
-  --bg: #0d0e14;
-  --bg-elevated: #171923;
-  --bg-elevated-2: #1e2130;
-  --border: #2a2d3d;
-  --text: #c7cad4;
-  --text-h: #f2f3f7;
-  --text-muted: #8890a4;
-  --accent: #5b8def;
-  --accent-hover: #7ba3f5;
-  --danger: #e5484d;
-  --danger-bg: rgba(229, 72, 77, 0.12);
-  --warn: #ffd166;
-  --ok: #2ecc71;
+  --bg: #f5f7fb;
+  --bg-elevated: #ffffff;
+  --bg-elevated-2: #eef3fa;
+  --border: #d8dfeb;
+  --text: #344054;
+  --text-h: #0f172a;
+  --text-muted: #667085;
+  --accent: #275efe;
+  --accent-hover: #1f4fd6;
+  --danger: #d92d20;
+  --danger-bg: rgba(217, 45, 32, 0.1);
+  --warn: #b54708;
+  --ok: #067647;
 
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--text);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(39, 94, 254, 0.08), transparent 30%),
+    radial-gradient(circle at top right, rgba(6, 118, 71, 0.06), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #edf2f9 100%);
   font: 15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,6 +33,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: inherit;
 }
 
 #root {
@@ -70,7 +74,7 @@ a {
 
 code {
   font-family: ui-monospace, Consolas, monospace;
-  background: var(--bg-elevated-2);
+  background: #e9effa;
   border-radius: 4px;
   padding: 1px 5px;
   font-size: 0.85em;

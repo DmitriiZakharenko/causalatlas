@@ -9,6 +9,7 @@ test), consistent with this repo's separation of "structural/shape" tests from
 """
 from __future__ import annotations
 
+import asyncio
 import json
 
 import pytest
@@ -500,6 +501,122 @@ async def test_resume_run_rejects_unknown_run_id(isolated_env):
     manager = RunManager()
     with pytest.raises(ValueError, match="no run found"):
         await manager.resume_run("nonexistent_run_id", "approve")
+
+
+async def test_retry_run_continues_a_failed_run_with_same_session(isolated_env, monkeypatch):
+    """Found necessary live (2026-07-05): a run that fails mid-pipeline for a
+    transient reason (e.g. the subscription's rolling usage cap) had no way
+    to continue -- `retry_run` must resume the SAME session_id and land back
+    in 'completed' on success."""
+    import app.orchestrator as orch_mod
+
+    retry_calls = []
+
+    async def _first_stream(prompt, **kwargs):
+        yield _tool_use_event("Agent", {"subagent_type": "agent01_baseline_canonical_knowledge"}, tool_id="a1")
+        yield {"type": "result", "is_error": True, "result": "You've hit your limit"}
+
+    async def _retry_stream(prompt, **kwargs):
+        retry_calls.append({"prompt": prompt, **kwargs})
+        yield {"type": "result", "is_error": False, "total_cost_usd": 0.03, "duration_ms": 300, "result": "Done."}
+
+    def _dispatch_stream(prompt, **kwargs):
+        if kwargs.get("resume"):
+            return _retry_stream(prompt, **kwargs)
+        return _first_stream(prompt, **kwargs)
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _dispatch_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Rate Limited Disease", "IL11", "let_it_rip")
+    first_events = [e async for e in manager.subscribe(run_id)]
+    assert first_events[-1]["type"] == "run_failed"
+
+    run = await db.get_run(run_id)
+    assert run["status"] == "failed"
+    session_id_before = run["session_id"]
+    assert session_id_before
+
+    await manager.retry_run(run_id)
+    second_events = [e async for e in manager.subscribe(run_id, after_seq=first_events[-1]["seq"])]
+    assert second_events[-1]["type"] == "run_completed"
+
+    assert len(retry_calls) == 1
+    assert retry_calls[0]["session_id"] == session_id_before
+    assert retry_calls[0]["resume"] is True
+    assert run_id in retry_calls[0]["prompt"]
+
+    run = await db.get_run(run_id)
+    assert run["status"] == "completed"
+    assert run["session_id"] == session_id_before  # same session throughout
+
+
+async def test_retry_run_rejects_non_failed_run(isolated_env, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _fake_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Not Failed Disease", None, "let_it_rip")
+    async for _ in manager.subscribe(run_id):
+        pass  # drains to "completed"
+
+    with pytest.raises(ValueError, match="not failed"):
+        await manager.retry_run(run_id)
+
+
+async def test_retry_run_rejects_unknown_run_id(isolated_env):
+    await db.init_db()
+    manager = RunManager()
+    with pytest.raises(ValueError, match="no run found"):
+        await manager.retry_run("nonexistent_run_id")
+
+
+async def test_subscribe_continues_after_retry_despite_prior_failure_in_history(
+    isolated_env, monkeypatch
+):
+    """Mid-retry UI reconnect must not treat old run_failed rows as terminal."""
+    import app.orchestrator as orch_mod
+
+    gate = asyncio.Event()
+
+    async def _first_stream(prompt, **kwargs):
+        yield {"type": "result", "is_error": True, "result": "transient failure"}
+
+    async def _retry_stream(prompt, **kwargs):
+        yield _tool_use_event("Agent", {"subagent_type": "agent03_publication_verification"}, tool_id="a3")
+        await gate.wait()
+        yield _tool_result_event("a3", "verified")
+        yield {"type": "result", "is_error": False, "total_cost_usd": 0.01, "duration_ms": 100, "result": "Done."}
+
+    def _dispatch_stream(prompt, **kwargs):
+        if kwargs.get("resume"):
+            return _retry_stream(prompt, **kwargs)
+        return _first_stream(prompt, **kwargs)
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _dispatch_stream)
+    await db.init_db()
+
+    manager = RunManager()
+    run_id = await manager.start_run("Reconnect Disease", "IL11", "let_it_rip")
+    first_events = [e async for e in manager.subscribe(run_id)]
+    assert first_events[-1]["type"] == "run_failed"
+
+    await manager.retry_run(run_id)
+
+    async def _collect():
+        return [e async for e in manager.subscribe(run_id)]
+
+    collector = asyncio.create_task(_collect())
+    await asyncio.sleep(0.05)
+    gate.set()
+    replayed = await collector
+
+    assert replayed[0]["type"] == "run_failed"
+    assert replayed[-1]["type"] == "run_completed"
+    assert any(e["type"] == "agent_started" for e in replayed)
 
 
 async def test_run_manager_marks_run_failed_on_exception(isolated_env, monkeypatch):

@@ -1,0 +1,13 @@
+{
+  "session_id": "ibd_20260713T171442Z",
+  "disease": "IBD",
+  "verified_publications": 50,
+  "graph": {
+    "nodes": 39,
+    "edges": 18,
+    "canonical_nodes": 10
+  },
+  "loops_found": 0,
+  "contradictions_found": 0,
+  "top_loop": null
+}
