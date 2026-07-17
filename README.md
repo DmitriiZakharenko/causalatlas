@@ -75,6 +75,46 @@ npm run dev
 
 The `.env.example` file documents optional literature rate-limit settings. Empty values are valid.
 
+## LLM authentication
+
+CausalAtlas does **not** ask for an LLM API key in the browser and does not send one from the frontend. The backend launches the locally installed CLI that you choose:
+
+### Claude Code
+
+```bash
+claude --version
+claude login
+```
+
+Complete the browser/OAuth login in the CLI. Then select Claude as the provider:
+
+```bash
+cp .env.example .env
+# edit .env and keep:
+LLM_PROVIDER=claude
+```
+
+This project uses Claude Code's authenticated CLI session. You do not need to add `ANTHROPIC_API_KEY` to `.env` for this integration.
+
+### Codex CLI
+
+```bash
+codex --version
+codex login
+```
+
+Complete the login flow offered by your installed Codex CLI. Then set:
+
+```bash
+LLM_PROVIDER=codex
+```
+
+The Codex CLI keeps its credentials in its own user-level configuration. Never paste them into `frontend/.env`, `.env.example`, TypeScript, Python, GitHub Issues, or the repository. Direct `OPENAI_API_KEY`/`ANTHROPIC_API_KEY` calls are not implemented by this backend; authentication happens through the CLI subprocess.
+
+### What is safe to put in `.env`
+
+The optional `PUBMED_API_KEY`, `SEMANTIC_SCHOLAR_API_KEY`, and `OPENALEX_MAILTO` values configure literature data sources only. They are read by the backend and are never sent to the browser. Leave them empty for a keyless run where the provider permits it.
+
 ## Offline demo
 
 No backend. No database. No model login. No API keys.
@@ -121,6 +161,7 @@ Copy `.env.example` to `.env`. Never place credentials in Python, TypeScript, JS
 - `PUBMED_API_KEY` and `PUBMED_EMAIL` are optional.
 - `SEMANTIC_SCHOLAR_API_KEY` is optional.
 - `OPENALEX_MAILTO` is optional.
+- `LLM_PROVIDER=claude` or `LLM_PROVIDER=codex` selects the locally authenticated CLI.
 - `VITE_*` values are public browser configuration and must never contain secrets.
 
 See [SECURITY.md](SECURITY.md) for reporting guidance. If a real credential was ever committed, revoke and rotate it; deleting the line is not enough because Git history retains it.
