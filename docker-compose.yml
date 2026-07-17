@@ -18,6 +18,7 @@ services:
       - "5173:5173"
     environment:
       - VITE_API_BASE_URL=http://localhost:8000
+      - VITE_OFFLINE_MODE=false
     volumes:
       - ./frontend:/app
       - /app/node_modules

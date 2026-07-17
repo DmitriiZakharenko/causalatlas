@@ -10,8 +10,15 @@ import type {
   StartRunResponse,
   EvidenceSummary,
 } from "./types";
+import { OFFLINE_EVIDENCE, OFFLINE_GRAPHS, OFFLINE_RUN } from "../offlineData";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
+const queryParams = new URLSearchParams(window.location.search);
+const liveQueryEnabled = queryParams.has("live");
+const configuredOffline = import.meta.env.VITE_OFFLINE_MODE;
+// The browser-first default is offline so `npm run dev` works without FastAPI.
+// Docker/live deployments set VITE_OFFLINE_MODE=false explicitly.
+const OFFLINE_MODE = !liveQueryEnabled && configuredOffline !== "false";
 
 export class ApiError extends Error {
   status: number;
@@ -41,9 +48,9 @@ function qs(params: Record<string, string | undefined>): string {
 
 export const api = {
   health: () =>
-    request<{ status: string; service: string; phase: string; llm_provider: string; pipeline_agents: string[]; timestamp: string }>(
-      "/api/health"
-    ),
+    OFFLINE_MODE
+      ? Promise.resolve({ status: "ok", service: "causalatlas-offline", phase: "recorded snapshot", llm_provider: "offline", pipeline_agents: [], timestamp: new Date().toISOString() })
+      : request<{ status: string; service: string; phase: string; llm_provider: string; pipeline_agents: string[]; timestamp: string }>("/api/health"),
 
   // --- Pipeline runs (Phase 2/3) ---------------------------------------
   startRun: (payload: {
@@ -52,46 +59,50 @@ export const api = {
     autonomy_level?: AutonomyLevel;
     dev_pubmed_retmax?: number;
   }) =>
-    request<StartRunResponse>("/api/pipeline/run", {
+    OFFLINE_MODE ? Promise.reject(new ApiError(503, "Offline mode is read-only; start the backend to launch a new run.")) : request<StartRunResponse>("/api/pipeline/run", {
       method: "POST",
       body: JSON.stringify(payload),
     }),
 
-  listRuns: () => request<{ runs: RunSummary[] }>("/api/pipeline/runs"),
+  listRuns: () => OFFLINE_MODE ? Promise.resolve({ runs: [OFFLINE_RUN] }) : request<{ runs: RunSummary[] }>("/api/pipeline/runs"),
 
-  getRunStatus: (runId: string) => request<RunStatusResponse>(`/api/pipeline/${runId}/status`),
+  getRunStatus: (runId: string) => OFFLINE_MODE ? Promise.resolve({ ...OFFLINE_RUN, interventions: [] }) : request<RunStatusResponse>(`/api/pipeline/${runId}/status`),
 
-  getEvidence: (runId: string) => request<EvidenceSummary>(`/api/evidence/${runId}`),
+  getEvidence: (runId: string) => OFFLINE_MODE ? Promise.resolve({ ...OFFLINE_EVIDENCE, run_id: runId }) : request<EvidenceSummary>(`/api/evidence/${runId}`),
 
-  getDemoReplay: () => request<EvidenceSummary>("/api/demo/replay"),
+  getDemoReplay: () => OFFLINE_MODE ? Promise.resolve(OFFLINE_EVIDENCE) : request<EvidenceSummary>("/api/demo/replay"),
 
   submitDecision: (runId: string, decision: "approve" | "reject" | "edit", note?: string) =>
-    request<{ run_id: string; status: string; decision: string; stream_url: string; timestamp: string }>(
+    OFFLINE_MODE ? Promise.reject(new ApiError(503, "Offline mode is read-only; decisions require the backend.")) : request<{ run_id: string; status: string; decision: string; stream_url: string; timestamp: string }>(
       `/api/pipeline/${runId}/decision`,
       { method: "POST", body: JSON.stringify({ decision, note }) }
     ),
 
-  cancelRun: (runId: string) => request<{ run_id: string; status: string; timestamp: string }>(`/api/pipeline/${runId}/cancel`, { method: "POST" }),
+  cancelRun: (runId: string) => OFFLINE_MODE ? Promise.reject(new ApiError(503, "Offline mode is read-only; cancellation requires the backend.")) : request<{ run_id: string; status: string; timestamp: string }>(`/api/pipeline/${runId}/cancel`, { method: "POST" }),
 
   streamUrl: (runId: string, afterSeq?: number) =>
     `${API_BASE_URL}/api/pipeline/${runId}/stream${afterSeq !== undefined ? `?after_seq=${afterSeq}` : ""}`,
 
   // --- Graphs (Phase 5) --------------------------------------------------
-  listGraphs: () => request<{ graphs: GraphSummary[] }>("/api/graphs"),
+  listGraphs: () => OFFLINE_MODE
+    ? Promise.resolve({ graphs: Object.entries(OFFLINE_GRAPHS).map(([disease_slug, graph]) => ({ disease_slug, disease: String(graph.metadata.disease ?? disease_slug), node_count: graph.elements.nodes.length, edge_count: graph.elements.edges.length, version: null, updated: null, run_id: String(graph.metadata.run_id ?? "offline") })) })
+    : request<{ graphs: GraphSummary[] }>("/api/graphs"),
 
-  getGraph: (diseaseSlug: string) => request<GraphResponse>(`/api/graphs/${diseaseSlug}`),
+  getGraph: (diseaseSlug: string) => OFFLINE_MODE
+    ? OFFLINE_GRAPHS[diseaseSlug] ? Promise.resolve(OFFLINE_GRAPHS[diseaseSlug]) : Promise.reject(new ApiError(404, `Offline graph not found: ${diseaseSlug}`))
+    : request<GraphResponse>(`/api/graphs/${diseaseSlug}`),
 
   // --- Eval flywheel (Phase 4) --------------------------------------------
-  runEvalBackfill: () => request<{ scored: number; records: EvalScore[] }>("/api/eval/backfill", { method: "POST" }),
+  runEvalBackfill: () => OFFLINE_MODE ? Promise.resolve({ scored: 5, records: [] as EvalScore[] }) : request<{ scored: number; records: EvalScore[] }>("/api/eval/backfill", { method: "POST" }),
 
   getEvalDashboard: (subjectType?: string) =>
-    request<EvalDashboardMetrics>(`/api/eval/dashboard${qs({ subject_type: subjectType })}`),
+    OFFLINE_MODE ? Promise.resolve({ total_scored: 5, sessions_covered: ["asthma_001", "asthma_002", "asthma_003"], outcome_counts: { confirmed_false_positive_historical: 2, correctly_rejected: 1, accepted_pending_validation: 2 }, historical_gate_retroactive_catch_rate: 1, live_judge_agreement_rate: null }) : request<EvalDashboardMetrics>(`/api/eval/dashboard${qs({ subject_type: subjectType })}`),
 
   getEvalScores: (params?: { subject_type?: string; session_id?: string }) =>
-    request<{ scores: EvalScore[] }>(`/api/eval/scores${qs(params ?? {})}`),
+    OFFLINE_MODE ? Promise.resolve({ scores: [] as EvalScore[] }) : request<{ scores: EvalScore[] }>(`/api/eval/scores${qs(params ?? {})}`),
 
   triggerJudge: (runId: string, payload: { hypothesis_id: string; statement: string; recombined_edges?: string[] }) =>
-    request<{ run_id: string; hypothesis_id: string; verdict: JudgeVerdict }>(`/api/eval/judge/${runId}`, {
+    OFFLINE_MODE ? Promise.reject(new ApiError(503, "Offline mode is read-only; live judging requires the backend.")) : request<{ run_id: string; hypothesis_id: string; verdict: JudgeVerdict }>(`/api/eval/judge/${runId}`, {
       method: "POST",
       body: JSON.stringify(payload),
     }),

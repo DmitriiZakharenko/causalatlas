@@ -78,11 +78,34 @@ npm run build
 npm run preview
 ```
 
+If `nvm: command not found` appears on macOS, use Homebrew instead:
+
+```bash
+brew install node@22
+export PATH="$(brew --prefix node@22)/bin:$PATH"
+node --version                  # must be 22.12+ or 20.19+
+cd frontend
+npm ci
+npm run build
+npm run preview
+```
+
 Open the printed URL followed by `/demo.html`, usually:
 
 <http://localhost:4173/demo.html>
 
 The standalone demo is a snapshot. It contains graph data bundled at preparation time; it does not read the backend and it does not start a new run. `Play replay` is a local UI animation, not a live model execution.
+
+### Full React UI in offline mode
+
+If you want the actual multi-page React interface without starting FastAPI, use the offline query flag:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Then open <http://localhost:5173/>. Offline mode is the default for `npm run dev`, so the full UI works immediately without FastAPI. This uses the real navbar, routes, Graph Explorer, node details, text summaries, Architecture, Evidence and Presentation pages with embedded read-only snapshots. Navigation and refreshes keep the same mode automatically. Launching a new run, approving a live pause and live judging are intentionally disabled until the backend is connected. To force live mode for a backend running on localhost, set `VITE_OFFLINE_MODE=false` before starting Vite.
 
 ## Full stack with Docker
 
@@ -259,8 +282,10 @@ Start the API with Docker or `uvicorn`, confirm <http://localhost:8000/api/healt
 Use Node 20.19+ or 22.12+ and reinstall dependencies:
 
 ```bash
+brew install node@22
+export PATH="$(brew --prefix node@22)/bin:$PATH"
 cd frontend
-nvm use
+node --version
 npm ci
 ```
 </details>
