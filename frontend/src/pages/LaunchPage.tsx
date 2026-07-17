@@ -81,6 +81,28 @@ export default function LaunchPage() {
           <code>agents/agent00_orchestrator/AGENTS.md</code>. Nothing here is a stub or mock.
         </p>
 
+        <aside className="provider-help" aria-label="LLM provider configuration">
+          <div className="provider-help__header">
+            <div>
+              <span className="eyebrow">Backend provider</span>
+              <h2>{provider === "offline" ? "Offline snapshots" : provider ? `${provider} CLI connected` : "Checking provider…"}</h2>
+            </div>
+            <span className="provider-help__status">{provider ?? "pending"}</span>
+          </div>
+          <p className="muted">The browser does not choose or store model credentials. The backend selects the locally authenticated CLI through <code>LLM_PROVIDER</code>.</p>
+          <details>
+            <summary>Switch between Claude Code and Codex CLI</summary>
+            <ol className="provider-help__steps">
+              <li>Stop the backend with <code>Ctrl+C</code>.</li>
+              <li>Authenticate the CLI you want to use: <code>claude login</code> or <code>codex login</code>.</li>
+              <li>In the repository <code>.env</code>, set <code>LLM_PROVIDER=codex</code> or <code>LLM_PROVIDER=claude</code>.</li>
+              <li>Start the backend again. The provider badge above will update.</li>
+            </ol>
+            <pre className="provider-help__code">{`# Codex\ncodex login\nLLM_PROVIDER=codex\n\n# Claude Code\nclaude login\nLLM_PROVIDER=claude`}</pre>
+            <p className="muted">Never paste API keys into this page, the frontend or the repository. Authentication stays in the CLI's user-level configuration.</p>
+          </details>
+        </aside>
+
         <form onSubmit={onSubmit} className="form">
           <div className="form__row">
             <label>
@@ -146,7 +168,25 @@ export default function LaunchPage() {
         {!runsError && runs === null && <p className="muted">Loading…</p>}
         {runs !== null && runs.length === 0 && <p className="muted">No runs yet — launch one above.</p>}
         {runs !== null && runs.length > 0 && (
-          <table className="table">
+          <>
+            {runs.every((r) => r.status !== "completed") && <p className="muted">No successful recorded analyses yet.</p>}
+            <div className="recorded-run-grid" aria-label="Successful recorded analyses">
+              {runs.filter((r) => r.status === "completed").map((r) => (
+                <article key={`card-${r.run_id}`} className="recorded-run-card">
+                  <button type="button" className="recorded-run-card__main" onClick={() => navigate(`/runs/${r.run_id}`)}>
+                    <span className="eyebrow">Recorded analysis</span>
+                    <strong>{r.disease} · {r.gene ?? "target not specified"}</strong>
+                    <span className="muted">{r.status} · {r.current_agent ?? "pipeline complete"}</span>
+                  </button>
+                  <div className="recorded-run-card__actions">
+                    <button type="button" className="button button--primary" onClick={() => navigate(`/runs/${r.run_id}`)}>Open run</button>
+                    <button type="button" className="button" onClick={() => navigate(`/graphs?disease=${encodeURIComponent(r.disease.toLowerCase().replaceAll(" ", "_"))}`)}>Graph</button>
+                    <button type="button" className="button" onClick={() => navigate(`/evidence?run=${encodeURIComponent(r.run_id)}`)}>Evidence</button>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <table className="table">
             <thead>
               <tr>
                 <th>Disease</th>
@@ -181,7 +221,8 @@ export default function LaunchPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
+          </>
         )}
       </section>
     </div>

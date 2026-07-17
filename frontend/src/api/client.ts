@@ -10,15 +10,16 @@ import type {
   StartRunResponse,
   EvidenceSummary,
 } from "./types";
-import { OFFLINE_EVIDENCE, OFFLINE_GRAPHS, OFFLINE_RUN } from "../offlineData";
+import { OFFLINE_EVIDENCE, OFFLINE_GRAPHS, OFFLINE_RUN, OFFLINE_RUNS } from "../offlineData";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000";
 const queryParams = new URLSearchParams(window.location.search);
 const liveQueryEnabled = queryParams.has("live");
-const configuredOffline = import.meta.env.VITE_OFFLINE_MODE;
-// The browser-first default is offline so `npm run dev` works without FastAPI.
-// Docker/live deployments set VITE_OFFLINE_MODE=false explicitly.
-const OFFLINE_MODE = !liveQueryEnabled && configuredOffline !== "false";
+const offlineQueryEnabled = queryParams.has("offline");
+const standaloneEntry = window.location.pathname.endsWith("/demo.html");
+// The main entry is live by default. The standalone entry is always offline;
+// the main app can opt into embedded snapshots with `?offline=1`.
+const OFFLINE_MODE = !liveQueryEnabled && (standaloneEntry || offlineQueryEnabled);
 
 export class ApiError extends Error {
   status: number;
@@ -64,9 +65,9 @@ export const api = {
       body: JSON.stringify(payload),
     }),
 
-  listRuns: () => OFFLINE_MODE ? Promise.resolve({ runs: [OFFLINE_RUN] }) : request<{ runs: RunSummary[] }>("/api/pipeline/runs"),
+  listRuns: () => OFFLINE_MODE ? Promise.resolve({ runs: OFFLINE_RUNS }) : request<{ runs: RunSummary[] }>("/api/pipeline/runs"),
 
-  getRunStatus: (runId: string) => OFFLINE_MODE ? Promise.resolve({ ...OFFLINE_RUN, interventions: [] }) : request<RunStatusResponse>(`/api/pipeline/${runId}/status`),
+  getRunStatus: (runId: string) => OFFLINE_MODE ? Promise.resolve({ ...(OFFLINE_RUNS.find((run) => run.run_id === runId) ?? OFFLINE_RUN), interventions: [] }) : request<RunStatusResponse>(`/api/pipeline/${runId}/status`),
 
   getEvidence: (runId: string) => OFFLINE_MODE ? Promise.resolve({ ...OFFLINE_EVIDENCE, run_id: runId }) : request<EvidenceSummary>(`/api/evidence/${runId}`),
 

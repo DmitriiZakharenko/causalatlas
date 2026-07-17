@@ -7,13 +7,12 @@ import DiseasePathogenesisPage from "./pages/DiseasePathogenesisPage";
 import EvalDashboardPage from "./pages/EvalDashboardPage";
 import ArchitecturePage from "./pages/ArchitecturePage";
 import EvidenceDashboardPage from "./pages/EvidenceDashboardPage";
-import DemoReplayPage from "./pages/DemoReplayPage";
 import PresentationPage from "./pages/PresentationPage";
 import "./App.css";
 
-function App() {
+export function AppContent() {
   return (
-    <BrowserRouter>
+    <>
       <NavBar />
       <main>
         <Routes>
@@ -24,12 +23,17 @@ function App() {
           <Route path="/eval" element={<EvalDashboardPage />} />
           <Route path="/architecture" element={<ArchitecturePage />} />
           <Route path="/evidence" element={<EvidenceDashboardPage />} />
-          <Route path="/demo" element={<DemoReplayPage />} />
           <Route path="/presentation" element={<PresentationPage />} />
         </Routes>
       </main>
-    </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}

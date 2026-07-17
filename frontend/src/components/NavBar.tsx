@@ -8,7 +8,6 @@ const links = [
   { to: "/architecture", label: "Agent Architecture" },
   { to: "/presentation", label: "Presentation" },
   { to: "/evidence", label: "Evidence Dashboard" },
-  { to: "/demo", label: "Demo Replay" },
 ];
 
 export default function NavBar() {

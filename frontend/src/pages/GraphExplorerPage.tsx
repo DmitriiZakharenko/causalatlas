@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import CytoscapeComponent from "react-cytoscapejs";
 import type * as cytoscape from "cytoscape";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import type { GraphEdge, GraphNode, GraphResponse, GraphSummary } from "../api/types";
 
@@ -102,6 +102,7 @@ interface Connection {
 }
 
 export default function GraphExplorerPage() {
+  const [searchParams] = useSearchParams();
   const [graphs, setGraphs] = useState<GraphSummary[] | null>(null);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [graph, setGraph] = useState<GraphResponse | null>(null);
@@ -116,10 +117,13 @@ export default function GraphExplorerPage() {
       .listGraphs()
       .then((r) => {
         setGraphs(r.graphs);
-        if (r.graphs.length > 0) setSelectedSlug(r.graphs[0].disease_slug);
+        if (r.graphs.length > 0) {
+          const requestedDisease = searchParams.get("disease");
+          setSelectedSlug(r.graphs.some((graph) => graph.disease_slug === requestedDisease) ? requestedDisease : r.graphs[0].disease_slug);
+        }
       })
       .catch((err) => setLoadError(err instanceof ApiError ? `${err.status}: ${err.message}` : String(err)));
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!selectedSlug) return;
@@ -272,6 +276,7 @@ export default function GraphExplorerPage() {
           {!graph && !loadError && <p className="muted">Loading graph…</p>}
           {graph && (
             <CytoscapeComponent
+              key={selectedSlug ?? "empty-graph"}
               elements={CytoscapeComponent.normalizeElements(elements)}
               stylesheet={STYLESHEET}
               layout={

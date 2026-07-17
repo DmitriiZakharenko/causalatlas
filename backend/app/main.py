@@ -8,11 +8,13 @@ stub responses -- every field returned traces to a real run or a real error.
 """
 import json
 from datetime import datetime, timezone
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
+from dotenv import load_dotenv
 
 from app import db, eval as eval_mod, graphs as graphs_mod, evidence
 from app.agent_registry import AGENT_ORDER
@@ -20,6 +22,10 @@ from app.llm_common import get_llm_provider
 from app.orchestrator import run_manager
 
 app = FastAPI(title="CausalAtlas API", version="0.2.0")
+
+# Local runs should behave like Docker runs: read the ignored repository-level
+# .env before the health endpoint or pipeline can resolve the provider.
+load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
 
 # Local dev only: frontend (Vite) and backend run on different ports.
 app.add_middleware(

@@ -282,6 +282,22 @@ textarea:focus {
   flex: none;
 }
 
+.provider-help {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #cdd8ff;
+  border-radius: 10px;
+  background: linear-gradient(120deg, #f5f8ff, #fbfdff);
+}
+.provider-help__header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.provider-help__header h2 { margin-bottom: .25rem; }
+.provider-help__status { color: #1746bc; background: #edf2ff; border: 1px solid #cdd8ff; border-radius: 999px; padding: .25rem .55rem; font: 800 .68rem ui-monospace, monospace; }
+.provider-help details { margin-top: .75rem; }
+.provider-help summary { cursor: pointer; color: var(--accent); font-weight: 650; }
+.provider-help__steps { margin: .75rem 0; padding-left: 1.25rem; color: var(--text); font-size: .85rem; }
+.provider-help__steps li { margin: .35rem 0; }
+.provider-help__code { margin: .75rem 0; padding: .85rem 1rem; overflow-x: auto; border-radius: 8px; background: #172033; color: #dbeafe; font: .78rem/1.5 ui-monospace, monospace; }
+
 .form__advanced summary {
   cursor: pointer;
   color: var(--text-muted);
@@ -359,6 +375,40 @@ textarea:focus {
   color: var(--text-muted);
   font-size: 0.85em;
 }
+
+.recorded-run-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.8rem;
+  margin: 0.9rem 0 1.2rem;
+}
+
+.recorded-run-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  border: 1px solid #cdd8ff;
+  border-radius: 10px;
+  background: #f7f9ff;
+}
+
+.recorded-run-card__main {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-h);
+  text-align: left;
+  cursor: pointer;
+}
+
+.recorded-run-card__main:hover strong { color: var(--accent); }
+.recorded-run-card__main .eyebrow { font-size: 0.6rem; }
+.recorded-run-card__main strong { font-size: 1rem; }
+.recorded-run-card__actions { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+.recorded-run-card__actions .button { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
 
 /* --- Badges --------------------------------------------------------------- */
 

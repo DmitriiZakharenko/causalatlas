@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import type { EvidenceSummary, RunSummary } from "../api/types";
 
@@ -39,6 +40,7 @@ function candidateDisposition(classification: string | null, eligible: boolean):
 }
 
 export default function EvidenceDashboardPage() {
+  const [searchParams] = useSearchParams();
   const [runs, setRuns] = useState<RunSummary[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [summary, setSummary] = useState<EvidenceSummary | null>(null);
@@ -48,9 +50,11 @@ export default function EvidenceDashboardPage() {
     api.listRuns().then((response) => {
       const visibleRuns = response.runs.filter((run) => run.status !== "failed" && run.status !== "cancelled");
       setRuns(visibleRuns);
-      if (visibleRuns[0]) setSelectedId(visibleRuns[0].run_id);
+      const requestedRun = searchParams.get("run");
+      const initialRun = visibleRuns.find((run) => run.run_id === requestedRun) ?? visibleRuns[0];
+      if (initialRun) setSelectedId(initialRun.run_id);
     }).catch((err) => setError(err instanceof ApiError ? `${err.status}: ${err.message}` : String(err)));
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!selectedId) return;

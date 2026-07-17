@@ -43,28 +43,25 @@ There are three ways to use the project. Choose the one that matches your goal:
 
 | Goal | Needs backend? | Needs model login? | Start here |
 | --- | ---: | ---: | --- |
-| See the interface and real stored graphs | No | No | [Offline demo](#offline-demo-no-backend) |
+| See the interface and real stored graphs | No | No | [Standalone offline version](#offline-demo-no-backend) |
 | Run the API and explore persisted data | Yes | No | [Full stack](#full-stack-with-docker) |
 | Launch a new disease–target analysis | Yes | Yes | [Live analysis](#live-analysis-and-cli-authentication) |
 
-### The fastest path: open the demo directly
+### The fastest path: run the offline interface
 
-After cloning, double-click this file or open it with your browser:
-
-[`frontend/demo.html`](frontend/demo.html)
-
-This works from `file://` and does not require `npm`, Docker, Python, a database, a CLI login or an API key. It includes the current UI shell, the recorded pipeline replay, embedded asthma/IBD/IPF graphs, disease selection, search, noise filtering and clickable graph nodes/edges.
+The offline interface uses the same React UI as the main application and does not require FastAPI, Docker, a database, a CLI login or an API key.
 
 ## Offline demo — no backend
 
-### Option 1: direct file opening
+### Option 1: development server
 
 ```bash
-open frontend/demo.html       # macOS
-# xdg-open frontend/demo.html # Linux
+cd frontend
+npm ci
+npm run dev
 ```
 
-Or open `frontend/demo.html` manually in Finder. If the browser shows `file://.../demo.html`, that is expected.
+Open <http://localhost:5173/> for the full offline interface, or <http://localhost:5173/demo.html#/graphs> for the separate offline entry point.
 
 ### Option 2: static preview server
 
@@ -94,7 +91,7 @@ Open the printed URL followed by `/demo.html`, usually:
 
 <http://localhost:4173/demo.html>
 
-The standalone demo is a snapshot. It contains graph data bundled at preparation time; it does not read the backend and it does not start a new run. `Play replay` is a local UI animation, not a live model execution.
+The standalone entry point is the same complete React interface under a hash route. It contains graph and evidence data bundled at build time; it does not read the backend and it does not start a new run.
 
 ### Full React UI in offline mode
 
@@ -105,7 +102,7 @@ cd frontend
 npm run dev
 ```
 
-Then open <http://localhost:5173/>. Offline mode is the default for `npm run dev`, so the full UI works immediately without FastAPI. This uses the real navbar, routes, Graph Explorer, node details, text summaries, Architecture, Evidence and Presentation pages with embedded read-only snapshots. Navigation and refreshes keep the same mode automatically. Launching a new run, approving a live pause and live judging are intentionally disabled until the backend is connected. To force live mode for a backend running on localhost, set `VITE_OFFLINE_MODE=false` before starting Vite.
+Then open <http://localhost:5173/>. The main interface is live by default and expects the FastAPI backend at `http://127.0.0.1:8000`. It contains Launch, Graph Explorer, Architecture, Evidence and Presentation; it does not contain a separate Demo tab. For embedded snapshots without the backend, use <http://localhost:5173/?offline=1>. The standalone `frontend/demo.html` is the separate zero-backend handoff.
 
 ## Full stack with Docker
 
@@ -137,7 +134,7 @@ Requirements: Python 3.11+ and Node.js 20.19+ or 22.12+.
 python3 -m venv backend/.venv
 source backend/.venv/bin/activate
 pip install -r backend/requirements.txt
-uvicorn app.main:app --app-dir backend --reload
+uvicorn app.main:app --app-dir backend --reload --reload-dir backend/app
 
 # terminal 2 — frontend
 cd frontend
@@ -206,7 +203,6 @@ They configure optional rate limits for literature sources. They are read by the
 - **Agent Architecture** — see the 13-stage hand-off, skills and deterministic graph stages.
 - **Evidence Dashboard** — inspect stored quality, novelty and evaluation records.
 - **Presentation** — use the guided explanation of the problem and architecture.
-- **Demo Replay** — show a read-only completed run without model calls.
 
 ## Scientific controls
 
