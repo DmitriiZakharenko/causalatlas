@@ -1,19 +1,35 @@
 <div align="center">
 
+<p>
+  <img src="https://img.shields.io/badge/BIOMEDICAL_RESEARCH_SOFTWARE-152238?style=for-the-badge" alt="Biomedical research software" />
+  <img src="https://img.shields.io/badge/EVIDENCE--FIRST-1ca78a?style=for-the-badge" alt="Evidence first" />
+  <img src="https://img.shields.io/badge/SAFETY--GATED-9254c7?style=for-the-badge" alt="Safety gated" />
+</p>
+
 # CausalAtlas
 
-### Auditable mechanistic reasoning for biomedical discovery
+### From a disease–target question to a falsifiable experiment
 
-<p><strong>Disease + target → evidence trail → causal graph → novelty gate → falsifiable experiment</strong></p>
+<p>Auditable mechanistic reasoning for biomedical discovery — with every claim, conflict and decision left inspectable.</p>
 
 <p>
   <a href="#start-here"><img src="https://img.shields.io/badge/start_here-30_seconds-1ca78a?style=flat-square" alt="Start here" /></a>
   <a href="#offline-demo-no-backend"><img src="https://img.shields.io/badge/offline_demo-no_backend-4c6fff?style=flat-square" alt="Offline demo" /></a>
+  <a href="docs/REPRODUCIBILITY.md"><img src="https://img.shields.io/badge/reproducible-checklist-152238?style=flat-square" alt="Reproducibility checklist" /></a>
   <a href="#security"><img src="https://img.shields.io/badge/security-no_committed_keys-9254c7?style=flat-square" alt="No committed keys" /></a>
-  <img src="https://img.shields.io/badge/status-research_prototype-c47718?style=flat-square" alt="Research prototype" />
 </p>
 
+<table>
+  <tr>
+    <td><strong>INSPECT</strong><br />Evidence, provenance and contradictions stay visible.</td>
+    <td><strong>VERIFY</strong><br />Novelty claims pass an independent search gate.</td>
+    <td><strong>DESIGN</strong><br />Only checked candidates become experiments.</td>
+  </tr>
+</table>
+
 <img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline from evidence to experiment" width="100%" />
+
+<p><strong>Disease + target → evidence trail → causal graph → novelty gate → falsifiable experiment</strong></p>
 
 <p><em>Research software, not medical advice. A generated hypothesis is not a clinical or therapeutic recommendation.</em></p>
 
