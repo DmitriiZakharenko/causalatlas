@@ -1,10 +1,6 @@
 <div align="center">
 
-<p>
-  <img src="https://img.shields.io/badge/BIOMEDICAL_RESEARCH_SOFTWARE-152238?style=for-the-badge" alt="Biomedical research software" />
-  <img src="https://img.shields.io/badge/EVIDENCE--FIRST-1ca78a?style=for-the-badge" alt="Evidence first" />
-  <img src="https://img.shields.io/badge/SAFETY--GATED-9254c7?style=for-the-badge" alt="Safety gated" />
-</p>
+<p><sub>BIOMEDICAL RESEARCH SOFTWARE · EVIDENCE-FIRST · SAFETY-GATED</sub></p>
 
 # CausalAtlas
 
