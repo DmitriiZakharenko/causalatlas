@@ -1,13 +1,13 @@
-# Dmitrii Zakharenko
+# CausalAtlas
 
-## Working with Large Language Models
+**Working with Large Language Models**
 
-**CausalAtlas — Auditable mechanistic reasoning for biomedical discovery**
-**Instructors:** Suhail Yazijy // Katharina Matulla
+**Auditable mechanistic reasoning for biomedical discovery**
+**Technical Project Report**
+**Dmitrii Zakharenko**
+**Instructors:** Suhail Yazijy and Katharina Matulla
 **Date:** 29 July 2026
 **Repository:** https://github.com/dmitriizakharenko/causalatlas
-
-Technical Project Report
 
 ## 1. Executive summary
 
