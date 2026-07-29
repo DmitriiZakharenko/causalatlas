@@ -7,6 +7,7 @@ const links = [
   { to: "/graphs", label: "Graph Explorer" },
   { to: "/architecture", label: "Agent Architecture" },
   { to: "/presentation", label: "Presentation" },
+  { to: "/demo", label: "Recorded Demo" },
   { to: "/evidence", label: "Evidence Dashboard" },
 ];
 

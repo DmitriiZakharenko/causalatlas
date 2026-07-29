@@ -8,6 +8,7 @@ import EvalDashboardPage from "./pages/EvalDashboardPage";
 import ArchitecturePage from "./pages/ArchitecturePage";
 import EvidenceDashboardPage from "./pages/EvidenceDashboardPage";
 import PresentationPage from "./pages/PresentationPage";
+import DemoReplayPage from "./pages/DemoReplayPage";
 import "./App.css";
 
 export function AppContent() {
@@ -24,6 +25,7 @@ export function AppContent() {
           <Route path="/architecture" element={<ArchitecturePage />} />
           <Route path="/evidence" element={<EvidenceDashboardPage />} />
           <Route path="/presentation" element={<PresentationPage />} />
+          <Route path="/demo" element={<DemoReplayPage />} />
         </Routes>
       </main>
     </>

@@ -91,6 +91,8 @@ Open the printed URL followed by `/demo.html`, usually:
 
 <http://localhost:4173/demo.html>
 
+For the guided read-only replay, open <http://localhost:4173/demo.html#/demo>. It uses the embedded completed-run snapshot and never starts a live pipeline.
+
 The standalone entry point is the same complete React interface under a hash route. It contains graph and evidence data bundled at build time; it does not read the backend and it does not start a new run.
 
 ### Full React UI in offline mode
@@ -236,6 +238,8 @@ Only `D` and `E` novelty classes are eligible to proceed to hypothesis generatio
 ## Verification
 
 Run the reproducible offline checks from the correct directories:
+
+The complete pre-submission checklist is in [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md), and the project-wide context contract is [`AGENTS.md`](AGENTS.md).
 
 ```bash
 # backend — live Claude tests are deselected by backend/pytest.ini
