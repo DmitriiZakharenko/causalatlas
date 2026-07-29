@@ -21,20 +21,34 @@ def build_graph(edges: list[dict]) -> dict:
     nodes = {}
 
     for e in edges:
-        key = (e["source"], e["target"])
+        # Codex extraction may omit optional provenance fields. Preserve the
+        # edge with explicit neutral defaults instead of failing the entire
+        # run during the deterministic graph stage.
+        source = e.get("source")
+        target = e.get("target")
+        if not source or not target:
+            continue
+        relation = e.get("relation") or e.get("primary_relation") or "related"
+        pmid = e.get("pmid", "")
+        year = e.get("year", "")
+        species = e.get("species", "unknown")
+        confidence = e.get("confidence", 0.5)
+        source_type = e.get("source_type", "unknown")
+        target_type = e.get("target_type", "unknown")
+        key = (source, target)
         entry = edge_map[key]
-        entry["relations"].add(e["relation"])
-        entry["pmids"].append(e["pmid"])
-        entry["years"].append(e["year"])
-        entry["species"].add(e["species"])
-        entry["confidences"].append(e["confidence"])
-        entry["source_type"] = e["source_type"]
-        entry["target_type"] = e["target_type"]
+        entry["relations"].add(relation)
+        entry["pmids"].append(pmid)
+        entry["years"].append(year)
+        entry["species"].add(species)
+        entry["confidences"].append(confidence)
+        entry["source_type"] = source_type
+        entry["target_type"] = target_type
 
-        for node, ntype in [(e["source"], e["source_type"]), (e["target"], e["target_type"])]:
+        for node, ntype in [(source, source_type), (target, target_type)]:
             if node not in nodes:
                 nodes[node] = {"type": ntype, "pmids": set(), "edge_count": 0}
-            nodes[node]["pmids"].add(e["pmid"])
+            nodes[node]["pmids"].add(pmid)
             nodes[node]["edge_count"] += 1
 
     graph_edges = []

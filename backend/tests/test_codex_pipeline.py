@@ -39,6 +39,22 @@ def test_codex_orchestrator_stream_delegates_to_pipeline(monkeypatch):
     assert events == [{"type": "result", "is_error": False, "result": "ok", "total_cost_usd": 0.0, "duration_ms": 0}]
 
 
+def test_graph_builder_accepts_codex_edges_without_optional_metadata():
+    from pathlib import Path
+
+    scripts_dir = Path(__file__).resolve().parents[2] / "scripts"
+    sys.path.insert(0, str(scripts_dir))
+    from build_graph import build_graph
+
+    graph = build_graph(
+        [{"source": "GSDMD", "target": "pyroptosis", "relation": "induces", "pmid": "1", "confidence": 0.8}]
+    )
+
+    assert graph["edges"][0]["years"] == [""]
+    assert graph["edges"][0]["species"] == ["unknown"]
+    assert graph["nodes"][0]["type"] == "unknown"
+
+
 def test_codex_pipeline_emits_streamtranslator_compatible_events(tmp_path, monkeypatch):
     import app.codex_pipeline as pipeline
     import app.codex_cli as codex_cli
