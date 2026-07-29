@@ -184,3 +184,9 @@ Known limitations are explicit:
 - novelty classification is a documented search-based judgment, not a proof of global absence;
 - deterministic agents improve repeatability but cannot replace scientific expert review;
 - the project is research software, not medical advice or a clinical decision system.
+
+## 11. Use of generative AI and declaration of authorship
+
+Generative AI tools, specifically Claude Code and OpenAI Codex, were used in accordance with the learning objectives of this course to support coding, debugging, documentation, agent orchestration and testing. Their use was limited to the extent permitted by the course requirements and remained under the author’s direction, critical review and responsibility. Project decisions, output evaluation and implementation verification were performed by the author, who retains responsibility for the final work.
+
+This assignment is the sole work and composition of Dmitrii Zakharenko. All sources and learning aids used in its preparation, including the generative AI tools stated above, have been acknowledged. Precise and detailed references to the work of others have been provided, and the author takes full responsibility for the submitted assignment.
