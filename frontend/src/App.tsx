@@ -14,8 +14,9 @@ import "./App.css";
 export function AppContent() {
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <NavBar />
-      <main>
+      <main id="main-content">
         <Routes>
           <Route path="/" element={<LaunchPage />} />
           <Route path="/runs/:runId" element={<RunDetailPage />} />

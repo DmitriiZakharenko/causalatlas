@@ -72,6 +72,38 @@ a {
   color: var(--accent);
 }
 
+button,
+a,
+input,
+select,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(39, 94, 254, 0.42);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-160%);
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--text-h);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 code {
   font-family: ui-monospace, Consolas, monospace;
   background: #e9effa;
