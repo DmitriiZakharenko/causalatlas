@@ -391,7 +391,8 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
     for drug in drugs:
         queries.extend(
             [
-                {"strategy": "drug_target_direct", "query": f'"{drug}" {" ".join(genes) if genes else disease}'},
+                {"strategy": "drug_target_direct", "query": f'"{drug}" {" ".join(genes) if genes else disease} (target OR binds OR neutralizes)'},
+                {"strategy": "drug_target_mechanism", "query": f'"{drug}" {" ".join(genes) if genes else disease} (mechanism OR antibody OR pathway)'},
                 {"strategy": "drug_disease_direct", "query": f'"{drug}" "{disease}"'},
             ]
         )
@@ -407,7 +408,6 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
         [
             {"strategy": "disease_mech_mesh", "query": f'"{disease}"[MeSH Terms] cytokine signaling mechanism'},
             {"strategy": "disease_fibrosis_mesh", "query": f'"{disease}"[MeSH Terms] fibrosis'},
-            {"strategy": "interleukin_11_mesh", "query": '"interleukin-11"[MeSH Terms] "pulmonary fibrosis"[MeSH Terms]'},
         ]
     )
     return queries
@@ -696,6 +696,11 @@ def _materialize_local_mechanisms(ctx: PipelineContext) -> dict:
                 quality.get("confidence_score", 0.5),
             )
         )
+    drug_knowledge = _materialize_local_drug_knowledge(ctx, papers)
+    for claim in drug_knowledge.get("claims", []):
+        edge = claim.get("edge")
+        if edge:
+            edges.append(edge)
     for edge in edges:
         edge["session"] = ctx.run_id
         edge["context"] = {
@@ -709,6 +714,96 @@ def _materialize_local_mechanisms(ctx: PipelineContext) -> dict:
     _write_json(ctx.session_dir / "mechanisms_extracted.json", mechanisms)
     _write_json(ctx.session_dir / "extraction_log.json", [])
     return mechanisms
+
+
+def _claim_sentence(text: str, terms: list[str]) -> str | None:
+    """Return a sentence containing every term, without inventing support."""
+    for sentence in re.split(r"(?<=[.!?])\s+", text.strip()):
+        compact = re.sub(r"[^a-z0-9]+", "", sentence.casefold())
+        if all(re.sub(r"[^a-z0-9]+", "", term.casefold()) in compact for term in terms):
+            return sentence.strip()
+    return None
+
+
+def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] | None = None) -> dict:
+    """Build a bounded, sentence-grounded drug layer from the verified corpus.
+
+    This is intentionally CPU-only. A drug claim is never created from the
+    input name alone: it needs a PMID and an exact abstract sentence.
+    """
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    papers = papers if papers is not None else (
+        (_read_json(ctx.session_dir / "publications_verified.json") or {}).get("publications", [])
+    )
+    claims: list[dict] = []
+    direct_cues = re.compile(r"bind|neutraliz|monoclonal antibody|blocking antibody", re.IGNORECASE)
+    indirect_cues = re.compile(
+        r"pathway|signaling|signalling|downstream|mediates|modulat|inhibit|activat|phosphorylat|ampk|mtor",
+        re.IGNORECASE,
+    )
+    for drug in target.drugs:
+        for paper in papers:
+            abstract = str(paper.get("abstract") or "")
+            if not abstract or drug.casefold() not in abstract.casefold():
+                continue
+            pmid = str(paper.get("pmid") or "")
+            if not pmid:
+                continue
+            for gene in target.genes:
+                gene_sentence = _claim_sentence(abstract, [drug, gene]) or _claim_sentence(abstract, [drug, gene.replace("IL33", "IL-33")])
+                if not gene_sentence:
+                    continue
+                if direct_cues.search(gene_sentence):
+                    predicate = "binds_target"
+                    mechanism_class = "direct_target"
+                    relation = "binds_target"
+                    object_name = gene.replace("IL33", "IL-33") + " protein"
+                elif indirect_cues.search(gene_sentence):
+                    predicate = "indirectly_modulates"
+                    mechanism_class = "indirect_pathway"
+                    relation = "indirectly_modulates"
+                    object_name = gene
+                else:
+                    continue
+                provenance = {"provider": "pubmed", "source_type": "publication", "source_id": pmid}
+                claims.append(
+                    {
+                        "drug": drug,
+                        "predicate": predicate,
+                        "object": object_name,
+                        "mechanism_class": mechanism_class,
+                        "pmid": pmid,
+                        "year": paper.get("year", ""),
+                        "source_sentence": gene_sentence,
+                        "edge": {
+                            "source": drug,
+                            "source_type": "Drug",
+                            "relation": relation,
+                            "target": gene.replace("IL33", "IL-33") if mechanism_class == "direct_target" else gene,
+                            "target_type": "Molecule" if mechanism_class == "direct_target" else "Gene",
+                            "pmid": pmid,
+                            "year": paper.get("year", ""),
+                            "species": paper.get("species", "unknown"),
+                            "confidence": 0.75 if mechanism_class == "direct_target" else 0.55,
+                            "source_sentence": gene_sentence,
+                            "provenance_type": "pmid",
+                            "source_refs": [{"pmid": pmid, "source_sentence": gene_sentence}],
+                            "context": {"disease": [ctx.disease], "drugs": [drug]},
+                        },
+                        "provenance": [provenance],
+                    }
+                )
+    # Deduplicate the same sentence-level claim while retaining audit data.
+    unique = {(c["drug"], c["predicate"], c["object"], c["pmid"]): c for c in claims}
+    payload = {
+        "schema_version": "drug-knowledge.v1",
+        "status": "evidence_backed" if unique else "input_only",
+        "drugs": [{"name": drug, "normalized_name": drug, "status": "unresolved", "identifiers": [], "provenance": []} for drug in target.drugs],
+        "claims": list(unique.values()),
+        "note": "Claims require PMID-backed sentence evidence; unresolved drug identifiers are not fabricated.",
+    }
+    _write_json(ctx.session_dir / "drug_knowledge.json", payload)
+    return payload
 
 
 def _canonical_nodes(canonical: dict) -> set[str]:
@@ -1415,8 +1510,15 @@ async def run_orchestrator_stream(
             if (ctx.session_dir / "mechanisms_extracted.json").exists()
             else {"edges": []}
         )
+        # The drug layer is deterministic and bounded: materialize it from the
+        # already verified corpus even when Agent 05 returns a non-empty LLM
+        # payload, so direct/indirect drug claims cannot silently disappear.
+        verified_papers = verified if isinstance(verified, list) else []
+        drug_payload = _materialize_local_drug_knowledge(ctx, verified_papers)
+        drug_edges = [claim["edge"] for claim in drug_payload.get("claims", []) if claim.get("edge")]
         prior_graph = _load_graph_json(ctx)
         candidate_edges = graph_payload.get("edges", []) if isinstance(graph_payload, dict) else []
+        candidate_edges = candidate_edges + drug_edges
         # Keep the model extraction for audit, but supplement it with the
         # deterministic extractor when the model did not provide enough
         # sentence-grounded claims. This is cheap CPU work and prevents a

@@ -14,7 +14,7 @@ from app.context_models import StructuredContext, normalize_context
 
 ResolutionStatus = Literal["known", "unknown", "unresolved"]
 SourceType = Literal["canonical", "publication", "registry", "provider", "unknown"]
-ClaimPredicate = Literal["binds_target", "associated_with_disease", "expression", "efficacy", "toxicity", "other"]
+ClaimPredicate = Literal["binds_target", "indirectly_modulates", "associated_with_disease", "expression", "efficacy", "toxicity", "other"]
 
 
 class Provenance(BaseModel):
@@ -103,6 +103,7 @@ class DrugClaim(BaseModel):
     provenance: list[Provenance] = Field(min_length=1)
     context: StructuredContext = Field(default_factory=StructuredContext)
     assertion_status: Literal["reported", "unknown"] = "reported"
+    mechanism_class: Literal["direct_target", "indirect_pathway", "disease_association", "other"] = "other"
 
     @field_validator("object")
     @classmethod
