@@ -25,21 +25,27 @@
 
 <img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline from evidence to experiment" width="100%" />
 
-<p><strong>Disease + target → evidence trail → causal graph → novelty gate → falsifiable experiment</strong></p>
+<p>
+  <strong>Workflow</strong><br />
+  Disease + target → evidence trail → causal graph<br />
+  → novelty gate → falsifiable experiment
+</p>
 
-<p><em>Research software, not medical advice. A generated hypothesis is not a clinical or therapeutic recommendation.</em></p>
+<p><small><em>Research software, not medical advice.<br />A generated hypothesis is not a clinical or therapeutic recommendation.</em></small></p>
 
 </div>
 
-> **Extension notice**
->
-> This repository is a backward-compatible extension of the baseline CausalAtlas
-> disease-target implementation. The current work adds multidimensional analysis
-> targets, including drugs, tissues, and cell types, while preserving the original
-> `disease + gene` workflow and existing session and graph artifacts.
->
-> The baseline implementation is preserved as Git tag `v0.2.0`.
-> Check out that tag when the original disease-target behavior is required.
+## Extension notice
+
+This repository is a backward-compatible extension of the baseline CausalAtlas
+disease-target implementation.
+
+The current version adds multidimensional analysis targets, including drugs,
+tissues, and cell types, while preserving the original `disease + gene` workflow
+and existing session and graph artifacts.
+
+The baseline implementation is preserved as Git tag `v0.2.0`. Check out that tag
+when the original disease-target behavior is required.
 
 ## Version compatibility
 
