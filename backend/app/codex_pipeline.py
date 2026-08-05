@@ -38,6 +38,7 @@ class PipelineContext:
     session_dir: Path
     graph_dir: Path
     target: AnalysisTarget | None = None
+    analysis_mode: str = "full"
 
 
 def _parse_prompt(prompt: str) -> PipelineContext:
@@ -53,6 +54,9 @@ def _parse_prompt(prompt: str) -> PipelineContext:
     if gene in {"(none specified -- disease-wide target)", "none", "None", ""}:
         gene = None
     autonomy_level = match(r"^autonomy_level:\s*(.+)$", "let_it_rip") or "let_it_rip"
+    # Legacy direct prompts omit analysis_mode and retain the historical full
+    # pipeline behavior. API-launched runs always include an explicit mode.
+    analysis_mode = match(r"^analysis_mode:\s*(.+)$", "full") or "full"
     session_dir_raw = match(r"^session output directory \(absolute\):\s*(.+)$")
     session_dir = Path(session_dir_raw) if session_dir_raw else ROOT / "data" / "sessions" / run_id
     graph_dir = ROOT / "data" / "graphs" / _slugify(disease) / run_id
@@ -69,7 +73,7 @@ def _parse_prompt(prompt: str) -> PipelineContext:
             target = AnalysisTarget(disease=disease, genes=[gene] if gene else [])
     else:
         target = AnalysisTarget(disease=disease, genes=[gene] if gene else [])
-    return PipelineContext(run_id, disease, gene, autonomy_level, session_dir, graph_dir, target)
+    return PipelineContext(run_id, disease, gene, autonomy_level, session_dir, graph_dir, target, analysis_mode)
 
 
 def _slugify(text: str) -> str:
@@ -1503,6 +1507,21 @@ async def run_orchestrator_stream(
         yield _tool_result_event("a08", f"architectures ranked: {len(stage['metrics']['architectures'])}")
         yield _tool_use_event("Agent", {"subagent_type": "agent09_contradiction_gap_detection", "description": "Contradiction stage"}, "a09")
         yield _tool_result_event("a09", f"contradictions: {len(stage['contradictions'])}, gaps: {len(stage['gaps'])}")
+
+        if ctx.analysis_mode == "graph_only":
+            _write_json(ctx.graph_dir / "novelty_audit.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only"})
+            _write_json(ctx.session_dir / "hypotheses.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "hypotheses": []})
+            _write_json(ctx.session_dir / "peer_review.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "reviews": []})
+            _write_json(ctx.session_dir / "experiment_design.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "experiments": []})
+            yield _final_result(
+                f"Codex graph-only pipeline completed for {ctx.disease}: evidence graph and text interpretation inputs are ready.",
+                cost_usd=usage_total.get("cost_usd"),
+                usage={
+                    key: value for key, value in usage_total.items()
+                    if key != "cost_usd" and value is not None
+                } | {"analysis_mode": "graph_only", "downstream_stages": "skipped"},
+            )
+            return
 
         # Agent 10 novelty audit over candidates.
         # Each novelty call receives graph context and is therefore expensive.

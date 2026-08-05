@@ -9,6 +9,7 @@ stub responses -- every field returned traces to a real run or a real error.
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Literal
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -40,6 +41,7 @@ app.add_middleware(
 
 class PipelineRunRequest(AnalysisTargetRequest):
     autonomy_level: str = "let_it_rip"
+    analysis_mode: Literal["graph_only", "full"] = "graph_only"
     dev_pubmed_retmax: int | None = Field(
         default=None,
         description=(
@@ -100,6 +102,7 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
         req.autonomy_level,
         target=target,
         pubmed_retmax_override=req.dev_pubmed_retmax,
+        analysis_mode=req.analysis_mode,
     )
     return {
         "run_id": run_id,
@@ -109,6 +112,7 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
         "target": target.model_dump(mode="json"),
         "target_schema_version": target.schema_version,
         "autonomy_level": req.autonomy_level,
+        "analysis_mode": req.analysis_mode,
         "stream_url": f"/api/pipeline/{run_id}/stream",
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }

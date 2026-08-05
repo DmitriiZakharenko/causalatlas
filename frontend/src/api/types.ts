@@ -1,6 +1,7 @@
 export type AutonomyLevel = "autocomplete" | "supervised" | "let_it_rip";
 export type RunStatus = "pending" | "running" | "paused" | "completed" | "failed" | "cancelled";
 export type Decision = "approve" | "reject" | "edit";
+export type AnalysisMode = "graph_only" | "full";
 
 export interface AnalysisTarget {
   schema_version: "target.v1";
@@ -28,6 +29,7 @@ export interface RunSummary {
   target_schema_version?: string | null;
   target?: AnalysisTarget | null;
   autonomy_level: AutonomyLevel;
+  analysis_mode?: AnalysisMode;
   status: RunStatus;
   current_agent: string | null;
   error: string | null;
@@ -76,6 +78,7 @@ export interface StartRunResponse {
   target: AnalysisTarget;
   target_schema_version: string;
   autonomy_level: AutonomyLevel;
+  analysis_mode: AnalysisMode;
   stream_url: string;
   timestamp: string;
 }

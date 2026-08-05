@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api, ApiError } from "../api/client";
-import type { AutonomyLevel, RunSummary } from "../api/types";
+import type { AnalysisMode, AutonomyLevel, RunSummary } from "../api/types";
 import StatusBadge from "../components/StatusBadge";
 
 const AUTONOMY_OPTIONS: { value: AutonomyLevel; label: string; description: string }[] = [
@@ -30,6 +30,7 @@ export default function LaunchPage() {
   const [tissue, setTissue] = useState("");
   const [cellType, setCellType] = useState("");
   const [autonomyLevel, setAutonomyLevel] = useState<AutonomyLevel>("let_it_rip");
+  const [analysisMode, setAnalysisMode] = useState<AnalysisMode>("graph_only");
   const [devRetmax, setDevRetmax] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -74,6 +75,7 @@ export default function LaunchPage() {
           query_mode: null,
         },
         autonomy_level: autonomyLevel,
+        analysis_mode: analysisMode,
         dev_pubmed_retmax: devRetmax.trim() ? Number(devRetmax.trim()) : undefined,
       });
       navigate(`/runs/${result.run_id}`);
@@ -87,7 +89,7 @@ export default function LaunchPage() {
   return (
     <div className="page">
       <section className="card">
-        <h1>Launch a mechanistic-hypothesis run</h1>
+        <h1>Launch a graph analysis run</h1>
         <p className="muted">
           Runs a live {provider ?? "configured"} pipeline sequentially, per{" "}
           <code>agents/agent00_orchestrator/AGENTS.md</code>. Nothing here is a stub or mock.
@@ -163,6 +165,18 @@ export default function LaunchPage() {
                 </span>
               </label>
             ))}
+          </fieldset>
+
+          <fieldset className="form__autonomy">
+            <legend>Analysis scope</legend>
+            <label className="form__radio">
+              <input type="radio" name="analysis_mode" value="graph_only" checked={analysisMode === "graph_only"} onChange={() => setAnalysisMode("graph_only")} />
+              <span><strong>Graph only (recommended)</strong><span className="muted"> — evidence graph, semantic validation and text interpretation; no hypotheses.</span></span>
+            </label>
+            <label className="form__radio">
+              <input type="radio" name="analysis_mode" value="full" checked={analysisMode === "full"} onChange={() => setAnalysisMode("full")} />
+              <span><strong>Full analysis</strong><span className="muted"> — additionally runs novelty, hypotheses, peer review and experiments.</span></span>
+            </label>
           </fieldset>
 
           <details className="form__advanced">

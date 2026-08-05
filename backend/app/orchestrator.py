@@ -77,6 +77,7 @@ def build_orchestrator_prompt(
     session_dir: Path,
     target: AnalysisTarget | None = None,
     pubmed_retmax_override: int | None = None,
+    analysis_mode: str = "graph_only",
 ) -> str:
     merge_note = ""
     prior_graph = existing_graph_path(disease)
@@ -116,11 +117,15 @@ disease: {disease}
 target_schema_version: {target.schema_version}
 target_json: {json.dumps(target.model_dump(mode="json"), separators=(",", ":"))}
 autonomy_level: {autonomy_level}
+analysis_mode: {analysis_mode}
 session output directory (absolute): {session_dir}
 {merge_note}
 {retmax_note}
 
-Follow your AGENTS.md exactly: dispatch Agents 1 through 13 in order via the Task tool,
+Follow your AGENTS.md exactly. In `graph_only` mode, dispatch only Agents 1 through 09,
+then stop after graph, semantic validation, topology, contradiction and gap analysis;
+do not run novelty, hypothesis, peer-review or experiment-design stages. In `full` mode,
+dispatch Agents 1 through 13 in order via the Task tool.
 load each dispatch's relevant skill(s) via the Skill tool immediately before dispatching
 per skills/skills_manifest.json, persist every agent's raw output to
 {session_dir}/agent<NN>_output.json immediately after it completes, and assemble the
@@ -318,6 +323,7 @@ class RunManager:
         *,
         target: AnalysisTarget | None = None,
         pubmed_retmax_override: int | None = None,
+        analysis_mode: str = "graph_only",
     ) -> str:
         target = target or AnalysisTarget(disease=disease, genes=[gene] if gene else [])
         run_id = make_run_id(disease)
@@ -334,6 +340,7 @@ class RunManager:
                         "cell_types": normalize_target_dimensions(target.cell_types, "cell_type"),
                     },
                     "legacy_request": {"disease": disease, "gene": gene},
+                    "analysis_mode": analysis_mode,
                 },
                 indent=2,
                 sort_keys=True,
@@ -393,6 +400,7 @@ class RunManager:
             session_dir=session_dir,
             target=target,
             pubmed_retmax_override=pubmed_retmax_override,
+            analysis_mode=analysis_mode,
         )
         stream = claude_cli.run_orchestrator_stream(prompt, session_id=session_id)
         task = asyncio.create_task(self._run(run_id, stream))

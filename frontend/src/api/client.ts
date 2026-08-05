@@ -9,6 +9,7 @@ import type {
   RunSummary,
   StartRunResponse,
   AnalysisTarget,
+  AnalysisMode,
   EvidenceSummary,
 } from "./types";
 import { OFFLINE_EVIDENCE, OFFLINE_GRAPHS, OFFLINE_RUN, OFFLINE_RUNS } from "../offlineData";
@@ -60,6 +61,7 @@ export const api = {
     gene?: string;
     target?: AnalysisTarget;
     autonomy_level?: AutonomyLevel;
+    analysis_mode?: AnalysisMode;
     dev_pubmed_retmax?: number;
   }) =>
     OFFLINE_MODE ? Promise.reject(new ApiError(503, "Offline mode is read-only; start the backend to launch a new run.")) : request<StartRunResponse>("/api/pipeline/run", {
