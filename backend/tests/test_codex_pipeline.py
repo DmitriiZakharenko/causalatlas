@@ -96,6 +96,35 @@ def test_drug_inhibitor_language_is_direct_and_pathway_language_is_indirect(tmp_
     assert ("indirectly_modulates", "indirect_pathway") in predicates
 
 
+def test_gene_downstream_extractor_adds_only_sentence_grounded_pathway_edges(tmp_path):
+    from app.codex_pipeline import PipelineContext, _materialize_gene_downstream_edges
+    from app.target_models import AnalysisTarget
+
+    target = AnalysisTarget(disease=None, genes=["BRAF"], drugs=["vemurafenib"])
+    ctx = PipelineContext("run-1", "gene_drug_BRAF_vemurafenib", "BRAF", "let_it_rip", tmp_path, tmp_path, target, "graph_only")
+    edges = _materialize_gene_downstream_edges(ctx, [{
+        "pmid": "1", "year": "2025", "species": "human",
+        "abstract": "BRAF V600E mutations activate the MAPK pathway and promote proliferation.",
+    }])
+    assert len(edges) == 1
+    assert edges[0]["source"] == "BRAF"
+    assert edges[0]["target"] == "MAPK"
+    assert edges[0]["relation"] == "activates"
+    assert edges[0]["provenance_type"] == "pmid"
+
+    rejected = _materialize_gene_downstream_edges(ctx, [{
+        "pmid": "2", "year": "2025", "species": "human",
+        "abstract": "BRAF inhibitors improved survival and affected the MAPK pathway.",
+    }])
+    assert rejected == []
+
+    broad_background = _materialize_gene_downstream_edges(ctx, [{
+        "pmid": "3", "year": "2025", "species": "human",
+        "abstract": "BRAF inhibitors target the mitogen-activated protein kinase pathway.",
+    }])
+    assert broad_background == []
+
+
 def test_codex_pipeline_emits_streamtranslator_compatible_events(tmp_path, monkeypatch):
     import app.codex_pipeline as pipeline
     import app.codex_cli as codex_cli

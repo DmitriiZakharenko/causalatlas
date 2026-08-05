@@ -706,6 +706,7 @@ def _materialize_local_mechanisms(ctx: PipelineContext) -> dict:
         edge = claim.get("edge")
         if edge:
             edges.append(edge)
+    edges.extend(_materialize_gene_downstream_edges(ctx, papers))
     for edge in edges:
         edge["session"] = ctx.run_id
         target_disease = (ctx.target.disease if ctx.target else None) or ""
@@ -748,6 +749,78 @@ def _sentence_with_pattern(text: str, required_term: str, pattern: re.Pattern[st
         if required_key and required_key in compact and pattern.search(sentence):
             return sentence.strip()
     return None
+
+
+def _materialize_gene_downstream_edges(ctx: PipelineContext, papers: list[dict]) -> list[dict]:
+    """Extract bounded gene-to-pathway edges from exact PMID sentences."""
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    # Keep this layer focused on a gene's downstream biology.  Drug-inhibitor
+    # language is deliberately excluded: a sentence saying "BRAF inhibitors
+    # affect MAPK" is evidence for a drug edge, not for BRAF -> MAPK.
+    causal_cues = re.compile(
+        r"(?<!-)activat|driv|promot|regulat|downstream|depend|requir|mediates?|"
+        r"suppress|downregulat|reduc",
+        re.IGNORECASE,
+    )
+    suppress_cues = re.compile(r"inhibit|suppress|block|downregulat|reduc", re.IGNORECASE)
+    edges: list[dict] = []
+    for gene in target.genes:
+        aliases = [gene]
+        if gene.casefold() == "braf":
+            aliases.extend(["B-RAF", "BRAF V600E", "BRAF mutations"])
+        for paper in papers:
+            abstract = str(paper.get("abstract") or "")
+            pmid = str(paper.get("pmid") or "")
+            if not abstract or not pmid:
+                continue
+            for sentence in re.split(r"(?<=[.!?])\s+", abstract.strip()):
+                gene_match = next(
+                    (re.search(rf"\b{re.escape(alias)}\b", sentence, re.IGNORECASE) for alias in aliases
+                     if re.search(rf"\b{re.escape(alias)}\b", sentence, re.IGNORECASE)),
+                    None,
+                )
+                if not gene_match:
+                    continue
+                for pathway, pattern in DRUG_PATHWAY_ALIASES:
+                    pathway_match = pattern.search(sentence)
+                    if not pathway_match:
+                        continue
+                    if re.search(rf"\b{re.escape(gene)}\s+(?:inhibitor|inhibitors|inhibition|is)", sentence, re.IGNORECASE):
+                        continue
+                    lo = min(gene_match.start(), pathway_match.start())
+                    hi = max(gene_match.end(), pathway_match.end())
+                    between = sentence[lo:hi]
+                    # Require the causal wording to occur after the gene and
+                    # before the pathway.  This rejects broad background
+                    # sentences that merely list a gene and pathways together.
+                    causal_match = causal_cues.search(between)
+                    if not causal_match:
+                        continue
+                    # Do not turn "BRAF inhibitors ... MAPK" into a gene
+                    # mechanism merely because the abstract later mentions
+                    # pathway activation.
+                    if re.search(r"\binhibitor\w*\b", between[:causal_match.start()], re.IGNORECASE):
+                        continue
+                    sentence = sentence.strip()
+                    edges.append({
+                        "claim_id": "geneclaim_" + hashlib.sha256(f"{gene}|{pathway}|{pmid}|{sentence}".encode()).hexdigest()[:16],
+                        "source": gene,
+                        "source_type": "Gene",
+                        "relation": "suppresses" if suppress_cues.search(between) and not re.search(r"activat|driv|lead|promot", between, re.IGNORECASE) else "activates",
+                        "evidence_state": "literature_direct",
+                        "target": pathway,
+                        "target_type": "Pathway",
+                        "pmid": pmid,
+                        "year": paper.get("year", ""),
+                        "species": paper.get("species", "unknown"),
+                        "confidence": 0.60,
+                        "source_sentence": sentence,
+                        "provenance_type": "pmid",
+                        "source_refs": [{"pmid": pmid, "source_sentence": sentence}],
+                        "context": {"disease": [target.disease] if target.disease else [], "drugs": list(target.drugs)},
+                    })
+    unique = {(e["source"], e["target"], e["relation"], e["pmid"], e["source_sentence"]): e for e in edges}
+    return list(unique.values())
 
 
 def _build_drug_gene_evidence_states(ctx: PipelineContext, claims: list[dict]) -> list[dict]:

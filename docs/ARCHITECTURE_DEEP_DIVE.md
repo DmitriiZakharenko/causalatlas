@@ -242,6 +242,15 @@ Direct cues include binding, neutralization, antibody blocking, explicit target 
 
 The bounded pathway vocabulary currently includes AMPK, mTOR/mTORC1, PI3K/AKT, MAPK, and NF-kB aliases. An alias is not a claim. An edge is emitted only when a verified PMID sentence supports it.
 
+The same verified corpus also supplies a bounded gene-downstream layer. It currently emits `Gene -> Pathway` edges for the requested gene when all of the following hold:
+
+1. the gene and a pathway alias occur in the same PMID-backed sentence;
+2. an explicit directional or causal cue occurs between the two mentions;
+3. the wording is not merely a drug-inhibitor statement or a broad list of pathways;
+4. the original sentence is retained as provenance.
+
+This is intentionally a cheap deterministic pass over abstracts already retrieved for the run. It performs no additional LLM or PubMed calls and does not infer an unobserved drug effect. A complete mechanistic chain still requires evidence for both `drug -> intermediate` and `intermediate -> queried gene`; a standalone gene-downstream edge is reported as downstream support, not as proof of the complete chain.
+
 ### Agent 06 — Graph builder
 
 Combines accepted sentence-grounded edges with provenance. It:
@@ -449,4 +458,3 @@ Before presenting a run, record:
 - whether fallback materialization was used.
 
 See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the offline tests, frontend checks, API health check, and read-only replay procedure.
-
