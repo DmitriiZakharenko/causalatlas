@@ -48,6 +48,21 @@ promoted to ontology-backed identifiers.
 New sessions write `drug_knowledge.json` and `target_context.json` alongside the
 resolved target artifact.
 
+Drug–gene review is persisted in `drug_gene_evidence.json` with four explicit
+states per requested pair:
+
+- `candidate_statistical`: an externally supplied statistical signal; absent
+  statistics are recorded as `not_provided`, never inferred from the input pair;
+- `literature_direct`: a PMID-backed direct drug–target claim;
+- `indirect_chain`: a PMID-backed claim through an explicitly named gene,
+  protein, or pathway intermediary;
+- `no_literature_support`: an active, auditable state when neither direct nor
+  indirect evidence passes the graph gate.
+
+The optional `target.statistical_candidates` field stores the method, effect or
+significance values, source, and source ID. These records are kept separate from
+causal PMID edges and are not treated as biological proof.
+
 ## Target contract
 
 The implementation keeps `disease` required because the current pipeline and

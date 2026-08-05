@@ -14,8 +14,9 @@ def test_legacy_request_normalizes_to_versioned_target():
         "genes": ["IL33"],
         "drugs": [],
         "tissues": [],
-        "cell_types": [],
-        "query_mode": "multidimensional",
+            "cell_types": [],
+            "statistical_candidates": [],
+            "query_mode": "multidimensional",
     }
 
 

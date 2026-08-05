@@ -10,6 +10,7 @@ export interface AnalysisTarget {
   drugs: string[];
   tissues: string[];
   cell_types: string[];
+  statistical_candidates?: Array<Record<string, unknown>>;
   query_mode: string | null;
 }
 
@@ -157,6 +158,8 @@ export interface GraphEdge {
   sample_pmids: string[];
   claim_id?: string | null;
   provenance_type?: string | null;
+  evidence_state?: string | null;
+  evidence_states?: string[];
   sessions?: string[];
   context?: Record<string, unknown>;
   source_refs?: Array<Record<string, unknown> | string>;

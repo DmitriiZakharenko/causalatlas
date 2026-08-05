@@ -181,7 +181,8 @@ def build_graph(edges: list[dict]) -> dict:
         "confidences": [], "relations": set(),
         "source_type": "", "target_type": "", "source_refs": [],
                 "sessions": set(), "context": {}, "provenance_type": None,
-                "provenance_types": set(),
+        "provenance_types": set(),
+        "evidence_states": set(),
         "claim_ids": [],
     })
 
@@ -240,6 +241,7 @@ def build_graph(edges: list[dict]) -> dict:
         entry["target_type"] = target_type
         entry["context"] = context
         entry["provenance_type"] = provenance_type
+        entry["evidence_states"].add(e.get("evidence_state") or ("indirect_chain" if relation == "indirectly_modulates" else "literature_direct"))
         entry["sessions"].update(e.get("sessions") or ([] if not (e.get("session") or e.get("run_id")) else [e.get("session") or e.get("run_id")]))
         entry["source_refs"].extend(e.get("source_refs") or [])
         if e.get("source_sentence"):
@@ -282,6 +284,8 @@ def build_graph(edges: list[dict]) -> dict:
             "source_type": data["source_type"],
             "target_type": data["target_type"],
             "provenance_type": provenance_type,
+            "evidence_state": "mixed" if len(data["evidence_states"]) > 1 else next(iter(data["evidence_states"])),
+            "evidence_states": sorted(data["evidence_states"]),
             "sessions": sorted(data["sessions"]),
             "source_refs": _unique(data["source_refs"]),
             "context": data["context"],

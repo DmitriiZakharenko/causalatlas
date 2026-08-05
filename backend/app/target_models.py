@@ -11,6 +11,21 @@ from app.entity_normalization import normalize_target_dimensions
 TargetSchemaVersion = Literal["target.v1"]
 
 
+class StatisticalCandidate(BaseModel):
+    """Optional external statistical signal; never treated as literature evidence."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    drug: str
+    gene: str
+    method: str
+    effect: float | None = None
+    p_value: float | None = None
+    q_value: float | None = None
+    source: str
+    source_id: str | None = None
+
+
 class AnalysisTarget(BaseModel):
     """Resolved target used by the pipeline and persisted with every new run."""
 
@@ -22,6 +37,7 @@ class AnalysisTarget(BaseModel):
     drugs: list[str] = Field(default_factory=list)
     tissues: list[str] = Field(default_factory=list)
     cell_types: list[str] = Field(default_factory=list)
+    statistical_candidates: list[StatisticalCandidate] = Field(default_factory=list)
     query_mode: str | None = None
 
     @field_validator("disease", "genes", "drugs", "tissues", "cell_types", mode="before")

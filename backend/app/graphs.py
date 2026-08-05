@@ -257,6 +257,8 @@ def _strip_edge(edge: dict, index: int) -> dict:
         "sample_pmids": pmids[:SAMPLE_PMID_LIMIT],
         "claim_id": edge.get("claim_id"),
         "provenance_type": edge.get("provenance_type"),
+        "evidence_state": edge.get("evidence_state"),
+        "evidence_states": edge.get("evidence_states", []),
         "sessions": edge.get("sessions", []),
         "context": edge.get("context", {}),
         "source_refs": edge.get("source_refs", []),

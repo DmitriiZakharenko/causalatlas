@@ -54,6 +54,33 @@ def test_graph_builder_accepts_codex_edges_without_optional_metadata():
     assert graph["nodes"][0]["type"] == "unknown"
 
 
+def test_drug_gene_evidence_states_keep_statistics_separate_from_literature(tmp_path):
+    from app.codex_pipeline import PipelineContext, _build_drug_gene_evidence_states
+    from app.target_models import AnalysisTarget, StatisticalCandidate
+
+    target = AnalysisTarget(
+        disease="NSCLC",
+        genes=["EGFR"],
+        drugs=["erlotinib"],
+        statistical_candidates=[StatisticalCandidate(
+            drug="erlotinib", gene="EGFR", method="colocalization", effect=0.31,
+            p_value=0.001, source="study-x", source_id="assoc-1",
+        )],
+    )
+    ctx = PipelineContext("run-1", "NSCLC", "EGFR", "let_it_rip", tmp_path, tmp_path, target, "graph_only")
+    states = _build_drug_gene_evidence_states(ctx, [{
+        "drug": "erlotinib",
+        "predicate": "binds_target",
+        "object": "EGFR protein",
+        "edge": {"claim_id": "claim-1"},
+    }])
+    pair = states[0]
+    assert pair["candidate_statistical"]["status"] == "supported"
+    assert pair["literature_direct"]["status"] == "supported"
+    assert pair["indirect_chain"]["status"] == "not_found"
+    assert pair["no_literature_support"]["status"] == "not_applicable"
+
+
 def test_codex_pipeline_emits_streamtranslator_compatible_events(tmp_path, monkeypatch):
     import app.codex_pipeline as pipeline
     import app.codex_cli as codex_cli

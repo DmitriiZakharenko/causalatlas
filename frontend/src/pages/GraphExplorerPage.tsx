@@ -322,6 +322,8 @@ export default function GraphExplorerPage() {
     cy.fit(cy.elements(), 90);
   };
 
+  const drugGeneStates = (graph?.metadata.drug_gene_evidence as Array<Record<string, unknown>> | undefined) ?? [];
+
   return (
     <div className="page page--wide">
       <section className="card">
@@ -418,6 +420,26 @@ export default function GraphExplorerPage() {
               <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: TYPE_COLORS.canonical_db }} /> canonical evidence source</span>
               <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: TYPE_COLORS.unknown }} /> unresolved type</span>
             </div>
+            {drugGeneStates.length > 0 && (
+              <div className="graph-evidence-state-strip" aria-label="Drug-gene evidence states">
+                <strong>Drug–gene evidence states</strong>
+                {drugGeneStates.map((item, index) => {
+                  const direct = item.literature_direct as Record<string, unknown> | undefined;
+                  const chain = item.indirect_chain as Record<string, unknown> | undefined;
+                  const candidate = item.candidate_statistical as Record<string, unknown> | undefined;
+                  const missing = item.no_literature_support as Record<string, unknown> | undefined;
+                  return (
+                    <span className="graph-evidence-state-strip__item" key={`${String(item.drug)}-${String(item.gene)}-${index}`}>
+                      <b>{String(item.drug)} → {String(item.gene)}</b>
+                      <span>statistical: {String(candidate?.status ?? "not_provided")}</span>
+                      <span>direct: {String(direct?.status ?? "not_found")}</span>
+                      <span>indirect chain: {String(chain?.status ?? "not_found")}</span>
+                      {missing?.status === "active" && <span className="muted">literature support: not found</span>}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
           </>
         )}
         {hideNoise && hiddenNoiseCount > 0 && (
@@ -570,6 +592,10 @@ export default function GraphExplorerPage() {
               </p>
               <p>
                 <strong>Provenance:</strong> {selected.data.provenance_type ?? "PMID evidence"}
+              </p>
+              <p>
+                <strong>Evidence state:</strong> {selected.data.evidence_state ?? "literature_direct"}
+                {(selected.data.evidence_states ?? []).length > 1 ? ` (${selected.data.evidence_states?.join(", ")})` : ""}
               </p>
               {selected.data.sessions && selected.data.sessions.length > 0 && (
                 <p><strong>Sessions:</strong> {selected.data.sessions.join(", ")}</p>

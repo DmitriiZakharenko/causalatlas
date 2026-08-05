@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import subprocess
 import re
 import shutil
@@ -727,6 +728,7 @@ def _claim_sentence(text: str, terms: list[str]) -> str | None:
 
 DRUG_PATHWAY_ALIASES: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("AMPK", re.compile(r"\bAMPK\b|AMP-activated protein kinase|Ampk", re.IGNORECASE)),
+    ("mTORC1", re.compile(r"\bmTORC1\b|mechanistic target of rapamycin complex 1", re.IGNORECASE)),
     ("mTOR", re.compile(r"\bmTOR\b|mechanistic target of rapamycin", re.IGNORECASE)),
     ("PI3K/AKT", re.compile(r"\bPI3K\b|\bAKT\b|phosphoinositide 3-kinase", re.IGNORECASE)),
     ("MAPK", re.compile(r"\bMAPK\b|mitogen-activated protein kinase", re.IGNORECASE)),
@@ -741,6 +743,58 @@ def _sentence_with_pattern(text: str, required_term: str, pattern: re.Pattern[st
         if required_key and required_key in compact and pattern.search(sentence):
             return sentence.strip()
     return None
+
+
+def _build_drug_gene_evidence_states(ctx: PipelineContext, claims: list[dict]) -> list[dict]:
+    """Materialize all four evidence states without promoting missing evidence.
+
+    Statistical candidates are optional external inputs. A requested pair with
+    no supplied statistic is explicitly marked ``not_provided`` rather than
+    being presented as a statistical finding.
+    """
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    candidates = getattr(target, "statistical_candidates", []) or []
+    states: list[dict] = []
+    for drug in target.drugs:
+        for gene in target.genes:
+            pair_claims = [c for c in claims if str(c.get("drug", "")).casefold() == drug.casefold()]
+            direct = [c for c in pair_claims if c.get("predicate") == "binds_target" and gene.casefold() in str(c.get("object", "")).casefold()]
+            indirect_gene = [c for c in pair_claims if c.get("predicate") == "indirectly_modulates" and gene.casefold() in str(c.get("object", "")).casefold()]
+            indirect_pathway = [
+                c for c in pair_claims
+                if c.get("mechanism_class") == "indirect_pathway"
+                and c.get("edge", {}).get("target_type") == "Pathway"
+                and gene.casefold() in str(c.get("source_sentence", "")).casefold()
+            ]
+            matched_candidates = []
+            for candidate in candidates:
+                record = candidate.model_dump(mode="json") if hasattr(candidate, "model_dump") else dict(candidate)
+                if str(record.get("drug", "")).casefold() == drug.casefold() and str(record.get("gene", "")).casefold() == gene.casefold():
+                    matched_candidates.append(record)
+            has_direct = bool(direct)
+            has_chain = bool(indirect_gene or indirect_pathway)
+            states.append({
+                "drug": drug,
+                "gene": gene,
+                "candidate_statistical": {
+                    "status": "supported" if matched_candidates else "not_provided",
+                    "records": matched_candidates,
+                },
+                "literature_direct": {
+                    "status": "supported" if has_direct else "not_found",
+                    "claim_ids": [c.get("edge", {}).get("claim_id") for c in direct if c.get("edge", {}).get("claim_id")],
+                },
+                "indirect_chain": {
+                    "status": "supported" if has_chain else "not_found",
+                    "claim_ids": [c.get("edge", {}).get("claim_id") for c in (indirect_gene + indirect_pathway) if c.get("edge", {}).get("claim_id")],
+                    "intermediate_targets": sorted({c.get("edge", {}).get("target") for c in indirect_pathway if c.get("edge", {}).get("target")}),
+                },
+                "no_literature_support": {
+                    "status": "not_applicable" if (has_direct or has_chain) else "active",
+                    "reason": "No PMID-backed direct target or explicit intermediate-pathway chain passed the graph evidence gate." if not (has_direct or has_chain) else None,
+                },
+            })
+    return states
 
 
 def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] | None = None) -> dict:
@@ -794,9 +848,11 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                         "year": paper.get("year", ""),
                         "source_sentence": gene_sentence,
                         "edge": {
+                            "claim_id": "drugclaim_" + hashlib.sha256(f"{drug}|{predicate}|{object_name}|{pmid}".encode()).hexdigest()[:16],
                             "source": drug,
                             "source_type": "Drug",
                             "relation": relation,
+                            "evidence_state": "literature_direct" if mechanism_class == "direct_target" else "indirect_chain",
                             "target": gene.replace("IL33", "IL-33") if mechanism_class == "direct_target" else gene,
                             "target_type": "Molecule" if mechanism_class == "direct_target" else "Gene",
                             "pmid": pmid,
@@ -831,9 +887,11 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                         "year": paper.get("year", ""),
                         "source_sentence": pathway_sentence,
                         "edge": {
+                            "claim_id": "drugclaim_" + hashlib.sha256(f"{drug}|indirectly_modulates|{pathway}|{pmid}".encode()).hexdigest()[:16],
                             "source": drug,
                             "source_type": "Drug",
                             "relation": "indirectly_modulates",
+                            "evidence_state": "indirect_chain",
                             "target": pathway,
                             "target_type": "Pathway",
                             "pmid": pmid,
@@ -855,6 +913,7 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
         "status": "evidence_backed" if unique else "input_only",
         "drugs": [{"name": drug, "normalized_name": drug, "status": "unresolved", "identifiers": [], "provenance": []} for drug in target.drugs],
         "claims": list(unique.values()),
+        "evidence_states": _build_drug_gene_evidence_states(ctx, list(unique.values())),
         "note": "Claims require PMID-backed sentence evidence; unresolved drug identifiers are not fabricated.",
     }
     _write_json(ctx.session_dir / "drug_knowledge.json", payload)
@@ -1571,6 +1630,11 @@ async def run_orchestrator_stream(
         verified_papers = verified if isinstance(verified, list) else []
         drug_payload = _materialize_local_drug_knowledge(ctx, verified_papers)
         drug_edges = [claim["edge"] for claim in drug_payload.get("claims", []) if claim.get("edge")]
+        _write_json(ctx.session_dir / "drug_gene_evidence.json", {
+            "schema_version": "drug-gene-evidence.v1",
+            "run_id": ctx.run_id,
+            "states": drug_payload.get("evidence_states", []),
+        })
         prior_graph = _load_graph_json(ctx)
         candidate_edges = graph_payload.get("edges", []) if isinstance(graph_payload, dict) else []
         candidate_edges = candidate_edges + drug_edges
@@ -1646,6 +1710,7 @@ async def run_orchestrator_stream(
             "rejected_edge_count": len(rejected_edges),
             "semantic_edge_validation": "deterministic-v1",
             "canonical_baseline_entries": (canonical.get("entries") or canonical.get("canonical_entries") or []) if isinstance(canonical, dict) else [],
+            "drug_gene_evidence": drug_payload.get("evidence_states", []),
         }
         canonical_ids = _canonical_nodes(canonical if isinstance(canonical, dict) else {})
         present_ids = {n["id"] for n in graph["nodes"]}

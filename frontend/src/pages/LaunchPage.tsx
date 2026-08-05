@@ -32,6 +32,12 @@ export default function LaunchPage() {
   const [autonomyLevel, setAutonomyLevel] = useState<AutonomyLevel>("let_it_rip");
   const [analysisMode, setAnalysisMode] = useState<AnalysisMode>("graph_only");
   const [devRetmax, setDevRetmax] = useState("");
+  const [statMethod, setStatMethod] = useState("");
+  const [statEffect, setStatEffect] = useState("");
+  const [statPValue, setStatPValue] = useState("");
+  const [statQValue, setStatQValue] = useState("");
+  const [statSource, setStatSource] = useState("");
+  const [statSourceId, setStatSourceId] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -72,6 +78,16 @@ export default function LaunchPage() {
           drugs: drug.trim() ? [drug.trim()] : [],
           tissues: tissue.trim() ? [tissue.trim()] : [],
           cell_types: cellType.trim() ? [cellType.trim()] : [],
+          statistical_candidates: statMethod.trim() && statSource.trim() && gene.trim() && drug.trim() ? [{
+            drug: drug.trim(),
+            gene: gene.trim(),
+            method: statMethod.trim(),
+            effect: statEffect.trim() ? Number(statEffect) : null,
+            p_value: statPValue.trim() ? Number(statPValue) : null,
+            q_value: statQValue.trim() ? Number(statQValue) : null,
+            source: statSource.trim(),
+            source_id: statSourceId.trim() || null,
+          }] : [],
           query_mode: null,
         },
         autonomy_level: autonomyLevel,
@@ -192,6 +208,21 @@ export default function LaunchPage() {
                 placeholder="leave blank for a real/demo run"
               />
             </label>
+          </details>
+
+          <details className="form__advanced">
+            <summary>Optional statistical candidate</summary>
+            <p className="muted">Provide an external drug–gene statistical signal. It remains separate from PMID evidence.</p>
+            <div className="form__row">
+              <label>Method<input value={statMethod} onChange={(e) => setStatMethod(e.target.value)} placeholder="e.g. colocalization" /></label>
+              <label>Effect<input type="number" value={statEffect} onChange={(e) => setStatEffect(e.target.value)} placeholder="optional" /></label>
+              <label>p-value<input type="number" value={statPValue} onChange={(e) => setStatPValue(e.target.value)} placeholder="optional" /></label>
+              <label>q-value<input type="number" value={statQValue} onChange={(e) => setStatQValue(e.target.value)} placeholder="optional" /></label>
+            </div>
+            <div className="form__row">
+              <label>Source<input value={statSource} onChange={(e) => setStatSource(e.target.value)} placeholder="dataset or study" /></label>
+              <label>Source ID<input value={statSourceId} onChange={(e) => setStatSourceId(e.target.value)} placeholder="optional" /></label>
+            </div>
           </details>
 
           {submitError && <p className="error-text">{submitError}</p>}
