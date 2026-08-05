@@ -793,6 +793,32 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                         "provenance": [provenance],
                     }
                 )
+                # Keep a pathway-level edge when the same sentence explicitly
+                # names AMPK. This is separate from PRKAA1: AMPK is a pathway/
+                # complex label here, not another gene alias.
+                if re.search(r"\bAMPK\b|AMP-activated protein kinase|Ampk", gene_sentence, re.IGNORECASE):
+                    pathway_edge = dict(claims[-1]["edge"])
+                    pathway_edge.update(
+                        {
+                            "relation": "indirectly_modulates",
+                            "target": "AMPK",
+                            "target_type": "Pathway",
+                            "confidence": 0.60,
+                        }
+                    )
+                    claims.append(
+                        {
+                            "drug": drug,
+                            "predicate": "indirectly_modulates",
+                            "object": "AMPK pathway",
+                            "mechanism_class": "indirect_pathway",
+                            "pmid": pmid,
+                            "year": paper.get("year", ""),
+                            "source_sentence": gene_sentence,
+                            "edge": pathway_edge,
+                            "provenance": [provenance],
+                        }
+                    )
     # Deduplicate the same sentence-level claim while retaining audit data.
     unique = {(c["drug"], c["predicate"], c["object"], c["pmid"]): c for c in claims}
     payload = {
