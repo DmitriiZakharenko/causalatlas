@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api, ApiError } from "../api/client";
 import { subscribeToRun } from "../api/sse";
 import type { Decision, PipelineEvent, RunStatusResponse } from "../api/types";
@@ -113,6 +113,9 @@ export default function RunDetailPage() {
             <p className="muted">
               run_id: <code>{runId}</code>
             </p>
+            <Link className="button" to={`/graphs?run=${encodeURIComponent(runId)}`}>
+              Open graph
+            </Link>
           </div>
           {status && <StatusBadge status={status.status} />}
         </div>
