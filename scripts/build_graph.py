@@ -44,6 +44,29 @@ def _compact_label(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", "", str(value).casefold())
 
 
+def _canonical_node_label(label: object, node_type: str) -> str:
+    """Normalize safe within-role aliases without collapsing biology.
+
+    Gene ``IL33`` and cytokine/protein ``IL-33`` intentionally remain distinct
+    roles. Formatting and capitalization variants within one role are safe to
+    merge, including the drug spelling emitted by different extractors.
+    """
+    key = _compact_label(label)
+    aliases = {
+        ("Cytokine", "il33"): "IL-33",
+        ("Cytokine", "il4"): "IL-4",
+        ("Cytokine", "il5"): "IL-5",
+        ("Cytokine", "il13"): "IL-13",
+        ("Cytokine", "il25"): "IL-25",
+        ("Drug", "itepekimab"): "itepekimab",
+        ("Tissue", "lung"): "Lung",
+        ("Tissue", "airwayepithelium"): "Airway epithelium",
+        ("Cell_type", "airwayepithelialcell"): "airway epithelial cell",
+        ("Cell", "ilc2"): "ILC2",
+    }
+    return aliases.get((node_type, key), str(label))
+
+
 def _entity_mentioned(label: object, text: str) -> bool:
     key = _compact_label(label)
     if not key:
@@ -168,8 +191,10 @@ def build_graph(edges: list[dict]) -> dict:
         # Codex extraction may omit optional provenance fields. Preserve the
         # edge with explicit neutral defaults instead of failing the entire
         # run during the deterministic graph stage.
-        source = e.get("source")
-        target = e.get("target")
+        source_type = e.get("source_type", "unknown")
+        target_type = e.get("target_type", "unknown")
+        source = _canonical_node_label(e.get("source"), source_type)
+        target = _canonical_node_label(e.get("target"), target_type)
         if not source or not target:
             continue
         relation = e.get("relation") or e.get("primary_relation") or "related"
@@ -178,8 +203,6 @@ def build_graph(edges: list[dict]) -> dict:
         years = e.get("years") or [e.get("year", "")]
         species_values = e.get("species") if isinstance(e.get("species"), list) else [e.get("species", "unknown")]
         confidence = e.get("confidence", 0.5)
-        source_type = e.get("source_type", "unknown")
-        target_type = e.get("target_type", "unknown")
         context = e.get("context") or {
             "disease": [e["disease"]] if e.get("disease") else [],
             "tissues": e.get("tissues", []),
@@ -227,6 +250,7 @@ def build_graph(edges: list[dict]) -> dict:
             "claim_id": claim_id,
             "source": src,
             "target": tgt,
+            "relation": relation,
             "relations": [relation],
             "primary_relation": relation,
             "polarity": polarity,

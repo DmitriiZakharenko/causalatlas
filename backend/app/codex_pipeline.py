@@ -61,10 +61,11 @@ def _parse_prompt(prompt: str) -> PipelineContext:
     session_dir = Path(session_dir_raw) if session_dir_raw else ROOT / "data" / "sessions" / run_id
     graph_dir = ROOT / "data" / "graphs" / _slugify(disease) / run_id
     graph_dir.mkdir(parents=True, exist_ok=True)
-    prior_graph = ROOT / "data" / "graphs" / _slugify(disease) / "knowledge_graph.json"
     run_graph = graph_dir / "knowledge_graph.json"
-    if prior_graph.exists() and not run_graph.exists():
-        shutil.copy2(prior_graph, run_graph)
+    # A run-scoped graph is a snapshot of this target, not a mutable copy of
+    # the disease-level latest alias. Historical graphs remain on disk and are
+    # selectable by run_id; inheriting the alias here made unrelated analyses
+    # look identical and obscured target-specific evidence.
     target_json = match(r"^target_json:\s*(.+)$", None)
     if target_json:
         try:

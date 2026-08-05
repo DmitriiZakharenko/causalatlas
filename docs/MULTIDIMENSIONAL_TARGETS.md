@@ -95,6 +95,12 @@ as the complete graph.
 The graph UI exposes entity-type and provenance filters. These are display-only
 filters: the underlying graph artifact and its evidence are not modified.
 
+Each new analysis writes an immutable run-scoped graph snapshot. It does not
+inherit the disease-level latest alias, so changing the gene, drug, tissue, or
+cell type produces a comparable graph rather than a cumulative copy of a
+previous run. Historical snapshots remain selectable by `run_id`; the
+disease-level file is only a backward-compatible latest alias.
+
 Interpretation is restricted to auditable edges: PMID provenance, preserved source
 sentence, and target relevance are required. A graph with fewer such edges is
 reported as underpowered rather than filled with plausible narrative. This favors a
@@ -111,6 +117,11 @@ Canonical baseline sources are shown as a separate evidence overlay. Dotted
 `canonical_supports_context` links connect a canonical source hub to the nodes it
 curates; these are provenance links, not causal biological edges and must remain
 visually distinct from PMID evidence.
+
+Entity aliases are normalized within biological role: for example, `itepekimab`
+and `Itepekimab` merge as the same drug, while gene `IL33` and cytokine/protein
+`IL-33` remain distinct typed entities. They share an alias key for lookup but
+are not silently collapsed into one biological node.
 
 ## Compatibility gate
 

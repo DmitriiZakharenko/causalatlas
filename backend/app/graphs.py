@@ -41,7 +41,23 @@ def _semantic_type(label: str, base_type: str | None, dimensions: dict[str, list
     # Target dimensions are intentionally overlaid on top of extracted
     # biological labels. This identifies the user's requested gene/drug/context
     # without changing the evidence graph or claiming a new biological class.
+    compatible_base_types = {
+        "Disease": {"Disease", "Clinical_phenotype"},
+        "Gene": {"Gene"},
+        "Drug": {"Drug", "Molecule"},
+        "Tissue": {"Tissue"},
+        "Cell_type": {"Cell", "Cell_type"},
+    }
+    # Do not relabel an evidence node merely because its spelling matches a
+    # target alias: IL33 (gene) and IL-33 (cytokine/protein) share a comparison
+    # key but are not the same biological role. Canonical source nodes are also
+    # kept visibly separate from PMID-derived evidence nodes.
     for entity_type, values in dimensions.items():
+        if base_type == "canonical_db":
+            continue
+        allowed = compatible_base_types.get(entity_type, set())
+        if base_type not in allowed:
+            continue
         if any(key == _entity_key(value) for value in values):
             return entity_type
     return base_type

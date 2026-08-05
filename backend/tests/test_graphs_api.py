@@ -76,6 +76,12 @@ def test_load_graph_for_ui_unknown_disease_raises():
         graphs_mod.load_graph_for_ui("does_not_exist")
 
 
+def test_target_alias_does_not_relabel_cytokine_as_gene():
+    assert graphs_mod._semantic_type("IL-33", "Cytokine", {"Gene": ["IL33"]}) == "Cytokine"
+    assert graphs_mod._semantic_type("IL33", "Gene", {"Gene": ["IL33"]}) == "Gene"
+    assert graphs_mod._semantic_type("IL33", "canonical_db", {"Gene": ["IL33"]}) == "canonical_db"
+
+
 def test_run_scoped_graphs_are_loaded_from_their_own_directories():
     first = graphs_mod.load_graph_for_ui("asthma__asthma_20260805T103504Z")
     second = graphs_mod.load_graph_for_ui("asthma__asthma_20260805T112631Z")
