@@ -488,11 +488,29 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
     verified = []
     details = []
     rejected = []
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    target_terms = [target.disease, *target.genes, *target.drugs, *target.tissues, *target.cell_types]
+    target_terms = [term.casefold() for term in target_terms if term.strip()]
     for paper in raw.get("publications", []):
         if not paper.get("pmid") or not paper.get("title"):
             rejected.append({"pmid": paper.get("pmid"), "reason": "incomplete_metadata"})
             continue
         paper = dict(paper)
+        searchable = " ".join(
+            str(paper.get(field, "")) for field in ("title", "abstract", "journal")
+        ).casefold()
+        compact_searchable = re.sub(r"[^a-z0-9]+", "", searchable)
+        matched_terms = sorted(
+            {
+                term
+                for term in target_terms
+                if term in searchable or re.sub(r"[^a-z0-9]+", "", term) in compact_searchable
+            }
+        )
+        relevance_score = round(len(matched_terms) / max(len(set(target_terms)), 1), 3)
+        if not matched_terms:
+            rejected.append({"pmid": paper.get("pmid"), "reason": "target_terms_not_found"})
+            continue
         # The deterministic fallback has already parsed an EFetch response, but
         # it does not perform the full Agent 3 metadata/relevance audit. Keep
         # that limitation explicit instead of presenting metadata presence as
@@ -500,6 +518,8 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
         paper["verified"] = True
         paper["verification_scope"] = "efetch_metadata_present_only"
         paper["relevance_status"] = "not_independently_scored"
+        paper["target_terms_matched"] = matched_terms
+        paper["relevance_score"] = relevance_score
         paper["quality"] = _assign_quality(paper)
         verified.append(paper)
         details.append(
@@ -511,6 +531,8 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
                 "year": paper.get("year", ""),
                 "evidence_level": paper["quality"]["evidence_level"],
                 "confidence": paper["quality"]["confidence_score"],
+                "relevance_score": relevance_score,
+                "target_terms_matched": matched_terms,
             }
         )
     verification_report = {
@@ -520,6 +542,7 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
         "accepted": len(verified),
         "rejected": len(rejected),
         "rejections": rejected,
+        "relevance_policy": "at_least_one_resolved_target_term_in_title_abstract_or_journal",
         "details": details,
     }
     _write_json(ctx.session_dir / "publications_verified.json", {"session": ctx.run_id, "publications": verified})

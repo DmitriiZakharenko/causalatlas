@@ -5,6 +5,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.entity_normalization import normalize_target_dimensions
+
 
 TargetSchemaVersion = Literal["target.v1"]
 
@@ -75,3 +77,12 @@ class AnalysisTargetRequest(BaseModel):
     def resolved_target(self) -> AnalysisTarget:
         assert self.target is not None
         return self.target
+
+    def normalized_dimensions(self) -> dict[str, list[dict]]:
+        target = self.resolved_target()
+        return {
+            "genes": normalize_target_dimensions(target.genes, "gene"),
+            "drugs": normalize_target_dimensions(target.drugs, "drug"),
+            "tissues": normalize_target_dimensions(target.tissues, "tissue"),
+            "cell_types": normalize_target_dimensions(target.cell_types, "cell_type"),
+        }

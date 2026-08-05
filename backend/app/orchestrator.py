@@ -32,6 +32,7 @@ from pathlib import Path
 from app import db, llm_cli as claude_cli
 from app.agent_registry import AGENT_ORDER
 from app.target_models import AnalysisTarget
+from app.entity_normalization import normalize_target_dimensions
 
 # Phase 3: the exact machine-parseable marker agent00_orchestrator's AGENTS.md
 # instructs it to print (as the first line of its final text response) when
@@ -318,6 +319,12 @@ class RunManager:
                 {
                     "schema_version": target.schema_version,
                     "target": target.model_dump(mode="json"),
+                    "normalized_dimensions": {
+                        "genes": normalize_target_dimensions(target.genes, "gene"),
+                        "drugs": normalize_target_dimensions(target.drugs, "drug"),
+                        "tissues": normalize_target_dimensions(target.tissues, "tissue"),
+                        "cell_types": normalize_target_dimensions(target.cell_types, "cell_type"),
+                    },
                     "legacy_request": {"disease": disease, "gene": gene},
                 },
                 indent=2,
