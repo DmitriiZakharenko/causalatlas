@@ -168,9 +168,14 @@ def classify_node(node: str) -> str:
 
 def _supporting_sentence(abstract: str, source: str, target: str) -> str | None:
     """Return the exact abstract sentence containing both extracted entities."""
+    def compact(value: str) -> str:
+        return re.sub(r"[^a-z0-9]+", "", value.casefold())
+
+    source_key = compact(source)
+    target_key = compact(target)
     for sentence in re.split(r"(?<=[.!?])\s+", abstract.strip()):
-        lowered = sentence.lower()
-        if source.lower() in lowered and target.lower() in lowered:
+        lowered = compact(sentence)
+        if source_key and target_key and source_key in lowered and target_key in lowered:
             return sentence.strip()
     return None
 

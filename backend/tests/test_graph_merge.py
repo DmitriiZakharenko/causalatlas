@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
-from build_graph import build_graph, merge_graph
+from build_graph import build_graph, merge_graph, quality_gate_edges
 
 
 def test_merge_preserves_parallel_claims_and_all_provenance():
@@ -47,3 +47,34 @@ def test_legacy_edge_merge_does_not_drop_lists_or_claim_id():
 def test_claim_id_is_stable_for_same_claim():
     edge = {"source": "A", "target": "B", "relation": "activates", "pmid": "1", "context": {"disease": ["x"]}}
     assert build_graph([edge])["edges"][0]["claim_id"] == build_graph([edge])["edges"][0]["claim_id"]
+
+
+def test_quality_gate_rejects_sentence_free_unknown_claims():
+    accepted, rejected = quality_gate_edges(
+        [
+            {
+                "source": "IL-33",
+                "target": "ILC2",
+                "source_type": "Cytokine",
+                "target_type": "Cell",
+                "relation": "activates",
+                "pmid": "123",
+                "provenance_type": "pmid",
+                "source_sentence": "IL-33 activates ILC2 cells in asthma.",
+            },
+            {
+                "source": "TNF",
+                "target": "Unknown fragment",
+                "source_type": "unknown",
+                "target_type": "unknown",
+                "relation": "activates",
+                "pmid": "456",
+                "provenance_type": "unknown",
+            },
+        ],
+        target={"disease": "asthma", "genes": ["IL33"]},
+        publications=[{"pmid": "123", "title": "IL-33 in asthma", "abstract": "IL-33 activates ILC2 cells in asthma."}],
+    )
+
+    assert len(accepted) == 1
+    assert rejected[0]["reasons"] == ["missing_source_sentence", "unknown_node_type", "non_pmid_provenance", "target_relevance_not_demonstrated"]

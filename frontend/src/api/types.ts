@@ -153,7 +153,7 @@ export interface GraphEdge {
   provenance_type?: string | null;
   sessions?: string[];
   context?: Record<string, unknown>;
-  source_refs?: string[];
+  source_refs?: Array<Record<string, unknown> | string>;
   contradiction_group?: string | null;
 }
 

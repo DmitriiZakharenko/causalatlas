@@ -34,6 +34,13 @@ mechanism graph is used for interpretation.
 
 ## Required improvements
 
+The current implementation now adds a deterministic normalization record for every
+input dimension (`raw`, normalized label, canonical comparison key, status, and
+method), a `strict-v2` claim gate, and a local extraction fallback when model output
+contains too few sentence-grounded edges. These changes intentionally reduce graph
+size when the evidence is weak. The next showcase should be rerun and compared by
+accepted-edge count, PMID support, target relevance, and rejected-claim reasons.
+
 1. Make the Codex JSONL parser extract the final `agent_message` and usage event
    instead of treating the entire transcript as the model result. This is now
    implemented for new runs.

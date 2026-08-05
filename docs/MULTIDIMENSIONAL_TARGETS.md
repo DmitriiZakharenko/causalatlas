@@ -67,6 +67,19 @@ the deterministic fallback records matched target terms and rejects papers with 
 target-term evidence from title, abstract, or journal metadata. Full Agent 3
 verification remains the stronger gate for live agent runs.
 
+For graph construction, the `strict-v2` claim gate additionally requires a PMID,
+known endpoint types, an exact supporting source sentence containing both endpoints,
+and demonstrated relevance to the requested target. Rejected claims are written to
+`edge_quality_gate.json`; they are not silently deleted. If model extraction yields
+fewer than three accepted claims, the inexpensive deterministic extractor is run as
+a bounded fallback and its accepted claims are merged only after the same gate.
+
+Search expansion is intentionally selective. The first pass covers each populated
+target dimension, then at most two follow-up queries may be derived from the highest-
+support, target-relevant normalized nodes. Follow-ups must add a new node/context
+combination, deduplicate PMIDs, and remain within the retrieval publication and
+deadline budgets. The system does not issue one query per node.
+
 ## Noise controls
 
 Noise heuristics may flag or hide likely extraction artifacts in the UI, but they
@@ -81,6 +94,11 @@ as the complete graph.
 
 The graph UI exposes entity-type and provenance filters. These are display-only
 filters: the underlying graph artifact and its evidence are not modified.
+
+Interpretation is restricted to auditable edges: PMID provenance, preserved source
+sentence, and target relevance are required. A graph with fewer such edges is
+reported as underpowered rather than filled with plausible narrative. This favors a
+small, biologically meaningful subgraph over a large collection of weak fragments.
 
 ## Compatibility gate
 

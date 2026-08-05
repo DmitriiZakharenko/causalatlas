@@ -29,6 +29,13 @@ function edgeSentence(edge: GraphEdge): string {
   return `${edge.source} ${relation} ${edge.target}`;
 }
 
+function isNarratableEdge(edge: GraphEdge): boolean {
+  const hasSourceSentence = (edge.source_refs ?? []).some(
+    (ref) => typeof ref === "object" && ref !== null && "source_sentence" in ref && Boolean(ref.source_sentence),
+  );
+  return edge.provenance_type === "pmid" && edge.sample_pmids.length > 0 && hasSourceSentence;
+}
+
 function nodeTypeRank(type: string | null): number {
   switch (type) {
     case "Cytokine":
@@ -39,6 +46,11 @@ function nodeTypeRank(type: string | null): number {
       return 2;
     case "Clinical_phenotype":
       return 1;
+    case "Gene":
+    case "Drug":
+    case "Tissue":
+    case "Cell_type":
+      return 3;
     default:
       return 2;
   }
@@ -48,13 +60,14 @@ function chooseFocus(graph: GraphResponse, requestedNodeId?: string | null): Foc
   if (graph.elements.nodes.length === 0) return null;
 
   const byId = new Map(graph.elements.nodes.map((node) => [node.id, node]));
+  const auditableEdges = graph.elements.edges.filter(isNarratableEdge);
   if (requestedNodeId) {
     const requested = byId.get(requestedNodeId);
     if (requested) {
       return {
         node: requested,
-        incoming: graph.elements.edges.filter((edge) => edge.target === requested.id),
-        outgoing: graph.elements.edges.filter((edge) => edge.source === requested.id),
+        incoming: auditableEdges.filter((edge) => edge.target === requested.id),
+        outgoing: auditableEdges.filter((edge) => edge.source === requested.id),
         score: Number.POSITIVE_INFINITY,
       };
     }
@@ -62,8 +75,8 @@ function chooseFocus(graph: GraphResponse, requestedNodeId?: string | null): Foc
   let best: FocusStory | null = null;
 
   for (const node of graph.elements.nodes) {
-    const incoming = graph.elements.edges.filter((edge) => edge.target === node.id);
-    const outgoing = graph.elements.edges.filter((edge) => edge.source === node.id);
+    const incoming = auditableEdges.filter((edge) => edge.target === node.id);
+    const outgoing = auditableEdges.filter((edge) => edge.source === node.id);
     const incident = incoming.length + outgoing.length;
     const support = incoming.reduce((sum, edge) => sum + edge.pmid_count, 0) + outgoing.reduce((sum, edge) => sum + edge.pmid_count, 0);
     const bidirectionalBonus = incoming.length > 0 && outgoing.length > 0 ? 500 : 0;
@@ -96,6 +109,22 @@ function buildSections(graph: GraphResponse, requestedNodeId?: string | null): {
           title: "Core story",
           summary: "The graph is too sparse to identify a clear mechanistic hub.",
           bullets: ["No non-noise nodes were available for a causal readout."],
+        },
+      ],
+    };
+  }
+
+  if (focus.incoming.length + focus.outgoing.length === 0) {
+    return {
+      focus,
+      sections: [
+        {
+          title: requestedNodeId ? "Selected node" : "Graph quality gate",
+          summary: "No auditable PMID-backed edge with a preserved source sentence is available for a biological narrative.",
+          bullets: [
+            "The graph may contain exploratory or single-source claims, but they are not promoted into a text interpretation.",
+            "Add independent support and preserve the exact source sentence before treating this node as a mechanism.",
+          ],
         },
       ],
     };
@@ -155,6 +184,7 @@ function buildSections(graph: GraphResponse, requestedNodeId?: string | null): {
           upstreamTop.length > 0 ? `Strongest upstream edge: ${upstreamTop[0] ? edgeSentence(upstreamTop[0]) : "—"}` : "No direct upstream edge was found for the hub.",
           downstreamTop.length > 0 ? `Strongest downstream edge: ${downstreamTop[0] ? edgeSentence(downstreamTop[0]) : "—"}` : "No direct downstream edge was found for the hub.",
           `Node type: ${focus.node.type ?? "unknown"} · ${focus.node.pmid_count} supporting PMIDs`,
+          "Only edges with PMID provenance and a preserved source sentence are included in this interpretation.",
         ],
       },
       {

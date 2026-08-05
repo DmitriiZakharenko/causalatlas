@@ -6,6 +6,7 @@ import json
 import hashlib
 from collections import defaultdict
 from pathlib import Path
+import re
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 GRAPH_DIR = Path(__file__).resolve().parent.parent / "graph"
@@ -37,6 +38,75 @@ def _edge_records(edge: dict) -> list[dict]:
         record.update({"relation": relation, "pmids": pmids, "sessions": sessions, "source_refs": refs})
         records.append(record)
     return records
+
+
+def _compact_label(value: object) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value).casefold())
+
+
+def _entity_mentioned(label: object, text: str) -> bool:
+    key = _compact_label(label)
+    if not key:
+        return False
+    compact = _compact_label(text)
+    return key in compact
+
+
+def quality_gate_edges(
+    edges: list[dict],
+    *,
+    target: dict | None = None,
+    publications: list[dict] | None = None,
+) -> tuple[list[dict], list[dict]]:
+    """Keep only auditable, target-relevant claims for a new graph.
+
+    The graph is intentionally smaller than the raw extraction. A claim must
+    have a PMID, a source sentence containing both endpoints, known node types,
+    and either a target anchor in its paper or an endpoint matching one of the
+    requested dimensions. Rejected claims remain available for audit.
+    """
+    target = target or {}
+    anchors = [
+        target.get("disease", ""),
+        *(target.get("genes") or []),
+        *(target.get("drugs") or []),
+        *(target.get("tissues") or []),
+        *(target.get("cell_types") or []),
+    ]
+    known_types = {"Cell", "Cytokine", "Molecule", "Tissue", "Clinical_phenotype", "Pathway", "Gene", "Drug", "Cell_type"}
+    paper_map = {str(p.get("pmid")): p for p in (publications or []) if p.get("pmid")}
+    accepted: list[dict] = []
+    rejected: list[dict] = []
+    for edge in edges:
+        reasons: list[str] = []
+        pmids = [str(p) for p in (edge.get("pmids") or ([] if not edge.get("pmid") else [edge.get("pmid")])) if p]
+        sentence = str(edge.get("source_sentence") or "")
+        source = edge.get("source")
+        dest = edge.get("target")
+        if not pmids:
+            reasons.append("missing_pmid")
+        if not sentence:
+            reasons.append("missing_source_sentence")
+        elif not (_entity_mentioned(source, sentence) and _entity_mentioned(dest, sentence)):
+            reasons.append("endpoints_not_in_source_sentence")
+        if edge.get("source_type") not in known_types or edge.get("target_type") not in known_types:
+            reasons.append("unknown_node_type")
+        provenance_type = edge.get("provenance_type") or ("pmid" if pmids else "unknown")
+        if provenance_type != "pmid":
+            reasons.append("non_pmid_provenance")
+        paper = paper_map.get(pmids[0]) if pmids else None
+        paper_text = f"{(paper or {}).get('title', '')} {(paper or {}).get('abstract', '')}"
+        paper_anchor = any(_entity_mentioned(anchor, paper_text) for anchor in anchors if anchor)
+        endpoint_anchor = any(
+            _entity_mentioned(anchor, f"{source} {dest}") for anchor in anchors if anchor
+        )
+        if not paper_anchor and not endpoint_anchor:
+            reasons.append("target_relevance_not_demonstrated")
+        if reasons:
+            rejected.append({"edge": edge, "reasons": reasons})
+        else:
+            accepted.append(edge)
+    return accepted, rejected
 
 
 def build_graph(edges: list[dict]) -> dict:

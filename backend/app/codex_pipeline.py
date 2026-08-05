@@ -22,7 +22,7 @@ if str(ROOT) not in sys.path:
 SKILLS_MANIFEST = ROOT / "skills" / "skills_manifest.json"
 
 SEARCH_BUDGETS = {
-    "agent02_literature_retrieval": {"max_queries": 6, "max_publications": 100, "deadline_s": 240},
+    "agent02_literature_retrieval": {"max_queries": 8, "max_publications": 120, "deadline_s": 240},
     "agent10_novelty_verification": {"max_queries": 8, "max_publications": 40, "deadline_s": 180},
     "agent12_peer_review": {"max_queries": 6, "max_publications": 30, "deadline_s": 180},
 }
@@ -368,15 +368,15 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
     tissues = target.tissues
     cell_types = target.cell_types
     queries = []
-    if genes:
-        gene = genes[0]
-        queries.extend(
-            [
-                {"strategy": "gene_disease_direct", "query": f"{gene} {disease}"},
-                {"strategy": "gene_fibrosis", "query": f"{gene} fibrosis"},
-                {"strategy": "gene_fibroblast_lung", "query": f"{gene} fibroblast activation lung"},
-                {"strategy": "gene_signaling", "query": f"{gene} STAT3 ERK fibrosis signaling"},
-            ]
+    gene = genes[0] if genes else None
+    if gene:
+        queries.append({"strategy": "gene_disease_direct", "query": f"{gene} {disease}"})
+        context_terms = " ".join(tissues[:1] + cell_types[:1])
+        queries.append(
+            {
+                "strategy": "gene_context_mechanism",
+                "query": f"{gene} {disease} {context_terms} mechanism".strip(),
+            }
         )
     for drug in drugs:
         queries.extend(
@@ -389,6 +389,10 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
         queries.append({"strategy": "tissue_context", "query": f'"{tissue}" "{disease}" {" ".join(genes or drugs)}'.strip()})
     for cell_type in cell_types:
         queries.append({"strategy": "cell_type_context", "query": f'"{cell_type}" "{disease}" {" ".join(genes or drugs)}'.strip()})
+    # Keep a small number of mechanistic fallbacks after every populated input
+    # dimension has received a dedicated query. The previous ordering spent
+    # all six slots on gene-only searches and silently dropped tissue/cell
+    # coverage for multidimensional targets.
     queries.extend(
         [
             {"strategy": "disease_mech_mesh", "query": f'"{disease}"[MeSH Terms] cytokine signaling mechanism'},
@@ -397,6 +401,34 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
         ]
     )
     return queries
+
+
+def _node_expansion_queries(ctx: PipelineContext, papers: list[dict], *, limit: int = 2) -> list[dict]:
+    """Choose a tiny number of follow-ups from repeatedly observed nodes.
+
+    This is deliberately vocabulary-bounded: a random noun in an abstract must
+    not become a new search branch. A node must occur in at least two retrieved
+    abstracts and must not already be an input dimension.
+    """
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    requested = {str(value).casefold() for values in (target.genes, target.drugs, target.tissues, target.cell_types) for value in values}
+    candidates = (
+        "IL-33", "ST2", "ILC2", "TSLP", "IL-5", "IL-13", "eosinophil",
+        "airway epithelium", "goblet cell", "type 2 inflammation", "airway remodeling",
+    )
+    scored: list[tuple[int, str]] = []
+    for node in candidates:
+        if node.casefold() in requested:
+            continue
+        count = sum(node.casefold() in (paper.get("abstract", "") or "").casefold() for paper in papers)
+        if count >= 2:
+            scored.append((count, node))
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    anchor = target.genes[0] if target.genes else (target.drugs[0] if target.drugs else ctx.disease)
+    return [
+        {"strategy": "node_expansion", "node": node, "query": f'"{anchor}" "{node}" "{ctx.disease}"'}
+        for _, node in scored[:limit]
+    ]
 
 
 def _assign_quality(paper: dict) -> dict:
@@ -481,7 +513,10 @@ def _materialize_local_publications(ctx: PipelineContext) -> dict:
         except Exception:  # noqa: BLE001
             pass
 
-    queries = _target_queries(ctx)[:_budget("agent02_literature_retrieval")["max_queries"]]
+    max_queries = _budget("agent02_literature_retrieval")["max_queries"]
+    max_publications = _budget("agent02_literature_retrieval")["max_publications"]
+    # Reserve two slots for evidence-driven expansion after the broad pass.
+    queries = _target_queries(ctx)[:max(1, max_queries - 2)]
     checkpoint_path = ctx.session_dir / "checkpoints" / "agent02_literature_retrieval.json"
     checkpoint = _read_json(checkpoint_path) if checkpoint_path.exists() else {}
     all_pmids: set[str] = set(str(pmid) for pmid in checkpoint.get("pmids", []))
@@ -503,7 +538,22 @@ def _materialize_local_publications(ctx: PipelineContext) -> dict:
         all_pmids.update(pmids)
         _write_checkpoint(ctx, "agent02_literature_retrieval", {"queries": query_meta, "pmids": sorted(all_pmids), "complete": False})
 
-    pmid_list = sorted(all_pmids, key=lambda x: int(x) if str(x).isdigit() else 0)[:_budget("agent02_literature_retrieval")["max_publications"]]
+    initial_pmid_list = sorted(all_pmids, key=lambda x: int(x) if str(x).isdigit() else 0)[:max_publications]
+    papers = []
+    for i in range(0, len(initial_pmid_list), 50):
+        papers.extend(_parse_pubmed_xml(_pubmed_efetch(initial_pmid_list[i : i + 50])))
+
+    expansion_queries = _node_expansion_queries(ctx, papers, limit=min(2, max_queries - len(query_meta)))
+    for spec in expansion_queries:
+        if spec["strategy"] in completed_strategies:
+            continue
+        result = _pubmed_esearch(spec["query"], retmax=25, retstart=0)
+        pmids = list(result.get("idlist", []))
+        total = int(result.get("count", "0") or 0)
+        query_meta.append({"strategy": spec["strategy"], "node": spec.get("node"), "query": spec["query"], "total_in_pubmed": total, "retrieved": len(pmids), "paginated": False})
+        all_pmids.update(pmids)
+
+    pmid_list = sorted(all_pmids, key=lambda x: int(x) if str(x).isdigit() else 0)[:max_publications]
     papers = []
     for i in range(0, len(pmid_list), 50):
         papers.extend(_parse_pubmed_xml(_pubmed_efetch(pmid_list[i : i + 50])))
@@ -1332,7 +1382,7 @@ async def run_orchestrator_stream(
             yield _tool_result_event(f"a{index:02d}", json.dumps(payload)[:4000])
 
         # Graph stage: deterministic and budget-friendly, but still part of the full launch.
-        from scripts.build_graph import merge_graph
+        from scripts.build_graph import merge_graph, quality_gate_edges
         from scripts.run_budgeted_case import write_graph_stage_outputs  # local import to keep CLI startup light
 
         canonical = (
@@ -1352,9 +1402,55 @@ async def run_orchestrator_stream(
             else {"edges": []}
         )
         prior_graph = _load_graph_json(ctx)
+        candidate_edges = graph_payload.get("edges", []) if isinstance(graph_payload, dict) else []
+        # Keep the model extraction for audit, but supplement it with the
+        # deterministic extractor when the model did not provide enough
+        # sentence-grounded claims. This is cheap CPU work and prevents a
+        # verbose, unsupported model response from becoming the graph.
+        llm_candidate_count = len(candidate_edges)
+        gated_edges, rejected_edges = quality_gate_edges(
+            candidate_edges,
+            target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
+            publications=verified,
+        )
+        local_fallback_used = False
+        local_edges: list[dict] = []
+        if len(gated_edges) < 3 and verified:
+            if candidate_edges:
+                _write_json(ctx.session_dir / "mechanisms_llm_raw.json", graph_payload)
+            local_payload = _materialize_local_mechanisms(ctx)
+            local_edges = local_payload.get("edges", []) if isinstance(local_payload, dict) else []
+            local_gated, local_rejected = quality_gate_edges(
+                local_edges,
+                target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
+                publications=verified,
+            )
+            if local_gated:
+                local_fallback_used = True
+                gated_edges = gated_edges + local_gated
+                rejected_edges = rejected_edges + local_rejected
+        _write_json(
+            ctx.session_dir / "edge_quality_gate.json",
+            {
+                "session": ctx.run_id,
+                "contract": "strict-v2",
+                "input_edges": len(candidate_edges),
+                "llm_input_edges": llm_candidate_count,
+                "local_fallback_used": local_fallback_used,
+                "local_fallback_edges": len(local_edges),
+                "accepted_edges": len(gated_edges),
+                "rejected_edges": len(rejected_edges),
+                "rejections": rejected_edges,
+            },
+        )
+        # Do not inherit an older graph unless it was produced under the same
+        # strict contract. This prevents a clean run from being polluted by a
+        # legacy graph full of unknown types or sentence-free claims.
+        if (prior_graph.get("metadata") or {}).get("quality_contract") != "strict-v2":
+            prior_graph = {"nodes": [], "edges": [], "metadata": {"filter": "new_run_only"}}
         graph = merge_graph(
             prior_graph,
-            graph_payload.get("edges", []) if isinstance(graph_payload, dict) else [],
+            gated_edges,
         )
         graph["metadata"] = {
             "disease": ctx.disease,
@@ -1364,6 +1460,9 @@ async def run_orchestrator_stream(
             "source_session": ctx.run_id,
             "target": (ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
             "schema_version": "graph.v1",
+            "quality_contract": "strict-v2",
+            "edge_quality_gate": "strict-v2",
+            "rejected_edge_count": len(rejected_edges),
         }
         canonical_ids = _canonical_nodes(canonical if isinstance(canonical, dict) else {})
         present_ids = {n["id"] for n in graph["nodes"]}
