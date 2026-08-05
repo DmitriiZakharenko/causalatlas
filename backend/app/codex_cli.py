@@ -30,6 +30,56 @@ class CodexCliError(LLMProviderError):
     """Raised when a `codex` invocation fails or its output can't be parsed."""
 
 
+def _usage_record(node: object) -> dict | None:
+    """Find a Codex usage object across CLI schema revisions.
+
+    Codex JSONL has used both a nested ``usage`` object and direct token fields
+    in terminal events. This deliberately accepts only numeric counters and
+    returns the last complete record, avoiding fabricated estimates.
+    """
+    if not isinstance(node, dict):
+        return None
+    usage = node.get("usage")
+    candidates = [usage, node] if isinstance(usage, dict) else [node]
+    for candidate in candidates:
+        values = {
+            key: candidate.get(key)
+            for key in (
+                "input_tokens",
+                "output_tokens",
+                "cached_input_tokens",
+                "reasoning_tokens",
+                "total_tokens",
+            )
+            if isinstance(candidate.get(key), (int, float))
+        }
+        if values:
+            return {key: int(value) for key, value in values.items()}
+    for value in node.values():
+        found = _usage_record(value)
+        if found:
+            return found
+    return None
+
+
+def _extract_usage(events: list[dict]) -> dict:
+    """Return the last reported token counters and optional provider cost."""
+    usage: dict = {}
+    for event in events:
+        found = _usage_record(event)
+        if found:
+            usage.update(found)
+        if isinstance(event.get("total_cost_usd"), (int, float)) and event.get("total_cost_usd") is not None:
+            usage["cost_usd"] = float(event["total_cost_usd"])
+        elif isinstance(event.get("cost_usd"), (int, float)):
+            usage["cost_usd"] = float(event["cost_usd"])
+    if "total_tokens" not in usage and usage.get("input_tokens") is not None and usage.get("output_tokens") is not None:
+        usage["total_tokens"] = usage["input_tokens"] + usage["output_tokens"]
+    if usage:
+        usage["usage_source"] = "codex_cli_jsonl"
+    return usage
+
+
 def _build_command(
     agent_name: str,
     prompt: str,
@@ -110,6 +160,27 @@ def _extract_result_text(raw: dict) -> str | None:
     return None
 
 
+def _extract_final_agent_message(events: list[dict]) -> str | None:
+    """Extract the model's final message from Codex item events.
+
+    Recent Codex versions finish with ``item.completed`` rather than the
+    legacy top-level ``result`` event. Falling back to the whole JSONL stream
+    makes downstream artifacts look like raw transcripts and forces every
+    agent into a degraded fallback path.
+    """
+    for event in reversed(events):
+        item = event.get("item") if isinstance(event, dict) else None
+        if isinstance(item, dict) and item.get("type") == "agent_message":
+            text = item.get("text")
+            if isinstance(text, str) and text.strip():
+                return text.strip()
+        if isinstance(event, dict) and event.get("type") == "agent_message":
+            text = event.get("text")
+            if isinstance(text, str) and text.strip():
+                return text.strip()
+    return None
+
+
 def _looks_like_terminal_result(raw: dict) -> bool:
     if raw.get("type") in {"result", "completed", "turn.completed", "response.completed"}:
         return True
@@ -151,19 +222,23 @@ async def run_agent(
 
         structured_output = None
         result_text = ""
+        events: list[dict] = []
         for line in stdout.decode(errors="replace").splitlines():
             try:
                 event = json.loads(line)
             except json.JSONDecodeError:
                 continue
             normalized = _normalize_node(event)
+            if isinstance(normalized, dict):
+                events.append(normalized)
             if _looks_like_terminal_result(normalized):
                 extracted = _extract_result_text(normalized)
                 if extracted:
                     result_text = extracted
                 if isinstance(normalized, dict) and normalized.get("structured_output") is not None:
                     structured_output = normalized.get("structured_output")
-                break
+        if not result_text:
+            result_text = _extract_final_agent_message(events) or ""
         if not result_text:
             result_text = stdout.decode(errors="replace").strip()
         if structured_output is None and result_text:
@@ -171,17 +246,25 @@ async def run_agent(
                 structured_output = json.loads(result_text)
             except json.JSONDecodeError:
                 structured_output = None
+        usage = _extract_usage(events)
         raw = {
             "stdout": stdout.decode(errors="replace"),
             "stderr": stderr.decode(errors="replace"),
+            "usage": usage,
         }
         return AgentResult(
             agent_name=agent_name,
             result_text=result_text,
             structured_output=structured_output if isinstance(structured_output, dict) else None,
-            cost_usd=0.0,
+            cost_usd=usage.get("cost_usd"),
             duration_ms=0,
             raw=raw,
+            input_tokens=usage.get("input_tokens"),
+            output_tokens=usage.get("output_tokens"),
+            cached_input_tokens=usage.get("cached_input_tokens"),
+            reasoning_tokens=usage.get("reasoning_tokens"),
+            total_tokens=usage.get("total_tokens"),
+            usage_source=usage.get("usage_source"),
         )
     except asyncio.CancelledError:
         if proc.returncode is None:
@@ -228,12 +311,14 @@ async def run_agent_stream(
             if _looks_like_terminal_result(normalized):
                 result_text = _extract_result_text(normalized)
                 if result_text is not None:
+                    usage = _extract_usage([normalized])
                     yield {
                         "type": "result",
                         "is_error": bool(normalized.get("is_error", False)),
                         "result": result_text,
-                        "total_cost_usd": normalized.get("total_cost_usd", 0.0),
+                        "total_cost_usd": normalized.get("total_cost_usd"),
                         "duration_ms": normalized.get("duration_ms", 0),
+                        **usage,
                     }
                     continue
             yield normalized

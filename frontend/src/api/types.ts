@@ -47,7 +47,9 @@ export interface EvidenceSummary {
   evidence: {
     quality: "usable" | "degraded";
     verified_papers: number;
+    corpus_papers?: number;
     rejected_papers: number;
+    verification_count_discrepancy?: boolean;
     independent_sources: number;
     papers_per_mechanism_chain: { strategy: string; query: string; papers: number }[];
     fallback_count: number;
@@ -86,7 +88,20 @@ export type PipelineEvent =
   | { type: "skill_loaded"; skill: string; seq?: number; created_at?: number }
   | { type: "agent_started"; agent: string; seq?: number; created_at?: number }
   | { type: "agent_completed"; agent: string; seq?: number; created_at?: number }
-  | { type: "run_completed"; cost_usd?: number; duration_ms?: number; seq?: number; created_at?: number }
+  | {
+      type: "run_completed";
+      cost_usd?: number | null;
+      duration_ms?: number;
+      input_tokens?: number;
+      output_tokens?: number;
+      cached_input_tokens?: number;
+      reasoning_tokens?: number;
+      total_tokens?: number;
+      usage_source?: string;
+      llm_calls?: number;
+      seq?: number;
+      created_at?: number;
+    }
   | { type: "run_failed"; reason: string; seq?: number; created_at?: number }
   | { type: "run_cancelled"; reason: string; seq?: number; created_at?: number }
   | { type: "run_paused"; agent: string | null; reason: string; seq?: number; created_at?: number };
@@ -121,6 +136,7 @@ export interface GraphNode {
   provenance_type?: string | null;
   source?: string | null;
   source_id?: string | null;
+  is_input_only?: boolean;
 }
 
 export interface GraphEdge {

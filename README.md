@@ -47,6 +47,9 @@ and existing session and graph artifacts.
 The baseline implementation is preserved as Git tag `v0.2.0`. Check out that tag
 when the original disease-target behavior is required.
 
+For a wide live-run example with all optional target dimensions populated, see
+[Showcase Runs](docs/SHOWCASE_RUNS.md).
+
 ## Version compatibility
 
 The project remains one application; this extension is not a separate CausalAtlas

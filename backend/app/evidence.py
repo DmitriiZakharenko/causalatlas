@@ -171,7 +171,19 @@ def summarize_run(run: dict, include_catalog: bool = True) -> dict:
 
     publications = raw.get("publications", []) if isinstance(raw, dict) else []
     verified = verified_payload.get("publications", []) if isinstance(verified_payload, dict) else []
-    rejected = verification.get("rejected", 0) if isinstance(verification, dict) else 0
+    verification_record = verification.get("verification_report", verification) if isinstance(verification, dict) else {}
+    if not isinstance(verification_record, dict):
+        verification_record = {}
+    rejected = verification_record.get("rejected", verification_record.get("rejected_count", 0))
+    reported_verified = verification_record.get(
+        "verified_count",
+        verification_record.get("accepted", verification_record.get("verified", len(verified))),
+    )
+    try:
+        reported_verified = int(reported_verified)
+    except (TypeError, ValueError):
+        reported_verified = len(verified)
+    verification_count_discrepancy = reported_verified != len(verified)
     queries = raw.get("queries", []) if isinstance(raw, dict) else []
     chains = [
         {"strategy": q.get("strategy", "unknown"), "query": q.get("query", ""), "papers": q.get("retrieved", 0)}
@@ -203,7 +215,7 @@ def summarize_run(run: dict, include_catalog: bool = True) -> dict:
         except OSError:
             continue
 
-    evidence_degraded = bool(fallback_files) or (bool(publications) and not verified) or not bool(queries)
+    evidence_degraded = bool(fallback_files) or verification_count_discrepancy or (bool(publications) and not verified) or not bool(queries)
     hypothesis_ready = bool(accepted_reviews) and not evidence_degraded
     return {
         "run_id": run_id,
@@ -215,8 +227,10 @@ def summarize_run(run: dict, include_catalog: bool = True) -> dict:
         },
         "evidence": {
             "quality": "degraded" if evidence_degraded else "usable",
-            "verified_papers": len(verified),
+            "verified_papers": reported_verified,
+            "corpus_papers": len(verified),
             "rejected_papers": int(rejected or 0),
+            "verification_count_discrepancy": verification_count_discrepancy,
             "independent_sources": len({p.get("journal") for p in verified if p.get("journal")}),
             "papers_per_mechanism_chain": chains,
             "fallback_count": len(fallback_files),

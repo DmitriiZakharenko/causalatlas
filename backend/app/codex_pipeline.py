@@ -94,14 +94,36 @@ def _tool_result_event(tool_id: str, content, *, is_error: bool = False) -> dict
     }
 
 
-def _final_result(text: str, *, cost_usd: float = 0.0, duration_ms: int = 0) -> dict:
+def _final_result(
+    text: str,
+    *,
+    cost_usd: float | None = None,
+    duration_ms: int = 0,
+    usage: dict | None = None,
+) -> dict:
     return {
         "type": "result",
         "is_error": False,
         "result": text,
         "total_cost_usd": cost_usd,
         "duration_ms": duration_ms,
+        **(usage or {}),
     }
+
+
+def _merge_usage(total: dict, usage: dict | None) -> dict:
+    """Aggregate per-agent Codex counters without inventing missing values."""
+    if not usage:
+        return total
+    total["calls"] = int(total.get("calls", 0)) + 1
+    for key in ("input_tokens", "output_tokens", "cached_input_tokens", "reasoning_tokens", "total_tokens"):
+        value = usage.get(key)
+        if isinstance(value, (int, float)):
+            total[key] = int(total.get(key, 0)) + int(value)
+    if isinstance(usage.get("cost_usd"), (int, float)):
+        total["cost_usd"] = float(total.get("cost_usd", 0.0)) + float(usage["cost_usd"])
+    total["usage_source"] = usage.get("usage_source", "codex_cli_jsonl")
+    return total
 
 
 def _write_json(path: Path, payload) -> None:
@@ -892,7 +914,18 @@ async def _run_codex_agent(ctx: PipelineContext, agent_name: str, *, extra: str 
     )
     payload = _coerce_json_payload(result)
     _persist_agent_output(ctx, agent_name, payload)
-    return payload, {"type": "result", "is_error": False, "result": result.result_text}
+    return payload, {
+        "type": "result",
+        "is_error": False,
+        "result": result.result_text,
+        "cost_usd": result.cost_usd,
+        "input_tokens": result.input_tokens,
+        "output_tokens": result.output_tokens,
+        "cached_input_tokens": result.cached_input_tokens,
+        "reasoning_tokens": result.reasoning_tokens,
+        "total_tokens": result.total_tokens,
+        "usage_source": result.usage_source,
+    }
 
 
 def _candidate_manifest(ctx: PipelineContext) -> list[dict]:
@@ -1241,6 +1274,7 @@ async def run_orchestrator_stream(
     resume: bool = False,
 ):
     ctx = _parse_prompt(prompt)
+    usage_total: dict = {"calls": 0}
     step_specs = [
         "agent01_baseline_canonical_knowledge",
         "agent02_literature_retrieval",
@@ -1265,7 +1299,8 @@ async def run_orchestrator_stream(
                     f"{'with gene ' + ctx.gene if ctx.gene else 'with no gene specified'}."
                 )
             try:
-                payload, _ = await _run_codex_agent(ctx, agent_name, extra=extra)
+                payload, agent_meta = await _run_codex_agent(ctx, agent_name, extra=extra)
+                usage_total = _merge_usage(usage_total, agent_meta)
             except Exception as exc:  # noqa: BLE001
                 if agent_name == "agent01_baseline_canonical_knowledge":
                     payload = _materialize_local_canonical_baseline(ctx)
@@ -1376,7 +1411,8 @@ async def run_orchestrator_stream(
                 },
                 separators=(",", ":"),
             )
-            payload, _ = await _run_codex_agent(ctx, "agent10_novelty_verification", extra=extra)
+            payload, agent_meta = await _run_codex_agent(ctx, "agent10_novelty_verification", extra=extra)
+            usage_total = _merge_usage(usage_total, agent_meta)
             if isinstance(payload, dict):
                 audits.append(payload)
             else:
@@ -1422,7 +1458,8 @@ async def run_orchestrator_stream(
                     },
                     separators=(",", ":"),
                 )
-                payload, _ = await _run_codex_agent(ctx, "agent11_hypothesis_generation", extra=extra)
+                payload, agent_meta = await _run_codex_agent(ctx, "agent11_hypothesis_generation", extra=extra)
+                usage_total = _merge_usage(usage_total, agent_meta)
                 payload = payload if isinstance(payload, dict) else {"result_text": payload}
             hypotheses.append(payload)
             yield _tool_result_event(f"h{idx:02d}", json.dumps(hypotheses[-1])[:4000])
@@ -1447,7 +1484,8 @@ async def run_orchestrator_stream(
                 ),
                 separators=(",", ":"),
             )
-            payload, _ = await _run_codex_agent(ctx, "agent12_peer_review", extra=extra)
+            payload, agent_meta = await _run_codex_agent(ctx, "agent12_peer_review", extra=extra)
+            usage_total = _merge_usage(usage_total, agent_meta)
             reviews.append(payload if isinstance(payload, dict) else {"result_text": payload})
             _write_checkpoint(ctx, "agent12_peer_review", {"completed_queries": idx, "total_queries": min(len(hypotheses), _budget("agent12_peer_review")["max_queries"]), "reviews": reviews, "complete": idx == min(len(hypotheses), _budget("agent12_peer_review")["max_queries"])})
             yield _tool_result_event(f"r{idx:02d}", json.dumps(reviews[-1])[:4000])
@@ -1470,7 +1508,8 @@ async def run_orchestrator_stream(
                 ),
                 separators=(",", ":"),
             )
-            payload, _ = await _run_codex_agent(ctx, "agent13_experiment_design", extra=extra)
+            payload, agent_meta = await _run_codex_agent(ctx, "agent13_experiment_design", extra=extra)
+            usage_total = _merge_usage(usage_total, agent_meta)
             experiments.append(payload if isinstance(payload, dict) else {"result_text": payload})
             yield _tool_result_event(f"e{idx:02d}", json.dumps(experiments[-1])[:4000])
         _write_json(ctx.session_dir / "experiment_design.json", {"session": ctx.run_id, "experiments": experiments})
@@ -1487,7 +1526,15 @@ async def run_orchestrator_stream(
             f"{len(audits)} novelty audits, {len(hypotheses)} hypotheses, "
             f"{len(reviews)} reviews, {len(experiments)} experiment designs."
         )
-        yield _final_result(summary)
+        yield _final_result(
+            summary,
+            cost_usd=usage_total.get("cost_usd"),
+            usage={
+                key: value
+                for key, value in usage_total.items()
+                if key != "cost_usd" and value is not None
+            },
+        )
     except Exception as exc:  # noqa: BLE001
         yield {
             "type": "orchestrator_failed",

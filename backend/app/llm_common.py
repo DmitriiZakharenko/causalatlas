@@ -18,9 +18,17 @@ class AgentResult:
     agent_name: str
     result_text: str
     structured_output: dict | None
-    cost_usd: float
+    # Codex subscription runs do not necessarily expose billable USD. Keep
+    # this nullable so the UI never presents an unavailable cost as $0.00.
+    cost_usd: float | None
     duration_ms: int
     raw: dict
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    cached_input_tokens: int | None = None
+    reasoning_tokens: int | None = None
+    total_tokens: int | None = None
+    usage_source: str | None = None
 
 
 def get_llm_provider() -> str:

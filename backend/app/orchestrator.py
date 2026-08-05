@@ -212,14 +212,20 @@ class StreamTranslator:
                 reason = result_text.split(PAUSE_MARKER, 1)[1].strip()
                 agent = reason.split("\u2014", 1)[0].strip(" -:") or None
                 return [{"type": "run_paused", "agent": agent, "reason": reason}]
-            return [
-                {
+            event = {
                     "type": "run_completed",
                     "cost_usd": raw.get("total_cost_usd"),
                     "duration_ms": raw.get("duration_ms"),
+                    "input_tokens": raw.get("input_tokens"),
+                    "output_tokens": raw.get("output_tokens"),
+                    "cached_input_tokens": raw.get("cached_input_tokens"),
+                    "reasoning_tokens": raw.get("reasoning_tokens"),
+                    "total_tokens": raw.get("total_tokens"),
+                    "usage_source": raw.get("usage_source"),
+                    "llm_calls": raw.get("calls"),
                     "result_text": result_text,
                 }
-            ]
+            return [{key: value for key, value in event.items() if value is not None}]
 
         tool_uses: list[dict] = []
         tool_results: list[dict] = []

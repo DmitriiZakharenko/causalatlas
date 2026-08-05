@@ -20,6 +20,32 @@ GRAPHS_DIR = REPO_ROOT / "data" / "graphs"
 
 SAMPLE_PMID_LIMIT = 5
 
+
+def _entity_key(value: object) -> str:
+    return "".join(ch for ch in str(value).casefold() if ch.isalnum())
+
+
+def _target_dimensions(metadata: dict) -> dict[str, list[str]]:
+    target = metadata.get("target") if isinstance(metadata.get("target"), dict) else {}
+    return {
+        "Disease": [str(metadata.get("disease"))] if metadata.get("disease") else [],
+        "Gene": [str(value) for value in target.get("genes", []) if value],
+        "Drug": [str(value) for value in target.get("drugs", []) if value],
+        "Tissue": [str(value) for value in target.get("tissues", []) if value],
+        "Cell_type": [str(value) for value in target.get("cell_types", []) if value],
+    }
+
+
+def _semantic_type(label: str, base_type: str | None, dimensions: dict[str, list[str]]) -> str | None:
+    key = _entity_key(label)
+    # Target dimensions are intentionally overlaid on top of extracted
+    # biological labels. This identifies the user's requested gene/drug/context
+    # without changing the evidence graph or claiming a new biological class.
+    for entity_type, values in dimensions.items():
+        if any(key == _entity_key(value) for value in values):
+            return entity_type
+    return base_type
+
 # Some on-disk graphs (e.g. asthma Session 004) already went through the
 # source pipeline's own noise-cleaning passes (see graph_quality_report.json's
 # "pattern_artifact_heuristics" + "stopword_node_cleanup") and still ended up
@@ -95,12 +121,12 @@ def list_available_graphs() -> list[dict]:
     return graphs
 
 
-def _strip_node(node: dict) -> dict:
+def _strip_node(node: dict, dimensions: dict[str, list[str]]) -> dict:
     pmids = node.get("pmids") or []
     return {
         "id": node["id"],
         "label": node["id"],
-        "type": node.get("type"),
+        "type": _semantic_type(node["id"], node.get("type"), dimensions),
         "pmid_count": node.get("pmid_count", len(pmids)),
         "edge_count": node.get("edge_count"),
         "sample_pmids": pmids[:SAMPLE_PMID_LIMIT],
@@ -109,7 +135,34 @@ def _strip_node(node: dict) -> dict:
         "source_id": node.get("source_id"),
         "provenance_types": node.get("provenance_types", [node.get("provenance_type")] if node.get("provenance_type") else []),
         "looks_like_noise": _looks_like_extraction_noise(node["id"]),
+        "is_input_only": False,
     }
+
+
+def _input_only_nodes(dimensions: dict[str, list[str]], existing_ids: set[str]) -> list[dict]:
+    nodes = []
+    for entity_type, values in dimensions.items():
+        for value in values:
+            node_id = f"__input__{entity_type.casefold()}__{_entity_key(value)}"
+            if node_id in existing_ids:
+                continue
+            nodes.append(
+                {
+                    "id": node_id,
+                    "label": value,
+                    "type": entity_type,
+                    "pmid_count": 0,
+                    "edge_count": 0,
+                    "sample_pmids": [],
+                    "provenance_type": "input_only",
+                    "source": "analysis_target",
+                    "source_id": entity_type,
+                    "provenance_types": ["input_only"],
+                    "looks_like_noise": False,
+                    "is_input_only": True,
+                }
+            )
+    return nodes
 
 
 def _strip_edge(edge: dict, index: int) -> dict:
@@ -154,10 +207,20 @@ def load_graph_for_ui(disease_slug: str) -> dict:
     source_metadata.setdefault("source_edge_count", len(raw.get("edges", [])))
     source_metadata.setdefault("exported_node_count", len(raw.get("nodes", [])))
     source_metadata.setdefault("exported_edge_count", len(raw.get("edges", [])))
+    dimensions = _target_dimensions(source_metadata)
+    source_metadata["target_dimensions"] = dimensions
+    source_nodes = [_strip_node(n, dimensions) for n in raw.get("nodes", [])]
+    source_ids = {node["id"] for node in source_nodes}
+    input_nodes = _input_only_nodes(dimensions, source_ids)
+    source_metadata["exported_node_count"] = len(source_nodes) + len(input_nodes)
+    # The response contains explicit input-only target nodes in addition to
+    # evidence nodes. Keep source_node_count above as the persisted-graph
+    # count, while node_count describes what the user actually sees.
+    source_metadata["node_count"] = len(source_nodes) + len(input_nodes)
     return {
         "metadata": source_metadata,
         "elements": {
-            "nodes": [_strip_node(n) for n in raw.get("nodes", [])],
+            "nodes": source_nodes + input_nodes,
             "edges": [_strip_edge(e, i) for i, e in enumerate(raw.get("edges", []))],
         },
     }

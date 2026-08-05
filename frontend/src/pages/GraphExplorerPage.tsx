@@ -6,13 +6,32 @@ import { api, ApiError } from "../api/client";
 import type { GraphEdge, GraphNode, GraphResponse, GraphSummary } from "../api/types";
 
 const TYPE_COLORS: Record<string, string> = {
+  Disease: "#be123c",
+  Gene: "#2563eb",
+  Drug: "#7c3aed",
+  Tissue: "#0891b2",
+  Cell_type: "#16a34a",
   Cell: "#6b8fcf",
   Cytokine: "#e07a3f",
   Molecule: "#5aa469",
-  Tissue: "#8f7be8",
+  Pathway: "#d97706",
   Clinical_phenotype: "#c23a4b",
 };
+const TYPE_SHAPES: Record<string, string> = {
+  Disease: "round-rectangle",
+  Gene: "hexagon",
+  Drug: "diamond",
+  Tissue: "rectangle",
+  Cell_type: "ellipse",
+  Cell: "ellipse",
+  Cytokine: "ellipse",
+  Molecule: "diamond",
+  Pathway: "tag",
+  Clinical_phenotype: "round-rectangle",
+};
+const LEGEND_TYPES = ["Disease", "Gene", "Drug", "Tissue", "Cell_type", "Cell", "Cytokine", "Molecule", "Pathway", "Clinical_phenotype"];
 const DEFAULT_COLOR = "#9ca7b8";
+const DEFAULT_SHAPE = "ellipse";
 const SPOTLIGHT_COLOR = "#d97706";
 const SEARCH_COLOR = "#15803d";
 const GRAPH_CANVAS_BG = "#f7faff";
@@ -27,6 +46,7 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
     selector: "node",
     style: {
       "background-color": "data(color)",
+      shape: "ellipse",
       label: "data(label)",
       "font-size": 8,
       "min-zoomed-font-size": 7,
@@ -42,6 +62,25 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
       "transition-duration": 120,
     },
   },
+  { selector: 'node[type = "Disease"]', style: { shape: "round-rectangle" } },
+  { selector: 'node[type = "Gene"]', style: { shape: "hexagon" } },
+  { selector: 'node[type = "Drug"]', style: { shape: "diamond" } },
+  { selector: 'node[type = "Tissue"]', style: { shape: "rectangle" } },
+  { selector: 'node[type = "Cell_type"]', style: { shape: "ellipse" } },
+  { selector: 'node[type = "Molecule"]', style: { shape: "diamond" } },
+  { selector: 'node[type = "Pathway"]', style: { shape: "tag" } },
+  { selector: 'node[type = "Clinical_phenotype"]', style: { shape: "round-rectangle" } },
+  {
+    selector: ".input-only",
+    style: {
+      "border-width": 2,
+      "border-style": "dashed",
+      "border-color": "#475569",
+      width: 28,
+      height: 28,
+      "font-size": 10,
+    },
+  },
   {
     selector: "edge",
     style: {
@@ -55,6 +94,14 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
       "transition-property": "opacity, line-color, width",
       "transition-duration": 120,
     },
+  },
+  {
+    selector: 'edge[evidence_strength = "weak"]',
+    style: { "line-style": "dashed", opacity: 0.5 },
+  },
+  {
+    selector: 'edge[contradiction_group]',
+    style: { "line-color": "#dc2626", "target-arrow-color": "#dc2626" },
   },
   // Applied to everything NOT part of the current focus set once something
   // is selected -- this is what actually makes a dense graph legible: instead
@@ -162,7 +209,14 @@ export default function GraphExplorerPage() {
 
   const elements = useMemo(() => {
     return [
-      ...visibleNodes.map((n) => ({ data: { ...n, color: TYPE_COLORS[n.type ?? ""] ?? DEFAULT_COLOR } })),
+      ...visibleNodes.map((n) => ({
+        data: {
+          ...n,
+          color: TYPE_COLORS[n.type ?? ""] ?? DEFAULT_COLOR,
+          shape: TYPE_SHAPES[n.type ?? ""] ?? DEFAULT_SHAPE,
+        },
+        classes: n.is_input_only ? "input-only" : "",
+      })),
       ...visibleEdges.map((e) => ({ data: { ...e } })),
     ];
   }, [visibleNodes, visibleEdges]);
@@ -285,6 +339,32 @@ export default function GraphExplorerPage() {
             </Link>
           )}
         </div>
+        {graph && (
+          <>
+            <div className="graph-targets" aria-label="Analysis target dimensions">
+              {Object.entries((graph.metadata.target_dimensions as Record<string, string[]> | undefined) ?? {}).flatMap(([type, values]) =>
+                values.map((value) => (
+                  <span className="graph-target-chip" key={`${type}-${value}`}>
+                    <strong style={{ color: TYPE_COLORS[type] ?? DEFAULT_COLOR }}>{type.replace("_", " ")}:</strong> {value}
+                  </span>
+                )),
+              )}
+            </div>
+            <div className="graph-legend" aria-label="Graph legend">
+              <span className="graph-legend__title">Node legend</span>
+              {LEGEND_TYPES.map((type) => (
+                <span className="graph-legend__item" key={type}>
+                  <i className={`graph-legend__swatch graph-legend__swatch--${TYPE_SHAPES[type]}`} style={{ backgroundColor: TYPE_COLORS[type] }} />
+                  {type.replace("_", " ")}
+                </span>
+              ))}
+              <span className="graph-legend__title">Edges</span>
+              <span className="graph-legend__item"><i className="graph-legend__line" /> stronger PMID support</span>
+              <span className="graph-legend__item"><i className="graph-legend__line graph-legend__line--dashed" /> weak evidence</span>
+              <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: "#475569", borderStyle: "dashed" }} /> input-only target</span>
+            </div>
+          </>
+        )}
         {hideNoise && hiddenNoiseCount > 0 && (
           <p className="muted" style={{ marginTop: "0.5rem" }}>
             Hiding {hiddenNoiseCount} of {graph?.elements.nodes.length} nodes flagged by a heuristic as likely

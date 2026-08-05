@@ -20,7 +20,7 @@ function describeEvent(event: PipelineEvent): string {
     case "agent_completed":
       return `Agent completed: ${event.agent}`;
     case "run_completed":
-      return `Run completed${event.cost_usd !== undefined ? ` — $${event.cost_usd.toFixed(4)}` : ""}`;
+      return `Run completed — ${event.total_tokens !== undefined ? `${event.total_tokens.toLocaleString()} tokens` : "token usage not reported"}${event.cost_usd !== undefined && event.cost_usd !== null ? ` · $${event.cost_usd.toFixed(4)}` : " · subscription cost not reported"}`;
     case "run_failed":
       return `Run failed — ${event.reason}`;
     case "run_cancelled":
@@ -41,6 +41,10 @@ export default function RunDetailPage() {
   const [submittingDecision, setSubmittingDecision] = useState(false);
   const [decisionError, setDecisionError] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState(false);
+
+  const terminalUsage = timeline
+    .map((entry) => entry.event)
+    .find((event): event is Extract<PipelineEvent, { type: "run_completed" }> => event.type === "run_completed");
 
   const refreshStatus = useCallback(() => {
     if (!runId) return;
@@ -167,6 +171,15 @@ export default function RunDetailPage() {
           <div><span>Pipeline execution</span><strong>{status.evidence_summary.execution.complete ? "completed" : status.evidence_summary.execution.status}</strong></div>
           <div><span>Evidence quality</span><strong className={status.evidence_summary.evidence.quality === "degraded" ? "run-quality-strip__warn" : ""}>{status.evidence_summary.evidence.quality}</strong></div>
           <div><span>Hypothesis readiness</span><strong className={status.evidence_summary.hypotheses.ready ? "run-quality-strip__ok" : "run-quality-strip__warn"}>{status.evidence_summary.hypotheses.ready ? "ready" : "not ready"}</strong></div>
+        </section>
+      )}
+
+      {terminalUsage && (
+        <section className="run-usage-strip" aria-label="Run usage">
+          <div><span>Input tokens</span><strong>{terminalUsage.input_tokens?.toLocaleString() ?? "Not reported"}</strong></div>
+          <div><span>Output tokens</span><strong>{terminalUsage.output_tokens?.toLocaleString() ?? "Not reported"}</strong></div>
+          <div><span>Total tokens</span><strong>{terminalUsage.total_tokens?.toLocaleString() ?? "Not reported"}</strong></div>
+          <div><span>Provider cost</span><strong>{terminalUsage.cost_usd !== undefined && terminalUsage.cost_usd !== null ? `$${terminalUsage.cost_usd.toFixed(4)}` : "Not reported"}</strong></div>
         </section>
       )}
 
