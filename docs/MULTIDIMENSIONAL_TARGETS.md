@@ -114,6 +114,15 @@ visually distinct from PMID evidence.
 
 ## Compatibility gate
 
+## Analysis modes
+
+New UI/API runs default to `analysis_mode=graph_only`. This mode completes
+retrieval, verification, quality scoring, mechanistic extraction, semantic graph
+validation, topology, contradiction and gap analysis, then writes explicit skipped
+artifacts for novelty, hypotheses, peer review, and experiment design. The prior
+workflow remains available as an explicit `analysis_mode=full` request. This keeps
+the expensive hypothesis stages focused on a graph fragment selected by a human.
+
 The extension is ready only when the following remain true:
 
 - the `v0.2.0` tag resolves to the original baseline;
