@@ -416,12 +416,15 @@ export default function GraphExplorerPage() {
                 {
                   name: "cose",
                   animate: false,
-                  nodeRepulsion: 12000,
-                  idealEdgeLength: 70,
-                  numIter: 1500,
+                  nodeRepulsion: 26000,
+                  nodeOverlap: 24,
+                  idealEdgeLength: 125,
+                  gravity: 0.18,
+                  numIter: 2200,
+                  padding: 70,
                 } as cytoscape.LayoutOptions
               }
-              style={{ width: "100%", height: "70vh", background: GRAPH_CANVAS_BG, borderRadius: 8 }}
+              style={{ width: "100%", height: "78vh", minHeight: 640, background: GRAPH_CANVAS_BG, borderRadius: 8 }}
               cy={(cy) => {
                 cyRef.current = cy;
                 cy.removeAllListeners();
