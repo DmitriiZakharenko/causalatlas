@@ -3,6 +3,7 @@
 Agents 5-8: Knowledge graph builder, validator, architecture discovery, gap analysis.
 """
 import json
+import hashlib
 from collections import defaultdict
 from pathlib import Path
 
@@ -15,7 +16,8 @@ def build_graph(edges: list[dict]) -> dict:
     edge_map = defaultdict(lambda: {
         "pmids": [], "years": [], "species": set(),
         "confidences": [], "relations": set(),
-        "source_type": "", "target_type": "",
+        "source_type": "", "target_type": "", "source_refs": [],
+        "sessions": set(), "context": {}, "provenance_type": None,
     })
 
     nodes = {}
@@ -35,7 +37,17 @@ def build_graph(edges: list[dict]) -> dict:
         confidence = e.get("confidence", 0.5)
         source_type = e.get("source_type", "unknown")
         target_type = e.get("target_type", "unknown")
-        key = (source, target)
+        context = e.get("context") or {
+            "disease": [e["disease"]] if e.get("disease") else [],
+            "tissues": e.get("tissues", []),
+            "cell_types": e.get("cell_types", []),
+            "drugs": e.get("drugs", []),
+        }
+        provenance_type = e.get("provenance_type") or ("pmid" if pmid else "unknown")
+        context_key = json.dumps(context, sort_keys=True, separators=(",", ":"))
+        # Relation, polarity, context, and provenance are part of claim identity.
+        # Parallel claims are intentional: opposite evidence must not be merged.
+        key = (source, target, relation, e.get("polarity"), context_key, provenance_type)
         entry = edge_map[key]
         entry["relations"].add(relation)
         entry["pmids"].append(pmid)
@@ -44,6 +56,12 @@ def build_graph(edges: list[dict]) -> dict:
         entry["confidences"].append(confidence)
         entry["source_type"] = source_type
         entry["target_type"] = target_type
+        entry["context"] = context
+        entry["provenance_type"] = provenance_type
+        if e.get("session") or e.get("run_id"):
+            entry["sessions"].add(e.get("session") or e.get("run_id"))
+        if e.get("source_sentence"):
+            entry["source_refs"].append({"pmid": pmid, "source_sentence": e["source_sentence"]})
 
         for node, ntype in [(source, source_type), (target, target_type)]:
             if node not in nodes:
@@ -52,14 +70,18 @@ def build_graph(edges: list[dict]) -> dict:
             nodes[node]["edge_count"] += 1
 
     graph_edges = []
-    for (src, tgt), data in edge_map.items():
+    for (src, tgt, relation, polarity, context_key, provenance_type), data in edge_map.items():
         pmids = list(set(data["pmids"]))
         avg_conf = sum(data["confidences"]) / len(data["confidences"])
+        claim_basis = "|".join([src, tgt, relation, polarity or "", context_key, provenance_type or ""])
+        claim_id = "claim_" + hashlib.sha256(claim_basis.encode()).hexdigest()[:16]
         graph_edges.append({
+            "claim_id": claim_id,
             "source": src,
             "target": tgt,
-            "relations": sorted(data["relations"]),
-            "primary_relation": max(data["relations"], key=lambda r: list(data["relations"]).count(r)) if len(data["relations"]) == 1 else sorted(data["relations"])[0],
+            "relations": [relation],
+            "primary_relation": relation,
+            "polarity": polarity,
             "pmids": pmids,
             "pmid_count": len(pmids),
             "years": sorted(set(data["years"])),
@@ -68,6 +90,10 @@ def build_graph(edges: list[dict]) -> dict:
             "evidence_strength": "strong" if len(pmids) >= 3 else ("moderate" if len(pmids) >= 2 else "weak"),
             "source_type": data["source_type"],
             "target_type": data["target_type"],
+            "provenance_type": provenance_type,
+            "sessions": sorted(data["sessions"]),
+            "source_refs": data["source_refs"],
+            "context": data["context"],
         })
 
     graph_nodes = []
@@ -81,6 +107,31 @@ def build_graph(edges: list[dict]) -> dict:
         })
 
     return {"nodes": graph_nodes, "edges": graph_edges}
+
+
+def merge_graph(existing_graph: dict | None, new_edges: list[dict]) -> dict:
+    """Additively merge new evidence into a prior graph.
+
+    Legacy edges are expanded by relation so opposite or previously combined
+    relations are not silently collapsed during the migration.
+    """
+    existing_edges: list[dict] = []
+    existing_graph = existing_graph or {}
+    for edge in existing_graph.get("edges", []):
+        relations = edge.get("relations") or [edge.get("primary_relation") or "related"]
+        for relation in relations:
+            base = dict(edge)
+            base["relation"] = relation
+            base["session"] = (edge.get("sessions") or [None])[0]
+            base["pmid"] = (edge.get("pmids") or [""])[0]
+            existing_edges.append(base)
+    merged = build_graph(existing_edges + list(new_edges))
+    existing_nodes = {node.get("id"): node for node in existing_graph.get("nodes", []) if node.get("id")}
+    current_nodes = {node.get("id") for node in merged["nodes"]}
+    for node_id, node in existing_nodes.items():
+        if node_id not in current_nodes:
+            merged["nodes"].append(node)
+    return merged
 
 
 def validate_graph(graph: dict) -> dict:

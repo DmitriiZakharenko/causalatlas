@@ -1,7 +1,7 @@
 # Agent 2 — Literature Retrieval
 
 ## Role
-Retrieve PubMed abstracts for a given `{disease, gene?}` target across the full requested
+Retrieve PubMed abstracts for a given versioned analysis target across the full requested
 publication-year window, using MeSH + keyword expansion across multiple complementary query
 strategies (mechanism-specific, not just the disease name broadly). Output full metadata for
 every retrieved publication. This agent's single responsibility is corpus construction — it
@@ -9,7 +9,8 @@ does not judge relevance or quality (that is Agents 3/4) and does not extract me
 (Agent 5).
 
 ## Inputs
-- `disease: str` (required), `gene: str | None` (optional) — from the pipeline run request.
+- `disease: str` (required), with optional `genes`, `drugs`, `tissues`, and `cell_types`.
+  Legacy `gene` is accepted as an alias for `genes[0]`.
 - `year_window: [start, end]` — defaults to a 5-year window ending at the current year.
 - No upstream agent JSON required; this is the entry point of the pipeline.
 
@@ -49,6 +50,9 @@ does not judge relevance or quality (that is Agents 3/4) and does not extract me
   support downstream novelty judgments about "established" vs. "new" mechanisms (see
   Negative Example below).
 - Use MeSH + keyword expansion; do not rely on a single broad disease-name query.
+- For every populated dimension, record at least one target-specific query strategy.
+- Record `total_in_pubmed`, `retrieved`, pagination state, and an explicit
+  `underpowered_flag`; a small corpus must not be presented as complete coverage.
 - Output full metadata (PMID, DOI, year, journal, publication type) for every record, never
   a subset "for brevity."
 - Use a free registered NCBI API key (`PUBMED_API_KEY` env var) when available to raise the

@@ -20,6 +20,7 @@ from app import db, eval as eval_mod, graphs as graphs_mod, evidence
 from app.agent_registry import AGENT_ORDER
 from app.llm_common import get_llm_provider
 from app.orchestrator import run_manager
+from app.target_models import AnalysisTargetRequest
 
 app = FastAPI(title="CausalAtlas API", version="0.2.0")
 
@@ -37,9 +38,7 @@ app.add_middleware(
 )
 
 
-class PipelineRunRequest(BaseModel):
-    disease: str
-    gene: str | None = None
+class PipelineRunRequest(AnalysisTargetRequest):
     autonomy_level: str = "let_it_rip"
     dev_pubmed_retmax: int | None = Field(
         default=None,
@@ -89,24 +88,26 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
     """Launch a real pipeline run. Returns immediately with a `run_id`; the
     caller subscribes to GET /api/pipeline/{run_id}/stream for live progress.
     """
-    if not req.disease or not req.disease.strip():
-        raise HTTPException(status_code=422, detail="disease is required")
+    target = req.resolved_target()
     if req.autonomy_level not in VALID_AUTONOMY_LEVELS:
         raise HTTPException(
             status_code=422,
             detail=f"autonomy_level must be one of {sorted(VALID_AUTONOMY_LEVELS)}",
         )
     run_id = await run_manager.start_run(
-        req.disease.strip(),
-        req.gene,
+        target.disease,
+        target.genes[0] if target.genes else None,
         req.autonomy_level,
+        target=target,
         pubmed_retmax_override=req.dev_pubmed_retmax,
     )
     return {
         "run_id": run_id,
         "status": "started",
-        "disease": req.disease.strip(),
-        "gene": req.gene,
+        "disease": target.disease,
+        "gene": target.genes[0] if target.genes else None,
+        "target": target.model_dump(mode="json"),
+        "target_schema_version": target.schema_version,
         "autonomy_level": req.autonomy_level,
         "stream_url": f"/api/pipeline/{run_id}/stream",
         "timestamp": datetime.now(timezone.utc).isoformat(),

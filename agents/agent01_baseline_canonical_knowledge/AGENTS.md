@@ -2,7 +2,7 @@
 
 ## Role
 Before any literature is retrieved, pull the already-established, curated mechanistic
-baseline for the `{disease, gene?}` target from structured canonical databases (Reactome,
+baseline for the versioned analysis target from structured canonical databases (Reactome,
 KEGG, UniProt, MyDisease.info — never PubMed/Semantic Scholar/OpenAlex, those are Agent 2's
 and Agent 10's job). This agent's single responsibility is producing a read-only scaffold of
 "what is already curated consensus" so that every downstream agent — most importantly Agent
@@ -11,7 +11,8 @@ a mechanism that a canonical database already states as established. It runs fir
 Agent 2, and its output is never mutated by any other agent.
 
 ## Inputs
-- `disease: str` (required), `gene: str | None` (optional) — from the pipeline run request,
+- `disease: str` (required), plus optional `genes`, `drugs`, `tissues`, and `cell_types` — from
+  the versioned analysis target. Legacy `gene` is normalized to `genes[0]`,
   same as Agent 2's input.
 - No upstream agent JSON required; this is the true entry point of the pipeline (Agent 2
   runs after this, not before).

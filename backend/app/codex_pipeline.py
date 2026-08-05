@@ -12,6 +12,7 @@ from collections import Counter
 from pathlib import Path
 import urllib.parse
 import xml.etree.ElementTree as ET
+from app.target_models import AnalysisTarget
 
 from app import codex_cli
 
@@ -35,6 +36,7 @@ class PipelineContext:
     autonomy_level: str
     session_dir: Path
     graph_dir: Path
+    target: AnalysisTarget | None = None
 
 
 def _parse_prompt(prompt: str) -> PipelineContext:
@@ -58,7 +60,15 @@ def _parse_prompt(prompt: str) -> PipelineContext:
     run_graph = graph_dir / "knowledge_graph.json"
     if prior_graph.exists() and not run_graph.exists():
         shutil.copy2(prior_graph, run_graph)
-    return PipelineContext(run_id, disease, gene, autonomy_level, session_dir, graph_dir)
+    target_json = match(r"^target_json:\s*(.+)$", None)
+    if target_json:
+        try:
+            target = AnalysisTarget.model_validate(json.loads(target_json))
+        except (json.JSONDecodeError, ValueError):
+            target = AnalysisTarget(disease=disease, genes=[gene] if gene else [])
+    else:
+        target = AnalysisTarget(disease=disease, genes=[gene] if gene else [])
+    return PipelineContext(run_id, disease, gene, autonomy_level, session_dir, graph_dir, target)
 
 
 def _slugify(text: str) -> str:
@@ -330,9 +340,14 @@ def _parse_pubmed_xml(xml_text: str) -> list[dict]:
 
 def _target_queries(ctx: PipelineContext) -> list[dict]:
     disease = ctx.disease
-    gene = ctx.gene or ""
+    target = ctx.target or AnalysisTarget(disease=disease, genes=[ctx.gene] if ctx.gene else [])
+    genes = target.genes
+    drugs = target.drugs
+    tissues = target.tissues
+    cell_types = target.cell_types
     queries = []
-    if gene:
+    if genes:
+        gene = genes[0]
         queries.extend(
             [
                 {"strategy": "gene_disease_direct", "query": f"{gene} {disease}"},
@@ -341,6 +356,17 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
                 {"strategy": "gene_signaling", "query": f"{gene} STAT3 ERK fibrosis signaling"},
             ]
         )
+    for drug in drugs:
+        queries.extend(
+            [
+                {"strategy": "drug_target_direct", "query": f'"{drug}" {" ".join(genes) if genes else disease}'},
+                {"strategy": "drug_disease_direct", "query": f'"{drug}" "{disease}"'},
+            ]
+        )
+    for tissue in tissues:
+        queries.append({"strategy": "tissue_context", "query": f'"{tissue}" "{disease}" {" ".join(genes or drugs)}'.strip()})
+    for cell_type in cell_types:
+        queries.append({"strategy": "cell_type_context", "query": f'"{cell_type}" "{disease}" {" ".join(genes or drugs)}'.strip()})
     queries.extend(
         [
             {"strategy": "disease_mech_mesh", "query": f'"{disease}"[MeSH Terms] cytokine signaling mechanism'},
@@ -356,27 +382,36 @@ def _assign_quality(paper: dict) -> dict:
     abstract = paper.get("abstract", "") or ""
     species = paper.get("species", "unknown")
     evidence_level = "primary_research"
-    confidence_score = 0.5
+    base_confidence = 0.5
+    penalties: list[dict] = []
     if any("review" in pt for pt in pub_types):
         evidence_level = "review"
-        confidence_score = 0.55
+        base_confidence = 0.55
+        penalties.append({"name": "review_not_primary", "amount": 0.10})
     if any("meta-analysis" in pt for pt in pub_types):
         evidence_level = "systematic_review"
-        confidence_score = 0.9
+        base_confidence = 0.9
     if any("clinical trial" in pt or "randomized controlled trial" in pt for pt in pub_types):
         evidence_level = "clinical"
-        confidence_score = 0.85
+        base_confidence = 0.85
     if species == "mouse":
         evidence_level = "mouse"
-        confidence_score = min(confidence_score, 0.55)
+        penalties.append({"name": "nonhuman_species", "amount": 0.15})
     elif species == "human":
-        evidence_level = "human"
-        confidence_score = max(confidence_score, 0.6)
+        evidence_level = "human" if evidence_level == "primary_research" else evidence_level
+        base_confidence = max(base_confidence, 0.6)
+    else:
+        penalties.append({"name": "species_unknown", "amount": 0.10})
     if "in vitro" in abstract.lower() or "cell line" in abstract.lower():
         evidence_level = "in_vitro"
-        confidence_score = min(confidence_score, 0.45)
+        penalties.append({"name": "in_vitro_or_cell_line", "amount": 0.20})
+    if not abstract.strip():
+        penalties.append({"name": "abstract_missing", "amount": 0.25})
+    confidence_score = max(0.0, min(1.0, base_confidence - sum(item["amount"] for item in penalties)))
     return {
         "evidence_level": evidence_level,
+        "base_confidence": round(base_confidence, 2),
+        "penalties": penalties,
         "confidence_score": round(confidence_score, 2),
     }
 
@@ -400,9 +435,16 @@ def _materialize_local_publications(ctx: PipelineContext) -> dict:
     for spec in queries:
         if spec["strategy"] in completed_strategies:
             continue
-        result = _pubmed_esearch(spec["query"], retmax=25)
-        pmids = result.get("idlist", [])
-        query_meta.append({"strategy": spec["strategy"], "query": spec["query"], "total_in_pubmed": int(result.get("count", "0") or 0), "retrieved": len(pmids)})
+        result = _pubmed_esearch(spec["query"], retmax=25, retstart=0)
+        pmids = list(result.get("idlist", []))
+        total = int(result.get("count", "0") or 0)
+        # Retrieve bounded pages so a high-hit query cannot silently bias the
+        # corpus toward the first API page. The global publication budget still
+        # limits the materialized corpus below.
+        for retstart in range(25, min(total, 100), 25):
+            page = _pubmed_esearch(spec["query"], retmax=25, retstart=retstart)
+            pmids.extend(page.get("idlist", []))
+        query_meta.append({"strategy": spec["strategy"], "query": spec["query"], "total_in_pubmed": total, "retrieved": len(pmids), "paginated": total > 25})
         all_pmids.update(pmids)
         _write_checkpoint(ctx, "agent02_literature_retrieval", {"queries": query_meta, "pmids": sorted(all_pmids), "complete": False})
 
@@ -416,10 +458,12 @@ def _materialize_local_publications(ctx: PipelineContext) -> dict:
         "session": ctx.run_id,
         "disease": ctx.disease,
         "gene": ctx.gene,
+        "target": (ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])).model_dump(mode="json"),
         "queries": query_meta,
         "year_band_distribution": Counter(str(p.get("year", "")).strip()[:4] for p in papers if p.get("year")),
         "year_band_max_share": round(max((c / max(len(papers), 1) for c in Counter(str(p.get("year", "")).strip()[:4] for p in papers if p.get("year")).values()), default=0.0), 2),
         "year_band_flag": False,
+        "underpowered_flag": len(query_meta) < 3 or len(papers) < 10,
         "total_unique_publications": len(papers),
         "retrieval_timestamp": datetime.now(timezone.utc).isoformat(),
         "publications": papers,
@@ -449,13 +493,19 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
             rejected.append({"pmid": paper.get("pmid"), "reason": "incomplete_metadata"})
             continue
         paper = dict(paper)
+        # The deterministic fallback has already parsed an EFetch response, but
+        # it does not perform the full Agent 3 metadata/relevance audit. Keep
+        # that limitation explicit instead of presenting metadata presence as
+        # independent verification.
         paper["verified"] = True
+        paper["verification_scope"] = "efetch_metadata_present_only"
+        paper["relevance_status"] = "not_independently_scored"
         paper["quality"] = _assign_quality(paper)
         verified.append(paper)
         details.append(
             {
                 "pmid": paper["pmid"],
-                "status": "ACCEPTED",
+                "status": "ACCEPTED_METADATA_ONLY",
                 "title": paper["title"][:80],
                 "journal": paper.get("journal", ""),
                 "year": paper.get("year", ""),
@@ -508,6 +558,15 @@ def _materialize_local_mechanisms(ctx: PipelineContext) -> dict:
                 quality.get("confidence_score", 0.5),
             )
         )
+    for edge in edges:
+        edge["session"] = ctx.run_id
+        edge["context"] = {
+            "disease": [ctx.disease],
+            "tissues": list((ctx.target or AnalysisTarget(disease=ctx.disease)).tissues),
+            "cell_types": list((ctx.target or AnalysisTarget(disease=ctx.disease)).cell_types),
+            "drugs": list((ctx.target or AnalysisTarget(disease=ctx.disease)).drugs),
+        }
+        edge["provenance_status"] = "source_sentence_present" if edge.get("source_sentence") else "source_sentence_missing"
     mechanisms = {"session": ctx.run_id, "total_edges": len(edges), "edges": edges}
     _write_json(ctx.session_dir / "mechanisms_extracted.json", mechanisms)
     _write_json(ctx.session_dir / "extraction_log.json", [])
@@ -1176,7 +1235,7 @@ async def run_orchestrator_stream(
             yield _tool_result_event(f"a{index:02d}", json.dumps(payload)[:4000])
 
         # Graph stage: deterministic and budget-friendly, but still part of the full launch.
-        from scripts.build_graph import build_graph as merge_edges_to_graph
+        from scripts.build_graph import merge_graph
         from scripts.run_budgeted_case import write_graph_stage_outputs  # local import to keep CLI startup light
 
         canonical = (
@@ -1195,13 +1254,19 @@ async def run_orchestrator_stream(
             if (ctx.session_dir / "mechanisms_extracted.json").exists()
             else {"edges": []}
         )
-        graph = merge_edges_to_graph(graph_payload.get("edges", []) if isinstance(graph_payload, dict) else [])
+        prior_graph = _load_graph_json(ctx)
+        graph = merge_graph(
+            prior_graph,
+            graph_payload.get("edges", []) if isinstance(graph_payload, dict) else [],
+        )
         graph["metadata"] = {
             "disease": ctx.disease,
             "run_id": ctx.run_id,
             "node_count": len(graph["nodes"]),
             "edge_count": len(graph["edges"]),
             "source_session": ctx.run_id,
+            "target": (ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
+            "schema_version": "graph.v1",
         }
         canonical_ids = _canonical_nodes(canonical if isinstance(canonical, dict) else {})
         present_ids = {n["id"] for n in graph["nodes"]}

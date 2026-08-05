@@ -8,6 +8,7 @@ import type {
   RunStatusResponse,
   RunSummary,
   StartRunResponse,
+  AnalysisTarget,
   EvidenceSummary,
 } from "./types";
 import { OFFLINE_EVIDENCE, OFFLINE_GRAPHS, OFFLINE_RUN, OFFLINE_RUNS } from "../offlineData";
@@ -57,6 +58,7 @@ export const api = {
   startRun: (payload: {
     disease: string;
     gene?: string;
+    target?: AnalysisTarget;
     autonomy_level?: AutonomyLevel;
     dev_pubmed_retmax?: number;
   }) =>

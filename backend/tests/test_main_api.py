@@ -64,6 +64,32 @@ def test_decision_endpoint_404_for_unknown_run(client):
     assert resp.status_code == 404
 
 
+def test_start_accepts_nested_target_and_persists_it(client, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    async def _completes(prompt, **kwargs):
+        yield {"type": "result", "is_error": False, "result": "done"}
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _completes)
+    response = client.post(
+        "/api/pipeline/run",
+        json={
+            "target": {
+                "disease": "asthma",
+                "genes": ["IL33"],
+                "drugs": ["itepekimab"],
+                "tissues": ["lung"],
+                "cell_types": ["airway epithelial cell"],
+            }
+        },
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["target"]["drugs"] == ["itepekimab"]
+    status = _poll_status_until(client, payload["run_id"], {"completed"})
+    assert status["target_schema_version"] == "target.v1"
+
+
 def test_decision_endpoint_422_for_invalid_decision_value(client, monkeypatch):
     import app.orchestrator as orch_mod
 

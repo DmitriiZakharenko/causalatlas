@@ -163,7 +163,16 @@ def classify_node(node: str) -> str:
         return "Molecule"
     if "muscle" in node.lower():
         return "Tissue"
-    return "Molecule"
+    return "Unknown"
+
+
+def _supporting_sentence(abstract: str, source: str, target: str) -> str | None:
+    """Return the exact abstract sentence containing both extracted entities."""
+    for sentence in re.split(r"(?<=[.!?])\s+", abstract.strip()):
+        lowered = sentence.lower()
+        if source.lower() in lowered and target.lower() in lowered:
+            return sentence.strip()
+    return None
 
 
 def extract_from_abstract(abstract: str, pmid: str, year: str, species: str, confidence: float) -> list[dict]:
@@ -186,6 +195,7 @@ def extract_from_abstract(abstract: str, pmid: str, year: str, species: str, con
                 "species": species,
                 "confidence": confidence,
                 "extraction_method": "template",
+                "source_sentence": _supporting_sentence(abstract, source, target),
             })
 
     # Pattern-based extraction (lower precision, deduplicated)
@@ -208,6 +218,7 @@ def extract_from_abstract(abstract: str, pmid: str, year: str, species: str, con
                         "species": species,
                         "confidence": max(confidence - 0.15, 0.30),
                         "extraction_method": "pattern",
+                        "source_sentence": _supporting_sentence(abstract, src, tgt),
                     })
 
     return edges

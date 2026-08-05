@@ -23,6 +23,7 @@ that actually appeared in the orchestrator's real stream-json output.
 from __future__ import annotations
 
 import asyncio
+import json
 import re
 import uuid
 from datetime import datetime, timezone
@@ -30,6 +31,7 @@ from pathlib import Path
 
 from app import db, llm_cli as claude_cli
 from app.agent_registry import AGENT_ORDER
+from app.target_models import AnalysisTarget
 
 # Phase 3: the exact machine-parseable marker agent00_orchestrator's AGENTS.md
 # instructs it to print (as the first line of its final text response) when
@@ -70,6 +72,7 @@ def build_orchestrator_prompt(
     gene: str | None,
     autonomy_level: str,
     session_dir: Path,
+    target: AnalysisTarget | None = None,
     pubmed_retmax_override: int | None = None,
 ) -> str:
     merge_note = ""
@@ -90,6 +93,7 @@ def build_orchestrator_prompt(
             f"\nNo prior knowledge graph exists yet for this disease -- Agent 6 will create "
             f"one fresh at data/graphs/{slugify(disease)}/knowledge_graph.json."
         )
+    target = target or AnalysisTarget(disease=disease, genes=[gene] if gene else [])
     gene_line = f"gene: {gene}" if gene else "gene: (none specified -- disease-wide target)"
     retmax_note = ""
     if pubmed_retmax_override is not None:
@@ -106,6 +110,8 @@ def build_orchestrator_prompt(
 run_id: {run_id}
 disease: {disease}
 {gene_line}
+target_schema_version: {target.schema_version}
+target_json: {json.dumps(target.model_dump(mode="json"), separators=(",", ":"))}
 autonomy_level: {autonomy_level}
 session output directory (absolute): {session_dir}
 {merge_note}
@@ -301,22 +307,46 @@ class RunManager:
         gene: str | None,
         autonomy_level: str,
         *,
+        target: AnalysisTarget | None = None,
         pubmed_retmax_override: int | None = None,
     ) -> str:
+        target = target or AnalysisTarget(disease=disease, genes=[gene] if gene else [])
         run_id = make_run_id(disease)
         session_dir = session_dir_for(run_id)
+        (session_dir / "analysis_target.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": target.schema_version,
+                    "target": target.model_dump(mode="json"),
+                    "legacy_request": {"disease": disease, "gene": gene},
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n"
+        )
         # Generated up front (not parsed back out of the first stream event)
         # so it's known before the process even starts, and so a run that
         # pauses before producing any events still has a resumable session_id
         # on file.
         session_id = str(uuid.uuid4())
-        await db.create_run(run_id, disease, gene, autonomy_level, session_id=session_id)
+        target_json = json.dumps(target.model_dump(mode="json"), sort_keys=True)
+        await db.create_run(
+            run_id,
+            disease,
+            gene,
+            autonomy_level,
+            session_id=session_id,
+            target_schema_version=target.schema_version,
+            target_json=target_json,
+        )
         prompt = build_orchestrator_prompt(
             run_id=run_id,
             disease=disease,
             gene=gene,
             autonomy_level=autonomy_level,
             session_dir=session_dir,
+            target=target,
             pubmed_retmax_override=pubmed_retmax_override,
         )
         stream = claude_cli.run_orchestrator_stream(prompt, session_id=session_id)

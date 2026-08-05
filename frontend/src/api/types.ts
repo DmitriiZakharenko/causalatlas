@@ -2,6 +2,16 @@ export type AutonomyLevel = "autocomplete" | "supervised" | "let_it_rip";
 export type RunStatus = "pending" | "running" | "paused" | "completed" | "failed" | "cancelled";
 export type Decision = "approve" | "reject" | "edit";
 
+export interface AnalysisTarget {
+  schema_version: "target.v1";
+  disease: string;
+  genes: string[];
+  drugs: string[];
+  tissues: string[];
+  cell_types: string[];
+  query_mode: string | null;
+}
+
 export interface HumanIntervention {
   id: number;
   run_id: string;
@@ -15,6 +25,8 @@ export interface RunSummary {
   run_id: string;
   disease: string;
   gene: string | null;
+  target_schema_version?: string | null;
+  target?: AnalysisTarget | null;
   autonomy_level: AutonomyLevel;
   status: RunStatus;
   current_agent: string | null;
@@ -59,6 +71,8 @@ export interface StartRunResponse {
   status: "started";
   disease: string;
   gene: string | null;
+  target: AnalysisTarget;
+  target_schema_version: string;
   autonomy_level: AutonomyLevel;
   stream_url: string;
   timestamp: string;
@@ -104,6 +118,9 @@ export interface GraphNode {
   edge_count: number | null;
   sample_pmids: string[];
   looks_like_noise: boolean;
+  provenance_type?: string | null;
+  source?: string | null;
+  source_id?: string | null;
 }
 
 export interface GraphEdge {
@@ -116,6 +133,12 @@ export interface GraphEdge {
   confidence: number | null;
   evidence_strength: string | null;
   sample_pmids: string[];
+  claim_id?: string | null;
+  provenance_type?: string | null;
+  sessions?: string[];
+  context?: Record<string, unknown>;
+  source_refs?: string[];
+  contradiction_group?: string | null;
 }
 
 export interface GraphResponse {

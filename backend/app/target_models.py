@@ -1,0 +1,77 @@
+"""Versioned, backward-compatible analysis target contracts."""
+from __future__ import annotations
+
+from typing import Any, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+
+TargetSchemaVersion = Literal["target.v1"]
+
+
+class AnalysisTarget(BaseModel):
+    """Resolved target used by the pipeline and persisted with every new run."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    schema_version: TargetSchemaVersion = "target.v1"
+    disease: str
+    genes: list[str] = Field(default_factory=list)
+    drugs: list[str] = Field(default_factory=list)
+    tissues: list[str] = Field(default_factory=list)
+    cell_types: list[str] = Field(default_factory=list)
+    query_mode: str | None = None
+
+    @field_validator("disease", "genes", "drugs", "tissues", "cell_types", mode="before")
+    @classmethod
+    def _strip_values(cls, value: Any) -> Any:
+        if isinstance(value, str):
+            return value.strip()
+        if isinstance(value, list):
+            return [item.strip() for item in value if isinstance(item, str) and item.strip()]
+        return value
+
+    @field_validator("genes", "drugs", "tissues", "cell_types")
+    @classmethod
+    def _deduplicate_values(cls, value: list[str]) -> list[str]:
+        return list(dict.fromkeys(value))
+
+    @model_validator(mode="after")
+    def _validate_target(self) -> "AnalysisTarget":
+        if not self.disease:
+            raise ValueError("disease is required")
+        if self.query_mode is None:
+            dimensions = sum(bool(values) for values in (self.genes, self.drugs, self.tissues, self.cell_types))
+            self.query_mode = "disease" if dimensions == 0 else "multidimensional"
+        return self
+
+
+class AnalysisTargetRequest(BaseModel):
+    """Accepts the new nested target plus legacy top-level disease/gene fields."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    disease: str | None = None
+    gene: str | None = None
+    target: AnalysisTarget | None = None
+
+    @model_validator(mode="after")
+    def _resolve(self) -> "AnalysisTargetRequest":
+        legacy_disease = self.disease.strip() if isinstance(self.disease, str) else self.disease
+        legacy_gene = self.gene.strip() if isinstance(self.gene, str) else self.gene
+        if self.target is not None:
+            if legacy_disease and legacy_disease != self.target.disease:
+                raise ValueError("disease conflicts with target.disease")
+            if legacy_gene and self.target.genes and [legacy_gene] != self.target.genes:
+                raise ValueError("gene conflicts with target.genes")
+            return self
+        if not legacy_disease:
+            raise ValueError("disease is required")
+        self.disease = legacy_disease
+        self.gene = legacy_gene or None
+        self.target = AnalysisTarget(disease=legacy_disease, genes=[legacy_gene] if legacy_gene else [])
+        return self
+
+    def resolved_target(self) -> AnalysisTarget:
+        assert self.target is not None
+        return self.target

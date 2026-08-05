@@ -26,6 +26,9 @@ export default function LaunchPage() {
   const navigate = useNavigate();
   const [disease, setDisease] = useState("");
   const [gene, setGene] = useState("");
+  const [drug, setDrug] = useState("");
+  const [tissue, setTissue] = useState("");
+  const [cellType, setCellType] = useState("");
   const [autonomyLevel, setAutonomyLevel] = useState<AutonomyLevel>("let_it_rip");
   const [devRetmax, setDevRetmax] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -61,6 +64,15 @@ export default function LaunchPage() {
       const result = await api.startRun({
         disease: disease.trim(),
         gene: gene.trim() || undefined,
+        target: {
+          schema_version: "target.v1",
+          disease: disease.trim(),
+          genes: gene.trim() ? [gene.trim()] : [],
+          drugs: drug.trim() ? [drug.trim()] : [],
+          tissues: tissue.trim() ? [tissue.trim()] : [],
+          cell_types: cellType.trim() ? [cellType.trim()] : [],
+          query_mode: null,
+        },
         autonomy_level: autonomyLevel,
         dev_pubmed_retmax: devRetmax.trim() ? Number(devRetmax.trim()) : undefined,
       });
@@ -117,6 +129,20 @@ export default function LaunchPage() {
             <label>
               Gene (optional)
               <input value={gene} onChange={(e) => setGene(e.target.value)} placeholder="e.g. IL23A" />
+            </label>
+          </div>
+          <div className="form__row">
+            <label>
+              Drug (optional)
+              <input value={drug} onChange={(e) => setDrug(e.target.value)} placeholder="e.g. itepekimab" />
+            </label>
+            <label>
+              Tissue (optional)
+              <input value={tissue} onChange={(e) => setTissue(e.target.value)} placeholder="e.g. lung" />
+            </label>
+            <label>
+              Cell type (optional)
+              <input value={cellType} onChange={(e) => setCellType(e.target.value)} placeholder="e.g. airway epithelial cell" />
             </label>
           </div>
 

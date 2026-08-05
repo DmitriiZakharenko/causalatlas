@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS runs (
     run_id          TEXT PRIMARY KEY,
     disease         TEXT NOT NULL,
     gene            TEXT,
+    target_schema_version TEXT,
+    target_json     TEXT,
     autonomy_level  TEXT NOT NULL,
     status          TEXT NOT NULL,       -- pending|running|paused|completed|failed
     current_agent   TEXT,
@@ -88,7 +90,11 @@ CREATE INDEX IF NOT EXISTS idx_eval_scores_session ON eval_scores(session_id);
 # doesn't have yet. Additive-only (never drops/renames), same non-destructive
 # spirit as Agent 6's graph-merge constraint.
 _COLUMN_MIGRATIONS: dict[str, list[tuple[str, str]]] = {
-    "runs": [("session_id", "TEXT")],
+    "runs": [
+        ("session_id", "TEXT"),
+        ("target_schema_version", "TEXT"),
+        ("target_json", "TEXT"),
+    ],
 }
 
 
@@ -116,15 +122,17 @@ async def create_run(
     gene: str | None,
     autonomy_level: str,
     session_id: str | None = None,
+    target_schema_version: str | None = None,
+    target_json: str | None = None,
     db_path: Path | None = None,
 ) -> None:
     now = time.time()
     async with aiosqlite.connect(db_path or DB_PATH) as db:
         await db.execute(
-            "INSERT INTO runs (run_id, disease, gene, autonomy_level, status, "
+            "INSERT INTO runs (run_id, disease, gene, target_schema_version, target_json, autonomy_level, status, "
             "current_agent, error, session_id, created_at, updated_at) VALUES "
-            "(?, ?, ?, ?, 'pending', NULL, NULL, ?, ?, ?)",
-            (run_id, disease, gene, autonomy_level, session_id, now, now),
+            "(?, ?, ?, ?, ?, ?, 'pending', NULL, NULL, ?, ?, ?)",
+            (run_id, disease, gene, target_schema_version, target_json, autonomy_level, session_id, now, now),
         )
         await db.commit()
 

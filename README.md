@@ -31,6 +31,31 @@
 
 </div>
 
+> **Extension notice**
+>
+> This repository is a backward-compatible extension of the baseline CausalAtlas
+> disease-target implementation. The current work adds multidimensional analysis
+> targets, including drugs, tissues, and cell types, while preserving the original
+> `disease + gene` workflow and existing session and graph artifacts.
+>
+> The baseline implementation is preserved as Git tag `v0.2.0`.
+> Check out that tag when the original disease-target behavior is required.
+
+## Version compatibility
+
+The project remains one application; this extension is not a separate CausalAtlas
+2.0 repository. The legacy request shape remains valid:
+
+```json
+{
+  "disease": "asthma",
+  "gene": "IL33"
+}
+```
+
+New target dimensions are optional. Existing sessions, graphs, offline snapshots,
+and API clients must remain readable throughout the extension.
+
 ## What is CausalAtlas?
 
 CausalAtlas is a research platform for turning a biomedical question into an inspectable mechanistic argument. It is designed for the failure mode where an LLM produces a convincing biological story, but the story is already known, weakly sourced, or impossible to falsify.

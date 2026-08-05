@@ -104,6 +104,9 @@ def _strip_node(node: dict) -> dict:
         "pmid_count": node.get("pmid_count", len(pmids)),
         "edge_count": node.get("edge_count"),
         "sample_pmids": pmids[:SAMPLE_PMID_LIMIT],
+        "provenance_type": node.get("provenance_type"),
+        "source": node.get("source"),
+        "source_id": node.get("source_id"),
         "looks_like_noise": _looks_like_extraction_noise(node["id"]),
     }
 
@@ -111,7 +114,7 @@ def _strip_node(node: dict) -> dict:
 def _strip_edge(edge: dict, index: int) -> dict:
     pmids = edge.get("pmids") or []
     return {
-        "id": f"e{index}__{edge['source']}__{edge['target']}",
+        "id": edge.get("claim_id") or f"e{index}__{edge['source']}__{edge['target']}",
         "source": edge["source"],
         "target": edge["target"],
         "relation": edge.get("primary_relation"),
@@ -120,6 +123,12 @@ def _strip_edge(edge: dict, index: int) -> dict:
         "confidence": edge.get("confidence"),
         "evidence_strength": edge.get("evidence_strength"),
         "sample_pmids": pmids[:SAMPLE_PMID_LIMIT],
+        "claim_id": edge.get("claim_id"),
+        "provenance_type": edge.get("provenance_type"),
+        "sessions": edge.get("sessions", []),
+        "context": edge.get("context", {}),
+        "source_refs": edge.get("source_refs", []),
+        "contradiction_group": edge.get("contradiction_group"),
     }
 
 
