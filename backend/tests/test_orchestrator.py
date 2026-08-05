@@ -24,6 +24,7 @@ from app.orchestrator import (
     session_dir_for,
     slugify,
 )
+from app.target_models import AnalysisTarget
 
 
 # ---------------------------------------------------------------------------
@@ -309,6 +310,45 @@ def test_build_orchestrator_prompt_low_cost_profile_is_explicit(tmp_path, monkey
     assert "execution_profile: low_cost" in prompt
     assert "at most 3 complementary retrieval strategies" in prompt
     assert "no node-expansion queries" in prompt
+
+
+@pytest.mark.asyncio
+async def test_low_cost_cache_requires_exact_key_and_completed_source(tmp_path, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    monkeypatch.setattr(db, "DB_PATH", tmp_path / "runs.db")
+    monkeypatch.setattr(orch_mod, "SESSIONS_DIR", tmp_path / "sessions")
+    await db.init_db()
+    target = AnalysisTarget(disease="asthma", genes=["IL33"])
+    source = tmp_path / "sessions" / "source-run"
+    source.mkdir(parents=True)
+    key = orch_mod._artifact_cache_key(target, "low_cost", 5)
+    (source / "analysis_target.json").write_text(json.dumps({"cache_key": key}))
+    (source / "publications_raw.json").write_text("{}")
+    await db.create_run("source-run", "asthma", "IL33", "let_it_rip")
+    await db.update_run_status("source-run", "completed")
+
+    destination = tmp_path / "sessions" / "new-run"
+    destination.mkdir()
+    manifest = await orch_mod._reuse_compatible_artifacts(
+        target=target,
+        execution_profile="low_cost",
+        retmax=5,
+        session_dir=destination,
+        current_run_id="new-run",
+    )
+    assert manifest["source_run_id"] == "source-run"
+    assert (destination / "publications_raw.json").exists()
+    assert (destination / "cache_manifest.json").exists()
+
+    incompatible = await orch_mod._reuse_compatible_artifacts(
+        target=AnalysisTarget(disease="asthma", genes=["IL33"], tissues=["lung"]),
+        execution_profile="low_cost",
+        retmax=5,
+        session_dir=tmp_path / "sessions" / "other-run",
+        current_run_id="other-run",
+    )
+    assert incompatible is None
 
 
 def test_build_orchestrator_prompt_no_merge_note_for_new_disease(tmp_path, monkeypatch):

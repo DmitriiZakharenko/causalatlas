@@ -528,6 +528,19 @@ Example:
 
 This profile reduces corpus and prompt size without weakening graph acceptance rules. The more extensive future optimization is to move verification, quality scoring, merge, topology, and contradiction detection fully into deterministic local stages; those stages must remain provenance-equivalent before replacing their current agent path.
 
+### Historical artifact reuse
+
+Graph merge and literature-artifact reuse are separate mechanisms:
+
+- the existing disease graph may be loaded by Agent 6 for a non-destructive merge;
+- this does not mean that old PubMed retrieval or verification outputs are automatically reused;
+- `standard` runs remain fresh by default;
+- `low_cost` runs may reuse read-only input artifacts only when an exact cache key matches the normalized target, execution profile, and retrieval budget.
+
+When an exact match exists, the new run receives copies of `canonical_baseline.json`, `publications_raw.json`, `publications_verified.json`, quality summaries, and compact inputs. `cache_manifest.json` records the source run and copied artifacts. The source run is required to be completed, and a changed gene, disease, tissue, cell type, drug, profile, or retrieval limit invalidates the cache. The graph itself is still written under the new run ID and retains the current run provenance; cached evidence is not silently relabeled as newly retrieved evidence.
+
+This means a repeated low-cost request can avoid paying for the same retrieval and verification work, while a scientifically different request starts with a fresh corpus. Cache reuse is intentionally exact rather than approximate: a partial semantic match could introduce target contamination that is more costly scientifically than the saved tokens.
+
 ### `autonomy_level`
 
 - `let_it_rip`: run without approval pauses;

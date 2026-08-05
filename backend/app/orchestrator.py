@@ -23,8 +23,10 @@ that actually appeared in the orchestrator's real stream-json output.
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import re
+import shutil
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -72,6 +74,59 @@ def session_dir_for(run_id: str) -> Path:
     return d
 
 
+def _artifact_cache_key(target: AnalysisTarget, execution_profile: str, retmax: int | None) -> str:
+    payload = {
+        "schema_version": target.schema_version,
+        "target": target.model_dump(mode="json"),
+        "execution_profile": execution_profile,
+        "retrieval_retmax": retmax,
+    }
+    return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+
+async def _reuse_compatible_artifacts(
+    *, target: AnalysisTarget, execution_profile: str, retmax: int | None, session_dir: Path, current_run_id: str
+) -> dict | None:
+    """Copy only exact-target, completed-run inputs into a new low-cost run."""
+    if execution_profile != "low_cost":
+        return None
+    cache_key = _artifact_cache_key(target, execution_profile, retmax)
+    runs = await db.list_runs()
+    completed_ids = {str(run.get("run_id")) for run in runs if run.get("status") == "completed"}
+    candidates = sorted(SESSIONS_DIR.iterdir(), key=lambda path: path.stat().st_mtime, reverse=True) if SESSIONS_DIR.exists() else []
+    reusable = {"canonical_baseline.json", "publications_raw.json", "publications_verified.json", "quality_scores.json",
+                "publications_verified_compact.json", "quality_scores_compact.json"}
+    for source_dir in candidates:
+        if not source_dir.is_dir() or source_dir.name in {current_run_id} or source_dir.name not in completed_ids:
+            continue
+        manifest_path = source_dir / "analysis_target.json"
+        if not manifest_path.exists():
+            continue
+        try:
+            manifest = json.loads(manifest_path.read_text())
+        except Exception:  # noqa: BLE001
+            continue
+        if manifest.get("cache_key") != cache_key:
+            continue
+        copied = []
+        for name in sorted(reusable):
+            source = source_dir / name
+            if source.exists():
+                shutil.copy2(source, session_dir / name)
+                copied.append(name)
+        if copied:
+            result = {
+                "schema_version": "artifact-cache.v1",
+                "cache_key": cache_key,
+                "source_run_id": source_dir.name,
+                "artifacts": copied,
+                "reuse_policy": "exact_target_profile_and_retrieval_budget",
+            }
+            (session_dir / "cache_manifest.json").write_text(json.dumps(result, indent=2) + "\n")
+            return result
+    return None
+
+
 def existing_graph_path(disease: str) -> Path | None:
     path = GRAPHS_DIR / slugify(disease) / "knowledge_graph.json"
     return path if path.exists() else None
@@ -88,6 +143,7 @@ def build_orchestrator_prompt(
     pubmed_retmax_override: int | None = None,
     analysis_mode: str = "graph_only",
     execution_profile: str = "standard",
+    cache_manifest: dict | None = None,
 ) -> str:
     merge_note = ""
     prior_graph = existing_graph_path(disease)
@@ -128,6 +184,14 @@ def build_orchestrator_prompt(
             "hypothesis, peer-review, or experiment-design stages. Preserve every strict "
             "PMID/sentence/provenance quality gate."
         )
+    cache_note = ""
+    if cache_manifest:
+        cache_note = (
+            f"\nCOMPATIBLE ARTIFACT CACHE: read-only inputs were copied from completed run "
+            f"{cache_manifest['source_run_id']} into this session. Reuse the listed artifacts "
+            "and do not repeat retrieval or verification unless an artifact is missing. "
+            "Retain the current run_id in all newly written outputs."
+        )
     return f"""Run the full 13-agent pipeline for this target:
 
 run_id: {run_id}
@@ -142,6 +206,7 @@ session output directory (absolute): {session_dir}
 {merge_note}
 {retmax_note}
 {profile_note}
+{cache_note}
 
 Follow your AGENTS.md exactly. In `graph_only` mode, dispatch only Agents 1 through 09,
 then stop after graph, semantic validation, topology, contradiction and gap analysis;
@@ -370,6 +435,7 @@ class RunManager:
                     "legacy_request": {"disease": target.disease, "gene": gene},
                     "analysis_mode": analysis_mode,
                     "execution_profile": execution_profile,
+                    "cache_key": _artifact_cache_key(target, execution_profile, pubmed_retmax_override),
                 },
                 indent=2,
                 sort_keys=True,
@@ -421,6 +487,13 @@ class RunManager:
             target_schema_version=target.schema_version,
             target_json=target_json,
         )
+        cache_manifest = await _reuse_compatible_artifacts(
+            target=target,
+            execution_profile=execution_profile,
+            retmax=pubmed_retmax_override,
+            session_dir=session_dir,
+            current_run_id=run_id,
+        )
         prompt = build_orchestrator_prompt(
             run_id=run_id,
             disease=scope,
@@ -431,6 +504,7 @@ class RunManager:
             pubmed_retmax_override=pubmed_retmax_override,
             analysis_mode=analysis_mode,
             execution_profile=execution_profile,
+            cache_manifest=cache_manifest,
         )
         stream = claude_cli.run_orchestrator_stream(prompt, session_id=session_id)
         task = asyncio.create_task(self._run(run_id, stream))
