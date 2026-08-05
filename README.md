@@ -25,12 +25,6 @@
 
 <img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline from evidence to experiment" width="100%" />
 
-<p><strong>Example evidence graph</strong></p>
-
-<img src="docs/assets/asthma-run-20260805T112631Z-pmid-min2.svg" alt="CausalAtlas asthma evidence graph showing cytokines, cells, tissue and clinical phenotypes" width="100%" />
-
-<p><small>Illustrative run-scoped view from <code>asthma_20260805T112631Z</code>. The image applies the explicitly labeled <code>edge pmid_count ≥ 2</code> readability filter; it is a visualization of published evidence, not biological truth.</small></p>
-
 <p>
   <strong>Workflow</strong><br />
   Disease + target → evidence trail → causal graph<br />
@@ -88,6 +82,20 @@ mechanistic extraction → causal knowledge graph
 ```
 
 The result is a set of inspectable artifacts: publications, directed edges, provenance, contradictions, novelty audits, reviewer decisions and experimental controls.
+
+## Example evidence graph
+
+This is a real run-scoped view from `asthma_20260805T112631Z`. It uses an
+explicit `edge pmid_count ≥ 2` readability filter; the source graph remains
+unfiltered and auditable. The visualization represents published evidence, not
+biological truth.
+
+<p align="center">
+  <img src="docs/assets/asthma-run-20260805T112631Z-pmid-min2.svg" alt="CausalAtlas asthma evidence graph showing cytokines, cells, tissue and clinical phenotypes" width="100%" />
+</p>
+
+The export metadata and reproducible generator are kept alongside the image in
+[`docs/assets/`](docs/assets/) and [`scripts/export_readme_graph.py`](scripts/export_readme_graph.py).
 
 ## Start here
 
