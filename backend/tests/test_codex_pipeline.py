@@ -81,6 +81,21 @@ def test_drug_gene_evidence_states_keep_statistics_separate_from_literature(tmp_
     assert pair["no_literature_support"]["status"] == "not_applicable"
 
 
+def test_drug_inhibitor_language_is_direct_and_pathway_language_is_indirect(tmp_path):
+    from app.codex_pipeline import PipelineContext, _materialize_local_drug_knowledge
+    from app.target_models import AnalysisTarget
+
+    target = AnalysisTarget(disease="melanoma", genes=["BRAF"], drugs=["vemurafenib"])
+    ctx = PipelineContext("run-1", "melanoma", "BRAF", "let_it_rip", tmp_path, tmp_path, target, "graph_only")
+    payload = _materialize_local_drug_knowledge(ctx, [{
+        "pmid": "1", "year": "2025", "species": "human",
+        "abstract": "Vemurafenib is a selective BRAF inhibitor. Vemurafenib resistance activates the MAPK pathway.",
+    }])
+    predicates = {(claim["predicate"], claim["mechanism_class"]) for claim in payload["claims"]}
+    assert ("binds_target", "direct_target") in predicates
+    assert ("indirectly_modulates", "indirect_pathway") in predicates
+
+
 def test_codex_pipeline_emits_streamtranslator_compatible_events(tmp_path, monkeypatch):
     import app.codex_pipeline as pipeline
     import app.codex_cli as codex_cli

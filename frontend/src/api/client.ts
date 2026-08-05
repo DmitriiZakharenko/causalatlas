@@ -57,7 +57,7 @@ export const api = {
 
   // --- Pipeline runs (Phase 2/3) ---------------------------------------
   startRun: (payload: {
-    disease: string;
+    disease?: string;
     gene?: string;
     target?: AnalysisTarget;
     autonomy_level?: AutonomyLevel;

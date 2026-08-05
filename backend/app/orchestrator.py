@@ -57,6 +57,15 @@ def make_run_id(disease: str) -> str:
     return f"{slugify(disease)}_{ts}"
 
 
+def target_scope_label(target: AnalysisTarget) -> str:
+    """Return a persistence/search scope without fabricating a disease."""
+    if target.disease:
+        return target.disease
+    genes = "_".join(target.genes) or "any_gene"
+    drugs = "_".join(target.drugs) or "any_drug"
+    return f"gene_drug_{genes}_{drugs}"
+
+
 def session_dir_for(run_id: str) -> Path:
     d = SESSIONS_DIR / run_id
     d.mkdir(parents=True, exist_ok=True)
@@ -331,7 +340,8 @@ class RunManager:
         analysis_mode: str = "graph_only",
     ) -> str:
         target = target or AnalysisTarget(disease=disease, genes=[gene] if gene else [])
-        run_id = make_run_id(disease)
+        scope = target_scope_label(target)
+        run_id = make_run_id(scope)
         session_dir = session_dir_for(run_id)
         (session_dir / "analysis_target.json").write_text(
             json.dumps(
@@ -344,7 +354,7 @@ class RunManager:
                         "tissues": normalize_target_dimensions(target.tissues, "tissue"),
                         "cell_types": normalize_target_dimensions(target.cell_types, "cell_type"),
                     },
-                    "legacy_request": {"disease": disease, "gene": gene},
+                    "legacy_request": {"disease": target.disease, "gene": gene},
                     "analysis_mode": analysis_mode,
                 },
                 indent=2,
@@ -390,7 +400,7 @@ class RunManager:
         target_json = json.dumps(target.model_dump(mode="json"), sort_keys=True)
         await db.create_run(
             run_id,
-            disease,
+            scope,
             gene,
             autonomy_level,
             session_id=session_id,
@@ -399,7 +409,7 @@ class RunManager:
         )
         prompt = build_orchestrator_prompt(
             run_id=run_id,
-            disease=disease,
+            disease=scope,
             gene=gene,
             autonomy_level=autonomy_level,
             session_dir=session_dir,

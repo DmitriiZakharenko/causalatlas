@@ -32,7 +32,7 @@ class AnalysisTarget(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     schema_version: TargetSchemaVersion = "target.v1"
-    disease: str
+    disease: str | None = None
     genes: list[str] = Field(default_factory=list)
     drugs: list[str] = Field(default_factory=list)
     tissues: list[str] = Field(default_factory=list)
@@ -56,8 +56,8 @@ class AnalysisTarget(BaseModel):
 
     @model_validator(mode="after")
     def _validate_target(self) -> "AnalysisTarget":
-        if not self.disease:
-            raise ValueError("disease is required")
+        if not self.disease and not (self.genes and self.drugs):
+            raise ValueError("disease is required unless both genes and drugs are provided")
         if self.query_mode is None:
             dimensions = sum(bool(values) for values in (self.genes, self.drugs, self.tissues, self.cell_types))
             self.query_mode = "disease" if dimensions == 0 else "multidimensional"

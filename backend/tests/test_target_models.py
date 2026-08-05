@@ -35,6 +35,20 @@ def test_nested_target_deduplicates_and_strips_values():
     assert target.query_mode == "multidimensional"
 
 
+def test_disease_free_mode_requires_both_gene_and_drug():
+    target = AnalysisTargetRequest(
+        target={
+            "disease": None,
+            "genes": ["BRAF"],
+            "drugs": ["vemurafenib"],
+        }
+    ).resolved_target()
+    assert target.disease is None
+    assert target.genes == ["BRAF"]
+    with pytest.raises(ValidationError, match="disease is required"):
+        AnalysisTargetRequest(target={"disease": None, "genes": ["BRAF"], "drugs": []})
+
+
 def test_conflicting_legacy_and_nested_values_are_rejected():
     with pytest.raises(ValidationError, match="conflicts"):
         AnalysisTargetRequest(

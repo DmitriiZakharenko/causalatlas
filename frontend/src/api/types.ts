@@ -5,7 +5,7 @@ export type AnalysisMode = "graph_only" | "full";
 
 export interface AnalysisTarget {
   schema_version: "target.v1";
-  disease: string;
+  disease: string | null;
   genes: string[];
   drugs: string[];
   tissues: string[];
@@ -74,7 +74,8 @@ export interface EvidenceSummary {
 export interface StartRunResponse {
   run_id: string;
   status: "started";
-  disease: string;
+  disease: string | null;
+  scope?: string;
   gene: string | null;
   target: AnalysisTarget;
   target_schema_version: string;

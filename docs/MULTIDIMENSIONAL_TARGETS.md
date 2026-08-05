@@ -65,11 +65,13 @@ causal PMID edges and are not treated as biological proof.
 
 ## Target contract
 
-The implementation keeps `disease` required because the current pipeline and
-cumulative graph namespace are disease-scoped. `genes`, `drugs`, `tissues`, and
-`cell_types` are optional. Empty dimensions must not be represented as fabricated
-biological facts. The resolved target, normalized identifiers, query mode, and
-schema version must be stored with the run.
+The implementation accepts either a disease-scoped target or a disease-free
+gene–drug target. In disease-free mode, both `genes` and `drugs` are required;
+the persisted target keeps `disease: null`, while the database/run ID uses a
+technical `gene_drug_<gene>_<drug>` scope. That scope is never inserted into
+PubMed queries as if it were a disease. `genes`, `drugs`, `tissues`, and
+`cell_types` remain optional within the disease-scoped contract, and empty
+dimensions must not be represented as fabricated biological facts.
 
 ## Search and quality controls
 

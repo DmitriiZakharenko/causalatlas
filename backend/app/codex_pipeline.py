@@ -372,8 +372,8 @@ def _parse_pubmed_xml(xml_text: str) -> list[dict]:
 
 
 def _target_queries(ctx: PipelineContext) -> list[dict]:
-    disease = ctx.disease
-    target = ctx.target or AnalysisTarget(disease=disease, genes=[ctx.gene] if ctx.gene else [])
+    target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
+    disease = target.disease or ""
     genes = target.genes
     drugs = target.drugs
     tissues = target.tissues
@@ -381,22 +381,24 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
     queries = []
     gene = genes[0] if genes else None
     if gene:
-        queries.append({"strategy": "gene_disease_direct", "query": f"{gene} {disease}"})
+        if disease:
+            queries.append({"strategy": "gene_disease_direct", "query": f"{gene} {disease}"})
+        elif drugs:
+            queries.append({"strategy": "gene_drug_direct", "query": f'"{gene}" "{drugs[0]}"'})
         context_terms = " ".join(tissues[:1] + cell_types[:1])
-        queries.append(
-            {
-                "strategy": "gene_context_mechanism",
-                "query": f"{gene} {disease} {context_terms} mechanism".strip(),
-            }
-        )
+        context_query = f"{gene} {disease} {context_terms} mechanism".strip()
+        if context_query:
+            queries.append({"strategy": "gene_context_mechanism", "query": context_query})
     for drug in drugs:
+        anchor = " ".join(genes) if genes else ""
         queries.extend(
             [
-                {"strategy": "drug_target_direct", "query": f'"{drug}" {" ".join(genes) if genes else disease} (target OR binds OR neutralizes)'},
-                {"strategy": "drug_target_mechanism", "query": f'"{drug}" {" ".join(genes) if genes else disease} (mechanism OR antibody OR pathway)'},
-                {"strategy": "drug_disease_direct", "query": f'"{drug}" "{disease}"'},
+                {"strategy": "drug_target_direct", "query": f'"{drug}" {anchor or disease} (target OR binds OR neutralizes)'.strip()},
+                {"strategy": "drug_target_mechanism", "query": f'"{drug}" {anchor or disease} (mechanism OR antibody OR pathway)'.strip()},
             ]
         )
+        if disease:
+            queries.append({"strategy": "drug_disease_direct", "query": f'"{drug}" "{disease}"'})
     for tissue in tissues:
         queries.append({"strategy": "tissue_context", "query": f'"{tissue}" "{disease}" {" ".join(genes or drugs)}'.strip()})
     for cell_type in cell_types:
@@ -405,12 +407,13 @@ def _target_queries(ctx: PipelineContext) -> list[dict]:
     # dimension has received a dedicated query. The previous ordering spent
     # all six slots on gene-only searches and silently dropped tissue/cell
     # coverage for multidimensional targets.
-    queries.extend(
-        [
-            {"strategy": "disease_mech_mesh", "query": f'"{disease}"[MeSH Terms] cytokine signaling mechanism'},
-            {"strategy": "disease_fibrosis_mesh", "query": f'"{disease}"[MeSH Terms] fibrosis'},
-        ]
-    )
+    if disease:
+        queries.extend(
+            [
+                {"strategy": "disease_mech_mesh", "query": f'"{disease}"[MeSH Terms] cytokine signaling mechanism'},
+                {"strategy": "disease_fibrosis_mesh", "query": f'"{disease}"[MeSH Terms] fibrosis'},
+            ]
+        )
     return queries
 
 
@@ -436,8 +439,9 @@ def _node_expansion_queries(ctx: PipelineContext, papers: list[dict], *, limit: 
             scored.append((count, node))
     scored.sort(key=lambda item: (-item[0], item[1]))
     anchor = target.genes[0] if target.genes else (target.drugs[0] if target.drugs else ctx.disease)
+    scope = target.disease or " ".join(target.drugs)
     return [
-        {"strategy": "node_expansion", "node": node, "query": f'"{anchor}" "{node}" "{ctx.disease}"'}
+        {"strategy": "node_expansion", "node": node, "query": f'"{anchor}" "{node}" "{scope}"'.strip()}
         for _, node in scored[:limit]
     ]
 
@@ -606,7 +610,7 @@ def _materialize_local_verification(ctx: PipelineContext) -> dict:
     rejected = []
     target = ctx.target or AnalysisTarget(disease=ctx.disease, genes=[ctx.gene] if ctx.gene else [])
     target_terms = [target.disease, *target.genes, *target.drugs, *target.tissues, *target.cell_types]
-    target_terms = [term.casefold() for term in target_terms if term.strip()]
+    target_terms = [term.casefold() for term in target_terms if isinstance(term, str) and term.strip()]
     for paper in raw.get("publications", []):
         if not paper.get("pmid") or not paper.get("title"):
             rejected.append({"pmid": paper.get("pmid"), "reason": "incomplete_metadata"})
@@ -704,8 +708,9 @@ def _materialize_local_mechanisms(ctx: PipelineContext) -> dict:
             edges.append(edge)
     for edge in edges:
         edge["session"] = ctx.run_id
+        target_disease = (ctx.target.disease if ctx.target else None) or ""
         edge["context"] = {
-            "disease": [ctx.disease],
+            "disease": [target_disease] if target_disease else [],
             "tissues": list((ctx.target or AnalysisTarget(disease=ctx.disease)).tissues),
             "cell_types": list((ctx.target or AnalysisTarget(disease=ctx.disease)).cell_types),
             "drugs": list((ctx.target or AnalysisTarget(disease=ctx.disease)).drugs),
@@ -808,7 +813,10 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
         (_read_json(ctx.session_dir / "publications_verified.json") or {}).get("publications", [])
     )
     claims: list[dict] = []
-    direct_cues = re.compile(r"bind|neutraliz|monoclonal antibody|blocking antibody", re.IGNORECASE)
+    direct_cues = re.compile(
+        r"bind|neutraliz|monoclonal antibody|blocking antibody|\binhibitor\b|\binhibits?\b|\btarget(?:s|ed|ing)?\b",
+        re.IGNORECASE,
+    )
     indirect_cues = re.compile(
         r"pathway|signaling|signalling|downstream|mediates|modulat|inhibit|activat|phosphorylat|ampk|mtor",
         re.IGNORECASE,
@@ -862,7 +870,7 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                             "source_sentence": gene_sentence,
                             "provenance_type": "pmid",
                             "source_refs": [{"pmid": pmid, "source_sentence": gene_sentence}],
-                            "context": {"disease": [ctx.disease], "drugs": [drug]},
+                            "context": {"disease": [target.disease] if target.disease else [], "drugs": [drug]},
                         },
                         "provenance": [provenance],
                     }
@@ -901,7 +909,7 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                             "source_sentence": pathway_sentence,
                             "provenance_type": "pmid",
                             "source_refs": [{"pmid": pmid, "source_sentence": pathway_sentence}],
-                            "context": {"disease": [ctx.disease], "drugs": [drug]},
+                            "context": {"disease": [target.disease] if target.disease else [], "drugs": [drug]},
                         },
                         "provenance": [provenance],
                     }

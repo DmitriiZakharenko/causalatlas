@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 from app import db, eval as eval_mod, graphs as graphs_mod, evidence
 from app.agent_registry import AGENT_ORDER
 from app.llm_common import get_llm_provider
-from app.orchestrator import run_manager
+from app.orchestrator import run_manager, target_scope_label
 from app.target_models import AnalysisTargetRequest
 
 app = FastAPI(title="CausalAtlas API", version="0.2.0")
@@ -97,7 +97,7 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
             detail=f"autonomy_level must be one of {sorted(VALID_AUTONOMY_LEVELS)}",
         )
     run_id = await run_manager.start_run(
-        target.disease,
+        target_scope_label(target),
         target.genes[0] if target.genes else None,
         req.autonomy_level,
         target=target,
@@ -108,6 +108,7 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
         "run_id": run_id,
         "status": "started",
         "disease": target.disease,
+        "scope": target_scope_label(target),
         "gene": target.genes[0] if target.genes else None,
         "target": target.model_dump(mode="json"),
         "target_schema_version": target.schema_version,

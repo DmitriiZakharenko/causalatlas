@@ -61,19 +61,19 @@ export default function LaunchPage() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!disease.trim()) {
-      setSubmitError("Disease is required.");
+    if (!disease.trim() && !(gene.trim() && drug.trim())) {
+      setSubmitError("Provide a disease, or provide both a gene and a drug for disease-free mode.");
       return;
     }
     setSubmitting(true);
     setSubmitError(null);
     try {
       const result = await api.startRun({
-        disease: disease.trim(),
+        disease: disease.trim() || undefined,
         gene: gene.trim() || undefined,
         target: {
           schema_version: "target.v1",
-          disease: disease.trim(),
+          disease: disease.trim() || null,
           genes: gene.trim() ? [gene.trim()] : [],
           drugs: drug.trim() ? [drug.trim()] : [],
           tissues: tissue.trim() ? [tissue.trim()] : [],
@@ -136,12 +136,11 @@ export default function LaunchPage() {
         <form onSubmit={onSubmit} className="form">
           <div className="form__row">
             <label>
-              Disease / target *
+                Disease / target (optional for gene + drug)
               <input
                 value={disease}
                 onChange={(e) => setDisease(e.target.value)}
                 placeholder="e.g. psoriasis"
-                required
               />
             </label>
             <label>
