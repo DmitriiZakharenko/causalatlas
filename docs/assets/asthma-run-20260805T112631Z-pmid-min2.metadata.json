@@ -1,0 +1,21 @@
+{
+  "source": "data/graphs/asthma/asthma_20260805T112631Z/knowledge_graph.json",
+  "run_id": "asthma_20260805T112631Z",
+  "filter": "edge pmid_count >= 2; retain incident nodes",
+  "source_node_count": 46,
+  "source_edge_count": 77,
+  "exported_node_count": 14,
+  "exported_edge_count": 15,
+  "node_type_colors": {
+    "Disease": "#be123c",
+    "Gene": "#2563eb",
+    "Drug": "#7c3aed",
+    "Tissue": "#0891b2",
+    "Cell": "#16a34a",
+    "Cell_type": "#16a34a",
+    "Cytokine": "#e07a3f",
+    "Molecule": "#5aa469",
+    "Pathway": "#d97706",
+    "Clinical_phenotype": "#c23a4b"
+  }
+}

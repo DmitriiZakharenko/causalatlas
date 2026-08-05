@@ -25,6 +25,12 @@
 
 <img src="docs/causalatlas-pipeline.svg" alt="CausalAtlas pipeline from evidence to experiment" width="100%" />
 
+<p><strong>Example evidence graph</strong></p>
+
+<img src="docs/assets/asthma-run-20260805T112631Z-pmid-min2.svg" alt="CausalAtlas asthma evidence graph showing cytokines, cells, tissue and clinical phenotypes" width="100%" />
+
+<p><small>Illustrative run-scoped view from <code>asthma_20260805T112631Z</code>. The image applies the explicitly labeled <code>edge pmid_count ≥ 2</code> readability filter; it is a visualization of published evidence, not biological truth.</small></p>
+
 <p>
   <strong>Workflow</strong><br />
   Disease + target → evidence trail → causal graph<br />
