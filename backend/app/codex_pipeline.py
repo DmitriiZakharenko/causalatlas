@@ -26,6 +26,7 @@ SEARCH_BUDGETS = {
     "agent10_novelty_verification": {"max_queries": 8, "max_publications": 40, "deadline_s": 180},
     "agent12_peer_review": {"max_queries": 6, "max_publications": 30, "deadline_s": 180},
 }
+DOWNSTREAM_TOKEN_BUDGET = 2_000_000
 
 
 @dataclass
@@ -124,6 +125,10 @@ def _merge_usage(total: dict, usage: dict | None) -> dict:
         total["cost_usd"] = float(total.get("cost_usd", 0.0)) + float(usage["cost_usd"])
     total["usage_source"] = usage.get("usage_source", "codex_cli_jsonl")
     return total
+
+
+def _token_budget_exhausted(usage_total: dict) -> bool:
+    return int(usage_total.get("total_tokens", 0) or 0) >= DOWNSTREAM_TOKEN_BUDGET
 
 
 def _write_json(path: Path, payload) -> None:
@@ -1500,7 +1505,9 @@ async def run_orchestrator_stream(
         yield _tool_result_event("a09", f"contradictions: {len(stage['contradictions'])}, gaps: {len(stage['gaps'])}")
 
         # Agent 10 novelty audit over candidates.
-        candidates = _candidate_manifest(ctx)[:_budget("agent10_novelty_verification")["max_queries"]]
+        # Each novelty call receives graph context and is therefore expensive.
+        # Audit only the two highest-priority candidates in a bounded run.
+        candidates = _candidate_manifest(ctx)[:2]
         novelty_checkpoint_path = ctx.session_dir / "checkpoints" / "agent10_novelty_verification.json"
         novelty_checkpoint = _read_json(novelty_checkpoint_path) if novelty_checkpoint_path.exists() else {}
         audits = list(novelty_checkpoint.get("audits", []))
@@ -1508,6 +1515,8 @@ async def run_orchestrator_stream(
         if skill_event:
             yield skill_event
         for idx, candidate in enumerate(candidates[len(audits):], start=len(audits) + 1):
+            if _token_budget_exhausted(usage_total):
+                break
             yield _tool_use_event(
                 "Agent",
                 {"subagent_type": "agent10_novelty_verification", "description": candidate["original_statement"]},
@@ -1541,18 +1550,10 @@ async def run_orchestrator_stream(
         eligible = _eligible_audits(novelty_audit)
         if not eligible and candidates:
             eligible = _template_audits_from_candidates(candidates)
-        if not eligible and candidates:
-            eligible = [
-                {
-                    "hypothesis_id": candidates[0].get("hypothesis_id", "H001"),
-                    "eligible_for_hypothesis_generation": True,
-                    "novelty_class": "D",
-                    "candidate": candidates[0],
-                    "source": "fallback_seed",
-                }
-            ]
         hypotheses = []
         for idx, audit in enumerate(eligible, start=1):
+            if _token_budget_exhausted(usage_total):
+                break
             yield _tool_use_event(
                 "Agent",
                 {"subagent_type": "agent11_hypothesis_generation", "description": audit.get("hypothesis_id", f"H{idx}")},
@@ -1582,6 +1583,8 @@ async def run_orchestrator_stream(
         reviews = list(review_checkpoint.get("reviews", []))
         review_limit = min(len(hypotheses), _budget("agent12_peer_review")["max_queries"])
         for idx, hyp in enumerate(hypotheses[len(reviews):review_limit], start=len(reviews) + 1):
+            if _token_budget_exhausted(usage_total):
+                break
             yield _tool_use_event(
                 "Agent",
                 {"subagent_type": "agent12_peer_review", "description": hyp.get("hypothesis_id", f"H{idx}")},
@@ -1607,6 +1610,8 @@ async def run_orchestrator_stream(
         for idx, review in enumerate(reviews, start=1):
             if review.get("consensus") == "REJECT":
                 continue
+            if _token_budget_exhausted(usage_total):
+                break
             yield _tool_use_event(
                 "Agent",
                 {"subagent_type": "agent13_experiment_design", "description": review.get("hypothesis_id", f"H{idx}")},
@@ -1644,7 +1649,7 @@ async def run_orchestrator_stream(
                 key: value
                 for key, value in usage_total.items()
                 if key != "cost_usd" and value is not None
-            },
+            } | {"token_budget": DOWNSTREAM_TOKEN_BUDGET, "token_budget_exhausted": _token_budget_exhausted(usage_total)},
         )
     except Exception as exc:  # noqa: BLE001
         yield {
