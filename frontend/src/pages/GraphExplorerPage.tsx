@@ -16,6 +16,7 @@ const TYPE_COLORS: Record<string, string> = {
   Molecule: "#5aa469",
   Pathway: "#d97706",
   Clinical_phenotype: "#c23a4b",
+  unknown: "#94a3b8",
 };
 const TYPE_SHAPES: Record<string, string> = {
   Disease: "round-rectangle",
@@ -28,8 +29,9 @@ const TYPE_SHAPES: Record<string, string> = {
   Molecule: "diamond",
   Pathway: "tag",
   Clinical_phenotype: "round-rectangle",
+  unknown: "ellipse",
 };
-const LEGEND_TYPES = ["Disease", "Gene", "Drug", "Tissue", "Cell_type", "Cell", "Cytokine", "Molecule", "Pathway", "Clinical_phenotype"];
+const LEGEND_TYPES = ["Disease", "Gene", "Drug", "Tissue", "Cell_type", "Cell", "Cytokine", "Molecule", "Pathway", "Clinical_phenotype", "unknown"];
 const DEFAULT_COLOR = "#9ca7b8";
 const DEFAULT_SHAPE = "ellipse";
 const SPOTLIGHT_COLOR = "#d97706";
@@ -156,6 +158,8 @@ export default function GraphExplorerPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [hideNoise, setHideNoise] = useState(true);
+  const [showInputOnly, setShowInputOnly] = useState(false);
+  const [showUnresolved, setShowUnresolved] = useState(false);
   const [typeFilter, setTypeFilter] = useState("all");
   const [provenanceFilter, setProvenanceFilter] = useState("all");
   const [selected, setSelected] = useState<SelectedElement>(null);
@@ -190,9 +194,11 @@ export default function GraphExplorerPage() {
     return map;
   }, [graph]);
 
-  const { visibleNodes, visibleEdges, hiddenNoiseCount } = useMemo(() => {
-    if (!graph) return { visibleNodes: [] as GraphNode[], visibleEdges: [] as GraphEdge[], hiddenNoiseCount: 0 };
+  const { visibleNodes, visibleEdges, hiddenNoiseCount, hiddenInputCount, hiddenUnresolvedCount } = useMemo(() => {
+    if (!graph) return { visibleNodes: [] as GraphNode[], visibleEdges: [] as GraphEdge[], hiddenNoiseCount: 0, hiddenInputCount: 0, hiddenUnresolvedCount: 0 };
     const nodes = graph.elements.nodes.filter((node) => {
+      if (!showInputOnly && node.is_input_only) return false;
+      if (!showUnresolved && node.type === "unknown") return false;
       if (hideNoise && node.looks_like_noise) return false;
       if (typeFilter !== "all" && node.type !== typeFilter) return false;
       if (provenanceFilter !== "all" && (node.provenance_type ?? "pmid") !== provenanceFilter) return false;
@@ -203,9 +209,11 @@ export default function GraphExplorerPage() {
     return {
       visibleNodes: nodes,
       visibleEdges: edges,
-      hiddenNoiseCount: graph.elements.nodes.length - nodes.length,
+      hiddenNoiseCount: hideNoise ? graph.elements.nodes.filter((node) => node.looks_like_noise).length : 0,
+      hiddenInputCount: showInputOnly ? 0 : graph.elements.nodes.filter((node) => node.is_input_only).length,
+      hiddenUnresolvedCount: showUnresolved ? 0 : graph.elements.nodes.filter((node) => node.type === "unknown").length,
     };
-  }, [graph, hideNoise, typeFilter, provenanceFilter]);
+  }, [graph, hideNoise, showInputOnly, showUnresolved, typeFilter, provenanceFilter]);
 
   const elements = useMemo(() => {
     return [
@@ -324,6 +332,14 @@ export default function GraphExplorerPage() {
             <input type="checkbox" checked={hideNoise} onChange={(e) => setHideNoise(e.target.checked)} />
             <span>Hide likely-noise nodes (heuristic filter)</span>
           </label>
+          <label className="form__radio" style={{ alignSelf: "flex-end", marginBottom: 2 }}>
+            <input type="checkbox" checked={showInputOnly} onChange={(e) => setShowInputOnly(e.target.checked)} />
+            <span>Show input-only targets</span>
+          </label>
+          <label className="form__radio" style={{ alignSelf: "flex-end", marginBottom: 2 }}>
+            <input type="checkbox" checked={showUnresolved} onChange={(e) => setShowUnresolved(e.target.checked)} />
+            <span>Show unresolved-type nodes</span>
+          </label>
           {graph && (
             <span className="muted">
               {graph.metadata.updated ? `Updated ${String(graph.metadata.updated).slice(0, 10)}` : null}
@@ -361,7 +377,8 @@ export default function GraphExplorerPage() {
               <span className="graph-legend__title">Edges</span>
               <span className="graph-legend__item"><i className="graph-legend__line" /> stronger PMID support</span>
               <span className="graph-legend__item"><i className="graph-legend__line graph-legend__line--dashed" /> weak evidence</span>
-              <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: "#475569", borderStyle: "dashed" }} /> input-only target</span>
+              <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: "#475569", borderStyle: "dashed" }} /> input-only target (optional overlay)</span>
+              <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: TYPE_COLORS.unknown }} /> unresolved type</span>
             </div>
           </>
         )}
@@ -370,6 +387,18 @@ export default function GraphExplorerPage() {
             Hiding {hiddenNoiseCount} of {graph?.elements.nodes.length} nodes flagged by a heuristic as likely
             sentence-fragment extraction artifacts (this is a display-only filter — the underlying graph file is
             untouched, and the heuristic is imperfect in both directions).
+          </p>
+        )}
+        {!showInputOnly && hiddenInputCount > 0 && (
+          <p className="muted" style={{ marginTop: "0.5rem" }}>
+            Hidden {hiddenInputCount} input-only target dimensions. They are shown above as target chips and are
+            not evidence nodes; enable “Show input-only targets” only when auditing the submitted target.
+          </p>
+        )}
+        {!showUnresolved && hiddenUnresolvedCount > 0 && (
+          <p className="muted" style={{ marginTop: "0.5rem" }}>
+            Hidden {hiddenUnresolvedCount} unresolved-type nodes from the primary view. Enable “Show unresolved-type
+            nodes” to audit them; gray means the entity type was not confidently normalized.
           </p>
         )}
         {loadError && <p className="error-text">{loadError}</p>}
@@ -429,6 +458,12 @@ export default function GraphExplorerPage() {
               <h4>{selected.data.label}</h4>
               <p>
                 <strong>Type:</strong> {selected.data.type ?? "—"}
+                {selected.data.type === "unknown" && (
+                  <span className="muted"> — extracted node without a confident entity-type normalization</span>
+                )}
+                {selected.data.is_input_only && (
+                  <span className="muted"> — user-supplied target dimension, not an evidence claim</span>
+                )}
                 {selected.data.looks_like_noise && (
                   <span className="badge badge--outcome-confirmed_false_positive_historical" style={{ marginLeft: 6 }}>
                     flagged as likely noise
