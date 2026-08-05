@@ -1,0 +1,453 @@
+# CausalAtlas Architecture Deep Dive
+
+This document is the current technical and scientific explanation of CausalAtlas for research collaborators. It describes the live pipeline, deterministic fallback path, evidence graph, web application, controls, limitations, and reproducibility expectations.
+
+CausalAtlas is research software. It is not a clinical decision system, therapeutic recommendation engine, or source of medical advice.
+
+## 1. Core design principle
+
+CausalAtlas does not ask a model for one plausible biological story. It builds a traceable evidence object in stages:
+
+```mermaid
+flowchart LR
+    A[Target contract] --> B[Canonical baseline]
+    B --> C[Mechanism-specific literature retrieval]
+    C --> D[Publication verification]
+    D --> E[Quality scoring]
+    E --> F[Sentence-grounded extraction]
+    F --> G[Evidence graph]
+    G --> H[Semantic and topology checks]
+    H --> I{Analysis mode}
+    I -->|graph_only| J[Graph and text interpretation]
+    I -->|full| K[Independent novelty gate]
+    K --> L[Hypothesis generation]
+    L --> M[Peer review]
+    M --> N[Experiment design]
+```
+
+The graph is a graph of published evidence, not biological truth. Every biological edge is expected to retain provenance, source references, direction, relation, confidence, evidence strength, and target context.
+
+## 2. Runtime components
+
+### Backend
+
+The FastAPI application in `backend/app/` owns:
+
+- target validation and backward-compatible request handling;
+- run creation and SQLite persistence;
+- orchestration and SSE progress events;
+- PubMed/provider adapters and deterministic local fallback materialization;
+- graph construction and graph API responses;
+- evidence summaries, replay data, and run-scoped artifacts.
+
+### Agent layer
+
+The orchestrator schedules Agent 1 through Agent 13. The canonical order is in `backend/app/agent_registry.py`; role contracts are in `agents/`.
+
+Agents use least-privilege tools. Agents 1, 2, 10, and 12 require live external lookup/search. Downstream stages normally read upstream JSON artifacts instead of repeatedly searching the web.
+
+### Frontend
+
+The React application in `frontend/` provides run launch, live progress, run-scoped graph selection, display filters, node and edge inspection, exact evidence-sentence excerpts, PMID links, evidence dashboards, and presentation/replay views.
+
+The frontend is an inspection layer. Its filters do not mutate stored graph artifacts.
+
+### Persistent artifacts
+
+```text
+data/sessions/<run_id>/       immutable run-scoped pipeline artifacts
+data/graphs/<scope>/<run_id>/ immutable graph and graph-analysis artifacts
+```
+
+The disease-level latest alias exists for backward compatibility. New runs do not inherit it as their starting graph, so unrelated targets cannot silently look identical.
+
+## 3. Target contract and input modes
+
+The legacy request remains valid:
+
+```json
+{
+  "disease": "asthma",
+  "gene": "IL33"
+}
+```
+
+The multidimensional target contract is:
+
+```json
+{
+  "target": {
+    "schema_version": "target.v1",
+    "disease": "melanoma",
+    "genes": ["BRAF"],
+    "drugs": ["vemurafenib"],
+    "tissues": [],
+    "cell_types": [],
+    "statistical_candidates": [],
+    "query_mode": "multidimensional"
+  },
+  "analysis_mode": "graph_only",
+  "autonomy_level": "let_it_rip"
+}
+```
+
+### Disease-scoped mode
+
+A disease may be combined with optional genes, drugs, tissues, and cell types. The disease anchors retrieval and relevance scoring. Empty dimensions mean that the user did not ask for that dimension; they are not filled with guessed facts.
+
+### Disease-free gene–drug mode
+
+Disease is optional when both a gene and a drug are supplied:
+
+```json
+{
+  "target": {
+    "schema_version": "target.v1",
+    "disease": null,
+    "genes": ["BRAF"],
+    "drugs": ["vemurafenib"],
+    "tissues": [],
+    "cell_types": [],
+    "statistical_candidates": [],
+    "query_mode": "multidimensional"
+  }
+}
+```
+
+Internally, the run is persisted under a technical scope such as `gene_drug_BRAF_vemurafenib`. This scope is used for the database row, run ID, and filesystem path only. It is never inserted into PubMed as if it were a disease and is never written into evidence context as a disease.
+
+Disease-free mode can establish or fail to establish drug–gene and drug–pathway evidence, but it cannot claim disease specificity that was never supplied. A disease-specific conclusion requires a separate disease-scoped run.
+
+The validator rejects a disease-free target unless both `genes` and `drugs` are present.
+
+### Statistical candidate input
+
+An optional `statistical_candidates` record carries an external signal:
+
+```json
+{
+  "drug": "erlotinib",
+  "gene": "EGFR",
+  "method": "colocalization",
+  "effect": 0.31,
+  "p_value": 0.001,
+  "q_value": 0.01,
+  "source": "study-or-dataset-name",
+  "source_id": "optional-record-id"
+}
+```
+
+This is an input observation, not a PMID claim. The pipeline never converts a statistical signal into a biological edge without literature or canonical provenance.
+
+## 4. Orchestration and agents
+
+### Agent 00 — Orchestrator
+
+Creates the run, writes the target snapshot, loads required skills, and dispatches agents in order. It records progress, checkpoints, pauses, failures, and terminal status. A failed or partial run remains explicit; missing downstream output is not replaced with plausible text.
+
+### Agent 01 — Canonical baseline
+
+Looks up established facts from structured sources such as Reactome, KEGG, UniProt, and MyDisease.info before PMID-derived content exists. Canonical provenance remains separate from PMID provenance. A canonical support link is not automatically a causal PMID edge.
+
+### Agent 02 — Literature retrieval
+
+Builds a mechanism-specific PubMed corpus instead of using one generic query.
+
+For a disease-scoped gene target, representative strategies are:
+
+```text
+gene_disease_direct       EGFR non-small cell lung cancer
+gene_context_mechanism    EGFR non-small cell lung cancer mechanism
+```
+
+For a disease, gene, and drug:
+
+```text
+drug_target_direct        "erlotinib" EGFR (target OR binds OR neutralizes)
+drug_target_mechanism     "erlotinib" EGFR (mechanism OR antibody OR pathway)
+drug_disease_direct       "erlotinib" "non-small cell lung cancer"
+```
+
+For disease-free gene–drug mode:
+
+```text
+"BRAF" "vemurafenib"
+BRAF mechanism
+"vemurafenib" BRAF (target OR binds OR neutralizes)
+"vemurafenib" BRAF (mechanism OR antibody OR pathway)
+```
+
+Tissue and cell-type strategies are added only when those dimensions are populated. Disease MeSH/fibrosis fallbacks are added only when a disease exists.
+
+#### Retrieval limits and pagination
+
+The normal Agent 2 budget is bounded by:
+
+- maximum query count: 8;
+- maximum publications: 120;
+- maximum retrieval deadline: 240 seconds.
+
+The local materializer uses bounded PubMed pages and batches metadata fetches. It records the full PubMed hit count separately from the number retrieved. High-hit queries are paginated rather than silently trusting only the first most-recent page.
+
+PMIDs are deduplicated before the corpus is written. A paper found by multiple strategies appears once and retains query metadata.
+
+After the first pass, at most two bounded node-expansion queries may be created. An expansion node must be repeatedly observed, must be outside submitted target dimensions, and must pass the bounded vocabulary policy. The system does not issue one query for every extracted noun.
+
+#### Time balance
+
+Every publication is assigned to a year distribution. The artifact records year groups and `year_band_flag`. A temporally skewed corpus is surfaced as a quality warning rather than silently treated as balanced evidence.
+
+#### Cost controls
+
+For wiring tests, the API accepts `dev_pubmed_retmax`. This is a per-run override for a cheap validation run; it does not modify production defaults or the search skill. `analysis_mode=graph_only` avoids expensive downstream hypothesis stages.
+
+### Agent 03 — Publication verification
+
+Checks that a record has usable metadata and target relevance. The deterministic fallback requires:
+
+- a PMID;
+- a title;
+- at least one resolved target term in title, abstract, or journal metadata.
+
+Rejection reasons such as `incomplete_metadata` and `target_terms_not_found` are preserved. The full live verification path is stronger than the local metadata-only fallback; the artifact records which scope was used.
+
+Verification means that a publication exists and is usable as evidence input. It does not mean that the publication proves the final biological claim.
+
+### Agent 04 — Quality filter
+
+Scores publications using explicit metadata and limitations:
+
+- publication type and study design;
+- species;
+- sample size when detectable;
+- abstract completeness;
+- tissue, cell type, model, and assay context.
+
+Examples of penalties include review rather than primary research, non-human species, in vitro or cell-line-only evidence, unknown species, missing sample size, small sample size, unknown design, and missing abstract.
+
+The result is a quality score and evidence level. It is a structured caution signal, not a formal risk-of-bias review.
+
+### Agent 05 — Mechanistic extraction
+
+Extracts directed statements from abstracts and model output. Each candidate edge should retain a source sentence, PMID, relation, endpoints, node types, species, year, and confidence.
+
+The deterministic drug layer creates a claim only when:
+
+1. the drug occurs in a verified abstract;
+2. a PMID is present;
+3. the drug and target/pathway occur in the same source sentence;
+4. the sentence contains a permitted direct or indirect mechanism cue.
+
+Direct cues include binding, neutralization, antibody blocking, explicit target language, and explicit inhibitor language. Indirect cues include pathway, signaling, downstream, modulation, activation, phosphorylation, and related mechanistic language.
+
+The bounded pathway vocabulary currently includes AMPK, mTOR/mTORC1, PI3K/AKT, MAPK, and NF-kB aliases. An alias is not a claim. An edge is emitted only when a verified PMID sentence supports it.
+
+### Agent 06 — Graph builder
+
+Combines accepted sentence-grounded edges with provenance. It:
+
+- normalizes safe aliases within a biological role;
+- preserves distinct roles such as gene `IL33` versus cytokine/protein `IL-33`;
+- merges identical evidence records;
+- keeps contradictory directions separate;
+- combines direct and indirect drug evidence for the same endpoint into one visual `drug_mechanism` edge with `relation_variants`;
+- retains PMID references and source sentences;
+- adds canonical database nodes as a separate provenance overlay.
+
+Context fields are normalized before merging so an omitted empty tissue or disease field cannot create a duplicate of the same run.
+
+### Agents 07–09 — Graph analysis
+
+Agent 07 finds loops and feedback structures. Agent 08 calculates topology and ranks architectures. Agent 09 scans for direction-conflicting relations and knowledge gaps. These stages analyze retained evidence; they do not create new biological claims.
+
+### Agents 10–13 — Optional full analysis
+
+These stages are skipped in `graph_only` mode:
+
+- Agent 10 performs independent novelty verification and A–E classification;
+- Agent 11 generates hypotheses only for eligible candidates;
+- Agent 12 independently peer-reviews candidates;
+- Agent 13 designs experiments only after earlier gates allow them.
+
+## 5. The four drug–gene evidence states
+
+Each requested drug–gene pair receives a record in `drug_gene_evidence.json`.
+
+### `candidate_statistical`
+
+An externally supplied statistical signal. It stores method, effect/p-value/q-value, source, and source ID. It is never merged into the PMID causal graph as if it were a published mechanism.
+
+No supplied statistic means `not_provided`, not `not significant` and not `no literature support`.
+
+### `literature_direct`
+
+A direct drug–target claim. In the BRAF showcase, sentences identifying vemurafenib as a BRAF inhibitor support this state. The graph edge retains PMID-backed source sentences.
+
+### `indirect_chain`
+
+A route through a named intermediate protein or pathway. The BRAF showcase produced bounded branches through MAPK, PI3K/AKT, and mTOR.
+
+The strongest chain interpretation is obtained when the graph contains both:
+
+```text
+drug → intermediate
+intermediate → queried gene
+```
+
+If only drug→intermediate is present, it should be described as an indirect pathway association, not a complete causal chain to the gene.
+
+### `no_literature_support`
+
+Active when neither direct target evidence nor an explicit indirect-chain claim passes the gate. It does not mean the relationship is false; it means the current bounded corpus and evidence rules did not find usable support.
+
+A statistical signal may therefore coexist with no literature support. That is a research lead, not a validated mechanism.
+
+## 6. Edge quality gates
+
+The `strict-v2` graph gate requires:
+
+1. a PMID;
+2. known source node type;
+3. known target node type;
+4. an exact source sentence;
+5. both endpoints present in that sentence;
+6. PMID provenance;
+7. demonstrated target relevance;
+8. a compatible causal cue for the declared direction when applicable;
+9. tissue/cell context when the edge is a tissue/cell claim.
+
+Rejected edges remain in `edge_quality_gate.json` with reasons such as:
+
+```text
+missing_pmid
+missing_source_sentence
+endpoints_not_in_source_sentence
+unknown_node_type
+non_pmid_provenance
+target_relevance_not_demonstrated
+causal_direction_not_supported
+tissue_cell_context_not_supported
+```
+
+The final graph is often much smaller than raw extraction. That reduction is intentional: an unsupported edge is more dangerous than a missing edge in an auditable research graph.
+
+## 7. Graph UI interpretation
+
+### Nodes
+
+Colors and shapes represent normalized entity types: Disease, Gene, Drug, Tissue, Cell type, Cell, Cytokine, Molecule, Pathway, Clinical phenotype, canonical database source, and unresolved type.
+
+Gray/unresolved nodes mean that the entity type was not confidently normalized. Canonical source nodes are provenance overlays, not biological claims merely because they are visible.
+
+### Edges
+
+Selecting an edge displays:
+
+- source and target;
+- relation and relation variants;
+- evidence state;
+- confidence and evidence strength;
+- PMID count and sample PMID links;
+- run/context metadata;
+- up to five exact supporting sentences.
+
+For drug edges, `drug_mechanism` is a display grouping. The underlying variants still distinguish `binds_target` from `indirectly_modulates`.
+
+The UI also shows the drug–gene state strip from graph metadata.
+
+### Display filters
+
+Filters cover entity type, provenance, likely-noise heuristic nodes, input-only target dimensions, and unresolved-type nodes. These are display-only; source artifacts are unchanged.
+
+## 8. Cost and run settings
+
+### `analysis_mode`
+
+`graph_only` is the recommended exploratory mode. It completes retrieval, verification, quality scoring, extraction, graph construction, semantic validation, topology, contradictions, gaps, and text interpretation. `full` additionally runs novelty, hypothesis, peer-review, and experiment stages.
+
+### `autonomy_level`
+
+- `let_it_rip`: run without approval pauses;
+- `supervised`: pause at designated checkpoints;
+- `autocomplete`: pause after every agent.
+
+### Development retrieval override
+
+`dev_pubmed_retmax` reduces retrieval size for wiring tests. A small-corpus run must not be presented as comprehensive evidence.
+
+## 9. Run artifacts
+
+| Artifact | Purpose |
+| --- | --- |
+| `analysis_target.json` | Immutable submitted and normalized target |
+| `canonical_baseline.json` | Structured canonical source scaffold |
+| `publications_raw.json` | Retrieved corpus, query metadata, hit counts, year balance |
+| `publications_verified.json` | Papers surviving metadata/relevance verification |
+| `verification_report.json` | Accepted/rejected publication reasons |
+| `quality_scores.json` | Study design, species, context, penalties, confidence |
+| `mechanisms_extracted.json` | Raw sentence-grounded extracted edges |
+| `drug_knowledge.json` | Drug claims and PMID-backed drug layer |
+| `drug_gene_evidence.json` | Four-state drug–gene evidence records |
+| `edge_quality_gate.json` | Accepted/rejected edge decisions |
+| `knowledge_graph.json` | Merged evidence graph |
+| `contradictions.json` | Directional conflicts |
+| `knowledge_gaps.json` | Weak or missing bridges |
+| `network_metrics.json` | Topology and architecture metrics |
+| `novelty_audit.json` | Independent A–E checks in full mode |
+| `hypotheses.json` | Hypotheses, if gates allow them |
+| `peer_review.json` | Independent challenge |
+| `experiment_design.json` | Controls, readouts, predictions, falsification |
+
+## 10. Scientific limitations
+
+The system can produce a graph that is technically auditable but biologically incomplete. Important limitations include:
+
+- an abstract may mention a drug and gene in resistance or comparison context;
+- PMID count measures supporting records, not independent causal replication;
+- a pathway mention does not prove a complete multi-edge chain;
+- disease-free mode cannot establish disease specificity;
+- quality scoring is a structured heuristic, not a formal risk-of-bias review;
+- canonical coverage depends on provider response and version;
+- a small or temporally skewed corpus should be reported as degraded/underpowered;
+- deterministic fallback verification is weaker than the full live agent path;
+- statistical association, biological mechanism, therapeutic efficacy, and clinical usefulness are different claims.
+
+The safe interpretation is: “These are the provenance-backed relationships that passed this run’s retrieval and evidence gates,” not “the graph is complete biological truth.”
+
+## 11. Recommended colleague demonstration
+
+Use:
+
+```text
+Target: melanoma
+Gene: BRAF
+Drug: vemurafenib
+Mode: graph_only
+```
+
+The showcase demonstrates:
+
+```text
+vemurafenib ── direct / drug_mechanism ── BRAF
+vemurafenib ── indirect_chain ────────── MAPK
+vemurafenib ── indirect_chain ────────── PI3K/AKT
+vemurafenib ── indirect_chain ────────── mTOR
+```
+
+Then repeat with disease blank. Explain that the second run can inspect drug–gene biology without claiming melanoma specificity.
+
+Before presenting a run, record:
+
+- exact run ID;
+- commit SHA;
+- analysis mode and autonomy level;
+- retrieved and verified publication counts;
+- year-band warning;
+- graph node and edge counts;
+- direct/indirect/no-literature states;
+- evidence-quality status;
+- whether fallback materialization was used.
+
+See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the offline tests, frontend checks, API health check, and read-only replay procedure.
+
+

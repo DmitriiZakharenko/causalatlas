@@ -50,6 +50,10 @@ when the original disease-target behavior is required.
 For a wide live-run example with all optional target dimensions populated, see
 [Showcase Runs](docs/SHOWCASE_RUNS.md).
 
+For the full architecture, evidence rules, retrieval strategy, quality gates,
+drug–gene evidence states, disease-free mode, artifacts, and presentation notes,
+see [Architecture Deep Dive](docs/ARCHITECTURE_DEEP_DIVE.md).
+
 ## Version compatibility
 
 The project remains one application; this extension is not a separate CausalAtlas
