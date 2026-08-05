@@ -1,6 +1,6 @@
 # CausalAtlas Architecture Deep Dive
 
-This document is the current technical and scientific explanation of CausalAtlas for research collaborators. It describes the live pipeline, deterministic fallback path, evidence graph, web application, controls, limitations, and reproducibility expectations.
+This document is the current technical and scientific explanation of CausalAtlas. It describes the live pipeline, deterministic fallback path, evidence graph, web application, controls, limitations, and reproducibility expectations.
 
 CausalAtlas is research software. It is not a clinical decision system, therapeutic recommendation engine, or source of medical advice.
 
@@ -449,5 +449,4 @@ Before presenting a run, record:
 - whether fallback materialization was used.
 
 See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the offline tests, frontend checks, API health check, and read-only replay procedure.
-
 
