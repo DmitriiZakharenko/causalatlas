@@ -179,7 +179,18 @@ export default function GraphExplorerPage() {
         setGraphs(r.graphs);
         if (r.graphs.length > 0) {
           const requestedDisease = searchParams.get("disease");
-          setSelectedSlug(r.graphs.some((graph) => graph.disease_slug === requestedDisease) ? requestedDisease : r.graphs[0].disease_slug);
+          const requestedRun = searchParams.get("run");
+          const runMatch = requestedRun
+            ? r.graphs.find((graph) => graph.run_id === requestedRun || graph.disease_slug.endsWith(`__${requestedRun}`))
+            : undefined;
+          const diseaseMatch = requestedDisease
+            ? r.graphs.find((graph) => graph.disease_slug === requestedDisease)
+            : undefined;
+          const diseaseRuns = requestedDisease
+            ? r.graphs.filter((graph) => graph.disease_slug.startsWith(`${requestedDisease}__`))
+            : [];
+          const latestDiseaseRun = [...diseaseRuns].sort((a, b) => (b.run_id ?? "").localeCompare(a.run_id ?? ""))[0];
+          setSelectedSlug((runMatch ?? diseaseMatch ?? latestDiseaseRun ?? r.graphs[0]).disease_slug);
         }
       })
       .catch((err) => setLoadError(err instanceof ApiError ? `${err.status}: ${err.message}` : String(err)));
@@ -320,7 +331,7 @@ export default function GraphExplorerPage() {
             <select value={selectedSlug ?? ""} onChange={(e) => setSelectedSlug(e.target.value)}>
               {graphs?.map((g) => (
                 <option key={g.disease_slug} value={g.disease_slug}>
-                  {g.disease} ({g.node_count} nodes / {g.edge_count} edges)
+                  {g.disease}{g.run_id ? ` · ${g.run_id}` : " · latest alias"} ({g.node_count} nodes / {g.edge_count} edges)
                 </option>
               ))}
             </select>

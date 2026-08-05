@@ -220,7 +220,7 @@ export default function LaunchPage() {
                   </button>
                   <div className="recorded-run-card__actions">
                     <button type="button" className="button button--primary" onClick={() => navigate(`/runs/${r.run_id}`)}>Open run</button>
-                    <button type="button" className="button" onClick={() => navigate(`/graphs?disease=${encodeURIComponent(r.disease.toLowerCase().replaceAll(" ", "_"))}`)}>Graph</button>
+                    <button type="button" className="button" onClick={() => navigate(`/graphs?run=${encodeURIComponent(r.run_id)}`)}>Graph</button>
                     <button type="button" className="button" onClick={() => navigate(`/evidence?run=${encodeURIComponent(r.run_id)}`)}>Evidence</button>
                   </div>
                 </article>

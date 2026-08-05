@@ -259,6 +259,12 @@ def load_graph_for_ui(disease_slug: str) -> dict:
         raise GraphNotFoundError(f"no graph found for disease slug {disease_slug!r}")
     raw = json.loads(graph_path.read_text())
     source_metadata = dict(raw.get("metadata", {}))
+    # The directory is the immutable run identity. Older copied artifacts can
+    # contain a stale metadata.run_id from the graph they were based on; never
+    # let that value redirect or mislabel a run-scoped graph in the UI.
+    if len(parts) == 2:
+        source_metadata["run_id"] = parts[1]
+        source_metadata["disease_slug"] = disease_slug
     # The UI payload is an explicitly unfiltered view of this source artifact.
     # Keep these labels here as well as in static exports so a filtered client
     # view cannot be mistaken for the persisted graph.

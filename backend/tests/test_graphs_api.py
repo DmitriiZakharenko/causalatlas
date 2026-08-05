@@ -76,6 +76,15 @@ def test_load_graph_for_ui_unknown_disease_raises():
         graphs_mod.load_graph_for_ui("does_not_exist")
 
 
+def test_run_scoped_graphs_are_loaded_from_their_own_directories():
+    first = graphs_mod.load_graph_for_ui("asthma__asthma_20260805T103504Z")
+    second = graphs_mod.load_graph_for_ui("asthma__asthma_20260805T112631Z")
+    assert first["metadata"]["run_id"] == "asthma_20260805T103504Z"
+    assert second["metadata"]["run_id"] == "asthma_20260805T112631Z"
+    assert first["metadata"]["source"] != second["metadata"]["source"]
+    assert first["metadata"]["source_node_count"] != second["metadata"]["source_node_count"]
+
+
 def test_graphs_endpoint_lists_real_diseases(client):
     resp = client.get("/api/graphs")
     assert resp.status_code == 200
