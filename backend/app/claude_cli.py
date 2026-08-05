@@ -20,6 +20,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
+import signal
 from collections.abc import AsyncIterator
 from pathlib import Path
 
@@ -31,6 +33,31 @@ class ClaudeCliError(LLMProviderError):
     """Raised when a `claude` invocation fails or its output can't be parsed."""
 
 __all__ = ["AgentResult", "ClaudeCliError", "run_agent", "run_agent_stream", "run_orchestrator_stream"]
+
+# The native orchestrator can spend several minutes inside a bounded web or
+# PubMed tool call without emitting a stream event.  Keep that legitimate
+# quiet period large enough for a normal run, but never leave a Claude process
+# alive indefinitely when the provider stalls or authentication breaks.
+ORCHESTRATOR_IDLE_TIMEOUT_S = 600.0
+ORCHESTRATOR_TOTAL_TIMEOUT_S = 3600.0
+
+
+async def _terminate_process_group(proc: asyncio.subprocess.Process) -> None:
+    """Stop the CLI and any native subagents it spawned."""
+    if proc.returncode is not None:
+        return
+    try:
+        os.killpg(proc.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        return
+    try:
+        await asyncio.wait_for(proc.wait(), timeout=5.0)
+    except asyncio.TimeoutError:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        await proc.wait()
 
 
 def _build_command(
@@ -96,11 +123,12 @@ async def run_agent(
         cwd=str(cwd or REPO_ROOT),
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
+        start_new_session=True,
     )
     try:
         stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=timeout_s)
     except asyncio.TimeoutError as exc:
-        proc.kill()
+        await _terminate_process_group(proc)
         raise ClaudeCliError(f"{agent_name} timed out after {timeout_s}s") from exc
 
     if proc.returncode != 0:
@@ -151,6 +179,7 @@ async def run_agent_stream(
         cwd=str(cwd or REPO_ROOT),
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
+        start_new_session=True,
     )
     assert proc.stdout is not None
     async for line in proc.stdout:
@@ -210,9 +239,39 @@ async def run_orchestrator_stream(
         cwd=str(cwd or REPO_ROOT),
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
+        start_new_session=True,
     )
     assert proc.stdout is not None
-    async for line in proc.stdout:
+    started = asyncio.get_running_loop().time()
+    while True:
+        elapsed = asyncio.get_running_loop().time() - started
+        remaining = ORCHESTRATOR_TOTAL_TIMEOUT_S - elapsed
+        if remaining <= 0:
+            await _terminate_process_group(proc)
+            yield {
+                "type": "orchestrator_failed",
+                "returncode": -signal.SIGTERM,
+                "stderr": f"orchestrator exceeded total timeout of {ORCHESTRATOR_TOTAL_TIMEOUT_S:.0f}s",
+            }
+            return
+        try:
+            line = await asyncio.wait_for(
+                proc.stdout.readline(),
+                timeout=min(ORCHESTRATOR_IDLE_TIMEOUT_S, remaining),
+            )
+        except asyncio.TimeoutError:
+            await _terminate_process_group(proc)
+            yield {
+                "type": "orchestrator_failed",
+                "returncode": -signal.SIGTERM,
+                "stderr": (
+                    f"orchestrator produced no event for {ORCHESTRATOR_IDLE_TIMEOUT_S:.0f}s "
+                    "or exceeded its total timeout"
+                ),
+            }
+            return
+        if not line:
+            break
         line = line.strip()
         if not line:
             continue

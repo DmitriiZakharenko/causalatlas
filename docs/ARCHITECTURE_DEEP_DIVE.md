@@ -398,6 +398,8 @@ The normal live path invokes the configured authenticated local LLM CLI (`LLM_PR
 
 If an LLM CLI cannot start, returns malformed structured output, or produces an unusable artifact, the pipeline does not fabricate a successful model result. It records the failure/fallback metadata and may materialize a bounded deterministic artifact from already retrieved provider data where that fallback is implemented. Such a run exposes `execution_mode: "local_fallback"`, `fallback_agents`, and a usage state of `Not reported` when provider counters are unavailable. It must not be described as an equivalent full live-agent run.
 
+The Claude orchestrator has two external process guards: a 600-second maximum idle period without a stream event and a 3,600-second maximum total process lifetime. On timeout, the backend terminates the entire process group, including native subagents, records a failed/cancelled run state, and preserves all artifacts written before termination. These guards are separate from Agent 2's retrieval limits (`max_queries`, `max_publications`, and its 240-second requested deadline); they protect against a stalled CLI/tool process without forcing a normal full graph run to use a small corpus.
+
 The deterministic path is intentionally conservative:
 
 - it uses verified publications already present in the run;
