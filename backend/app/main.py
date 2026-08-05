@@ -42,6 +42,7 @@ app.add_middleware(
 class PipelineRunRequest(AnalysisTargetRequest):
     autonomy_level: str = "let_it_rip"
     analysis_mode: Literal["graph_only", "full"] = "graph_only"
+    execution_profile: Literal["standard", "low_cost"] = "standard"
     dev_pubmed_retmax: int | None = Field(
         default=None,
         description=(
@@ -96,13 +97,17 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
             status_code=422,
             detail=f"autonomy_level must be one of {sorted(VALID_AUTONOMY_LEVELS)}",
         )
+    retrieval_retmax = req.dev_pubmed_retmax
+    if req.execution_profile == "low_cost" and retrieval_retmax is None:
+        retrieval_retmax = 5
     run_id = await run_manager.start_run(
         target_scope_label(target),
         target.genes[0] if target.genes else None,
         req.autonomy_level,
         target=target,
-        pubmed_retmax_override=req.dev_pubmed_retmax,
+        pubmed_retmax_override=retrieval_retmax,
         analysis_mode=req.analysis_mode,
+        execution_profile=req.execution_profile,
     )
     return {
         "run_id": run_id,
@@ -114,6 +119,8 @@ async def start_pipeline_run(req: PipelineRunRequest) -> dict:
         "target_schema_version": target.schema_version,
         "autonomy_level": req.autonomy_level,
         "analysis_mode": req.analysis_mode,
+        "execution_profile": req.execution_profile,
+        "retrieval_retmax": retrieval_retmax,
         "stream_url": f"/api/pipeline/{run_id}/stream",
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }

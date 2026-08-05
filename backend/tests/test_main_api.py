@@ -93,6 +93,28 @@ def test_start_accepts_nested_target_and_persists_it(client, monkeypatch):
     assert status["target_schema_version"] == "target.v1"
 
 
+def test_low_cost_profile_defaults_to_small_retrieval_budget(client, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    captured = {}
+
+    async def _completes(prompt, **kwargs):
+        captured["prompt"] = prompt
+        yield {"type": "result", "is_error": False, "result": "done"}
+
+    monkeypatch.setattr(orch_mod.claude_cli, "run_orchestrator_stream", _completes)
+    response = client.post(
+        "/api/pipeline/run",
+        json={"disease": "rheumatoid arthritis", "gene": "IL6", "execution_profile": "low_cost"},
+    )
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["execution_profile"] == "low_cost"
+    assert payload["retrieval_retmax"] == 5
+    _poll_status_until(client, payload["run_id"], {"completed"})
+    assert "execution_profile: low_cost" in captured["prompt"]
+
+
 def test_decision_endpoint_422_for_invalid_decision_value(client, monkeypatch):
     import app.orchestrator as orch_mod
 

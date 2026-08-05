@@ -87,6 +87,7 @@ def build_orchestrator_prompt(
     target: AnalysisTarget | None = None,
     pubmed_retmax_override: int | None = None,
     analysis_mode: str = "graph_only",
+    execution_profile: str = "standard",
 ) -> str:
     merge_note = ""
     prior_graph = existing_graph_path(disease)
@@ -118,6 +119,15 @@ def build_orchestrator_prompt(
             f"end-to-end cheaply, not for demo-quality corpus size. Do not change the "
             f"skill file itself; this override applies to this run's Agent 2 dispatch only."
         )
+    profile_note = ""
+    if execution_profile == "low_cost":
+        profile_note = (
+            "\nLOW-COST PROFILE: keep graph_only mode; use at most 3 complementary retrieval "
+            "strategies, retmax from the run setting per year-band, and no node-expansion "
+            "queries. Use compact upstream files for Agents 3-5. Do not run novelty, "
+            "hypothesis, peer-review, or experiment-design stages. Preserve every strict "
+            "PMID/sentence/provenance quality gate."
+        )
     return f"""Run the full 13-agent pipeline for this target:
 
 run_id: {run_id}
@@ -127,9 +137,11 @@ target_schema_version: {target.schema_version}
 target_json: {json.dumps(target.model_dump(mode="json"), separators=(",", ":"))}
 autonomy_level: {autonomy_level}
 analysis_mode: {analysis_mode}
+execution_profile: {execution_profile}
 session output directory (absolute): {session_dir}
 {merge_note}
 {retmax_note}
+{profile_note}
 
 Follow your AGENTS.md exactly. In `graph_only` mode, dispatch only Agents 1 through 09,
 then stop after graph, semantic validation, topology, contradiction and gap analysis;
@@ -338,6 +350,7 @@ class RunManager:
         target: AnalysisTarget | None = None,
         pubmed_retmax_override: int | None = None,
         analysis_mode: str = "graph_only",
+        execution_profile: str = "standard",
     ) -> str:
         target = target or AnalysisTarget(disease=disease, genes=[gene] if gene else [])
         scope = target_scope_label(target)
@@ -356,6 +369,7 @@ class RunManager:
                     },
                     "legacy_request": {"disease": target.disease, "gene": gene},
                     "analysis_mode": analysis_mode,
+                    "execution_profile": execution_profile,
                 },
                 indent=2,
                 sort_keys=True,
@@ -416,6 +430,7 @@ class RunManager:
             target=target,
             pubmed_retmax_override=pubmed_retmax_override,
             analysis_mode=analysis_mode,
+            execution_profile=execution_profile,
         )
         stream = claude_cli.run_orchestrator_stream(prompt, session_id=session_id)
         task = asyncio.create_task(self._run(run_id, stream))

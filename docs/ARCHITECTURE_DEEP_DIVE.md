@@ -506,6 +506,28 @@ Filters cover entity type, provenance, likely-noise heuristic nodes, input-only 
 
 `graph_only` is the recommended exploratory mode. It completes retrieval, verification, quality scoring, extraction, graph construction, semantic validation, topology, contradictions, gaps, and text interpretation. `full` additionally runs novelty, hypothesis, peer-review, and experiment stages.
 
+### `execution_profile`
+
+`standard` keeps the normal retrieval and orchestration budgets. `low_cost` is the economical graph-only profile: it defaults to `dev_pubmed_retmax=5` per year-band, limits Agent 2 to three complementary retrieval strategies, disables node-expansion queries, and keeps the compact upstream inputs for Agents 3–5. It still runs the full graph-only path and preserves the same strict PMID, sentence, provenance, direction, and semantic gates. It does not claim comprehensive literature coverage.
+
+Example:
+
+```json
+{
+  "target": {
+    "disease": "rheumatoid arthritis",
+    "genes": ["IL6"],
+    "drugs": [],
+    "tissues": [],
+    "cell_types": []
+  },
+  "analysis_mode": "graph_only",
+  "execution_profile": "low_cost"
+}
+```
+
+This profile reduces corpus and prompt size without weakening graph acceptance rules. The more extensive future optimization is to move verification, quality scoring, merge, topology, and contradiction detection fully into deterministic local stages; those stages must remain provenance-equivalent before replacing their current agent path.
+
 ### `autonomy_level`
 
 - `let_it_rip`: run without approval pauses;

@@ -293,6 +293,24 @@ def test_build_orchestrator_prompt_no_retmax_note_by_default(tmp_path, monkeypat
     assert "COST-SCOPED DEV-LOOP RUN" not in prompt
 
 
+def test_build_orchestrator_prompt_low_cost_profile_is_explicit(tmp_path, monkeypatch):
+    import app.orchestrator as orch_mod
+
+    monkeypatch.setattr(orch_mod, "GRAPHS_DIR", tmp_path / "graphs")
+    prompt = build_orchestrator_prompt(
+        run_id="cheap_run_test",
+        disease="asthma",
+        gene="IL33",
+        autonomy_level="let_it_rip",
+        session_dir=tmp_path,
+        execution_profile="low_cost",
+        pubmed_retmax_override=5,
+    )
+    assert "execution_profile: low_cost" in prompt
+    assert "at most 3 complementary retrieval strategies" in prompt
+    assert "no node-expansion queries" in prompt
+
+
 def test_build_orchestrator_prompt_no_merge_note_for_new_disease(tmp_path, monkeypatch):
     import app.orchestrator as orch_mod
 
