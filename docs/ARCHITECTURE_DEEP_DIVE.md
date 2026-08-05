@@ -569,7 +569,7 @@ The system can produce a graph that is technically auditable but biologically in
 
 The safe interpretation is: “These are the provenance-backed relationships that passed this run’s retrieval and evidence gates,” not “the graph is complete biological truth.”
 
-## 11. Recommended colleague demonstration
+## 11. Recommended demonstration
 
 Use:
 
