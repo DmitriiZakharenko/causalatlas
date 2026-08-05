@@ -725,6 +725,24 @@ def _claim_sentence(text: str, terms: list[str]) -> str | None:
     return None
 
 
+DRUG_PATHWAY_ALIASES: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("AMPK", re.compile(r"\bAMPK\b|AMP-activated protein kinase|Ampk", re.IGNORECASE)),
+    ("mTOR", re.compile(r"\bmTOR\b|mechanistic target of rapamycin", re.IGNORECASE)),
+    ("PI3K/AKT", re.compile(r"\bPI3K\b|\bAKT\b|phosphoinositide 3-kinase", re.IGNORECASE)),
+    ("MAPK", re.compile(r"\bMAPK\b|mitogen-activated protein kinase", re.IGNORECASE)),
+    ("NF-kB", re.compile(r"\bNF-?κ?B\b|nuclear factor kappa B", re.IGNORECASE)),
+)
+
+
+def _sentence_with_pattern(text: str, required_term: str, pattern: re.Pattern[str]) -> str | None:
+    required_key = re.sub(r"[^a-z0-9]+", "", required_term.casefold())
+    for sentence in re.split(r"(?<=[.!?])\s+", text.strip()):
+        compact = re.sub(r"[^a-z0-9]+", "", sentence.casefold())
+        if required_key and required_key in compact and pattern.search(sentence):
+            return sentence.strip()
+    return None
+
+
 def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] | None = None) -> dict:
     """Build a bounded, sentence-grounded drug layer from the verified corpus.
 
@@ -793,32 +811,43 @@ def _materialize_local_drug_knowledge(ctx: PipelineContext, papers: list[dict] |
                         "provenance": [provenance],
                     }
                 )
-                # Keep a pathway-level edge when the same sentence explicitly
-                # names AMPK. This is separate from PRKAA1: AMPK is a pathway/
-                # complex label here, not another gene alias.
-                if re.search(r"\bAMPK\b|AMP-activated protein kinase|Ampk", gene_sentence, re.IGNORECASE):
-                    pathway_edge = dict(claims[-1]["edge"])
-                    pathway_edge.update(
-                        {
+            # Discover explicitly named pathways from drug sentences even when
+            # the pathway is not the user-supplied gene. This is a bounded
+            # normalization vocabulary, not a biological inference: no edge is
+            # emitted unless the drug and pathway name co-occur in one sentence.
+            for pathway, pattern in DRUG_PATHWAY_ALIASES:
+                pathway_sentence = _sentence_with_pattern(abstract, drug, pattern)
+                if not pathway_sentence:
+                    continue
+                pmid = str(paper.get("pmid") or "")
+                provenance = {"provider": "pubmed", "source_type": "publication", "source_id": pmid}
+                claims.append(
+                    {
+                        "drug": drug,
+                        "predicate": "indirectly_modulates",
+                        "object": f"{pathway} pathway",
+                        "mechanism_class": "indirect_pathway",
+                        "pmid": pmid,
+                        "year": paper.get("year", ""),
+                        "source_sentence": pathway_sentence,
+                        "edge": {
+                            "source": drug,
+                            "source_type": "Drug",
                             "relation": "indirectly_modulates",
-                            "target": "AMPK",
+                            "target": pathway,
                             "target_type": "Pathway",
-                            "confidence": 0.60,
-                        }
-                    )
-                    claims.append(
-                        {
-                            "drug": drug,
-                            "predicate": "indirectly_modulates",
-                            "object": "AMPK pathway",
-                            "mechanism_class": "indirect_pathway",
                             "pmid": pmid,
                             "year": paper.get("year", ""),
-                            "source_sentence": gene_sentence,
-                            "edge": pathway_edge,
-                            "provenance": [provenance],
-                        }
-                    )
+                            "species": paper.get("species", "unknown"),
+                            "confidence": 0.60,
+                            "source_sentence": pathway_sentence,
+                            "provenance_type": "pmid",
+                            "source_refs": [{"pmid": pmid, "source_sentence": pathway_sentence}],
+                            "context": {"disease": [ctx.disease], "drugs": [drug]},
+                        },
+                        "provenance": [provenance],
+                    }
+                )
     # Deduplicate the same sentence-level claim while retaining audit data.
     unique = {(c["drug"], c["predicate"], c["object"], c["pmid"]): c for c in claims}
     payload = {
