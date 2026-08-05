@@ -52,6 +52,37 @@ The React application in `frontend/` provides run launch, live progress, run-sco
 
 The frontend is an inspection layer. Its filters do not mutate stored graph artifacts.
 
+### Request, persistence, and event flow
+
+For a live run, the control flow is:
+
+```mermaid
+sequenceDiagram
+    participant U as User or terminal
+    participant F as Frontend (optional)
+    participant A as FastAPI
+    participant R as RunManager
+    participant P as Pipeline
+    participant D as SQLite + session files
+
+    U->>A: POST /api/pipeline/run
+    A->>A: Validate and normalize target.v1
+    A->>D: Create run row and target snapshot
+    A->>R: Start asynchronous run
+    A-->>U: run_id + stream_url
+    F-->>A: GET /stream or /status (optional)
+    R->>P: Dispatch agents in order
+    P->>D: Write checkpoints and artifacts
+    P-->>R: Agent and terminal events
+    R->>D: Append event log and update status
+    R-->>F: SSE progress events
+    F-->>U: Render graph and evidence
+```
+
+SQLite stores operational state: run status, current agent, timestamps, errors, usage counters, human interventions, and append-only progress events. JSON files store scientific state and are organized by run. The separation allows the UI to reconnect to a run without reconstructing scientific artifacts from transient process memory.
+
+The run identifier is the primary isolation boundary. Every artifact, checkpoint, event, graph export, and API response is resolved against that run or its explicit target scope. A retry continues the same run/session and preserves earlier failure events; a new run receives a new identifier and must not overwrite a historical graph.
+
 ### Persistent artifacts
 
 ```text
@@ -60,6 +91,50 @@ data/graphs/<scope>/<run_id>/ immutable graph and graph-analysis artifacts
 ```
 
 The disease-level latest alias exists for backward compatibility. New runs do not inherit it as their starting graph, so unrelated targets cannot silently look identical.
+
+### What is required to run the system?
+
+The frontend is not required to execute a pipeline. It is a client for the backend and a convenient inspection surface. A run can be launched from a terminal with `curl`, from another HTTP client, or by using the frontend. The backend is required for the normal supported live-run path because it owns orchestration, persistence, provider execution, and SSE events.
+
+There are three supported operating modes:
+
+| Mode | Backend | Frontend | External services | Purpose |
+| --- | --- | --- | --- | --- |
+| Offline verification | no | no | no | Tests and deterministic checks |
+| Terminal/API run | yes | no | PubMed and selected LLM CLI for a live run | Automation, batch work, headless servers |
+| Web run and inspection | yes | yes | Same as terminal/API run | Launching, monitoring, filtering, and presenting graphs |
+
+The frontend never owns scientific state. It reads run-scoped API responses and artifacts; closing the browser does not cancel a run. Conversely, starting the frontend alone cannot start a live pipeline unless the backend is also available. The read-only offline and replay routes are the exception: they use embedded snapshots and need neither backend nor external credentials.
+
+The backend can be started from the repository root:
+
+```bash
+source backend/.venv/bin/activate
+uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+```
+
+Then a graph-only disease-free run can be launched without the frontend:
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/pipeline/run \
+  -H 'Content-Type: application/json' \
+  --data-raw '{
+    "target": {
+      "schema_version": "target.v1",
+      "disease": null,
+      "genes": ["BRAF"],
+      "drugs": ["vemurafenib"],
+      "tissues": [],
+      "cell_types": [],
+      "statistical_candidates": [],
+      "query_mode": "multidimensional"
+    },
+    "autonomy_level": "let_it_rip",
+    "analysis_mode": "graph_only"
+  }'
+```
+
+The response contains a `run_id` and `stream_url`. Progress can be observed with the stream endpoint, status can be polled with `/api/pipeline/{run_id}/status`, and final graph artifacts remain under `data/sessions/<run_id>/` and `data/graphs/<scope>/<run_id>/`. This is the supported terminal workflow; importing internal Python functions directly bypasses API validation and is intended for tests, not routine runs.
 
 ## 3. Target contract and input modes
 
@@ -148,6 +223,45 @@ Creates the run, writes the target snapshot, loads required skills, and dispatch
 ### Agent 01 — Canonical baseline
 
 Looks up established facts from structured sources such as Reactome, KEGG, UniProt, and MyDisease.info before PMID-derived content exists. Canonical provenance remains separate from PMID provenance. A canonical support link is not automatically a causal PMID edge.
+
+#### Canonical layer in detail
+
+The canonical layer is a read-only, pre-literature scaffold. Its purpose is to provide stable identifiers, curated relationships, entity disambiguation, and established background context before the variable PubMed corpus is built. It is not a replacement for literature retrieval and it is not a claim that every returned database relationship is causal in the submitted disease context.
+
+For a target, Agent 1 queries the four configured structured sources:
+
+| Source | Main contribution | Identifier preserved in the artifact |
+| --- | --- | --- |
+| Reactome | Human pathways, reactions, participating physical entities, and linked references | Reactome stable ID such as `R-HSA-...` |
+| KEGG | Disease/pathway entries and gene/pathway cross-references | KEGG entry ID such as `hsa05310` |
+| UniProt | Human protein identity, function, Gene Ontology, pathway and domain annotations | UniProt accession |
+| MyDisease.info | Disease normalization, MONDO mappings, HPO, DisGeNET and CTD-associated fields | MONDO or returned source identifier |
+
+The lookup sequence is:
+
+1. Normalize the submitted target and determine which dimensions are populated.
+2. Query Reactome and KEGG for disease/pathway context; query UniProt for populated genes; query MyDisease.info for disease identity and associated structured fields.
+3. Extract only statements and identifiers returned by those providers.
+4. Record every queried source in `sources_queried`, including sources that return zero hits.
+5. Store each accepted entry with `provenance_type: "canonical_db"`, source name, real source identifier, statement, nodes, and retrieval/version metadata.
+6. Write `canonical_baseline.json` before Agent 2 starts.
+
+The layer has deliberate provider controls. KEGG calls are throttled to at most three requests per second and entry requests are batched up to ten IDs. UniProt queries are field-scoped and batched where possible. MyDisease.info supports batch requests up to 1,000 IDs. Provider release/version metadata is recorded when returned, because canonical databases change over time. No identifier is synthesized when a provider returns no usable record.
+
+Canonical entries have a separate lifecycle from PMID evidence:
+
+```text
+canonical database response
+        ↓
+canonical_baseline.json
+        ├── Agent 5: naming and disambiguation context only
+        ├── Agent 6: optional canonical overlay, provenance preserved
+        └── Agent 10: established-consensus shortcut where protocol allows
+```
+
+Agent 5 may use a canonical entry to recognize that `BRAF`, `B-RAF`, and a UniProt-backed protein refer to the same biological role, but it must not relabel a PMID edge as canonical. Agent 6 may display canonical nodes or edges as an overlay, but canonical and PMID evidence remain distinguishable in the graph, API, and UI. Agent 10 may use a canonical match as an established-consensus signal under the novelty protocol; this is not the same as claiming that the current PubMed corpus independently replicated the relationship. If a source is unavailable, the run records reduced canonical coverage rather than filling the gap with guessed biology.
+
+The canonical layer therefore answers: “What curated entities and relationships are already available from these structured databases for this target?” It does not answer: “Does this exact submitted drug–gene–disease mechanism have direct experimental support?” That question is handled by retrieval, verification, extraction, and graph gates.
 
 ### Agent 02 — Literature retrieval
 
@@ -278,6 +392,22 @@ These stages are skipped in `graph_only` mode:
 - Agent 12 independently peer-reviews candidates;
 - Agent 13 designs experiments only after earlier gates allow them.
 
+### Provider execution and deterministic fallback
+
+The normal live path invokes the configured authenticated local LLM CLI (`LLM_PROVIDER=claude` or `LLM_PROVIDER=codex`) for the agents that require model execution. PubMed retrieval and canonical lookups use their respective provider APIs. Agent tool permissions are defined centrally in `backend/app/agent_registry.py`; downstream agents receive only the upstream files and tools needed for their role.
+
+If an LLM CLI cannot start, returns malformed structured output, or produces an unusable artifact, the pipeline does not fabricate a successful model result. It records the failure/fallback metadata and may materialize a bounded deterministic artifact from already retrieved provider data where that fallback is implemented. Such a run exposes `execution_mode: "local_fallback"`, `fallback_agents`, and a usage state of `Not reported` when provider counters are unavailable. It must not be described as an equivalent full live-agent run.
+
+The deterministic path is intentionally conservative:
+
+- it uses verified publications already present in the run;
+- it preserves exact source sentences and PMIDs;
+- it applies the same graph quality gates before accepting edges;
+- it never invents missing canonical identifiers, PMIDs, mechanisms, or usage counters;
+- it records partial, failed, or paused states instead of filling missing downstream artifacts with plausible text.
+
+The local fallback currently supports the bounded publication, drug-knowledge, gene-downstream, graph, and quality-materialization paths needed for deterministic verification. Canonical lookup coverage in a fallback run must be read from `canonical_baseline.json` and its coverage note; a fallback note is not evidence that canonical providers were queried successfully.
+
 ## 5. The four drug–gene evidence states
 
 Each requested drug–gene pair receives a record in `drug_gene_evidence.json`.
@@ -383,6 +513,22 @@ Filters cover entity type, provenance, likely-noise heuristic nodes, input-only 
 ### Development retrieval override
 
 `dev_pubmed_retmax` reduces retrieval size for wiring tests. A small-corpus run must not be presented as comprehensive evidence.
+
+### Environment and launch prerequisites
+
+Offline tests do not require provider credentials. A live literature run requires network access to the configured literature and canonical providers. A live agent run additionally requires an authenticated local `claude` or `codex` CLI and a repository-level `.env` with the selected provider, for example:
+
+```text
+LLM_PROVIDER=codex
+```
+
+Credentials stay outside the frontend bundle and are never placed in the repository. The backend loads `.env` at startup. Before launching a live run, verify:
+
+```bash
+curl http://127.0.0.1:8000/api/health
+```
+
+The health response reports the selected provider and registered pipeline agents, but a healthy API does not prove that the external CLI is authenticated. A terminal/API run and a web run use the same backend and the same persistence path; the frontend changes observation and control, not scientific processing.
 
 ## 9. Run artifacts
 
