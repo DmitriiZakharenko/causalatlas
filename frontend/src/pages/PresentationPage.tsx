@@ -76,7 +76,7 @@ const agent02Snippet = [
   "# Agent 2 — Literature Retrieval",
   "",
   "## Role",
-  "Retrieve PubMed abstracts for {disease, gene?} across the",
+  "Retrieve PubMed abstracts for the versioned target (disease, gene, drug,",
   "full requested publication-year window.",
   "Use MeSH + keyword expansion across multiple complementary",
   "mechanism-specific query strategies.",

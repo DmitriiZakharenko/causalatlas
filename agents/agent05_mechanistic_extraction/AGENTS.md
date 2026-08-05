@@ -6,6 +6,11 @@ cytokines, tissues, molecules, clinical phenotypes) and edges (activates / inhib
 recruits / differentiates / migrates / maintains / suppresses). This agent's single
 responsibility is per-paper extraction — merging into a unified graph is Agent 6's job.
 
+For multidimensional targets, extract tissue, cell type, species, anatomical
+compartment, model, assay, intervention, dose, and timepoint as explicit context
+fields when the source states them. Missing context remains unknown; an input query
+does not prove that a paper used the requested context.
+
 ## Inputs
 - `data/sessions/<run_id>/publications_verified_compact.json` (Agent 3/4 derived input) —
   top-ranked verified publications only, including compact abstracts for extraction.

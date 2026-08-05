@@ -381,6 +381,24 @@ def _assign_quality(paper: dict) -> dict:
     pub_types = [pt.lower() for pt in paper.get("publication_types", [])]
     abstract = paper.get("abstract", "") or ""
     species = paper.get("species", "unknown")
+    study_design = next(
+        (
+            label
+            for label, marker in (
+                ("randomized_controlled_trial", "randomized controlled trial"),
+                ("clinical_trial", "clinical trial"),
+                ("cohort", "cohort"),
+                ("case_control", "case-control"),
+                ("single_cell", "single-cell"),
+                ("in_vitro", "in vitro"),
+                ("review", "review"),
+            )
+            if marker in abstract.casefold() or any(marker in pt for pt in pub_types)
+        ),
+        "unknown",
+    )
+    sample_size_match = re.search(r"\b(?:n|N)\s*[=,:]?\s*(\d{2,6})\b", abstract)
+    sample_size = int(sample_size_match.group(1)) if sample_size_match else None
     evidence_level = "primary_research"
     base_confidence = 0.5
     penalties: list[dict] = []
@@ -407,9 +425,24 @@ def _assign_quality(paper: dict) -> dict:
         penalties.append({"name": "in_vitro_or_cell_line", "amount": 0.20})
     if not abstract.strip():
         penalties.append({"name": "abstract_missing", "amount": 0.25})
+    if sample_size is None:
+        penalties.append({"name": "sample_size_unknown", "amount": 0.05})
+    elif sample_size < 20:
+        penalties.append({"name": "small_sample_size", "amount": 0.10})
+    if study_design == "unknown":
+        penalties.append({"name": "study_design_unknown", "amount": 0.05})
     confidence_score = max(0.0, min(1.0, base_confidence - sum(item["amount"] for item in penalties)))
     return {
         "evidence_level": evidence_level,
+        "study_design": study_design,
+        "sample_size": sample_size,
+        "replication_status": paper.get("replication_status", "unknown"),
+        "context_completeness": {
+            "species": species != "unknown",
+            "tissue": bool(paper.get("tissue")),
+            "cell_type": bool(paper.get("cell_type")),
+            "model": bool(paper.get("model")),
+        },
         "base_confidence": round(base_confidence, 2),
         "penalties": penalties,
         "confidence_score": round(confidence_score, 2),
@@ -662,7 +695,11 @@ def _skills_for(agent_name: str, ctx: PipelineContext) -> list[str]:
 def _prepare_prompt(ctx: PipelineContext, agent_name: str, *, extra: str = "") -> str:
     output_path = _agent_output_path(ctx, agent_name)
     inputs = {
-        "agent01_baseline_canonical_knowledge": [],
+        "agent01_baseline_canonical_knowledge": [
+            ctx.session_dir / "analysis_target.json",
+            ctx.session_dir / "drug_knowledge.json",
+            ctx.session_dir / "target_context.json",
+        ],
         "agent02_literature_retrieval": [],
         "agent03_publication_verification": [ctx.session_dir / "publications_raw.json"],
         "agent04_quality_filter": [_materialize_agent04_compact_input(ctx)],

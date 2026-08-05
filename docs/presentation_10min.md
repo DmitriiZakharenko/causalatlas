@@ -25,7 +25,7 @@
 
 **On slide**
 
-> Input: disease + target gene
+> Input: a versioned target: disease, gene, drug, tissue, or cell type
 >
 > Output: evidence graph + novelty audit + falsifiable experiment plan
 

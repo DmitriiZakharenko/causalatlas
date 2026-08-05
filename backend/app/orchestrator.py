@@ -33,6 +33,8 @@ from app import db, llm_cli as claude_cli
 from app.agent_registry import AGENT_ORDER
 from app.target_models import AnalysisTarget
 from app.entity_normalization import normalize_target_dimensions
+from app.drug_knowledge import normalize_drug
+from app.context_models import StructuredContext
 
 # Phase 3: the exact machine-parseable marker agent00_orchestrator's AGENTS.md
 # instructs it to print (as the first line of its final text response) when
@@ -326,6 +328,36 @@ class RunManager:
                         "cell_types": normalize_target_dimensions(target.cell_types, "cell_type"),
                     },
                     "legacy_request": {"disease": disease, "gene": gene},
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n"
+        )
+        (session_dir / "drug_knowledge.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "drug-knowledge.v1",
+                    "status": "input_only",
+                    "drugs": [normalize_drug(drug).model_dump(mode="json") for drug in target.drugs],
+                    "claims": [],
+                    "note": "No drug claim is asserted until a verified provider or publication supplies provenance.",
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n"
+        )
+        (session_dir / "target_context.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": "context.v1",
+                    "context": StructuredContext.from_raw({
+                        "tissue": target.tissues[0] if target.tissues else None,
+                        "cell_type": target.cell_types[0] if target.cell_types else None,
+                    }).model_dump(mode="json"),
+                    "all_tissues": target.tissues,
+                    "all_cell_types": target.cell_types,
                 },
                 indent=2,
                 sort_keys=True,

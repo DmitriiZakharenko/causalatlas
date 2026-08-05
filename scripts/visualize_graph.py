@@ -62,6 +62,8 @@ TYPE_COLORS = {
     "default": "#9D9D9D",
 }
 
+DEFAULT_FILTER = "unfiltered"
+
 
 def load_graph_data() -> tuple[dict, list, list]:
     with open(GRAPH_PATH) as f:
@@ -74,8 +76,8 @@ def build_nx_graph(
     edges: list[dict],
     node_filter: set[str] | None = None,
     include_neighbors: bool = False,
-) -> nx.DiGraph:
-    G = nx.DiGraph()
+) -> nx.MultiDiGraph:
+    G = nx.MultiDiGraph()
     node_map = {n["id"]: n for n in nodes}
 
     if node_filter:
@@ -103,25 +105,35 @@ def build_nx_graph(
     for e in edges:
         if e["source"] in G and e["target"] in G:
             rel = e.get("primary_relation", (e.get("relations") or ["induces"])[0])
+            claim_id = e.get("claim_id") or f"claim_{e['source']}_{e['target']}_{rel}"
             G.add_edge(
                 e["source"],
                 e["target"],
+                key=claim_id,
+                claim_id=claim_id,
                 relation=rel,
                 pmid_count=e.get("pmid_count", len(e.get("pmids", []))),
                 pmids=",".join(e.get("pmids", [])[:5]),
+                sessions=json.dumps(e.get("sessions", []), sort_keys=True),
+                provenance_type=e.get("provenance_type", "unknown"),
+                source_refs=json.dumps(e.get("source_refs", []), sort_keys=True),
+                context=json.dumps(e.get("context", {}), sort_keys=True),
+                polarity=e.get("polarity") or "",
+                confidence=e.get("confidence", 0.5),
+                edge_style="dashed" if e.get("evidence_strength") == "weak" or e.get("pmid_count", 0) <= 1 else "solid",
             )
     return G
 
 
-def build_loop_graph(nodes: list, edges: list, loops: list) -> nx.DiGraph:
+def build_loop_graph(nodes: list, edges: list, loops: list) -> nx.MultiDiGraph:
     loop_nodes: set[str] = set()
     for lp in loops:
         loop_nodes.update(lp["path"])
     return build_nx_graph(nodes, edges, loop_nodes, include_neighbors=False)
 
 
-def build_community_graph(nodes: list, edges: list, modules: dict) -> nx.DiGraph:
-    G = nx.DiGraph()
+def build_community_graph(nodes: list, edges: list, modules: dict) -> nx.MultiDiGraph:
+    G = nx.MultiDiGraph()
     node_map = {n["id"]: n for n in nodes}
     module_of = {}
     for mod, members in modules.items():
@@ -134,11 +146,20 @@ def build_community_graph(nodes: list, edges: list, modules: dict) -> nx.DiGraph
     for e in edges:
         if e["source"] in G and e["target"] in G:
             rel = e.get("primary_relation", (e.get("relations") or ["induces"])[0])
-            G.add_edge(e["source"], e["target"], relation=rel)
+            claim_id = e.get("claim_id") or f"claim_{e['source']}_{e['target']}_{rel}"
+            G.add_edge(e["source"], e["target"], key=claim_id, claim_id=claim_id, relation=rel,
+                       pmid_count=e.get("pmid_count", len(e.get("pmids", []))),
+                       provenance_type=e.get("provenance_type", "unknown"),
+                       source_refs=json.dumps(e.get("source_refs", []), sort_keys=True))
     return G
 
 
-def export_graphml_gexf(G: nx.DiGraph, base_path: Path) -> None:
+def export_graphml_gexf(G: nx.MultiDiGraph, base_path: Path, metadata: dict | None = None) -> None:
+    metadata = metadata or {}
+    # GraphML/GEXF support scalar attributes reliably; JSON strings keep every
+    # provenance field inspectable without collapsing parallel claims.
+    G.graph.update({key: json.dumps(value, sort_keys=True) if isinstance(value, (dict, list)) else str(value)
+                    for key, value in metadata.items()})
     nx.write_graphml(G, str(base_path.with_suffix(".graphml")))
     nx.write_gexf(G, str(base_path.with_suffix(".gexf")))
 
@@ -151,7 +172,7 @@ def layout_graph(G: nx.DiGraph) -> dict:
     return nx.spring_layout(G, seed=42, k=1.2 / math.sqrt(len(G)))
 
 
-def draw_graph(G: nx.DiGraph, title: str, base_path: Path, highlight: set[str] | None = None) -> None:
+def draw_graph(G: nx.MultiDiGraph, title: str, base_path: Path, highlight: set[str] | None = None) -> None:
     if len(G) == 0:
         fig, ax = plt.subplots(figsize=(8, 6))
         ax.text(0.5, 0.5, "No nodes in view", ha="center", va="center")
@@ -177,10 +198,11 @@ def draw_graph(G: nx.DiGraph, title: str, base_path: Path, highlight: set[str] |
     nx.draw_networkx_labels(G, pos, font_size=7, font_weight="bold", ax=ax)
     nx.draw_networkx_edges(
         G, pos, edge_color="#666666", arrows=True, arrowsize=12,
-        connectionstyle="arc3,rad=0.1", width=1.2, ax=ax,
+        connectionstyle="arc3,rad=0.1",
+        width=[max(0.8, 0.8 + math.log1p(d.get("pmid_count", 0))) for _, _, d in G.edges(data=True)], ax=ax,
     )
 
-    edge_labels = {(u, v): d.get("relation", "")[:10] for u, v, d in G.edges(data=True)}
+    edge_labels = {(u, v, k): d.get("relation", "")[:10] for u, v, k, d in G.edges(keys=True, data=True)}
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=5, ax=ax)
     ax.set_title(title, fontsize=12, fontweight="bold")
     ax.axis("off")
@@ -190,12 +212,25 @@ def draw_graph(G: nx.DiGraph, title: str, base_path: Path, highlight: set[str] |
     plt.close(fig)
 
 
-def export_view(name: str, G: nx.DiGraph, title: str, highlight: set[str] | None = None) -> dict:
+def export_view(name: str, G: nx.MultiDiGraph, title: str, highlight: set[str] | None = None,
+                *, source: str = str(GRAPH_PATH), filter_predicate: str = DEFAULT_FILTER,
+                source_node_count: int | None = None, source_edge_count: int | None = None) -> dict:
     view_dir = OUT / name
     view_dir.mkdir(parents=True, exist_ok=True)
     base = view_dir / name
-    export_graphml_gexf(G, base)
+    metadata = {
+        "source": source,
+        "filter": filter_predicate,
+        "source_node_count": source_node_count if source_node_count is not None else len(G),
+        "source_edge_count": source_edge_count if source_edge_count is not None else G.number_of_edges(),
+        "exported_node_count": G.number_of_nodes(),
+        "exported_edge_count": G.number_of_edges(),
+        "node_type_colors": TYPE_COLORS,
+    }
+    export_graphml_gexf(G, base, metadata)
     draw_graph(G, title, base, highlight=highlight)
+    metadata_path = view_dir / f"{name}.metadata.json"
+    metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True))
     return {
         "view": name,
         "nodes": G.number_of_nodes(),
@@ -204,6 +239,9 @@ def export_view(name: str, G: nx.DiGraph, title: str, highlight: set[str] | None
         "gexf": str(base.with_suffix(".gexf")),
         "png": str(base.with_suffix(".png")),
         "svg": str(base.with_suffix(".svg")),
+        "metadata": str(metadata_path),
+        "filter": filter_predicate,
+        "source": source,
     }
 
 
@@ -219,27 +257,39 @@ def main():
 
     # 1. Master graph (core-focused readable subgraph)
     G_master = build_nx_graph(nodes, edges, CORE_NODES, include_neighbors=True)
-    manifest.append(export_view("master_graph", G_master, "Asthma Knowledge Graph — Master (Core Subgraph)"))
+    manifest.append(export_view("master_graph_core_neighbors", G_master, "Asthma Knowledge Graph — Core Neighbor View",
+                                filter_predicate="core_nodes + one-hop neighbors",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 2. Loop graph
     G_loops = build_loop_graph(nodes, edges, loops)
-    manifest.append(export_view("loop_graph", G_loops, "Asthma Knowledge Graph — Feedback Loops"))
+    manifest.append(export_view("loop_graph_members", G_loops, "Asthma Knowledge Graph — Feedback Loops",
+                                filter_predicate="loop_members_only",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 3. Community graph (modules.json)
     G_comm = build_community_graph(nodes, edges, modules)
-    manifest.append(export_view("community_graph", G_comm, "Asthma Knowledge Graph — Community Modules"))
+    manifest.append(export_view("community_graph_members", G_comm, "Asthma Knowledge Graph — Community Modules",
+                                filter_predicate="community_members_only",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 4. Bone marrow axis
     G_bm = build_nx_graph(nodes, edges, BONE_MARROW_NODES, include_neighbors=True)
-    manifest.append(export_view("bone_marrow_axis_graph", G_bm, "Asthma Knowledge Graph — Bone Marrow Axis"))
+    manifest.append(export_view("bone_marrow_axis_graph", G_bm, "Asthma Knowledge Graph — Bone Marrow Axis",
+                                filter_predicate="bone_marrow_nodes + one-hop neighbors",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 5. Epithelial interactions
     G_epi = build_nx_graph(nodes, edges, EPITHELIAL_NODES, include_neighbors=True)
-    manifest.append(export_view("epithelial_interaction_graph", G_epi, "Asthma Knowledge Graph — Epithelial Interactions"))
+    manifest.append(export_view("epithelial_interaction_graph", G_epi, "Asthma Knowledge Graph — Epithelial Interactions",
+                                filter_predicate="epithelial_nodes + one-hop neighbors",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 6. Cytokine network
     G_cyt = build_nx_graph(nodes, edges, CYTOKINE_NODES, include_neighbors=True)
-    manifest.append(export_view("cytokine_network", G_cyt, "Asthma Knowledge Graph — Cytokine Network"))
+    manifest.append(export_view("cytokine_network", G_cyt, "Asthma Knowledge Graph — Cytokine Network",
+                                filter_predicate="cytokine_nodes + one-hop neighbors",
+                                source_node_count=len(nodes), source_edge_count=len(edges)))
 
     # 7. Therapeutic target overlay
     G_ther = build_nx_graph(nodes, edges, THERAPEUTIC_NODES, include_neighbors=True)
@@ -248,6 +298,8 @@ def main():
         G_ther,
         "Asthma Knowledge Graph — Therapeutic Target Overlay",
         highlight={"Dupilumab", "Mepolizumab", "Benralizumab", "Tezepelumab", "Omalizumab"},
+        filter_predicate="therapeutic_nodes + one-hop neighbors",
+        source_node_count=len(nodes), source_edge_count=len(edges),
     ))
 
     manifest_path = OUT / "visualization_manifest.json"

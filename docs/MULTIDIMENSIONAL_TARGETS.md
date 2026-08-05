@@ -17,6 +17,29 @@ the baseline disease-target workflow.
 | UI | Frontend | Optional dimensions, clear mode display, and graph filters |
 | Verification | QA | Legacy regression, schema tests, frontend checks, and reproducibility checklist |
 
+## Drug knowledge layer
+
+Drug input is persisted separately from drug claims. A name alone creates an
+unresolved input record; it does not assert a target, indication, binding event, or
+clinical efficacy. A provider adapter may add an identifier only when the provider
+returned that identifier and its provenance is stored with the record.
+
+The following predicates remain separate: `binds_target`,
+`associated_with_disease`, `efficacy`, and `toxicity`. Claims without provenance
+are discarded from the normalized claim set. The current provider-neutral layer
+performs no network lookup; verified adapters can be added later without changing
+the session contract.
+
+## Structured context
+
+Evidence context is represented explicitly as tissue, cell type, species,
+anatomical compartment, model, and assay. Missing values use an explicit `unknown`
+state. Supplied but not verified values use `unresolved`; they must not be silently
+promoted to ontology-backed identifiers.
+
+New sessions write `drug_knowledge.json` and `target_context.json` alongside the
+resolved target artifact.
+
 ## Target contract
 
 The implementation keeps `disease` required because the current pipeline and
@@ -50,6 +73,14 @@ Noise heuristics may flag or hide likely extraction artifacts in the UI, but the
 must not mutate or delete the underlying evidence graph. Any stage-level exclusion
 must record its reason and preserve the source artifact. Filters must be explicit,
 deterministic, and test-covered.
+
+Graph exports use `MultiDiGraph` so parallel claims remain addressable by stable
+claim IDs. Every export includes its source graph, filter predicate, source counts,
+exported counts, and node color mapping. A filtered view is never named or described
+as the complete graph.
+
+The graph UI exposes entity-type and provenance filters. These are display-only
+filters: the underlying graph artifact and its evidence are not modified.
 
 ## Compatibility gate
 

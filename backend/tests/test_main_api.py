@@ -86,6 +86,9 @@ def test_start_accepts_nested_target_and_persists_it(client, monkeypatch):
     assert response.status_code == 200
     payload = response.json()
     assert payload["target"]["drugs"] == ["itepekimab"]
+    session_dir = orch_mod.SESSIONS_DIR / payload["run_id"]
+    assert (session_dir / "drug_knowledge.json").exists()
+    assert (session_dir / "target_context.json").exists()
     status = _poll_status_until(client, payload["run_id"], {"completed"})
     assert status["target_schema_version"] == "target.v1"
 

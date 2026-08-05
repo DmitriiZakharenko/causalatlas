@@ -11,13 +11,43 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 GRAPH_DIR = Path(__file__).resolve().parent.parent / "graph"
 
 
+def _unique(values):
+    """Return stable, JSON-safe unique values without dropping falsy metadata."""
+    result = []
+    seen = set()
+    for value in values:
+        marker = json.dumps(value, sort_keys=True, separators=(",", ":"), default=str)
+        if marker not in seen:
+            seen.add(marker)
+            result.append(value)
+    return result
+
+
+def _edge_records(edge: dict) -> list[dict]:
+    """Expand both current and legacy edges without throwing provenance away."""
+    relations = edge.get("relations") or [edge.get("primary_relation") or edge.get("relation") or "related"]
+    pmids = list(edge.get("pmids") or ([] if not edge.get("pmid") else [edge["pmid"]]))
+    sessions = list(edge.get("sessions") or ([] if not (edge.get("session") or edge.get("run_id")) else [edge.get("session") or edge.get("run_id")]))
+    refs = list(edge.get("source_refs") or [])
+    if edge.get("source_sentence"):
+        refs.append({"pmid": edge.get("pmid", ""), "source_sentence": edge["source_sentence"]})
+    records = []
+    for relation in relations:
+        record = dict(edge)
+        record.update({"relation": relation, "pmids": pmids, "sessions": sessions, "source_refs": refs})
+        records.append(record)
+    return records
+
+
 def build_graph(edges: list[dict]) -> dict:
     """Merge edges into unified graph with provenance."""
     edge_map = defaultdict(lambda: {
         "pmids": [], "years": [], "species": set(),
         "confidences": [], "relations": set(),
         "source_type": "", "target_type": "", "source_refs": [],
-        "sessions": set(), "context": {}, "provenance_type": None,
+                "sessions": set(), "context": {}, "provenance_type": None,
+                "provenance_types": set(),
+        "claim_ids": [],
     })
 
     nodes = {}
@@ -32,8 +62,9 @@ def build_graph(edges: list[dict]) -> dict:
             continue
         relation = e.get("relation") or e.get("primary_relation") or "related"
         pmid = e.get("pmid", "")
-        year = e.get("year", "")
-        species = e.get("species", "unknown")
+        pmid_values = e.get("pmids") or ([] if not pmid else [pmid])
+        years = e.get("years") or [e.get("year", "")]
+        species_values = e.get("species") if isinstance(e.get("species"), list) else [e.get("species", "unknown")]
         confidence = e.get("confidence", 0.5)
         source_type = e.get("source_type", "unknown")
         target_type = e.get("target_type", "unknown")
@@ -50,31 +81,36 @@ def build_graph(edges: list[dict]) -> dict:
         key = (source, target, relation, e.get("polarity"), context_key, provenance_type)
         entry = edge_map[key]
         entry["relations"].add(relation)
-        entry["pmids"].append(pmid)
-        entry["years"].append(year)
-        entry["species"].add(species)
+        entry["pmids"].extend(pmid_values)
+        entry["years"].extend(years)
+        entry["species"].update(species_values)
         entry["confidences"].append(confidence)
         entry["source_type"] = source_type
         entry["target_type"] = target_type
         entry["context"] = context
         entry["provenance_type"] = provenance_type
-        if e.get("session") or e.get("run_id"):
-            entry["sessions"].add(e.get("session") or e.get("run_id"))
+        entry["sessions"].update(e.get("sessions") or ([] if not (e.get("session") or e.get("run_id")) else [e.get("session") or e.get("run_id")]))
+        entry["source_refs"].extend(e.get("source_refs") or [])
         if e.get("source_sentence"):
             entry["source_refs"].append({"pmid": pmid, "source_sentence": e["source_sentence"]})
+        if e.get("claim_id"):
+            entry["claim_ids"].append(e["claim_id"])
 
         for node, ntype in [(source, source_type), (target, target_type)]:
             if node not in nodes:
-                nodes[node] = {"type": ntype, "pmids": set(), "edge_count": 0}
-            nodes[node]["pmids"].add(pmid)
+                    nodes[node] = {"type": ntype, "pmids": set(), "edge_count": 0, "provenance_types": set()}
+            nodes[node]["pmids"].update(pmid_values)
             nodes[node]["edge_count"] += 1
+            nodes[node]["provenance_types"].add(provenance_type)
 
     graph_edges = []
     for (src, tgt, relation, polarity, context_key, provenance_type), data in edge_map.items():
-        pmids = list(set(data["pmids"]))
+        pmids = sorted({str(pmid) for pmid in data["pmids"] if pmid not in (None, "")})
         avg_conf = sum(data["confidences"]) / len(data["confidences"])
         claim_basis = "|".join([src, tgt, relation, polarity or "", context_key, provenance_type or ""])
-        claim_id = "claim_" + hashlib.sha256(claim_basis.encode()).hexdigest()[:16]
+        generated_claim_id = "claim_" + hashlib.sha256(claim_basis.encode()).hexdigest()[:16]
+        claim_ids = _unique(data["claim_ids"])
+        claim_id = claim_ids[0] if len(claim_ids) == 1 else generated_claim_id
         graph_edges.append({
             "claim_id": claim_id,
             "source": src,
@@ -92,7 +128,7 @@ def build_graph(edges: list[dict]) -> dict:
             "target_type": data["target_type"],
             "provenance_type": provenance_type,
             "sessions": sorted(data["sessions"]),
-            "source_refs": data["source_refs"],
+            "source_refs": _unique(data["source_refs"]),
             "context": data["context"],
         })
 
@@ -102,8 +138,10 @@ def build_graph(edges: list[dict]) -> dict:
             "id": name,
             "type": data["type"],
             "pmid_count": len(data["pmids"]),
-            "pmids": sorted(data["pmids"]),
+            "pmids": sorted(pmid for pmid in data["pmids"] if pmid not in (None, "")),
             "edge_count": data["edge_count"],
+            "provenance_type": next(iter(data["provenance_types"])) if len(data["provenance_types"]) == 1 else None,
+            "provenance_types": sorted(data["provenance_types"]),
         })
 
     return {"nodes": graph_nodes, "edges": graph_edges}
@@ -118,13 +156,7 @@ def merge_graph(existing_graph: dict | None, new_edges: list[dict]) -> dict:
     existing_edges: list[dict] = []
     existing_graph = existing_graph or {}
     for edge in existing_graph.get("edges", []):
-        relations = edge.get("relations") or [edge.get("primary_relation") or "related"]
-        for relation in relations:
-            base = dict(edge)
-            base["relation"] = relation
-            base["session"] = (edge.get("sessions") or [None])[0]
-            base["pmid"] = (edge.get("pmids") or [""])[0]
-            existing_edges.append(base)
+        existing_edges.extend(_edge_records(edge))
     merged = build_graph(existing_edges + list(new_edges))
     existing_nodes = {node.get("id"): node for node in existing_graph.get("nodes", []) if node.get("id")}
     current_nodes = {node.get("id") for node in merged["nodes"]}

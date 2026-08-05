@@ -3,7 +3,6 @@ from __future__ import annotations
 import asyncio
 import json
 import sys
-import types
 
 from app.llm_common import AgentResult
 
@@ -59,10 +58,6 @@ def test_codex_pipeline_emits_streamtranslator_compatible_events(tmp_path, monke
     import app.codex_pipeline as pipeline
     import app.codex_cli as codex_cli
 
-    dummy_aiosqlite = types.ModuleType("aiosqlite")
-    dummy_aiosqlite.connect = None
-    dummy_aiosqlite.Row = object
-    sys.modules.setdefault("aiosqlite", dummy_aiosqlite)
     from app.orchestrator import StreamTranslator
 
     root = tmp_path

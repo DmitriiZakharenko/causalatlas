@@ -109,6 +109,8 @@ export default function GraphExplorerPage() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [hideNoise, setHideNoise] = useState(true);
+  const [typeFilter, setTypeFilter] = useState("all");
+  const [provenanceFilter, setProvenanceFilter] = useState("all");
   const [selected, setSelected] = useState<SelectedElement>(null);
   const cyRef = useRef<cytoscape.Core | null>(null);
 
@@ -143,7 +145,12 @@ export default function GraphExplorerPage() {
 
   const { visibleNodes, visibleEdges, hiddenNoiseCount } = useMemo(() => {
     if (!graph) return { visibleNodes: [] as GraphNode[], visibleEdges: [] as GraphEdge[], hiddenNoiseCount: 0 };
-    const nodes = hideNoise ? graph.elements.nodes.filter((n) => !n.looks_like_noise) : graph.elements.nodes;
+    const nodes = graph.elements.nodes.filter((node) => {
+      if (hideNoise && node.looks_like_noise) return false;
+      if (typeFilter !== "all" && node.type !== typeFilter) return false;
+      if (provenanceFilter !== "all" && (node.provenance_type ?? "pmid") !== provenanceFilter) return false;
+      return true;
+    });
     const keptIds = new Set(nodes.map((n) => n.id));
     const edges = graph.elements.edges.filter((e) => keptIds.has(e.source) && keptIds.has(e.target));
     return {
@@ -151,7 +158,7 @@ export default function GraphExplorerPage() {
       visibleEdges: edges,
       hiddenNoiseCount: graph.elements.nodes.length - nodes.length,
     };
-  }, [graph, hideNoise]);
+  }, [graph, hideNoise, typeFilter, provenanceFilter]);
 
   const elements = useMemo(() => {
     return [
@@ -241,6 +248,23 @@ export default function GraphExplorerPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+          </label>
+          <label>
+            Entity type
+            <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+              <option value="all">All types</option>
+              {[...new Set(graph?.elements.nodes.map((node) => node.type).filter(Boolean))].sort().map((type) => (
+                <option key={type} value={type ?? ""}>{type}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Provenance
+            <select value={provenanceFilter} onChange={(e) => setProvenanceFilter(e.target.value)}>
+              <option value="all">All sources</option>
+              <option value="pmid">PMID evidence</option>
+              <option value="canonical_db">Canonical database</option>
+            </select>
           </label>
           <label className="form__radio" style={{ alignSelf: "flex-end", marginBottom: 2 }}>
             <input type="checkbox" checked={hideNoise} onChange={(e) => setHideNoise(e.target.checked)} />
@@ -379,6 +403,15 @@ export default function GraphExplorerPage() {
               <p>
                 <strong>Evidence strength:</strong> {selected.data.evidence_strength ?? "—"}
               </p>
+              <p>
+                <strong>Provenance:</strong> {selected.data.provenance_type ?? "PMID evidence"}
+              </p>
+              {selected.data.sessions && selected.data.sessions.length > 0 && (
+                <p><strong>Sessions:</strong> {selected.data.sessions.join(", ")}</p>
+              )}
+              {selected.data.context && Object.values(selected.data.context).some((value) => Array.isArray(value) && value.length > 0) && (
+                <p><strong>Context:</strong> {JSON.stringify(selected.data.context)}</p>
+              )}
               <p>
                 <strong>PMID count:</strong> {selected.data.pmid_count}
               </p>

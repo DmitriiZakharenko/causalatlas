@@ -107,6 +107,7 @@ def _strip_node(node: dict) -> dict:
         "provenance_type": node.get("provenance_type"),
         "source": node.get("source"),
         "source_id": node.get("source_id"),
+        "provenance_types": node.get("provenance_types", [node.get("provenance_type")] if node.get("provenance_type") else []),
         "looks_like_noise": _looks_like_extraction_noise(node["id"]),
     }
 
@@ -117,8 +118,8 @@ def _strip_edge(edge: dict, index: int) -> dict:
         "id": edge.get("claim_id") or f"e{index}__{edge['source']}__{edge['target']}",
         "source": edge["source"],
         "target": edge["target"],
-        "relation": edge.get("primary_relation"),
-        "relations": edge.get("relations"),
+        "relation": edge.get("primary_relation") or edge.get("relation"),
+        "relations": edge.get("relations") or ([edge.get("relation")] if edge.get("relation") else []),
         "pmid_count": edge.get("pmid_count", len(pmids)),
         "confidence": edge.get("confidence"),
         "evidence_strength": edge.get("evidence_strength"),
@@ -143,8 +144,18 @@ def load_graph_for_ui(disease_slug: str) -> dict:
     if not graph_path.exists():
         raise GraphNotFoundError(f"no graph found for disease slug {disease_slug!r}")
     raw = json.loads(graph_path.read_text())
+    source_metadata = dict(raw.get("metadata", {}))
+    # The UI payload is an explicitly unfiltered view of this source artifact.
+    # Keep these labels here as well as in static exports so a filtered client
+    # view cannot be mistaken for the persisted graph.
+    source_metadata.setdefault("source", str(graph_path))
+    source_metadata.setdefault("filter", "unfiltered")
+    source_metadata.setdefault("source_node_count", len(raw.get("nodes", [])))
+    source_metadata.setdefault("source_edge_count", len(raw.get("edges", [])))
+    source_metadata.setdefault("exported_node_count", len(raw.get("nodes", [])))
+    source_metadata.setdefault("exported_edge_count", len(raw.get("edges", [])))
     return {
-        "metadata": raw.get("metadata", {}),
+        "metadata": source_metadata,
         "elements": {
             "nodes": [_strip_node(n) for n in raw.get("nodes", [])],
             "edges": [_strip_edge(e, i) for i, e in enumerate(raw.get("edges", []))],
