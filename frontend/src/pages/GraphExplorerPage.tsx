@@ -288,6 +288,22 @@ export default function GraphExplorerPage() {
 
   const selectNode = (node: GraphNode) => setSelected({ kind: "node", data: node });
 
+  const spreadGraph = () => {
+    const cy = cyRef.current;
+    if (!cy) return;
+    cy.layout({
+      name: "concentric",
+      animate: false,
+      avoidOverlap: true,
+      minNodeSpacing: 55,
+      padding: 90,
+      spacingFactor: 1.8,
+      concentric: (node: cytoscape.NodeSingular) => node.degree() * 10 + Number(node.data("pmid_count") ?? 0),
+      levelWidth: () => 35,
+    } as cytoscape.LayoutOptions).run();
+    cy.fit(cy.elements(), 90);
+  };
+
   return (
     <div className="page page--wide">
       <section className="card">
@@ -354,6 +370,9 @@ export default function GraphExplorerPage() {
               {selected?.kind === "node" ? `Summarize ${selected.data.label}` : "Text summary"}
             </Link>
           )}
+          <button type="button" className="button" onClick={spreadGraph} disabled={!graph}>
+            Spread graph
+          </button>
         </div>
         {graph && (
           <>
@@ -414,14 +433,14 @@ export default function GraphExplorerPage() {
               stylesheet={STYLESHEET}
               layout={
                 {
-                  name: "cose",
+                  name: "concentric",
                   animate: false,
-                  nodeRepulsion: 26000,
-                  nodeOverlap: 24,
-                  idealEdgeLength: 125,
-                  gravity: 0.18,
-                  numIter: 2200,
-                  padding: 70,
+                  avoidOverlap: true,
+                  minNodeSpacing: 55,
+                  padding: 90,
+                  spacingFactor: 1.8,
+                  concentric: (node: cytoscape.NodeSingular) => node.degree() * 10 + Number(node.data("pmid_count") ?? 0),
+                  levelWidth: () => 35,
                 } as cytoscape.LayoutOptions
               }
               style={{ width: "100%", height: "78vh", minHeight: 640, background: GRAPH_CANVAS_BG, borderRadius: 8 }}
