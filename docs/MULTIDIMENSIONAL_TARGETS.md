@@ -30,6 +30,14 @@ are discarded from the normalized claim set. The current provider-neutral layer
 performs no network lookup; verified adapters can be added later without changing
 the session contract.
 
+For graph display, `binds_target` and `indirectly_modulates` claims for the same
+drug and endpoint are rendered as one `drug_mechanism` edge with
+`relation_variants`. This prevents duplicate arrows while preserving distinct
+evidence types and all PMID/source-sentence references in the edge detail panel.
+Intermediate pathway or protein edges are retained only when both endpoints occur
+in the same PMID-backed source sentence; the system does not infer an unobserved
+mechanism from the input pair alone.
+
 ## Structured context
 
 Evidence context is represented explicitly as tissue, cell type, species,
@@ -79,6 +87,10 @@ target dimension, then at most two follow-up queries may be derived from the hig
 support, target-relevant normalized nodes. Follow-ups must add a new node/context
 combination, deduplicate PMIDs, and remain within the retrieval publication and
 deadline budgets. The system does not issue one query per node.
+
+When an edge is selected in the graph UI, up to five exact supporting sentences are
+shown with PMID links. These are evidence excerpts for review, not generated
+interpretations or proof of biological truth.
 
 ## Noise controls
 

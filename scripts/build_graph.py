@@ -210,10 +210,26 @@ def build_graph(edges: list[dict]) -> dict:
             "drugs": e.get("drugs", []),
         }
         provenance_type = e.get("provenance_type") or ("pmid" if pmid else "unknown")
+        # Normalize omitted context fields before identity construction. Local
+        # fallback extraction may omit empty tissues/cell_types, while the
+        # primary extractor includes them; those are the same run context.
+        context = {
+            "disease": list(context.get("disease") or []),
+            "tissues": list(context.get("tissues") or []),
+            "cell_types": list(context.get("cell_types") or []),
+            "drugs": list(context.get("drugs") or []),
+        }
         context_key = json.dumps(context, sort_keys=True, separators=(",", ":"))
-        # Relation, polarity, context, and provenance are part of claim identity.
-        # Parallel claims are intentional: opposite evidence must not be merged.
-        key = (source, target, relation, e.get("polarity"), context_key, provenance_type)
+        # Drug target evidence can contain both a direct-target and an
+        # indirect/pathway claim for the same endpoint. Keep those relation
+        # variants in one visual edge; opposing causal relations remain
+        # separate because their relation key is not collapsed.
+        relation_key = (
+            "drug_mechanism"
+            if source_type == "Drug" and relation in {"binds_target", "indirectly_modulates"}
+            else relation
+        )
+        key = (source, target, relation_key, e.get("polarity"), context_key, provenance_type)
         entry = edge_map[key]
         entry["relations"].add(relation)
         entry["pmids"].extend(pmid_values)
@@ -239,10 +255,12 @@ def build_graph(edges: list[dict]) -> dict:
             nodes[node]["provenance_types"].add(provenance_type)
 
     graph_edges = []
-    for (src, tgt, relation, polarity, context_key, provenance_type), data in edge_map.items():
+    for (src, tgt, relation_key, polarity, context_key, provenance_type), data in edge_map.items():
         pmids = sorted({str(pmid) for pmid in data["pmids"] if pmid not in (None, "")})
         avg_conf = sum(data["confidences"]) / len(data["confidences"])
-        claim_basis = "|".join([src, tgt, relation, polarity or "", context_key, provenance_type or ""])
+        relation_variants = sorted(data["relations"])
+        relation = relation_key if relation_key == "drug_mechanism" else relation_variants[0]
+        claim_basis = "|".join([src, tgt, relation_key, polarity or "", context_key, provenance_type or ""])
         generated_claim_id = "claim_" + hashlib.sha256(claim_basis.encode()).hexdigest()[:16]
         claim_ids = _unique(data["claim_ids"])
         claim_id = claim_ids[0] if len(claim_ids) == 1 else generated_claim_id
@@ -251,7 +269,8 @@ def build_graph(edges: list[dict]) -> dict:
             "source": src,
             "target": tgt,
             "relation": relation,
-            "relations": [relation],
+            "relations": relation_variants,
+            "relation_variants": relation_variants,
             "primary_relation": relation,
             "polarity": polarity,
             "pmids": pmids,

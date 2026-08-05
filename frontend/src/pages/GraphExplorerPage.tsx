@@ -559,6 +559,9 @@ export default function GraphExplorerPage() {
               <p>
                 <strong>Relation:</strong> {selected.data.relation ?? "—"}
               </p>
+              {(selected.data.relation_variants ?? selected.data.relations ?? []).length > 0 && (
+                <p><strong>Evidence variants:</strong> {(selected.data.relation_variants ?? selected.data.relations ?? []).join(", ")}</p>
+              )}
               <p>
                 <strong>Confidence:</strong> {selected.data.confidence ?? "—"}
               </p>
@@ -586,6 +589,21 @@ export default function GraphExplorerPage() {
                   </li>
                 ))}
               </ul>
+              {(selected.data.source_refs ?? []).some((ref) => typeof ref === "object" && ref !== null && ref.source_sentence) && (
+                <div className="edge-evidence-sentences">
+                  <p><strong>Evidence sentences:</strong></p>
+                  <ul>
+                    {(selected.data.source_refs ?? [])
+                      .filter((ref): ref is Record<string, unknown> => typeof ref === "object" && ref !== null && typeof ref.source_sentence === "string")
+                      .slice(0, 5)
+                      .map((ref, index) => (
+                        <li key={`${String(ref.pmid ?? "source")}-${index}`}>
+                          {ref.pmid ? <a href={`https://pubmed.ncbi.nlm.nih.gov/${String(ref.pmid)}`} target="_blank" rel="noreferrer">PMID {String(ref.pmid)}</a> : "Source"}: {String(ref.source_sentence)}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
         </section>

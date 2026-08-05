@@ -150,6 +150,7 @@ export interface GraphEdge {
   target: string;
   relation: string | null;
   relations: string[] | null;
+  relation_variants?: string[];
   pmid_count: number;
   confidence: number | null;
   evidence_strength: string | null;

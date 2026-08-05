@@ -250,6 +250,7 @@ def _strip_edge(edge: dict, index: int) -> dict:
         "target": edge["target"],
         "relation": edge.get("primary_relation") or edge.get("relation"),
         "relations": edge.get("relations") or ([edge.get("relation")] if edge.get("relation") else []),
+        "relation_variants": edge.get("relation_variants") or edge.get("relations") or [],
         "pmid_count": edge.get("pmid_count", len(pmids)),
         "confidence": edge.get("confidence"),
         "evidence_strength": edge.get("evidence_strength"),

@@ -49,6 +49,29 @@ def test_claim_id_is_stable_for_same_claim():
     assert build_graph([edge])["edges"][0]["claim_id"] == build_graph([edge])["edges"][0]["claim_id"]
 
 
+def test_drug_mechanism_variants_render_as_one_edge_and_merge_context_defaults():
+    graph = build_graph([
+        {
+            "source": "erlotinib", "target": "EGFR", "relation": "binds_target",
+            "source_type": "Drug", "target_type": "Gene", "pmid": "1",
+            "session": "run-1", "context": {"disease": ["NSCLC"], "drugs": ["erlotinib"]},
+            "source_sentence": "Erlotinib binds EGFR.",
+        },
+        {
+            "source": "erlotinib", "target": "EGFR", "relation": "indirectly_modulates",
+            "source_type": "Drug", "target_type": "Gene", "pmid": "2",
+            "session": "run-1", "context": {"disease": ["NSCLC"], "tissues": [], "cell_types": [], "drugs": ["erlotinib"]},
+            "source_sentence": "Erlotinib indirectly modulates EGFR signaling.",
+        },
+    ])
+    assert len(graph["edges"]) == 1
+    edge = graph["edges"][0]
+    assert edge["relation"] == "drug_mechanism"
+    assert edge["relation_variants"] == ["binds_target", "indirectly_modulates"]
+    assert edge["pmids"] == ["1", "2"]
+    assert edge["sessions"] == ["run-1"]
+
+
 def test_quality_gate_rejects_sentence_free_unknown_claims():
     accepted, rejected = quality_gate_edges(
         [
