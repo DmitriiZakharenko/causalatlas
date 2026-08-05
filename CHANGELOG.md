@@ -8,6 +8,8 @@
   cell types.
 - Versioned target artifacts and additive persistence migrations.
 - Search-quality, noise, and provenance safeguards for the new dimensions.
+- Deterministic target normalization with explicit unresolved states.
+- Target-term relevance checks kept separate from PMID metadata verification.
 
 ## v0.2.0
 

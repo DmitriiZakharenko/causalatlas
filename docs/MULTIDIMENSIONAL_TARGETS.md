@@ -37,6 +37,13 @@ and therapeutic efficacy are separate evidence claims. Canonical database record
 must not acquire PMID provenance, and PMID-derived claims must not be relabeled as
 canonical consensus.
 
+Target normalization is deterministic and non-speculative. Known aliases may map to
+a canonical label; unknown values remain preserved as `unresolved` raw input until a
+verified provider adapter supplies an identifier. PMID presence is not relevance:
+the deterministic fallback records matched target terms and rejects papers with no
+target-term evidence from title, abstract, or journal metadata. Full Agent 3
+verification remains the stronger gate for live agent runs.
+
 ## Noise controls
 
 Noise heuristics may flag or hide likely extraction artifacts in the UI, but they
