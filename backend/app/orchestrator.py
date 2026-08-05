@@ -217,16 +217,21 @@ class StreamTranslator:
                 reason = result_text.split(PAUSE_MARKER, 1)[1].strip()
                 agent = reason.split("\u2014", 1)[0].strip(" -:") or None
                 return [{"type": "run_paused", "agent": agent, "reason": reason}]
+            usage = raw.get("usage") if isinstance(raw.get("usage"), dict) else {}
+
+            def _usage_value(key: str):
+                return raw.get(key, usage.get(key))
+
             event = {
                     "type": "run_completed",
-                    "cost_usd": raw.get("total_cost_usd"),
+                    "cost_usd": raw.get("total_cost_usd", raw.get("cost_usd")),
                     "duration_ms": raw.get("duration_ms"),
-                    "input_tokens": raw.get("input_tokens"),
-                    "output_tokens": raw.get("output_tokens"),
-                    "cached_input_tokens": raw.get("cached_input_tokens"),
-                    "reasoning_tokens": raw.get("reasoning_tokens"),
-                    "total_tokens": raw.get("total_tokens"),
-                    "usage_source": raw.get("usage_source"),
+                    "input_tokens": _usage_value("input_tokens"),
+                    "output_tokens": _usage_value("output_tokens"),
+                    "cached_input_tokens": _usage_value("cached_input_tokens"),
+                    "reasoning_tokens": _usage_value("reasoning_tokens"),
+                    "total_tokens": _usage_value("total_tokens"),
+                    "usage_source": raw.get("usage_source", usage.get("usage_source")),
                     "llm_calls": raw.get("calls"),
                     "result_text": result_text,
                 }

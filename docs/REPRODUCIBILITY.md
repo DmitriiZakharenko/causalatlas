@@ -61,6 +61,12 @@ Verify `http://localhost:8000/api/health` and then open `http://localhost:5173/?
 
 Copy `.env.example` to `.env`, set `LLM_PROVIDER`, and authenticate the selected CLI outside the repository. For a cheap wiring check use `autonomy_level=autocomplete` and a small `dev_pubmed_retmax`; leave the override unset for a demo-quality run. Live runs consume external quota and are not required for the offline CI gate.
 
+For live Codex runs, the UI reports only provider-reported token and cost
+counters. If the CLI cannot start or emits no usage JSON, the run is marked as
+using local fallback materialization and displays `Not reported`; this does not
+mean zero tokens or zero cost. Diagnose such runs using backend stderr and the
+terminal `execution_mode` and `fallback_agents` fields.
+
 ## Submission evidence
 
 Record the test summary, the browser routes checked, the selected demo run/session ID, and the exact commit used for the presentation. Include the read-only replay and presentation route in the demo handoff so reviewers can reproduce the visible result without credentials.

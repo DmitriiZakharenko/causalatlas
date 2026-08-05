@@ -1334,6 +1334,7 @@ async def run_orchestrator_stream(
 ):
     ctx = _parse_prompt(prompt)
     usage_total: dict = {"calls": 0}
+    fallback_agents: list[str] = []
     step_specs = [
         "agent01_baseline_canonical_knowledge",
         "agent02_literature_retrieval",
@@ -1361,6 +1362,9 @@ async def run_orchestrator_stream(
                 payload, agent_meta = await _run_codex_agent(ctx, agent_name, extra=extra)
                 usage_total = _merge_usage(usage_total, agent_meta)
             except Exception as exc:  # noqa: BLE001
+                # Keep deterministic artifacts usable, but expose that the
+                # provider was unavailable instead of presenting fake zeros.
+                fallback_agents.append(agent_name)
                 if agent_name == "agent01_baseline_canonical_knowledge":
                     payload = _materialize_local_canonical_baseline(ctx)
                 elif agent_name == "agent02_literature_retrieval":
@@ -1513,13 +1517,28 @@ async def run_orchestrator_stream(
             _write_json(ctx.session_dir / "hypotheses.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "hypotheses": []})
             _write_json(ctx.session_dir / "peer_review.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "reviews": []})
             _write_json(ctx.session_dir / "experiment_design.json", {"session": ctx.run_id, "status": "skipped", "reason": "analysis_mode=graph_only", "experiments": []})
+            completion_text = (
+                f"Codex graph-only pipeline completed for {ctx.disease}: evidence graph and text interpretation inputs are ready."
+            )
+            if fallback_agents:
+                completion_text += (
+                    " Provider usage was not reported because local fallback materialization was used for "
+                    + ", ".join(fallback_agents)
+                    + "."
+                )
             yield _final_result(
-                f"Codex graph-only pipeline completed for {ctx.disease}: evidence graph and text interpretation inputs are ready.",
+                completion_text,
                 cost_usd=usage_total.get("cost_usd"),
                 usage={
                     key: value for key, value in usage_total.items()
                     if key != "cost_usd" and value is not None
-                } | {"analysis_mode": "graph_only", "downstream_stages": "skipped"},
+                }
+                | {
+                    "analysis_mode": "graph_only",
+                    "downstream_stages": "skipped",
+                    "fallback_agents": fallback_agents,
+                    "execution_mode": "local_fallback" if fallback_agents else "provider",
+                },
             )
             return
 
@@ -1668,7 +1687,13 @@ async def run_orchestrator_stream(
                 key: value
                 for key, value in usage_total.items()
                 if key != "cost_usd" and value is not None
-            } | {"token_budget": DOWNSTREAM_TOKEN_BUDGET, "token_budget_exhausted": _token_budget_exhausted(usage_total)},
+            }
+            | {
+                "token_budget": DOWNSTREAM_TOKEN_BUDGET,
+                "token_budget_exhausted": _token_budget_exhausted(usage_total),
+                "fallback_agents": fallback_agents,
+                "execution_mode": "local_fallback" if fallback_agents else "provider",
+            },
         )
     except Exception as exc:  # noqa: BLE001
         yield {

@@ -143,6 +143,35 @@ def test_translator_run_completed_on_successful_result():
     ]
 
 
+def test_translator_preserves_nested_provider_usage_and_cost_alias():
+    t = StreamTranslator()
+    events = t.feed(
+        {
+            "type": "result",
+            "is_error": False,
+            "cost_usd": 0.17,
+            "usage": {
+                "input_tokens": 120,
+                "output_tokens": 30,
+                "total_tokens": 150,
+                "usage_source": "codex_cli_jsonl",
+            },
+            "result": "done",
+        }
+    )
+    assert events == [
+        {
+            "type": "run_completed",
+            "cost_usd": 0.17,
+            "input_tokens": 120,
+            "output_tokens": 30,
+            "total_tokens": 150,
+            "usage_source": "codex_cli_jsonl",
+            "result_text": "done",
+        }
+    ]
+
+
 def test_translator_run_failed_on_error_result():
     t = StreamTranslator()
     events = t.feed({"type": "result", "is_error": True, "result": "boom"})
