@@ -3,7 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
 
-from build_graph import build_graph, merge_graph, quality_gate_edges
+from build_graph import build_graph, merge_graph, quality_gate_edges, semantic_gate_edges
 
 
 def test_merge_preserves_parallel_claims_and_all_provenance():
@@ -78,3 +78,19 @@ def test_quality_gate_rejects_sentence_free_unknown_claims():
 
     assert len(accepted) == 1
     assert rejected[0]["reasons"] == ["missing_source_sentence", "unknown_node_type", "non_pmid_provenance", "target_relevance_not_demonstrated"]
+
+
+def test_semantic_gate_rejects_directionless_tissue_claim():
+    accepted, rejected = semantic_gate_edges(
+        [{
+            "source": "ILC2",
+            "target": "lung",
+            "source_type": "Cell",
+            "target_type": "Tissue",
+            "relation": "suppresses",
+            "source_sentence": "ILC2 cells were detected in the lung.",
+        }],
+        target={"tissues": ["lung"]},
+    )
+    assert accepted == []
+    assert rejected[0]["reasons"] == ["causal_direction_not_supported"]

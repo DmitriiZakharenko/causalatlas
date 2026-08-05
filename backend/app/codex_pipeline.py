@@ -1382,7 +1382,7 @@ async def run_orchestrator_stream(
             yield _tool_result_event(f"a{index:02d}", json.dumps(payload)[:4000])
 
         # Graph stage: deterministic and budget-friendly, but still part of the full launch.
-        from scripts.build_graph import merge_graph, quality_gate_edges
+        from scripts.build_graph import merge_graph, quality_gate_edges, semantic_gate_edges
         from scripts.run_budgeted_case import write_graph_stage_outputs  # local import to keep CLI startup light
 
         canonical = (
@@ -1408,11 +1408,16 @@ async def run_orchestrator_stream(
         # sentence-grounded claims. This is cheap CPU work and prevents a
         # verbose, unsupported model response from becoming the graph.
         llm_candidate_count = len(candidate_edges)
-        gated_edges, rejected_edges = quality_gate_edges(
+        quality_edges, quality_rejected = quality_gate_edges(
             candidate_edges,
             target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
             publications=verified,
         )
+        gated_edges, semantic_rejected = semantic_gate_edges(
+            quality_edges,
+            target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
+        )
+        rejected_edges = quality_rejected + semantic_rejected
         local_fallback_used = False
         local_edges: list[dict] = []
         if len(gated_edges) < 3 and verified:
@@ -1420,15 +1425,19 @@ async def run_orchestrator_stream(
                 _write_json(ctx.session_dir / "mechanisms_llm_raw.json", graph_payload)
             local_payload = _materialize_local_mechanisms(ctx)
             local_edges = local_payload.get("edges", []) if isinstance(local_payload, dict) else []
-            local_gated, local_rejected = quality_gate_edges(
+            local_quality_edges, local_quality_rejected = quality_gate_edges(
                 local_edges,
                 target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
                 publications=verified,
             )
+            local_gated, local_semantic_rejected = semantic_gate_edges(
+                local_quality_edges,
+                target=(ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode="json"),
+            )
             if local_gated:
                 local_fallback_used = True
                 gated_edges = gated_edges + local_gated
-                rejected_edges = rejected_edges + local_rejected
+                rejected_edges = rejected_edges + local_quality_rejected + local_semantic_rejected
         _write_json(
             ctx.session_dir / "edge_quality_gate.json",
             {
@@ -1440,6 +1449,7 @@ async def run_orchestrator_stream(
                 "local_fallback_edges": len(local_edges),
                 "accepted_edges": len(gated_edges),
                 "rejected_edges": len(rejected_edges),
+                "semantic_rejected_edges": len(semantic_rejected),
                 "rejections": rejected_edges,
             },
         )
@@ -1463,6 +1473,8 @@ async def run_orchestrator_stream(
             "quality_contract": "strict-v2",
             "edge_quality_gate": "strict-v2",
             "rejected_edge_count": len(rejected_edges),
+            "semantic_edge_validation": "deterministic-v1",
+            "canonical_baseline_entries": (canonical.get("entries") or canonical.get("canonical_entries") or []) if isinstance(canonical, dict) else [],
         }
         canonical_ids = _canonical_nodes(canonical if isinstance(canonical, dict) else {})
         present_ids = {n["id"] for n in graph["nodes"]}

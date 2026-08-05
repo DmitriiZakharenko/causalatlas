@@ -137,6 +137,8 @@ export interface GraphNode {
   source?: string | null;
   source_id?: string | null;
   is_input_only?: boolean;
+  is_canonical_source?: boolean;
+  canonical_statement?: string;
 }
 
 export interface GraphEdge {

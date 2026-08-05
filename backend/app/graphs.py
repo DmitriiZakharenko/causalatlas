@@ -133,6 +133,8 @@ def _strip_node(node: dict, dimensions: dict[str, list[str]]) -> dict:
         "provenance_type": node.get("provenance_type"),
         "source": node.get("source"),
         "source_id": node.get("source_id"),
+        "is_canonical_source": node.get("is_canonical_source", False),
+        "canonical_statement": node.get("canonical_statement", ""),
         "provenance_types": node.get("provenance_types", [node.get("provenance_type")] if node.get("provenance_type") else []),
         "looks_like_noise": _looks_like_extraction_noise(node["id"]),
         "is_input_only": False,
@@ -163,6 +165,65 @@ def _input_only_nodes(dimensions: dict[str, list[str]], existing_ids: set[str]) 
                 }
             )
     return nodes
+
+
+def _canonical_overlay(
+    entries: list[dict],
+    existing_nodes: list[dict],
+) -> tuple[list[dict], list[dict]]:
+    """Build an explicit, non-biological canonical evidence overlay.
+
+    Source hubs make the canonical layer visible without pretending that two
+    co-curated biological nodes form a PMID-style causal edge.
+    """
+    node_ids = {node["id"] for node in existing_nodes}
+    overlay_nodes: list[dict] = []
+    overlay_edges: list[dict] = []
+    for entry in entries:
+        entry_id = str(entry.get("entry_id") or entry.get("source_id") or "canonical")
+        hub_id = f"__canonical__{entry_id}"
+        overlay_nodes.append({
+            "id": hub_id,
+            "label": f"{entry.get('source', 'canonical')} · {entry_id}",
+            "type": "canonical_db",
+            "pmid_count": 0,
+            "edge_count": len(entry.get("nodes") or []),
+            "sample_pmids": [],
+            "provenance_type": "canonical_db",
+            "source": entry.get("source"),
+            "source_id": entry.get("source_id"),
+            "provenance_types": ["canonical_db"],
+            "looks_like_noise": False,
+            "is_input_only": False,
+            "is_canonical_source": True,
+            "canonical_statement": entry.get("statement", ""),
+        })
+        for node_id in entry.get("nodes") or []:
+            if node_id not in node_ids:
+                continue
+            overlay_edges.append({
+                "id": f"{hub_id}__supports__{node_id}",
+                "source": hub_id,
+                "target": node_id,
+                "relation": "canonical_supports_context",
+                "relations": ["canonical_supports_context"],
+                "pmid_count": 0,
+                "confidence": None,
+                "evidence_strength": "canonical",
+                "sample_pmids": [],
+                "claim_id": f"{hub_id}__supports__{node_id}",
+                "provenance_type": "canonical_db",
+                "sessions": [],
+                "context": {},
+                "source_refs": [{
+                    "canonical_id": entry_id,
+                    "source": entry.get("source"),
+                    "source_id": entry.get("source_id"),
+                    "statement": entry.get("statement", ""),
+                }],
+                "contradiction_group": None,
+            })
+    return overlay_nodes, overlay_edges
 
 
 def _strip_edge(edge: dict, index: int) -> dict:
@@ -212,15 +273,28 @@ def load_graph_for_ui(disease_slug: str) -> dict:
     source_nodes = [_strip_node(n, dimensions) for n in raw.get("nodes", [])]
     source_ids = {node["id"] for node in source_nodes}
     input_nodes = _input_only_nodes(dimensions, source_ids)
-    source_metadata["exported_node_count"] = len(source_nodes) + len(input_nodes)
+    canonical_entries = source_metadata.get("canonical_baseline_entries") or []
+    if not canonical_entries and source_metadata.get("run_id"):
+        session_baseline = REPO_ROOT / "data" / "sessions" / str(source_metadata["run_id"]) / "canonical_baseline.json"
+        if session_baseline.exists():
+            try:
+                baseline = json.loads(session_baseline.read_text())
+                canonical_entries = baseline.get("entries") or baseline.get("canonical_entries") or []
+            except (OSError, json.JSONDecodeError):
+                canonical_entries = []
+    canonical_nodes, canonical_edges = _canonical_overlay(canonical_entries, source_nodes)
+    source_metadata["exported_node_count"] = len(source_nodes) + len(input_nodes) + len(canonical_nodes)
     # The response contains explicit input-only target nodes in addition to
     # evidence nodes. Keep source_node_count above as the persisted-graph
     # count, while node_count describes what the user actually sees.
-    source_metadata["node_count"] = len(source_nodes) + len(input_nodes)
+    source_metadata["node_count"] = len(source_nodes) + len(input_nodes) + len(canonical_nodes)
+    source_metadata["edge_count"] = len(raw.get("edges", [])) + len(canonical_edges)
+    source_metadata["canonical_overlay_node_count"] = len(canonical_nodes)
+    source_metadata["canonical_overlay_edge_count"] = len(canonical_edges)
     return {
         "metadata": source_metadata,
         "elements": {
-            "nodes": source_nodes + input_nodes,
-            "edges": [_strip_edge(e, i) for i, e in enumerate(raw.get("edges", []))],
+            "nodes": source_nodes + input_nodes + canonical_nodes,
+            "edges": [_strip_edge(e, i) for i, e in enumerate(raw.get("edges", []))] + canonical_edges,
         },
     }

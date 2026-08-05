@@ -16,6 +16,7 @@ const TYPE_COLORS: Record<string, string> = {
   Molecule: "#5aa469",
   Pathway: "#d97706",
   Clinical_phenotype: "#c23a4b",
+  canonical_db: "#475569",
   unknown: "#94a3b8",
 };
 const TYPE_SHAPES: Record<string, string> = {
@@ -29,9 +30,10 @@ const TYPE_SHAPES: Record<string, string> = {
   Molecule: "diamond",
   Pathway: "tag",
   Clinical_phenotype: "round-rectangle",
+  canonical_db: "round-rectangle",
   unknown: "ellipse",
 };
-const LEGEND_TYPES = ["Disease", "Gene", "Drug", "Tissue", "Cell_type", "Cell", "Cytokine", "Molecule", "Pathway", "Clinical_phenotype", "unknown"];
+const LEGEND_TYPES = ["Disease", "Gene", "Drug", "Tissue", "Cell_type", "Cell", "Cytokine", "Molecule", "Pathway", "Clinical_phenotype", "canonical_db", "unknown"];
 const DEFAULT_COLOR = "#9ca7b8";
 const DEFAULT_SHAPE = "ellipse";
 const SPOTLIGHT_COLOR = "#d97706";
@@ -72,6 +74,7 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
   { selector: 'node[type = "Molecule"]', style: { shape: "diamond" } },
   { selector: 'node[type = "Pathway"]', style: { shape: "tag" } },
   { selector: 'node[type = "Clinical_phenotype"]', style: { shape: "round-rectangle" } },
+  { selector: 'node[type = "canonical_db"]', style: { shape: "round-rectangle", "border-style": "dotted", "border-width": 2 } },
   {
     selector: ".input-only",
     style: {
@@ -100,6 +103,10 @@ const STYLESHEET: cytoscape.StylesheetJsonBlock[] = [
   {
     selector: 'edge[evidence_strength = "weak"]',
     style: { "line-style": "dashed", opacity: 0.5 },
+  },
+  {
+    selector: 'edge[provenance_type = "canonical_db"]',
+    style: { "line-style": "dotted", "line-color": "#475569", "target-arrow-color": "#475569", opacity: 0.8 },
   },
   {
     selector: 'edge[contradiction_group]',
@@ -397,6 +404,7 @@ export default function GraphExplorerPage() {
               <span className="graph-legend__item"><i className="graph-legend__line" /> stronger PMID support</span>
               <span className="graph-legend__item"><i className="graph-legend__line graph-legend__line--dashed" /> weak evidence</span>
               <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: "#475569", borderStyle: "dashed" }} /> input-only target (optional overlay)</span>
+              <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: TYPE_COLORS.canonical_db }} /> canonical evidence source</span>
               <span className="graph-legend__item"><i className="graph-legend__swatch" style={{ backgroundColor: TYPE_COLORS.unknown }} /> unresolved type</span>
             </div>
           </>
@@ -486,12 +494,18 @@ export default function GraphExplorerPage() {
                 {selected.data.is_input_only && (
                   <span className="muted"> — user-supplied target dimension, not an evidence claim</span>
                 )}
+                {selected.data.is_canonical_source && (
+                  <span className="muted"> — canonical database source, not a PMID-derived biological node</span>
+                )}
                 {selected.data.looks_like_noise && (
                   <span className="badge badge--outcome-confirmed_false_positive_historical" style={{ marginLeft: 6 }}>
                     flagged as likely noise
                   </span>
                 )}
               </p>
+              {selected.data.canonical_statement && (
+                <p><strong>Canonical statement:</strong> {selected.data.canonical_statement}</p>
+              )}
               <p>
                 <strong>PMID count:</strong> {selected.data.pmid_count}
               </p>

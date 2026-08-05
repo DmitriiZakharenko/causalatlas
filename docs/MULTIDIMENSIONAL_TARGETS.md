@@ -100,6 +100,18 @@ sentence, and target relevance are required. A graph with fewer such edges is
 reported as underpowered rather than filled with plausible narrative. This favors a
 small, biologically meaningful subgraph over a large collection of weak fragments.
 
+The graph stage also applies `deterministic-v1` semantic validation. For directed
+claims, the supporting sentence must contain a compatible causal cue; claims that
+only state co-occurrence (for example, a cell was detected in a tissue) cannot be
+rendered as activation, induction, or suppression. Tissue and cell claims must also
+retain biological context. This stage uses no additional LLM calls and therefore has
+zero token cost.
+
+Canonical baseline sources are shown as a separate evidence overlay. Dotted
+`canonical_supports_context` links connect a canonical source hub to the nodes it
+curates; these are provenance links, not causal biological edges and must remain
+visually distinct from PMID evidence.
+
 ## Compatibility gate
 
 The extension is ready only when the following remain true:

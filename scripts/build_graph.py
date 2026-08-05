@@ -109,6 +109,48 @@ def quality_gate_edges(
     return accepted, rejected
 
 
+def semantic_gate_edges(
+    edges: list[dict],
+    *,
+    target: dict | None = None,
+) -> tuple[list[dict], list[dict]]:
+    """Reject claims whose sentence does not support the stated direction.
+
+    This deterministic gate does not infer a mechanism. It checks that a
+    causal cue occurs in the supporting sentence and that tissue/cell claims
+    contain biological context.
+    """
+    target = target or {}
+    context_terms = [*(target.get("tissues") or []), *(target.get("cell_types") or [])]
+    relation_cues = {
+        "induces": r"induc|driv|promot|lead[s]? to|result[s]? in|produc|secre|express|upregulat",
+        "activates": r"activat|stimulat|trigger|contribut|depend|requir",
+        "recruits": r"recruit|expand|migrat",
+        "suppresses": r"suppress|inhibit|block|reduc|decreas|downregulat",
+        "differentiates_into": r"differentiat",
+        "maintains": r"maintain|sustain",
+    }
+    context_markers = r"tissue|cell|epithel|airway|lung|bronch|mucosa|resident|organ"
+    accepted: list[dict] = []
+    rejected: list[dict] = []
+    for edge in edges:
+        reasons: list[str] = []
+        sentence = str(edge.get("source_sentence") or "")
+        relation = str(edge.get("relation") or edge.get("primary_relation") or "").casefold()
+        cue = relation_cues.get(relation)
+        if cue and not re.search(cue, sentence, re.IGNORECASE):
+            reasons.append("causal_direction_not_supported")
+        context_types = {edge.get("source_type"), edge.get("target_type")} & {"Tissue", "Cell", "Cell_type"}
+        if context_types and context_terms:
+            if not (_entity_mentioned(" ".join(context_terms), sentence) or re.search(context_markers, sentence, re.IGNORECASE)):
+                reasons.append("tissue_cell_context_not_supported")
+        if reasons:
+            rejected.append({"edge": edge, "reasons": reasons})
+        else:
+            accepted.append(edge)
+    return accepted, rejected
+
+
 def build_graph(edges: list[dict]) -> dict:
     """Merge edges into unified graph with provenance."""
     edge_map = defaultdict(lambda: {
