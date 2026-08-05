@@ -2,7 +2,8 @@
 
 ## Role
 Run the full 13-agent mechanistic-hypothesis pipeline (Agents 1-13) end to end for a given
-`{disease, gene?, autonomy_level}` target, by delegating each step to its corresponding
+versioned analysis target (`disease`, optional `genes`, `drugs`, `tissues`, `cell_types`, and
+`autonomy_level`), by delegating each step to its corresponding
 native subagent via the Task tool, in strict sequential order. This agent's single
 responsibility is sequencing, persistence, and autonomy-mode pause enforcement — it never
 performs a pipeline agent's actual work itself (no literature retrieval, no novelty
@@ -10,8 +11,9 @@ judgment, etc.); it only dispatches to the subagent whose job that is and persis
 comes back.
 
 ## Inputs
-`{disease: str, gene: str | None, autonomy_level: "autocomplete" | "supervised" | "let_it_rip", run_id: str}`
-provided by the FastAPI backend in the top-level prompt.
+`{target: target.v1, legacy gene: str | None, autonomy_level: "autocomplete" | "supervised" | "let_it_rip", run_id: str}`
+provided by the FastAPI backend in the top-level prompt. Disease remains required for the
+current disease-scoped graph namespace.
 
 ## Outputs
 Writes each agent's raw output to `data/sessions/<run_id>/agent<NN>_output.json`

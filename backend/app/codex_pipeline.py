@@ -673,6 +673,8 @@ def _prepare_prompt(ctx: PipelineContext, agent_name: str, *, extra: str = "") -
         f"run_id: {ctx.run_id}",
         f"disease: {ctx.disease}",
         f"gene: {ctx.gene or '(none specified -- disease-wide target)'}",
+        f"target_schema_version: {(ctx.target or AnalysisTarget(disease=ctx.disease)).schema_version}",
+        f"target_json: {json.dumps((ctx.target or AnalysisTarget(disease=ctx.disease)).model_dump(mode='json'), separators=(',', ':'))}",
         f"autonomy_level: {ctx.autonomy_level}",
         f"session output directory (absolute): {ctx.session_dir}",
         f"graph output directory (absolute): {ctx.graph_dir}",
